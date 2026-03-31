@@ -1,0 +1,9 @@
+﻿active|FastTrackDegree, Testimonials
+book-free-call-banner|App, BookFreeCallBanner
+container|App, BookFreeCallBanner, LatestNews
+explore-btn|FastTrackDegree, SkillsShortage
+hero-cta|App, Hero
+section-header|App, FastTrackDegree, SkillsShortage
+section-subtitle|App, FastTrackDegree, SkillsShortage, Testimonials
+section-title|App, FastTrackDegree, SkillsShortage, Testimonials
+section-title-accent|FastTrackDegree, SkillsShortage
