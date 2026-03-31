@@ -11,7 +11,7 @@ const StartYourJourney = () => {
           <p className="start-journey-subtitle">
             Let Our Experts In Mumbai And Brisbane Guide You Every Step Of The Way.
           </p>
-          <a href="#" className="start-journey-btn">Book Free Call</a>
+          <button type="button" className="start-journey-btn" onClick={() => window.dispatchEvent(new CustomEvent('openConsultationPopup'))}>Book Free Call</button>
         </div>
       </div>
     </section>
