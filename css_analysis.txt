@@ -1,0 +1,351 @@
+﻿=== App (D:\Freelance\entane_ui\src\App.css) ===
+  .App
+  .hero-morph-image
+  .hero-morph-video
+  .hero-morph-dark-overlay
+  .hero-morph-content
+  .hero-morph-title
+  .hero-cta-wrap
+  .hero-cta
+  .homepage-header-wrap
+  .main-content
+  .dream-scroll-container
+  .dream-sticky-wrap
+  .news-blogs-page
+  .book-free-call-banner
+  .container
+  .section-header
+  .section-title
+  .section-subtitle
+  .fade-in
+
+=== index (D:\Freelance\entane_ui\src\index.css) ===
+
+=== AustraliaSection (D:\Freelance\entane_ui\src\components\Home-Page\AustraliaSection.css) ===
+  .australia-section
+  .australia-wrapper
+  .australia-left
+  .australia-title
+  .australia-section--in-view
+  .australia-title-accent
+  .australia-description
+  .australia-stats
+  .stat-item
+  .stat-number
+  .stat-item-full
+  .stat-label
+  .australia-right
+  .australia-bg
+  .australia-overlay
+  .australia-overlay-img
+
+=== BookFreeCallBanner (D:\Freelance\entane_ui\src\components\Home-Page\BookFreeCallBanner.css) ===
+  .book-free-call-banner
+  .container
+  .book-free-call-card
+  .book-free-call-title
+  .book-free-call-australian
+  .book-free-call-accent
+  .book-free-call-subtitle
+  .book-free-call-btn
+
+=== DreamSection (D:\Freelance\entane_ui\src\components\Home-Page\DreamSection.css) ===
+  .dream-section
+  .dream-container
+  .dream-row
+  .dream-section--in-view
+  .dream-row-text
+  .dream-image-wrap
+  .dream-image-wrap--kangaroo
+  .dream-image-wrap--large
+  .dream-image
+  .dream-card-video
+  .dream-text-block
+  .dream-text
+  .dream-text-line1
+  .dream-text-line2
+  .dream-section--morph-active
+
+=== FastTrackDegree (D:\Freelance\entane_ui\src\components\Home-Page\FastTrackDegree.css) ===
+  .fast-track-section
+  .section-header
+  .section-title
+  .section-title-accent
+  .section-subtitle
+  .tabs-container
+  .tabs
+  .tab
+  .active
+  .courses-wrapper
+  .thingreen-image
+  .courses-grid
+  .course-card
+  .course-image
+  .course-content
+  .course-title
+  .course-description
+  .explore-btn
+  .course-modal-overlay
+  .course-modal
+  .course-modal-close
+  .course-modal-content
+  .course-modal-image
+  .course-modal-details
+  .course-modal-title
+  .course-modal-description
+  .course-modal-info
+  .course-info-item
+  .course-info-label
+  .course-info-value
+  .course-modal-actions
+  .course-modal-btn-primary
+  .course-modal-btn-secondary
+
+=== FindYourPlace (D:\Freelance\entane_ui\src\components\Home-Page\FindYourPlace.css) ===
+  .png
+  .find-your-place-section
+  .find-place-title
+  .find-place-title-accent
+  .find-place-subtitle
+  .find-place-single-card
+  .find-place-card-image-full
+
+=== Hero (D:\Freelance\entane_ui\src\components\Home-Page\Hero.css) ===
+  .hero
+  .hero-background
+  .hero-bg-img
+  .hero-bg-video
+  .hero-overlay
+  .hero-content
+  .hero-title
+  .hero-cta
+
+=== LatestNews (D:\Freelance\entane_ui\src\components\Home-Page\LatestNews.css) ===
+  .latest-news-section
+  .container
+  .latest-news-header
+  .latest-news-title
+  .latest-news-tagline
+  .latest-news-grid
+  .latest-news-card
+  .latest-news-card-image
+  .latest-news-card-content
+  .latest-news-date
+  .latest-news-card-title
+  .latest-news-read-more
+  .latest-news-modal-overlay
+  .latest-news-modal-content
+  .latest-news-modal-close
+  .latest-news-modal-image
+  .latest-news-modal-body
+  .latest-news-modal-date
+  .latest-news-modal-title
+  .latest-news-modal-text
+  .latest-news-modal-actions
+  .latest-news-modal-btn-primary
+  .latest-news-modal-btn-secondary
+
+=== Newsletter (D:\Freelance\entane_ui\src\components\Home-Page\Newsletter.css) ===
+  .newsletter-section
+  .jpg
+  .newsletter-container
+  .newsletter-content
+  .newsletter-title
+  .newsletter-subtitle
+  .newsletter-form
+  .newsletter-input
+  .newsletter-button
+
+=== RealStories (D:\Freelance\entane_ui\src\components\Home-Page\RealStories.css) ===
+  .real-stories-section
+  .real-stories-header
+  .real-stories-title
+  .real-stories-subtitle
+  .real-stories-carousel-wrap
+  .real-stories-scroll
+  .real-story-card
+  .real-story-card-image
+  .real-stories-nav
+  .real-stories-arrow
+  .real-stories-arrow-left
+  .real-stories-arrow-right
+
+=== ServiceCards (D:\Freelance\entane_ui\src\components\Home-Page\ServiceCards.css) ===
+  .service-cards-section
+  .service-cards-container
+  .service-cards-header
+  .service-cards-title
+  .service-cards-title-accent
+  .service-cards-description
+  .service-cards-strip
+  .service-card
+  .service-card-image
+  .service-card-gradient
+  .service-card-play
+  .service-card-play-icon
+  .service-card-content
+  .service-card-badge
+  .service-card-arrow
+  .service-card-divider
+  .service-card-bottom-row
+  .service-card-subtitle
+  .service-card-cta
+
+=== SkillsShortage (D:\Freelance\entane_ui\src\components\Home-Page\SkillsShortage.css) ===
+  .skills-shortage-section
+  .section-header
+  .section-title
+  .section-title-accent
+  .section-subtitle
+  .skills-carousel-wrap
+  .jobs-scroll
+  .skills-nav
+  .job-card
+  .job-image
+  .job-content
+  .job-title
+  .job-description
+  .explore-btn
+  .nav-arrow
+  .nav-arrow-left
+  .nav-arrow-right
+  .job-modal-overlay
+  .job-modal
+  .job-modal-close
+  .job-modal-content
+  .job-modal-image
+  .job-modal-details
+  .job-modal-title
+  .job-modal-description
+  .job-modal-info
+  .job-info-item
+  .job-info-label
+  .job-info-value
+  .job-modal-actions
+  .job-modal-btn-primary
+  .job-modal-btn-secondary
+
+=== StartYourJourney (D:\Freelance\entane_ui\src\components\Home-Page\StartYourJourney.css) ===
+  .start-journey-section
+  .start-journey-card
+  .start-journey-title
+  .start-journey-accent
+  .start-journey-subtitle
+  .start-journey-btn
+
+=== Testimonials (D:\Freelance\entane_ui\src\components\Home-Page\Testimonials.css) ===
+  .testimonials-section
+  .section-title
+  .section-subtitle
+  .testimonials-container
+  .testimonial-card
+  .testimonial-image
+  .testimonial-content
+  .stars
+  .star
+  .testimonial-text
+  .testimonial-author
+  .author-name
+  .author-role
+  .testimonial-nav
+  .testimonial-dots
+  .dot
+  .active
+
+=== Universities (D:\Freelance\entane_ui\src\components\Home-Page\Universities.css) ===
+  .universities-section
+  .universities-grid
+  .university-card
+  .university-logo
+
+=== WhatEsanteDoes (D:\Freelance\entane_ui\src\components\Home-Page\WhatEsanteDoes.css) ===
+  .what-esante-section
+  .what-esante-container
+  .what-esante-title
+  .what-esante-title-accent
+  .what-esante-subtitle
+  .what-esante-card
+  .what-esante-card-1
+  .what-esante-card-2
+  .what-esante-card-title
+  .what-esante-card-desc
+  .what-esante-card-list
+  .what-esante-card-content
+  .what-esante-btn
+  .what-esante-btn-light
+  .what-esante-card-image
+
+=== ConsultationPopup (D:\Freelance\entane_ui\src\components\Reusable\ConsultationPopup.css) ===
+  .consultation-popup-overlay
+  .consultation-popup
+  .consultation-popup-close
+  .consultation-popup-title
+  .consultation-popup-subtitle
+  .consultation-popup-form
+  .consultation-popup-submit
+
+=== Footer (D:\Freelance\entane_ui\src\components\Reusable\Footer.css) ===
+  .footer
+  .footer-main
+  .footer-grid
+  .footer-brand
+  .footer-logo
+  .footer-tagline
+  .footer-cta-text
+  .footer-book-cta
+  .footer-social
+  .footer-social-icon
+  .footer-social-icon--facebook
+  .footer-social-icon--instagram
+  .footer-social-icon--twitter
+  .footer-social-icon--whatsapp
+  .footer-heading
+  .footer-links
+  .footer-contact
+  .footer-contact-icon
+  .footer-bottom
+  .footer-bottom-inner
+  .footer-copyright
+  .footer-legal
+
+=== Header (D:\Freelance\entane_ui\src\components\Reusable\Header.css) ===
+  .header
+  .header--hidden
+  .header-top
+  .header-contact
+  .contact-item
+  .icon
+  .header-nav
+  .header--solid
+  .nav-container
+  .logo
+  .nav-menu
+  .nav-item-dropdown
+  .dropdown-toggle
+  .dropdown-menu
+  .dropdown-mega
+  .nav-item-dropdown--mega
+  .dropdown-mega-column
+  .dropdown-mega-title
+  .dropdown-mega-link
+  .dropdown-mega-sub
+  .dropdown-mega-subtitle
+  .cta-button
+  .cta-button--orange
+
+=== WhyAustralia (D:\Freelance\entane_ui\src\components\Why-Australia\WhyAustralia.css) ===
+  .why-australia-page
+  .career-tab-active
+
+==========================================
+DUPLICATE CLASS NAMES (appear in 2+ files):
+==========================================
+  .active -> FastTrackDegree, Testimonials
+  .book-free-call-banner -> App, BookFreeCallBanner
+  .container -> App, BookFreeCallBanner, LatestNews
+  .explore-btn -> FastTrackDegree, SkillsShortage
+  .hero-cta -> App, Hero
+  .section-header -> App, FastTrackDegree, SkillsShortage
+  .section-subtitle -> App, FastTrackDegree, SkillsShortage, Testimonials
+  .section-title -> App, FastTrackDegree, SkillsShortage, Testimonials
+  .section-title-accent -> FastTrackDegree, SkillsShortage
