@@ -33,6 +33,7 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll(); // sync immediately on mount
     return () => window.removeEventListener('scroll', onScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isHome]);
 
   // Close mobile menu on route change

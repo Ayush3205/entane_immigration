@@ -14,7 +14,7 @@ import Footer from '../components/Reusable/Footer';
 
 const MORPH_END    = 800;  // scroll px that span the full morph animation
 // Navbar slides up + fades out over first HEADER_FADE px of scroll
-const HEADER_FADE  = 120;
+// const HEADER_FADE  = 120;
 const HERO_VIDEO_URL = 'https://cdn.jsdelivr.net/npm/video-media-samples@1.0.0/big-buck-bunny-480p-30sec.mp4';
 
 const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
