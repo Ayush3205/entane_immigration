@@ -1149,7 +1149,7 @@ img {
 
 .dream-text-line1 {
   font-family: 'Poppins', sans-serif;
-  font-size: 52px;
+  font-size: 50px;
   font-weight: 300;
   font-style: italic;
   line-height: 98%;
@@ -1373,6 +1373,7 @@ img {
 /* Fast-Track Your Degree — Figma exact match */
 .fast-track-section {
   padding: var(--section-spacing, 100px) 0;
+  padding-top: 40px;
   background-color: #FFFFFF;
 }
 
@@ -1522,11 +1523,14 @@ img {
 /* Text portion */
 .course-content {
   width: 370px;
-  height: 205px;
-  padding: 20px 10px;
+  min-height: 205px;
+  height: auto;
+  box-sizing: border-box;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 16px;
   align-items: flex-start;
   background: #00352B;
   color: white;
@@ -1585,7 +1589,7 @@ img {
   left: 0;
   width: 100%;
   height: 1px;
-  background: #FFFFFF;
+  background: #F30;
   pointer-events: none;
 }
 
@@ -1814,6 +1818,7 @@ img {
 @media (max-width: 768px) {
   .fast-track-section {
     padding: 60px 0;
+    padding-top: 30px;
   }
 
   .fasttrack-section-title,
@@ -1894,6 +1899,7 @@ img {
 @media (max-width: 480px) {
   .fast-track-section {
     padding: 40px 0;
+    padding-top: 20px;
   }
 
   .fasttrack-section-title,
@@ -1955,6 +1961,8 @@ img {
 /* Find Your Place in Australia */
 .find-your-place-section {
   padding: var(--section-spacing, 100px) 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
   background-color: #fff;
 }
 
@@ -2479,6 +2487,8 @@ img {
 @media (max-width: 768px) {
   .find-your-place-section {
     padding: 60px 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 
   .find-place-header-row {
@@ -3332,6 +3342,7 @@ img {
 /* Real Stories, Real Futures - Figma: carousel, play icon, location badge, overlay text, square arrows */
 .real-stories-section {
   padding: var(--section-spacing, 100px) 0;
+  padding-top: 40px;
   background-color: #fff;
 }
 
@@ -3497,6 +3508,7 @@ img {
 @media (max-width: 768px) {
   .real-stories-section {
     padding: 60px 0;
+    padding-top: 30px;
   }
 
   .real-stories-title {
@@ -3548,6 +3560,7 @@ img {
 /* Everything You Need section — Figma Group 10 (1440×661px) */
 .service-cards-section {
   padding: var(--section-spacing, 100px) 0;
+  padding-bottom: 40px;
   background-color: #FFFFFF;
 }
 
@@ -3561,9 +3574,9 @@ img {
 /* Header: title left (~46%), description right (~54%) — Figma x split at 664/1440 */
 .service-cards-header {
   display: grid;
-  grid-template-columns: 44% 56%;
+  grid-template-columns: 50% 50%;
   gap: 0;
-  align-items: start;
+  align-items: center;
   margin-bottom: 40px;
 }
 
@@ -3577,7 +3590,7 @@ img {
   letter-spacing: -0.15px;
   color: #00352B;
   margin: 0;
-  max-width: 540px;
+  max-width: 600px;
 }
 
 /* "Australia Dream" span — orange bold italic */
@@ -3594,13 +3607,13 @@ img {
 /* Description — Figma: x=664, y=28, fontWeight 400, 18px, black */
 .service-cards-description {
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
   letter-spacing: -0.15px;
   color: #000000;
-  margin: 28px 0 0 0;
+  margin: 0;
   max-width: 683px;
 }
 
@@ -3814,7 +3827,7 @@ img {
   }
 
   .service-cards-description {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .service-card-image {
@@ -3833,6 +3846,7 @@ img {
 @media (max-width: 768px) {
   .service-cards-section {
     padding: 60px 0;
+    padding-bottom: 30px;
   }
 
   .service-cards-container {
@@ -3855,7 +3869,7 @@ img {
   }
 
   .service-cards-description {
-    font-size: 15px;
+    font-size: 16px;
     margin-top: 0;
     max-width: 100%;
   }
@@ -3900,6 +3914,7 @@ img {
 
 .skills-shortage-section {
   padding: var(--section-spacing, 100px) 0;
+  padding-bottom: 40px;
   background-color: #FFFFFF;
 }
 
@@ -4121,6 +4136,7 @@ img {
 @media (max-width: 768px) {
   .skills-shortage-section {
     padding: 60px 0;
+    padding-bottom: 30px;
   }
 
   .skills-section-title,
@@ -4177,6 +4193,7 @@ img {
 @media (max-width: 480px) {
   .skills-shortage-section {
     padding: 40px 0;
+    padding-bottom: 20px;
   }
 
   .skills-section-title,
@@ -4972,6 +4989,8 @@ img {
 /* What Esante Does - Figma: left-aligned header, two cards (content+image row), 35px radius */
 .what-esante-section {
   padding: var(--section-spacing, 100px) 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .what-esante-container {
@@ -5011,7 +5030,7 @@ img {
   line-height: 120%;
   letter-spacing: -0.15px;
   color: rgba(0, 0, 0, 0.75);
-  margin: 0 0 48px 0;
+  margin: 0 0 16px 0;
   text-align: left;
   width: 100%;
   max-width: 1240px;
@@ -5245,7 +5264,7 @@ img {
 
   .what-esante-subtitle {
     font-size: 16px;
-    margin-bottom: 36px;
+    margin-bottom: 16px;
   }
 
   .what-esante-card {
@@ -5271,6 +5290,8 @@ img {
 @media (max-width: 768px) {
   .what-esante-section {
     padding: 60px 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 
   .what-esante-container {
@@ -5283,7 +5304,7 @@ img {
 
   .what-esante-subtitle {
     font-size: 15px;
-    margin-bottom: 28px;
+    margin-bottom: 12px;
   }
 
   .what-esante-card {
@@ -5330,6 +5351,8 @@ img {
 @media (max-width: 480px) {
   .what-esante-section {
     padding: 40px 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .what-esante-title {

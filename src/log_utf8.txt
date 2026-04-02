@@ -1,0 +1,92 @@
+﻿
+  global.css:1959:   =====
+==========================
+================= */
+  global.css:1960:
+  global.css:1961:/* Find 
+Your Place in Australia */
+> global.css:1962:.find-yo
+ur-place-section {
+  global.css:1963:  
+padding: 
+var(--section-spacing, 
+100px) 0;
+  global.css:1964:  
+background-color: #fff;
+  global.css:1965:}
+  global.css:2483:}
+  global.css:2484:
+  global.css:2485:@media 
+(max-width: 768px) {
+> global.css:2486:  
+.find-your-place-section {
+  global.css:2487:    
+padding: 60px 0;
+  global.css:2488:  }
+  global.css:2489:
+  global.css:3336:   =====
+==========================
+================= */
+  global.css:3337:
+  global.css:3338:/* Real 
+Stories, Real Futures - 
+Figma: carousel, play 
+icon, location badge, 
+overlay text, square 
+arrows */
+> global.css:3339:.real-st
+ories-section {
+  global.css:3340:  
+padding: 
+var(--section-spacing, 
+100px) 0;
+  global.css:3341:  
+background-color: #fff;
+  global.css:3342:}
+  global.css:3501:}
+  global.css:3502:
+  global.css:3503:@media 
+(max-width: 768px) {
+> global.css:3504:  
+.real-stories-section {
+  global.css:3505:    
+padding: 60px 0;
+  global.css:3506:  }
+  global.css:3507:
+  global.css:3906:   
+Source: SkillsShortage
+  global.css:3907:   =====
+==========================
+================= */
+  global.css:3908:
+> global.css:3909:.skills-
+shortage-section {
+  global.css:3910:  
+padding: 
+var(--section-spacing, 
+100px) 0;
+  global.css:3911:  
+background-color: #FFFFFF;
+  global.css:3912:}
+  global.css:4127:}
+  global.css:4128:
+  global.css:4129:@media 
+(max-width: 768px) {
+> global.css:4130:  
+.skills-shortage-section {
+  global.css:4131:    
+padding: 60px 0;
+  global.css:4132:  }
+  global.css:4133:
+  global.css:4183:}
+  global.css:4184:
+  global.css:4185:@media 
+(max-width: 480px) {
+> global.css:4186:  
+.skills-shortage-section {
+  global.css:4187:    
+padding: 40px 0;
+  global.css:4188:  }
+  global.css:4189:
+
+

@@ -1,8 +1,50 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const WhatEsanteDoes = () => {
+  const sectionRef = useRef(null);
+  const cardsRef = useRef([]);
+  // Clear the ref array to prevent duplicates in React StrictMode
+  cardsRef.current = [];
+
+  const addToRefs = (el) => {
+    if (el && !cardsRef.current.includes(el)) {
+      cardsRef.current.push(el);
+    }
+  };
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate each card individually when it scrolls into view
+      cardsRef.current.forEach((card, index) => {
+        gsap.fromTo(card,
+          {
+            y: 100,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 80%", // Trigger when this specific card enters viewport
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="what-esante-section">
+    <section className="what-esante-section" ref={sectionRef}>
       <div className="what-esante-container">
         {/* Title: "Esante" in #FF3300, rest dark */}
         <h2 className="what-esante-title">
@@ -13,7 +55,7 @@ const WhatEsanteDoes = () => {
         </p>
 
         {/* Card 1: content left, image right — bg #00352B, gap 10px (Figma layout_5M8C79) */}
-        <div className="what-esante-card what-esante-card-1">
+        <div className="what-esante-card what-esante-card-1" ref={addToRefs}>
           <div className="what-esante-card-content">
             <h3 className="what-esante-card-title">Migration</h3>
             <p className="what-esante-card-desc">
@@ -36,7 +78,7 @@ const WhatEsanteDoes = () => {
         </div>
 
         {/* Card 2: image left, content right — bg #FF3300, gap 41px (Figma layout_53MYCK) */}
-        <div className="what-esante-card what-esante-card-2">
+        <div className="what-esante-card what-esante-card-2" ref={addToRefs}>
           <div 
             className="what-esante-card-image"
             style={{
@@ -59,7 +101,7 @@ const WhatEsanteDoes = () => {
         </div>
 
         {/* Card 3: content left, image right — bg #00352B, gap 10px (Figma layout_5M8C79) */}
-        <div className="what-esante-card what-esante-card-3">
+        <div className="what-esante-card what-esante-card-3" ref={addToRefs}>
           <div className="what-esante-card-content">
             <h3 className="what-esante-card-title">Recruitment</h3>
             <p className="what-esante-card-desc">
