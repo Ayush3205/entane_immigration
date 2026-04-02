@@ -16,7 +16,7 @@ const CARDS = [
   {
     image: '/images/home-page/image 54.png',
     badge: 'For Migration',
-    subtitle: 'Advance Your Career',
+    subtitle: 'Start Your New Life',
     cta: 'Book 1:1 Counselling',
   },
 ];
@@ -28,7 +28,7 @@ const ServiceCards = () => {
         {/* Figma: title left (~44%), description right (~56%) */}
         <div className="service-cards-header">
           <h2 className="service-cards-title">
-            Everything You Need for Your{' '}
+            Everything You Need for<br />Your{' '}
             <span className="service-cards-title-accent">Australia Dream</span>
           </h2>
           <p className="service-cards-description">

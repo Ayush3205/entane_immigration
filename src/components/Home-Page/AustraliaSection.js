@@ -6,7 +6,7 @@ const STATS = [
   { end: 13000, suffix: ' +', format: 'int', delay: 'delay-[440ms]' },
 ];
 
-const DURATION_MS = 5200;
+const DURATION_MS = 2000;
 const easeOutQuart = (t) => 1 - (1 - t) ** 4;
 
 function useCountUp(isInView, config) {
@@ -64,12 +64,12 @@ const AustraliaSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-[var(--section-spacing,100px)] bg-white overflow-hidden"
+      className="w-full bg-white overflow-hidden -my-[4px] relative z-10"
     >
-      <div className="max-w-[1436px] w-full min-h-[733px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-stretch">
+      <div className="w-full min-h-[740px] grid grid-cols-1 lg:grid-cols-2 items-stretch">
         
         {/* Left Column */}
-        <div className="bg-cream px-5 py-[36px] md:px-[50px] md:py-[40px] lg:pl-[100px] lg:pr-[60px] lg:py-[48px] flex flex-col justify-center min-h-full">
+        <div className="bg-cream px-5 py-[36px] md:px-[50px] md:py-[40px] lg:pl-[max(100px,calc((100vw-1436px)/2))] lg:pr-[60px] lg:py-[48px] flex flex-col justify-center min-h-full">
           
           <h2 
             className={`font-poppins text-[24px] md:text-[36px] lg:text-[45px] font-medium leading-[1.2] text-primary mb-6 transition-all duration-[650ms] ease-out ${
@@ -144,8 +144,8 @@ const AustraliaSection = () => {
         >
           {/* Background Image */}
           <div 
-            className="absolute top-0 left-0 w-full h-full lg:w-[693px] lg:h-[734px] bg-cover bg-center bg-no-repeat transition-transform duration-[900ms] "
-            style={{ backgroundImage: 'url(/images/home-page/australia.png)', aspectRatio: '169/179' }}
+            className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-[900ms] "
+            style={{ backgroundImage: 'url(/images/home-page/australia.png)' }}
           />
           
           {/* Overlay Image Envelope */}
@@ -153,9 +153,10 @@ const AustraliaSection = () => {
             <img 
               src="/images/home-page/overlay-image.png" 
               alt="Australia Illustration" 
-              className={`max-w-[220px] max-h-[170px] md:max-w-[280px] md:max-h-[220px] lg:max-w-full lg:max-h-[85%] w-auto h-auto object-contain block rounded-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[750ms] ease-out delay-[300ms] ${
-                isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[28px] scale-[0.92]'
+              className={`max-w-[220px] max-h-[170px] md:max-w-[280px] md:max-h-[220px] lg:max-w-full lg:max-h-[85%] w-auto h-auto object-contain block rounded-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[1000ms] delay-[300ms] ${
+                isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[40px] scale-[0.5]'
               }`} 
+              style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
             />
           </div>
         </div>

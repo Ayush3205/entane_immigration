@@ -20,6 +20,28 @@ const HERO_VIDEO_URL = 'https://cdn.jsdelivr.net/npm/video-media-samples@1.0.0/b
 const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 const easeOutCubic   = (t) => 1 - Math.pow(1 - t, 3);
 
+// Slower, custom smooth scroll function
+const customSmoothScrollTo = (targetY, duration) => {
+  const startY = window.scrollY || document.documentElement.scrollTop;
+  const change = targetY - startY;
+  const startTime = performance.now();
+
+  // Gentle ease in out cubic for pleasing scroll
+  const easeInOut = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  const animateScroll = (currentTime) => {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = easeInOut(progress);
+    window.scrollTo(0, startY + change * easedProgress);
+
+    if (progress < 1) {
+      requestAnimationFrame(animateScroll);
+    }
+  };
+  requestAnimationFrame(animateScroll);
+};
+
 const HOME_FAQ_ITEMS = [
   {
     question: 'Why study in Australia as an international student?',
@@ -141,6 +163,8 @@ function HomePage() {
   const morphContentRef = useRef(null);
   const dreamStickyRef  = useRef(null);
   const morphTargetRef  = useRef(null);
+  const autoScrollTargetRef = useRef(null);
+  const autoScrollState = useRef({ lastY: 0, active: false });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -198,7 +222,26 @@ function HomePage() {
       const vw  = window.innerWidth;
       const vh  = window.innerHeight;
 
-      // ── WRITE PHASE ──
+      // 0. Auto-Snap to Australia Section after Morph
+      if (!autoScrollState.current.active && autoScrollTargetRef.current) {
+        const prevY = autoScrollState.current.lastY;
+        
+        // If scrolling downwards and we are looking at the bottom of the Dream section
+        // (Australia section is taking up the bottom half or third of the viewport)
+        if (y > prevY) {
+          const rect = autoScrollTargetRef.current.getBoundingClientRect();
+          // Trigger when the Australia Section is visibly entering the screen,
+          // roughly when its top is at 75% of the viewport height (so 25% of it is visible),
+          // but stop triggering if we're already almost there.
+          if (rect.top < vh * 0.75 && rect.top > 50) {
+            autoScrollState.current.active = true;
+            // Native smooth scroll is too fast (~300ms). Use custom 1800ms slower scroll.
+            customSmoothScrollTo(y + rect.top, 1800);
+            setTimeout(() => { autoScrollState.current.active = false; }, 1900);
+          }
+        }
+      }
+      autoScrollState.current.lastY = y;
 
       // 1. Header scroll state is now managed inside Header.js itself —
       //    no DOM manipulation needed here.
@@ -370,7 +413,9 @@ function HomePage() {
             />
           </div>
         </div>
-        <AustraliaSection />
+        <div ref={autoScrollTargetRef}>
+          <AustraliaSection />
+        </div>
         <ServiceCards />
         <WhatEsanteDoes />
         <FastTrackDegree />
