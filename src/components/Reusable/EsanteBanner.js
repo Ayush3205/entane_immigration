@@ -34,7 +34,7 @@ const EsanteBanner = () => {
           className="absolute w-[708px] font-poppins text-[23px] font-normal leading-normal text-[rgba(255,255,255,0.9)] text-center capitalize tracking-[-0.15px]"
           style={{ top: 214, left: '50%', transform: 'translateX(-50%)' }}
         >
-          Let our experts in Brisbane guide you every step of the way.
+          Let Our Experts in Brisbane Guide You Every Step Of The Way.
         </p>
 
         {/* CTA button */}

@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Header from '../components/Reusable/Header';
 import Footer from '../components/Reusable/Footer';
 import EsanteBanner from '../components/Reusable/EsanteBanner';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // ─── Figma images (section 239:1666 "Ancillary services") ───────────────────
 // Center card  – node 239:1847 / layout_GY3D9A: 309×407, borderRadius 33px
@@ -18,14 +22,16 @@ const CARDS = [
   // Left outer
   {
     img: '/images/anc-img-64.png',
-    alt: 'Services support',
+    alt: 'SOP support',
+    label: 'SOP',
     x: -380, y: 71, rotate: -36, z: 1, br: 28,
-    grayscale: true, opacity: 0.70,
+    grayscale: true, opacity: 0.7,
   },
   // Left inner
   {
     img: '/images/anc-rect-22.png',
-    alt: 'Accommodation support',
+    alt: 'Free IELTS training',
+    label: 'Free IELTS training',
     x: -195, y: 26, rotate: -18, z: 2, br: 28,
     grayscale: true, opacity: 0.85,
   },
@@ -41,15 +47,17 @@ const CARDS = [
   {
     img: '/images/anc-img-63.png',
     alt: 'Part-time job support',
+    label: 'Part-time job',
     x: 195, y: 26, rotate: 18, z: 2, br: 28,
     grayscale: true, opacity: 0.85,
   },
   // Right outer
   {
     img: '/images/anc-img-65.png',
-    alt: 'Post-arrival hand-holding',
+    alt: 'Airport service',
+    label: 'Airport service',
     x: 380, y: 71, rotate: 36, z: 1, br: 28,
-    grayscale: true, opacity: 0.70,
+    grayscale: true, opacity: 0.7,
   },
 ];
 
@@ -111,10 +119,54 @@ const ANCILLARY_FAQ_ITEMS = [
   },
 ];
 
+/** Space below card stack for hover captions */
+const FAN_SECTION_BOTTOM = 72;
+
 export default function AncillaryServicesPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
+  const fanSectionRef = useRef(null);
+  const cardAnimateRefs = useRef([]);
+
+  const setCardAnimateRef = (el, index) => {
+    if (el) cardAnimateRefs.current[index] = el;
+  };
 
   const openConsultation = () => window.dispatchEvent(new CustomEvent('openConsultationPopup'));
+
+  useEffect(() => {
+    const layers = CARDS.map((_, i) => cardAnimateRefs.current[i]).filter(Boolean);
+    if (layers.length !== CARDS.length) return undefined;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        layers,
+        {
+          opacity: 0,
+          y: 88,
+          scale: 0.82,
+        },
+        {
+          opacity: (i) => CARDS[i]?.opacity ?? 1,
+          y: 0,
+          scale: 1,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: {
+            each: 0.1,
+            from: 'center',
+          },
+          scrollTrigger: {
+            trigger: fanSectionRef.current,
+            start: 'top 78%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    }, fanSectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const toggleFaq = (index) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
@@ -188,82 +240,109 @@ export default function AncillaryServicesPage() {
 
           {/* ── Fan Cards ── layout_678G42 center: 310×407 / layout_GY3D9A: 309×407 ── */}
           <section
+            ref={fanSectionRef}
             className="relative w-full flex justify-center"
-            style={{ height: CARD_H + 84, overflow: 'visible' }}
+            style={{ height: CARD_H + FAN_SECTION_BOTTOM, overflow: 'visible' }}
           >
-            {CARDS.map((card, i) => (
-              <div
-                key={i}
-                style={{
-                  position: 'absolute',
-                  width: CARD_W,
-                  height: CARD_H,
-                  left: `calc(50% + ${card.x}px - ${CARD_W / 2}px)`,
-                  top: card.y,
-                  background: 'none',
-                  transform: `rotate(${card.rotate}deg)`,
-                  transformOrigin: 'center bottom',
-                  zIndex: card.z,
-                  filter: card.grayscale ? 'grayscale(100%)' : 'none',
-                  opacity: card.opacity,
-                  overflow: 'visible',
-                }}
-              >
-                <img
-                  src={card.img}
-                  alt={card.alt}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    borderRadius: card.br,
-                    boxShadow: card.grayscale
-                      ? '0 8px 40px rgba(0,0,0,0.20)'
-                      : '0 24px 72px rgba(0,0,0,0.30)',
-                  }}
-                />
+            {CARDS.map((card, i) => {
+              const isHovered = hoveredCardIndex === i;
+              const useGrayscale =
+                hoveredCardIndex === null ? card.grayscale && i !== 2 : !isHovered;
+              const z = isHovered ? Math.max(card.z, 12) : card.z;
+              const dimOthers =
+                hoveredCardIndex !== null && !isHovered;
 
-                {/* Bottom gradient for label readability */}
+              return (
                 <div
+                  key={i}
+                  role="presentation"
+                  onMouseEnter={() => setHoveredCardIndex(i)}
+                  onMouseLeave={() => setHoveredCardIndex(null)}
+                  className="cursor-pointer"
                   style={{
                     position: 'absolute',
-                    inset: 0,
-                    borderRadius: card.br,
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.40) 0%, transparent 55%)',
-                    pointerEvents: 'none',
+                    width: CARD_W,
+                    height: CARD_H,
+                    left: `calc(50% + ${card.x}px - ${CARD_W / 2}px)`,
+                    top: card.y,
+                    zIndex: z,
+                    overflow: 'visible',
                   }}
-                />
-
-                {card.label && (
+                >
+                  {/* GSAP animates this layer only; keeps transforms stable on React updates */}
                   <div
+                    ref={(el) => setCardAnimateRef(el, i)}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      overflow: 'visible',
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: 'relative',
+                        width: '100%',
+                        height: '100%',
+                        transform: `rotate(${card.rotate}deg) scale(${isHovered ? 1.04 : 1})`,
+                        transformOrigin: 'center bottom',
+                        transition:
+                          'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease, opacity 0.35s ease',
+                        filter: useGrayscale ? 'grayscale(100%)' : 'none',
+                        opacity: dimOthers ? 0.55 : 1,
+                      }}
+                    >
+                      <img
+                        src={card.img}
+                        alt={card.alt}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          display: 'block',
+                          borderRadius: card.br,
+                          boxShadow: useGrayscale
+                            ? '0 8px 40px rgba(0,0,0,0.20)'
+                            : '0 24px 72px rgba(0,0,0,0.30)',
+                        }}
+                      />
+                      <div
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          borderRadius: card.br,
+                          background:
+                            'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%)',
+                          pointerEvents: 'none',
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div
+                    aria-hidden={!isHovered}
                     style={{
                       position: 'absolute',
-                      bottom: 0,
-                      left: 0,
-                      width: '100%',
+                      left: '50%',
+                      top: CARD_H + 10,
+                      transform: 'translateX(-50%)',
+                      width: 'max-content',
+                      maxWidth: 280,
                       textAlign: 'center',
-                      height: 46,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      pointerEvents: 'none',
+                      opacity: isHovered ? 1 : 0,
+                      transition: 'opacity 0.25s ease',
                     }}
                   >
                     <span
-                      style={{
-                        fontFamily: 'Poppins, sans-serif',
-                        fontWeight: 500,
-                        fontSize: 20,
-                        lineHeight: 1,
-                        color: '#FFFFFF',
-                      }}
+                      className="font-poppins font-semibold text-[18px] leading-tight text-[#00352B]"
+                      style={{ letterSpacing: '-0.02em' }}
                     >
                       {card.label}
                     </span>
                   </div>
-                )}
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </section>
 
           {/* ── Description text ── layout_QPQ4K1: 850×489
