@@ -177,7 +177,7 @@ export default function AccommodationPage() {
     <div className="flex flex-col w-full min-h-screen bg-white">
       <Header />
 
-      <main className="flex flex-col w-full max-w-[1440px] mx-auto bg-[#FFFDF6]">
+      <main className="flex flex-col w-full max-w-[1440px] mx-auto bg-[#FFFFFF]">
         <div className="flex flex-col items-center w-full pt-[130px] pb-16 px-[100px]">
           {/* Hero: text block — matches reference design */}
           <section className="flex flex-col items-center w-full max-w-[1192px] mb-[64px] gap-0">
@@ -327,20 +327,53 @@ export default function AccommodationPage() {
           </section>
           </div>
 
-          {/* Section: Long copy */}
-          <section className="flex flex-col items-center w-full max-w-[1117px] mx-auto mb-[100px]">
-            <p className="font-poppins font-normal italic text-[23px] leading-[1.5] tracking-[-0.00652em] text-[#FF3300] text-center mb-8">
+          {/* Section: Long copy — Figma typography (Accent / At Esante / Partner / B2B body) */}
+          <section className="flex flex-col items-center w-full max-w-[1117px] mx-auto mb-[100px] px-4">
+            <p
+              className="font-poppins text-center text-[#FF3300] mb-8 max-w-[1024px]"
+              style={{
+                fontSize: 30,
+                fontStyle: 'italic',
+                fontWeight: 600,
+                lineHeight: '150.37%',
+                letterSpacing: '-0.15px',
+              }}
+            >
               Finding cheap student accommodation in Australia is one of the biggest challenges for
               international students — inflated prices, unreliable listings, and hidden fees make it
               harder than it should be.
             </p>
-            <p className="font-poppins font-normal text-[23px] leading-[1.5] tracking-[-0.00652em] text-black text-center mb-4">
-              At Esante, we do it differently. We don't list properties.
+            <p
+              className="font-poppins text-center text-black mb-4 max-w-[1024px]"
+              style={{
+                fontSize: 34,
+                fontWeight: 400,
+                lineHeight: 'normal',
+                letterSpacing: '-0.15px',
+              }}
+            >
+              At Esante, we do it differently. We don&apos;t list properties.
             </p>
-            <p className="font-poppins font-normal text-[23px] leading-[1.5] tracking-[-0.00652em] text-[#FF3300] text-center mb-4">
+            <p
+              className="font-poppins text-center text-[#FF3300] mb-4 max-w-[1024px]"
+              style={{
+                fontSize: 30,
+                fontWeight: 400,
+                lineHeight: '36px',
+                letterSpacing: '-0.15px',
+              }}
+            >
               We partner, negotiate, verify, and support — like a local Australian team.
             </p>
-            <p className="font-poppins font-normal text-[23px] leading-[1.5] tracking-[-0.00652em] text-black text-center">
+            <p
+              className="font-poppins text-center text-black max-w-[1024px]"
+              style={{
+                fontSize: 23,
+                fontWeight: 400,
+                lineHeight: '36px',
+                letterSpacing: '-0.15px',
+              }}
+            >
               We have direct B2B partnerships with multiple trusted accommodation providers across Australia, which allows us to access exclusive student rates that are lower than standard market prices. These benefits are passed directly to our students, with no extra charges.
             </p>
           </section>
@@ -442,7 +475,7 @@ export default function AccommodationPage() {
 
           {/* FAQ — student accommodation in Australia */}
           <section
-            className="flex flex-col items-center self-stretch w-full bg-[#FFFDF6] py-[64px] px-0 gap-[24px]"
+            className="flex flex-col items-center self-stretch w-full bg-[#FFFFFF] py-[64px] px-0 gap-[24px]"
             aria-labelledby="accommodation-faq-heading"
           >
             <h2

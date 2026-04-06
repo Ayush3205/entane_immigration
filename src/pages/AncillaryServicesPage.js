@@ -19,23 +19,23 @@ const CARD_H = 372;
 
 // Card data — positions scaled proportionally from Figma fan layout
 const CARDS = [
-  // Left outer
+  // Left outer — Airport service (y aligned with inner-left pivot row for even fan)
   {
-    img: '/images/anc-img-64.png',
-    alt: 'SOP support',
-    label: 'SOP',
-    x: -380, y: 71, rotate: -36, z: 1, br: 28,
-    grayscale: true, opacity: 0.7,
+    img: '/images/anc-img-65.png',
+    alt: 'Airport service',
+    label: 'Airport service',
+    x: -380, y: 120, rotate: -36, z: 1, br: 28,
+    grayscale: true, opacity: 1,
   },
-  // Left inner
+  // Left inner — Post-arrival support
   {
     img: '/images/anc-rect-22.png',
-    alt: 'Free IELTS training',
-    label: 'Free IELTS training',
+    alt: 'Post-arrival support',
+    label: 'Post-arrival support',
     x: -195, y: 26, rotate: -18, z: 2, br: 28,
-    grayscale: true, opacity: 0.85,
+    grayscale: true, opacity: 1,
   },
-  // Center
+  // Center — Accommodation
   {
     img: '/images/anc-img-62.png',
     alt: 'Accommodation',
@@ -43,21 +43,21 @@ const CARDS = [
     x: 0, y: 0, rotate: 0, z: 5, br: 29,
     grayscale: false, opacity: 1,
   },
-  // Right inner
+  // Right inner — Part-time
   {
     img: '/images/anc-img-63.png',
-    alt: 'Part-time job support',
-    label: 'Part-time job',
+    alt: 'Part-time job',
+    label: 'PART TIME',
     x: 195, y: 26, rotate: 18, z: 2, br: 28,
-    grayscale: true, opacity: 0.85,
+    grayscale: true, opacity: 1,
   },
-  // Right outer
+  // Right outer — FREE SOP (y aligned with inner-right pivot row for even fan)
   {
-    img: '/images/anc-img-65.png',
-    alt: 'Airport service',
-    label: 'Airport service',
-    x: 380, y: 71, rotate: 36, z: 1, br: 28,
-    grayscale: true, opacity: 0.7,
+    img: '/images/anc-img-64.png',
+    alt: 'Free SOP support',
+    label: 'FREE SOP',
+    x: 380, y: 120, rotate: 36, z: 1, br: 28,
+    grayscale: true, opacity: 1,
   },
 ];
 
@@ -246,11 +246,11 @@ export default function AncillaryServicesPage() {
           >
             {CARDS.map((card, i) => {
               const isHovered = hoveredCardIndex === i;
-              const useGrayscale =
-                hoveredCardIndex === null ? card.grayscale && i !== 2 : !isHovered;
-              const z = isHovered ? Math.max(card.z, 12) : card.z;
-              const dimOthers =
-                hoveredCardIndex !== null && !isHovered;
+              const isFullColor =
+                isHovered || (hoveredCardIndex === null && i === 2);
+              const useGrayscale = !isFullColor;
+              const z = isHovered ? Math.max(card.z, 14) : card.z;
+              const dimOthers = hoveredCardIndex !== null && !isHovered;
 
               return (
                 <div
@@ -283,12 +283,12 @@ export default function AncillaryServicesPage() {
                         position: 'relative',
                         width: '100%',
                         height: '100%',
-                        transform: `rotate(${card.rotate}deg) scale(${isHovered ? 1.04 : 1})`,
+                        transform: `rotate(${card.rotate}deg) scale(${isHovered ? 1.1 : 1})`,
                         transformOrigin: 'center bottom',
                         transition:
                           'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease, opacity 0.35s ease',
                         filter: useGrayscale ? 'grayscale(100%)' : 'none',
-                        opacity: dimOthers ? 0.55 : 1,
+                        opacity: dimOthers ? 0.48 : 1,
                       }}
                     >
                       <img
@@ -302,7 +302,7 @@ export default function AncillaryServicesPage() {
                           borderRadius: card.br,
                           boxShadow: useGrayscale
                             ? '0 8px 40px rgba(0,0,0,0.20)'
-                            : '0 24px 72px rgba(0,0,0,0.30)',
+                            : '0 24px 72px rgba(0,0,0,0.32)',
                         }}
                       />
                       <div
@@ -310,9 +310,11 @@ export default function AncillaryServicesPage() {
                           position: 'absolute',
                           inset: 0,
                           borderRadius: card.br,
-                          background:
-                            'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%)',
+                          background: useGrayscale
+                            ? 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%)'
+                            : 'linear-gradient(to top, rgba(0,0,0,0.1) 0%, transparent 58%)',
                           pointerEvents: 'none',
+                          transition: 'background 0.35s ease',
                         }}
                       />
                     </div>
@@ -326,7 +328,7 @@ export default function AncillaryServicesPage() {
                       top: CARD_H + 10,
                       transform: 'translateX(-50%)',
                       width: 'max-content',
-                      maxWidth: 280,
+                      maxWidth: 300,
                       textAlign: 'center',
                       pointerEvents: 'none',
                       opacity: isHovered ? 1 : 0,
@@ -349,7 +351,7 @@ export default function AncillaryServicesPage() {
               style_WDUKGC: Poppins 500 / 26px / 1.577em / CENTER / -2% letterSpacing
               fills: fill_6ECEP5 #000000
               Two paragraphs in one TEXT node (separated by \L\L in Figma) ── */}
-          <section className="flex flex-col items-center w-full mt-[32px] mb-[40px]">
+          <section className="flex flex-col items-center w-full mt-[130px] mb-[40px]">
             {/* First paragraph — italic red (text-run override in Figma) */}
             <p
               className="font-poppins font-semibold italic text-[26px] text-[#FF3300] text-center"
