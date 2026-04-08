@@ -1,6 +1,98 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const TeamCard = ({ image, name, title, description }) => {
+  const overlayRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    gsap.killTweensOf(overlayRef.current);
+    gsap.to(overlayRef.current, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power2.out" });
+  };
+  
+  const handleMouseLeave = () => {
+    gsap.killTweensOf(overlayRef.current);
+    gsap.to(overlayRef.current, { y: 20, autoAlpha: 0, duration: 0.3, ease: "power2.in" });
+  };
+
+  return (
+    <div 
+      className="relative w-[562px] h-[641px] rounded-[24px] overflow-hidden flex-shrink-0 cursor-pointer group"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <img
+        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        src={image}
+        alt={name}
+      />
+      
+      {/* Default Overlay */}
+      <div className="absolute left-[29px] right-[29px] bottom-[27px] bg-accent/[0.68] rounded-[25px] min-h-[107px] flex flex-col justify-center px-[37px] py-4 transition-opacity duration-300 group-hover:opacity-0">
+        <p className="text-[43px] font-medium leading-[1.325] tracking-[-0.15px] text-white">
+          {name}
+        </p>
+        <p className="text-[20px] font-normal leading-[57px] tracking-[-0.15px] text-white">
+          {title}
+        </p>
+      </div>
+
+      {/* Hover Overlay */}
+      <div 
+        ref={overlayRef}
+        className="absolute inset-0 bg-[#FF3300] z-20 flex flex-col justify-center px-[50px] opacity-0 invisible"
+        style={{ transform: 'translateY(20px)' }}
+      >
+        <p className="text-[45px] font-medium leading-[1.2] tracking-[-0.15px] text-white mb-2">
+          {name}
+        </p>
+        <p className="text-[20px] font-normal leading-[1.4] tracking-[-0.15px] text-white mb-8">
+          {title}
+        </p>
+        <p className="text-[18px] font-normal leading-[1.7] tracking-[-0.15px] text-white">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+};
 
 const AboutUs = () => {
+  const dreamRef = useRef(null);
+  const actionRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(dreamRef.current,
+      { x: -100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: dreamRef.current,
+          start: "top 85%",
+        }
+      }
+    );
+
+    gsap.fromTo(actionRef.current,
+      { x: 100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: actionRef.current,
+          start: "top 85%",
+        }
+      }
+    );
+  }, []);
+
   return (
     <div className="font-poppins bg-white">
 
@@ -223,8 +315,10 @@ const AboutUs = () => {
                   balances opportunity with responsibility, ambition with ethics.
                 </p>
                 <p className="mb-0">
-                  <em>"Australia gave me opportunity. Esante exists to help others earn it the right way."</em> - Deepen
-                  Khagram.
+                  <span className="font-poppins text-black text-[18px] italic font-semibold leading-[31px] tracking-[-0.15px]">
+                    “Australia gave me opportunity. Esante exists to help others earn it the right way.”
+                  </span>
+                  {' - Deepen Khagram.'}
                 </p>
               </div>
             </div>
@@ -245,48 +339,67 @@ const AboutUs = () => {
           </div>
           <div className="flex gap-10">
             {/* Aashul Soni - LEFT */}
-            <div className="relative w-[562px] h-[641px] rounded-[24px] overflow-hidden flex-shrink-0">
-              <img
-                className="w-full h-full object-cover object-top"
-                src="/images/about-us/soni-image.png"
-                alt="Aashul Soni"
-              />
-              <div className="absolute left-[29px] right-[29px] bottom-[27px] bg-accent/[0.68] rounded-[25px] min-h-[107px] flex flex-col justify-center px-[37px] py-4">
-                <p className="text-[43px] font-medium leading-[1.325] tracking-[-0.15px] text-white">
-                  Aashul Soni
-                </p>
-                <p className="text-[20px] font-normal leading-[57px] tracking-[-0.15px] text-white">
-                  Regional Director Of MP, India
-                </p>
-              </div>
-            </div>
+            <TeamCard
+              image="/images/about-us/soni-image.png"
+              name="Aashul Soni"
+              title="Regional Director Of MP, India"
+              description="QEAC-qualified counsellor specialising in Australian education and skilled migration. Aashul provides PIER-compliant, ethical guidance — from course selection and visa strategy to post-arrival support, helping students build career-ready pathways aligned with Australia's Skilled Occupation List."
+            />
             {/* Joshua Michael - RIGHT */}
-            <div className="relative w-[562px] h-[641px] rounded-[24px] overflow-hidden flex-shrink-0">
-              <img
-                className="w-full h-full object-cover object-top"
-                src="/images/about-us/joush-image.png"
-                alt="Joshua Michael"
-              />
-              <div className="absolute left-[29px] right-[29px] bottom-[27px] bg-accent/[0.68] rounded-[25px] min-h-[107px] flex flex-col justify-center px-[37px] py-4">
-                <p className="text-[43px] font-medium leading-[1.325] tracking-[-0.15px] text-white">
-                  Joshua Michael
-                </p>
-                <p className="text-[20px] font-normal leading-[57px] tracking-[-0.15px] text-white">
-                  Australian Communication &amp; IELTS Coach
-                </p>
-              </div>
-            </div>
+            <TeamCard
+              image="/images/about-us/joush-image.png"
+              name="Joshua Michael"
+              title="Australian Communication & IELTS Coach"
+              description="CELTA-certified and Australia-based, Josh helps students crack IELTS/PTE and communicate with clarity for SOPs, interviews, and visas. Beyond test prep, he trains students in Australian workplace communication — giving them a real edge in part-time jobs and post-arrival life."
+            />
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ DREAM & ACTION SECTION (Image Only) ═══════════════ */}
-      <section>
-        <img
-          src={`${process.env.PUBLIC_URL || ''}/images/about-us/dream-action-bg.png`}
-          alt="The Dream and The Action"
-          className="w-full object-cover"
-        />
+      {/* ═══════════════ DREAM & ACTION SECTION ═══════════════ */}
+      <section className="relative w-full h-[626px] bg-primary overflow-hidden flex flex-col justify-center">
+        {/* Background image with opacity */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.22]"
+          style={{ backgroundImage: `url(${process.env.PUBLIC_URL || ''}/images/about-us/dream-action-bg.png)` }}
+        ></div>
+        
+        {/* Content container */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[100px] flex flex-col gap-[90px]">
+          
+          {/* Dream block */}
+          <div className="w-full" ref={dreamRef}>
+            <div className="pl-[25px] relative max-w-[700px]">
+              {/* Absolute dot and line */}
+              <div className="absolute left-0 top-[10px] w-[10px] h-[10px] bg-[#FF3300] rounded-full"></div>
+              <div className="absolute right-[calc(100%-5px)] top-[14px] w-[100vw] h-[2px] bg-[#FF3300]"></div>
+              
+              <h4 className="text-[#FFF] font-poppins text-[25px] font-semibold leading-[31px] tracking-[-0.15px] mb-[15px]">
+                The Dream
+              </h4>
+              <p className="text-[#FFF] font-poppins text-[18px] font-normal leading-[31px] tracking-[-0.15px] max-w-[650px]">
+                To be the first-choice partner for global talent, empowering individuals and families to not just migrate, but to forge successful, fulfilling new lives within the Australian landscape.
+              </p>
+            </div>
+          </div>
+
+          {/* Action block */}
+          <div className="w-full flex justify-end" ref={actionRef}>
+            <div className="pr-[25px] relative max-w-[840px] text-right">
+              {/* Absolute dot and line */}
+              <div className="absolute right-0 top-[10px] w-[10px] h-[10px] bg-[#FF3300] rounded-full"></div>
+              <div className="absolute left-[calc(100%-5px)] top-[14px] w-[100vw] h-[2px] bg-[#FF3300]"></div>
+              
+              <h4 className="text-[#FFF] font-poppins text-[25px] font-semibold leading-[31px] tracking-[-0.15px] mb-[15px]">
+                The Action
+              </h4>
+              <p className="inline-block text-[#FFF] font-poppins text-[18px] font-normal leading-[31px] tracking-[-0.15px] max-w-[800px] text-right">
+                To pioneer a vertically integrated, end-to-end migration pathway. We don't just process visas; we guide the entire journey—from the first consultation to permanent settlement—providing the expert strategy and local network needed to navigate complex transitions.
+              </p>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       {/* Spacer before CTA banner */}

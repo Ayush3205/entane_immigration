@@ -117,7 +117,7 @@ const LatestNews = () => {
                 <button 
                   className="latest-news-modal-btn-primary"
                   onClick={() => {
-                    window.location.href = '/#book-free-call';
+                    window.dispatchEvent(new CustomEvent('openConsultationPopup'));
                     closeModal();
                   }}
                 >

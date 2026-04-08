@@ -196,7 +196,7 @@ const FastTrackDegree = () => {
                   <button 
                     className="course-modal-btn-primary"
                     onClick={() => {
-                      window.location.href = '/#book-free-call';
+                      window.dispatchEvent(new CustomEvent('openConsultationPopup'));
                       setSelectedCourse(null);
                     }}
                   >

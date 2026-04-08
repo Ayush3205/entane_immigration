@@ -37,16 +37,17 @@ const EsanteBanner = () => {
           Let Our Experts in Brisbane Guide You Every Step Of The Way.
         </p>
 
-        {/* CTA button */}
-        <a
-          href="/#book-free-call"
+        {/* CTA button (opens lead form) */}
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent('openConsultationPopup'))}
           className="absolute flex items-center justify-center bg-white rounded-[16px] h-[36px] w-[181px] overflow-hidden"
           style={{ top: 283, left: '50%', transform: 'translateX(-50%)' }}
         >
           <span className="font-['Inter',sans-serif] text-[19px] font-normal leading-normal text-primary tracking-[-0.15px]">
             Book Free Call
           </span>
-        </a>
+        </button>
 
       </div>
     </div>

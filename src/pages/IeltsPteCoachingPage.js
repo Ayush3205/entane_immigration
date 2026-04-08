@@ -10,6 +10,12 @@ const imgBanner = '/images/home-page/book-free-call-banner-bg.png';
 /* Hero background is a local asset (1440×982 building photo) */
 const HERO_BG = '/images/ielts-hero-bg.png';
 
+/* Figma hero frame */
+const HERO_W = 1440;
+const HERO_H = 982;
+/* Figma coach (flag person): 644×882; frame enforces aspect-ratio 46/63 */
+const COACH_W = 644;
+
 /* ── Testimonial data — local images from public/images ── */
 const CARDS = [
   {
@@ -143,90 +149,94 @@ function IeltsPteCoachingPage() {
     <div className="flex flex-col w-full bg-white">
       <Header />
 
-      <div className="w-full max-w-[1440px] mx-auto">
+      <div className="w-full">
 
         {/* ══════════════════════════════════════════════════════════
-            HERO SECTION
-            Figma: 258:1509 background 1440×982 | 258:1505 coach 644×882
-            Content rect starts at y=167 (14px below frame top y=153)
-            Text column: left=298  top=180  (384-86=298, 333-153=180)
-            Coach image: left=796  top=100  (882-86=796, 253-153=100)
+            HERO — Figma: bg 1440×982 (aspect-ratio 349/238), coach 644×882 (46/63)
         ══════════════════════════════════════════════════════════ */}
-        <section className="relative w-full overflow-hidden" style={{ height: 982 }}>
-
-          {/* Background building photo */}
-          <img
-            src={HERO_BG}
-            alt=""
-            aria-hidden
-            className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none"
-          />
-
-          {/* Coach character — Figma crop: h=119.22% l=0 t=-0.03% w=108.85% */}
+        <section className="relative w-full overflow-hidden bg-white">
           <div
-            className="absolute overflow-hidden pointer-events-none"
-            style={{ left: 796, top: 100, width: 644, height: 882 }}
+            className="relative w-full overflow-hidden"
+            style={{
+              aspectRatio: '349 / 238',
+            }}
           >
             <img
+              src={HERO_BG}
               alt=""
-              className="absolute max-w-none"
-              style={{ height: '119.22%', left: '0', top: '-0.03%', width: '108.85%' }}
-              src={imgCoach}
+              aria-hidden
+              className="absolute inset-0 h-full w-full object-cover object-top pointer-events-none"
             />
-          </div>
 
-          {/* ── Text column ── */}
-          <div
-            className="absolute flex flex-col items-start"
-            style={{ left: 298, top: 180, zIndex: 5 }}
-          >
-            {/* Label: Poppins Medium 28px #00352B underline tracking-[-0.56px] lh=21px */}
-            <p
-              className="font-poppins font-medium text-primary underline decoration-solid tracking-[-0.56px]"
-              style={{ fontSize: 28, lineHeight: '21px', marginBottom: 61 }}
+            {/* Coach — 644×882 @ left 796 top 100; % so layout scales with frame */}
+            <div
+              className="absolute z-[2] overflow-hidden pointer-events-none"
+              style={{
+                left: `${(796 / HERO_W) * 100}%`,
+                top: `${(100 / HERO_H) * 100}%`,
+                width: `${(COACH_W / HERO_W) * 100}%`,
+                aspectRatio: '46 / 63',
+              }}
             >
-              IELTS &amp; PTE Training
-            </p>
+              <img
+                alt=""
+                src={imgCoach}
+                className="h-full w-full object-cover object-center"
+              />
+            </div>
 
-            {/* Heading: Poppins SemiBold Italic 75px #FF3300 lh=1.05 */}
-            <p
-              className="font-poppins font-semibold italic text-accent"
-              style={{ fontSize: 75, lineHeight: '1.05', margin: '0 0 4px 0' }}
+            <div
+              className="absolute z-[5] flex max-w-[min(640px,48vw)] flex-col items-start"
+              style={{
+                left: `${(298 / HERO_W) * 100}%`,
+                top: `${(150 / HERO_H) * 100}%`,
+              }}
             >
-              Free IELTS &amp;
-            </p>
-            <p
-              className="font-poppins font-semibold italic text-accent"
-              style={{ fontSize: 75, lineHeight: '1.05', margin: '0 0 38px 0' }}
-            >
-              PTE Training
-            </p>
-
-            {/* Sub-heading: Poppins SemiBold Italic 35px */}
-            <p
-              className="font-poppins font-semibold italic text-primary"
-              style={{ fontSize: 35, lineHeight: '1.286', letterSpacing: '-0.02em', margin: '0 0 28px 0' }}
-            >
-              By a Native{' '}
-              <span className="text-accent">Australian Coach</span>
-            </p>
-
-            {/* CTA Badge: Poppins Medium 14px cream on accent, rounded-[16px] */}
-            <button
-              type="button"
-              onClick={openConsultation}
-              className="inline-flex items-center justify-center px-[12px] py-[4px] bg-accent rounded-[16px] border-0 cursor-pointer"
-            >
-              <span
-                className="font-poppins font-medium text-cream text-center leading-[20px]"
-                style={{ fontSize: 14 }}
+              <p
+                className="font-poppins font-medium text-primary underline decoration-solid tracking-[-0.56px]"
+                style={{ fontSize: 28, lineHeight: '1.1', marginBottom: 36 }}
               >
-                Get Free Guidance from Esante
-              </span>
-            </button>
+                IELTS &amp; PTE Training
+              </p>
+
+              <p
+                className="font-poppins font-semibold italic text-accent"
+                style={{ fontSize: 75, lineHeight: '0.95', margin: '0 0 0 0' }}
+              >
+                Free IELTS &amp;
+              </p>
+              <p
+                className="font-poppins font-semibold italic text-accent"
+                style={{ fontSize: 75, lineHeight: '0.95', margin: '0 0 22px 0' }}
+              >
+                PTE Training
+              </p>
+
+              <p
+                className="font-poppins font-semibold italic text-primary"
+                style={{ fontSize: 35, lineHeight: '1.12', letterSpacing: '-0.02em', margin: '0 0 18px 0' }}
+              >
+                By a Native{' '}
+                <span className="text-accent">Australian Coach</span>
+              </p>
+
+              <button
+                type="button"
+                onClick={openConsultation}
+                className="inline-flex items-center justify-center px-[12px] py-[4px] bg-accent rounded-[16px] border-0 cursor-pointer"
+              >
+                <span
+                  className="font-poppins font-medium text-cream text-center leading-[20px]"
+                  style={{ fontSize: 14 }}
+                >
+                  Get Free Guidance from Esante
+                </span>
+              </button>
+            </div>
           </div>
         </section>
 
+        <div className="w-full max-w-[1440px] mx-auto">
         {/* ══════════════════════════════════════════════════════════
             MEET JOSHUA SECTION
             Figma: photo 259:1501 at left=84 top=1118 (504×570)
@@ -573,9 +583,10 @@ function IeltsPteCoachingPage() {
                 Let our experts in Brisbane guide you every step of the way.
               </p>
 
-              {/* Book Free Call button: left=433 top=283 181×36 */}
-              <a
-                href="#contact"
+              {/* Book Free Call button: left=433 top=283 181×36 (opens lead form) */}
+              <button
+                type="button"
+                onClick={openConsultation}
                 className="absolute bg-white flex items-center justify-center rounded-[16px] overflow-hidden"
                 style={{ left: 433, top: 283, width: 181, height: 36 }}
               >
@@ -585,7 +596,7 @@ function IeltsPteCoachingPage() {
                 >
                   Book Free Call
                 </span>
-              </a>
+              </button>
             </div>
 
             {/* Heading overlay — spans full 1259 px width, top=59 */}
@@ -606,6 +617,7 @@ function IeltsPteCoachingPage() {
           </div>
         </section>
 
+        </div>
       </div>
 
       <Footer />
