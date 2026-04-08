@@ -9,18 +9,46 @@ const MELBOURNE_IMG = '/images/acc-room.png';
 const WHY_IMG = '/images/acc-why.png';
 const STORY_IMG = '/images/acc-story.png';
 
-const STUDENT_STORIES = [
-  {
-    title: 'Khushi in Brisbane 🇦🇺',
-    text: "Through Esante's partner network, Khushi Ajmani secured a single private room with an attached washroom in Brisbane for just AUD 190 per week — a deal that's hard to find independently.\n\nBecause her accommodation was sorted early and at the right price, she was able to focus on her studies and part-time work without financial stress.",
-    img: STORY_IMG,
-  },
-  {
-    title: 'Priya in Melbourne 🇦🇺',
-    text: "Priya found her perfect student accommodation through Esante's verified partners. A private room in a shared apartment, just 15 minutes from her university, for AUD 220 per week.\n\nWith everything sorted before she arrived, she could hit the ground running and focus on making the most of her Australian experience.",
-    img: STORY_IMG,
-  },
-];
+/** Figma: Poppins 23px / 32px lh / -0.15px; base #FFF 400; accent #F30 italic 500; emphasis #FFF italic 500 */
+const STUDENT_STORY_BODY_BOX = {
+  width: 465,
+  maxWidth: '100%',
+  fontFamily: "'Poppins', sans-serif",
+  fontSize: 23,
+  fontWeight: 400,
+  fontStyle: 'normal',
+  lineHeight: '32px',
+  letterSpacing: '-0.15px',
+  color: '#FFFFFF',
+};
+
+const KHUSHI_STORY = {
+  headlineCity: 'Khushi in Brisbane',
+  img: STORY_IMG,
+};
+
+function KhushiStoryBody() {
+  return (
+    <div style={STUDENT_STORY_BODY_BOX}>
+      <p className="m-0 mb-4">
+        Through Esante&apos;s partner network,{' '}
+        <span className="text-[#FF3300] font-medium italic">Khushi Ajmani</span>
+        {' '}
+        secured a single private room with an attached washroom in Brisbane for{' '}
+        <span className="text-[#FF3300] font-semibold italic">just AUD 190 per week</span>
+        {' '}
+        — a deal that&apos;s hard to find independently.
+      </p>
+      <p className="m-0">
+        Because her accommodation was{' '}
+        <span className="font-medium italic text-white">sorted early</span>
+        {' '}
+        and at the right price, she was able to focus on her studies and{' '}
+        <span className="font-medium italic text-white">part-time work without financial stress.</span>
+      </p>
+    </div>
+  );
+}
 
 const ACCOMMODATION_SLIDES = [
   {
@@ -149,28 +177,11 @@ const ACCOMMODATION_FAQ_ITEMS = [
 
 export default function AccommodationPage() {
   const [consultationOpen, setConsultationOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentStorySlide, setCurrentStorySlide] = useState(0);
+  const [currentSlide] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
   const toggleFaq = (index) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
-  };
-
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? ACCOMMODATION_SLIDES.length - 1 : prev - 1));
-  };
-
-  const goToNextSlide = () => {
-    setCurrentSlide((prev) => (prev === ACCOMMODATION_SLIDES.length - 1 ? 0 : prev + 1));
-  };
-
-  const goToPrevStory = () => {
-    setCurrentStorySlide((prev) => (prev === 0 ? STUDENT_STORIES.length - 1 : prev - 1));
-  };
-
-  const goToNextStory = () => {
-    setCurrentStorySlide((prev) => (prev === STUDENT_STORIES.length - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -226,29 +237,6 @@ export default function AccommodationPage() {
             />
             {/* Dark overlay */}
             <div className="absolute inset-0 rounded-[49px] bg-[#00352B]/55 pointer-events-none" aria-hidden />
-
-            {/* Left arrow - on background */}
-            <button
-              type="button"
-              onClick={goToPrevSlide}
-              className="absolute left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 border border-white/50 cursor-pointer transition-colors"
-              aria-label="Previous slide"
-            >
-              <svg className="w-6 h-6 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            {/* Right arrow - on background */}
-            <button
-              type="button"
-              onClick={goToNextSlide}
-              className="absolute right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 border border-white/50 cursor-pointer transition-colors"
-              aria-label="Next slide"
-            >
-              <svg className="w-6 h-6 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
 
             {/* Centered group: orange card + room image - sliding carousel */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[812px] h-[557px] overflow-hidden">
@@ -412,64 +400,36 @@ export default function AccommodationPage() {
           </section>
 
           {/* Section: Real Student Story */}
-          <section className="relative w-full max-w-[1230px] mx-auto mb-[65px] overflow-hidden">
+          <section className="relative w-full max-w-[1230px] mx-auto mb-[65px]">
             <div className="relative w-full h-[600px] py-8 px-12 bg-[#00352B] rounded-[51px] border-2 border-[#FF3300]">
-              {/* Left arrow */}
-              <button
-                type="button"
-                onClick={goToPrevStory}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 border border-white/50 cursor-pointer transition-colors"
-                aria-label="Previous story"
-              >
-                <svg className="w-5 h-5 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              {/* Right arrow */}
-              <button
-                type="button"
-                onClick={goToNextStory}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 border border-white/50 cursor-pointer transition-colors"
-                aria-label="Next story"
-              >
-                <svg className="w-5 h-5 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-
-              {/* Sliding carousel */}
-              <div className="overflow-hidden h-full">
-                <div
-                  className="flex h-full transition-transform duration-400 ease-out"
-                  style={{ transform: `translateX(-${currentStorySlide * 100}%)` }}
-                >
-                  {STUDENT_STORIES.map((story, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-row items-center justify-center w-full min-w-full h-full gap-10 px-14 shrink-0"
-                    >
-                      <div className="flex flex-col items-start text-left max-w-[603px]">
-                        <h3 className="font-poppins font-normal text-[45px] leading-[1.2] tracking-[-0.00333em] text-white mb-4">
-                          Real Student Story: {story.title}
-                        </h3>
-                        <p className="font-poppins font-normal text-[23px] leading-[1.391em] tracking-[-0.00652em] text-white whitespace-pre-line">
-                          {story.text}
-                        </p>
-                      </div>
-                      <img
-                        src={story.img}
-                        alt={story.title}
-                        className="w-[418px] h-[502px] shrink-0 object-cover rounded-[41px]"
-                      />
-                    </div>
-                  ))}
+              <div className="flex flex-row items-center justify-center w-full h-full gap-10 px-14">
+                <div className="flex flex-col items-start text-left shrink-0">
+                  <p
+                    className="font-poppins font-medium italic text-[#FF3300] m-0 mb-2"
+                    style={{ fontSize: 28, lineHeight: '34px', letterSpacing: '-0.15px' }}
+                  >
+                    Real Student Story.
+                  </p>
+                  <h3
+                    className="font-poppins font-bold text-white m-0 mb-6"
+                    style={{
+                      fontSize: 45,
+                      lineHeight: '1.2em',
+                      letterSpacing: '-0.15px',
+                    }}
+                  >
+                    {KHUSHI_STORY.headlineCity}
+                  </h3>
+                  <div className="w-[465px] max-w-full min-w-0 box-border">
+                    <KhushiStoryBody />
+                  </div>
                 </div>
+                <img
+                  src={KHUSHI_STORY.img}
+                  alt={KHUSHI_STORY.headlineCity}
+                  className="w-[418px] h-[502px] shrink-0 object-cover rounded-[41px]"
+                />
               </div>
-
-              {/* Slide indicator */}
-              <span className="absolute bottom-4 right-6 z-10 font-poppins font-normal text-[14px] leading-[1.5] text-white/80">
-                {currentStorySlide + 1}/{STUDENT_STORIES.length}
-              </span>
             </div>
           </section>
 

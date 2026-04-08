@@ -177,7 +177,7 @@ const SkillsShortage = () => {
                   <button 
                     className="job-modal-btn-primary"
                     onClick={() => {
-                      window.location.href = '/#book-free-call';
+                      window.dispatchEvent(new CustomEvent('openConsultationPopup'));
                       setSelectedJob(null);
                     }}
                   >

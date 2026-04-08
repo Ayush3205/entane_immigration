@@ -502,13 +502,14 @@ export default function MigrationAdvisorsPage() {
             <p className="font-poppins text-white text-xl md:text-2xl leading-relaxed mb-8">
               Ready To Start Your Australian Journey? Let Our Experts In Mumbai And Brisbane Guide You Every Step Of The Way.
             </p>
-            <a
-              href="/#book-free-call"
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent('openConsultationPopup'))}
               className="inline-block font-poppins font-medium text-white rounded-lg px-8 py-3 hover:opacity-90 transition-opacity"
               style={{ backgroundColor: '#FF3300' }}
             >
               Book Free Call
-            </a>
+            </button>
           </div>
         </section>
       </main>

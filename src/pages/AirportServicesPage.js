@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import Header from '../components/Reusable/Header';
 import Footer from '../components/Reusable/Footer';
 
-const HERO_BG        = '/images/airport-hero-bg.png';
-const AIRPLANE       = '/images/passenger-jet.png';
-const WHAT_WE_DO_IMG = '/images/airport-hero-bg.png';
-const CTA_BG         = '/images/esante-cta-bg.png';
+const HERO_BG = '/images/airport-hero-bg.png';
+const AIRPLANE = '/images/passenger-jet.png';
+const WHAT_WE_DO_IMG = '/images/airport-we_do-bg.png';
+const CTA_BG = '/images/esante-cta-bg.png';
+
+const WHAT_WE_DO_IMG_SHADOW =
+  '14px 18px 32px rgba(0, 0, 0, 0.48), 8px 10px 18px rgba(0, 0, 0, 0.32)';
 
 const AIRPORT_FAQ_ITEMS = [
   {
@@ -99,18 +102,11 @@ function AirportServicesPage() {
     <div className="flex flex-col items-start w-full bg-white">
       <Header />
 
-      <div className="flex flex-col items-center self-stretch w-full max-w-[1440px] mx-auto bg-white pt-[94px]">
+      <div className="flex flex-col items-center self-stretch w-full max-w-[1440px] mx-auto bg-white px-6 lg:px-[100px] pt-[94px]">
 
-        {/* ── HERO ─────────────────────────────────────────────────────────── */}
-        {/* Outer wrapper is 673 px; airplane absolute at bottom-[-96px] overflows
-            96 px. mb-[120px] = airplane overflow (96) + gap to body copy (24).   */}
-        <div className="relative w-full mb-[120px]">
-
-          {/* Hero photo container — exact Figma size */}
-          <div className="relative w-full h-[673px] overflow-hidden">
-
-            {/* Background image: Figma positions it left-anchored, shifted up 32.35 %
-                w-[131.18%] h-[186.73%] left-0 top-[-32.35%]                        */}
+        {/* ── HERO — original layout: 673px frame, Figma image crop, fixed text + plane ── */}
+        <div className="relative w-full mb-[120px] -mx-6 lg:-mx-[100px]">
+          <div className="relative w-full h-[673px] max-h-[80vh] overflow-hidden">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <img
                 alt=""
@@ -126,152 +122,128 @@ function AirportServicesPage() {
               />
             </div>
 
-            {/* ── Text block ───────────────────────────────────────────────────
-                Label   (300:1740): y = 437-261 = 176 px from hero top
-                Heading (300:1739): y = 454-261 = 193 px — visually the first
-                  paragraph ("Welcome Home") renders at the very top of the node
-                  (blank spacer has near-zero height in Figma's engine).
-                  Net: label + heading are tight-stacked with ~4 px natural gap.
-                Badge   (300:1741): y = 634-261 = 373 px — independent absolute. */}
-            {/*
-              Figma absolute positions (from hero top):
-                Label         y = 176 px  (height 21 px  → bottom 197 px)
-                Heading node  y = 193 px  (4 px before label bottom — tight overlap)
-                Badge         y = 373 px  (independent absolute)
-
-              gap-[16px] between flex children gives:
-              label → "Welcome Home"             ≈  16 px visible gap
-              "Welcome Home" → "Your Personal…"  ≈ 16 px visible gap
-            */}
-            <div
-              className="absolute flex flex-col items-start gap-[16px]"
-              style={{ top: 176, left: 96 }}
-            >
-              {/* Eyebrow label */}
+            <div className="absolute left-6 top-24 flex flex-col items-start gap-[16px] md:left-[96px] md:top-[176px]">
               <p
-                className="font-poppins text-[28px] font-medium tracking-[-0.56px] text-[#00352B] underline decoration-solid"
-                style={{ lineHeight: '21px', marginBottom: 0 }}
+                className="font-poppins text-[28px] font-medium tracking-[-0.56px] text-[#00352B] underline decoration-solid m-0 max-md:text-[22px]"
+                style={{ lineHeight: '21px' }}
               >
                 Free Airport Pickup in Australia
               </p>
 
-              {/* "Welcome Home" */}
               <p
-                className="font-poppins text-[56px] font-semibold italic text-accent"
-                style={{ lineHeight: '1.1', margin: 0 }}
+                className="font-poppins text-[56px] font-semibold italic text-accent m-0 max-md:text-[36px] max-md:leading-tight"
+                style={{ lineHeight: '1.1' }}
               >
                 Welcome Home
               </p>
 
-              {/* "Your Personal Chauffeur Awaits." */}
               <p
-                className="font-poppins text-[48px] font-normal text-primary"
-                style={{ lineHeight: '1.1', margin: 0 }}
+                className="font-poppins text-[48px] font-normal text-primary m-0 max-md:text-[28px] max-md:leading-tight"
+                style={{ lineHeight: '1.1' }}
               >
                 Your Personal Chauffeur Awaits.
               </p>
 
-              {/* ── CTA Badge ── inside flex column, shares the same gap-[16px] */}
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center px-[12px] py-[4px] bg-accent rounded-[16px] cursor-pointer"
+              <button
+                type="button"
+                onClick={openConsultation}
+                className="inline-flex items-center justify-center px-[12px] py-[4px] bg-accent rounded-[16px] cursor-pointer border-0"
               >
                 <span className="font-poppins text-[14px] font-medium leading-[20px] text-cream text-center">
                   Get Free Guidance from Esante
                 </span>
-              </a>
+              </button>
             </div>
           </div>
 
-          {/* ── Airplane ─────────────────────────────────────────────────────
-              Container: 669×314px, bottom-[-80px] left-[4px] (Figma: x=90-86=4px
-              from content left, extends 80px below hero).
-              Img crop: w-[235.94%] h-[335.56%] left-[-65.54%] top-[-101.68%]     */}
           <div
-            className="absolute pointer-events-none overflow-hidden"
+            className="absolute pointer-events-none overflow-hidden max-md:hidden"
             style={{ bottom: -96, left: 4, width: 669, height: 314 }}
           >
-            <img
-              alt=""
-              src={AIRPLANE}
-              className="absolute inset-0 w-full h-full object-contain"
-            />
+            <img alt="" src={AIRPLANE} className="absolute inset-0 h-full w-full object-contain" />
           </div>
         </div>
 
-        {/* ── BODY COPY ────────────────────────────────────────────────────── */}
-        <div className="flex flex-col items-center text-center w-full max-w-[1007px] mx-auto px-6 mb-[40px] gap-0">
-          {/* Red italic lead */}
-          <p className="font-poppins text-[30px] font-semibold italic leading-[1.504] text-accent text-center tracking-[-0.15px]">
+        {/* ── INTRO — Figma: center-aligned ── */}
+        <section className="flex flex-col items-center text-center w-full max-w-[1007px] mx-auto mb-10 md:mb-12 px-0">
+          <p className="font-poppins text-[clamp(20px,3.2vw,30px)] font-semibold not-italic leading-[1.5] text-accent tracking-[-0.15px] m-0">
             Zero Stress. Zero Confusion. We greet you at the gate and drive you safely to your doorstep.
           </p>
 
-          {/* Body paragraph */}
-          <p className="font-poppins text-[23px] font-normal leading-[36px] text-black text-center tracking-[-0.15px] mt-[36px]">
+          <p className="font-poppins text-[clamp(18px,2.4vw,23px)] font-normal leading-[1.56] text-black tracking-[-0.15px] mt-8 md:mt-9">
             Landing in a new country can feel overwhelming — new airport, new city, new systems.{' '}
-            That's why Esante offers FREE airport pickup support across Australia, so you never feel alone on your first day.
+            That&apos;s why Esante offers FREE airport pickup support across Australia, so you never feel alone on your first day.
           </p>
 
-          {/* Bold italic closer */}
-          <p className="font-poppins text-[23px] font-semibold italic leading-[36px] text-black text-center tracking-[-0.15px]">
-            From the moment you land, we've got you covered.
+          <p className="font-poppins text-[clamp(18px,2.4vw,23px)] font-semibold italic leading-[1.56] text-black tracking-[-0.15px] mt-8 md:mt-9 m-0">
+            *From the moment you land, we&apos;ve got you covered.*
           </p>
-        </div>
+        </section>
 
-        {/* ── WHAT WE DO CARD ──────────────────────────────────────────────── */}
-        {/* Figma: card x=137 (51 px from content left), right edge = 137+1325=1462,
-            content right = 86+1440=1526 → right margin = 64 px                */}
-        <div
-          className="flex flex-row items-center justify-between bg-accent rounded-[39px] mb-[84px]"
-          style={{ marginLeft: 51, marginRight: 64, width: 'calc(100% - 115px)' }}
+        {/* ── WHAT WE DO — orange card, two columns; list with ✅; image shadow ── */}
+        <section
+          className="flex flex-col lg:flex-row lg:items-center lg:justify-between w-full max-w-[1325px] mx-auto mb-14 md:mb-[84px] rounded-[32px] md:rounded-[39px] bg-accent px-6 py-10 sm:px-10 sm:py-12 lg:pl-[82px] lg:pr-12 lg:py-[67px] gap-10 lg:gap-8"
         >
-          {/* Left: text content */}
-          <div className="flex flex-col items-start pl-[82px] pt-[67px] pb-[67px] gap-[12px]">
-
-            {/* "What We Do:" — regular + medium-italic blend */}
-            <p className="font-poppins text-[60px] font-normal leading-[1.2] text-white tracking-[-0.15px]">
+          <div className="flex flex-col items-start text-left gap-3 lg:gap-3 shrink-0 lg:max-w-[540px]">
+            <p className="font-poppins text-[clamp(36px,6vw,60px)] font-normal leading-[1.2] text-white tracking-[-0.15px] m-0">
               What{' '}
               <span className="font-medium italic">We Do:</span>
             </p>
 
-            {/* Bullet list */}
-            <p className="font-poppins text-[24px] font-normal leading-[1.2] text-white tracking-[-0.15px]">
-              ✅&nbsp; Pick you up directly from the airport
-            </p>
-            <p className="font-poppins text-[24px] font-normal leading-[1.36] text-white tracking-[-0.15px]">
-              ✅&nbsp; Help with luggage and first-day guidance
-            </p>
-            <p className="font-poppins text-[24px] font-normal leading-[1.35] text-white tracking-[-0.15px] max-w-[464px]">
-              ✅ Drop you safely to your temporary or permanent accommodation
-            </p>
-            <p className="font-poppins text-[24px] font-normal leading-[1.35] text-white tracking-[-0.15px]">
-              ✅ Ensure a stress-free, comfortable arrival
-            </p>
+            <ul className="list-none m-0 p-0 flex flex-col gap-2.5 w-full">
+              {[
+                'Pick you up directly from the airport',
+                'Help with luggage and first-day guidance',
+                'Drop you safely to your temporary or permanent accommodation',
+                'Ensure a stress-free, comfortable arrival',
+              ].map((line) => (
+                <li
+                  key={line}
+                  className="font-poppins text-[clamp(18px,2.2vw,24px)] font-normal leading-[1.35] text-white tracking-[-0.15px] flex flex-row items-start gap-2"
+                >
+                  <span className="shrink-0" aria-hidden="true">
+                    ✅
+                  </span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
 
-            {/* Bold tagline */}
-            <p className="font-poppins text-[26px] font-bold leading-[1.35] text-white tracking-[-0.15px] mt-[4px]">
+            <p className="font-poppins text-[clamp(20px,2.6vw,26px)] font-bold leading-[1.35] text-white tracking-[-0.15px] mt-2 m-0">
               No taxis. No confusion. No overpaying.
             </p>
           </div>
 
-          {/* Right: photo — 22 px top/bottom, 47 px right margin */}
-          <div className="w-[570px] h-[414px] my-[22px] mr-[47px] rounded-[37px] overflow-hidden shrink-0">
+          <div
+            className="w-full max-w-[570px] lg:w-[570px] aspect-[570/414] lg:aspect-auto lg:h-[414px] mx-auto lg:mx-0 lg:mr-0 rounded-[28px] md:rounded-[37px] overflow-hidden shrink-0 self-center lg:self-auto"
+            style={{ boxShadow: WHAT_WE_DO_IMG_SHADOW }}
+          >
             <img
               src={WHAT_WE_DO_IMG}
               alt="Airport pickup service"
               className="w-full h-full object-cover"
             />
           </div>
+        </section>
+
+        {/* ── TRANSITION QUOTE — Figma: center ── */}
+        <div className="flex flex-col items-center text-center mb-12 md:mb-14 px-2 max-w-[900px] mx-auto w-full">
+          <p className="font-poppins text-[clamp(28px,5vw,45px)] font-normal leading-[1.2] text-primary tracking-[-0.15px] m-0">
+            This is not just a pickup
+          </p>
+          <p className="font-poppins text-[clamp(28px,5vw,45px)] font-semibold italic leading-[1.2] text-accent tracking-[-0.15px] mt-2 m-0">
+            it&apos;s your first step into Australia with confidence.
+          </p>
         </div>
 
-        {/* FAQ — airport pickup for international students */}
+        {/* ── FAQ ── */}
         <section
-          className="flex flex-col items-center self-stretch w-full max-w-[1064px] mx-auto px-6 py-[64px] gap-[24px]"
+          className="flex flex-col items-center self-stretch w-full max-w-[1064px] mx-auto px-0 py-[48px] md:py-[64px] gap-[24px]"
           aria-labelledby="airport-faq-heading"
         >
           <h2
             id="airport-faq-heading"
-            className="font-poppins font-bold text-center text-[#00352B] max-w-[900px]"
+            className="font-poppins font-bold text-center text-primary max-w-[900px] px-2"
             style={{ fontSize: 'clamp(24px, 4vw, 40px)', lineHeight: 1.35, letterSpacing: '-0.02em' }}
           >
             Frequently Asked Questions About Airport Pickup Services for International Students
@@ -283,7 +255,7 @@ function AirportServicesPage() {
               return (
                 <div key={index} className="flex flex-col items-center w-full">
                   {index > 0 && (
-                    <div className="w-full h-[1px] bg-[#00352B]/10" />
+                    <div className="w-full h-[1px] bg-primary/10" />
                   )}
                   <button
                     type="button"
@@ -294,7 +266,7 @@ function AirportServicesPage() {
                   >
                     <div className="flex-1 flex flex-col gap-[8px]">
                       <p
-                        className="text-[18px] font-medium text-[#00352B] leading-[1.556]"
+                        className="text-[18px] font-medium text-primary leading-[1.556]"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                       >
                         {item.question}
@@ -302,14 +274,14 @@ function AirportServicesPage() {
                       {isOpen && item.answer && (
                         <p
                           id={`airport-faq-answer-${index}`}
-                          className="text-[16px] font-normal text-[#00352B] leading-[1.5]"
+                          className="text-[16px] font-normal text-primary leading-[1.5]"
                           style={{ fontFamily: 'Inter, sans-serif' }}
                         >
                           {item.answer}
                         </p>
                       )}
                     </div>
-                    <div className="mt-[2px] flex h-[24px] w-[24px] items-center justify-center rounded-full border-2 border-[#FF3300] text-[#FF3300] text-[12px] shrink-0">
+                    <div className="mt-[2px] flex h-[24px] w-[24px] items-center justify-center rounded-full border-2 border-accent text-accent text-[12px] shrink-0">
                       {isOpen ? '−' : '+'}
                     </div>
                   </button>
@@ -318,14 +290,14 @@ function AirportServicesPage() {
             })}
           </div>
 
-          <div className="flex flex-col items-center gap-[20px] max-w-[640px] text-center mt-[8px]">
-            <p className="font-poppins text-[18px] text-[#00352B] leading-[1.5]">
+          <div className="flex flex-col items-center gap-[20px] max-w-[640px] text-center mt-[8px] px-2">
+            <p className="font-poppins text-[18px] text-primary leading-[1.5]">
               Still have questions? Get personalised guidance from an Esante expert.
             </p>
             <button
               type="button"
               onClick={openConsultation}
-              className="inline-flex justify-center items-center rounded-[16px] border-0 cursor-pointer"
+              className="inline-flex justify-center items-center rounded-2xl border-0 cursor-pointer"
               style={{ background: '#FF3300', padding: '12px 28px' }}
             >
               <span
@@ -338,63 +310,41 @@ function AirportServicesPage() {
           </div>
         </section>
 
-        {/* ── CLOSING QUOTE ────────────────────────────────────────────────── */}
-        <div className="flex flex-col items-center text-center mb-[58px] px-4">
-          <p className="font-poppins text-[45px] font-normal leading-[1.2] text-primary text-center tracking-[-0.15px]">
-            This is not just a pickup
-          </p>
-          <p className="font-poppins text-[45px] font-semibold italic leading-[1.2] text-accent text-center tracking-[-0.15px]">
-            it's your first step into Australia with confidence.
-          </p>
-        </div>
-
-        {/* ── CTA BANNER (Group 98) ─────────────────────────────────────────
-            Outer group: 1259 px wide. Image (Frame 94): 1047 px wide, centered
-            (106 px each side). All text overlays the image.
-            Heading starts 59 px from top; subtext at 214 px; button at 283 px. */}
-        <div className="relative w-full max-w-[1259px] mx-auto h-[367px] mb-[84px]">
-
-          {/* Orange background image — centered, 1047 × 367, rounded corners */}
-          <div className="absolute top-0 left-[106px] w-[1047px] h-[367px] rounded-[37px] overflow-hidden">
+        {/* ── CTA BANNER — below FAQ: Think of Esante… ── */}
+        <div className="relative w-full max-w-[1259px] mx-auto mb-16 md:mb-[84px] px-0 mt-4">
+          <div className="relative w-full min-h-[280px] sm:min-h-[320px] md:h-[367px] rounded-[28px] md:rounded-[37px] overflow-hidden">
             <img
               src={CTA_BG}
               alt=""
               className="absolute inset-0 w-full h-full object-cover"
             />
+            <div className="relative z-[1] flex flex-col items-center justify-center text-center px-6 py-10 md:py-12 md:px-12 min-h-[280px] sm:min-h-[320px] md:min-h-[367px]">
+              <div className="flex flex-col items-center gap-0">
+                <p className="font-poppins text-[clamp(24px,4vw,42px)] font-normal leading-[1.15] text-white tracking-[-0.02em] m-0">
+                  Think of
+                </p>
+                <p className="font-poppins text-[clamp(26px,4.5vw,48px)] font-semibold italic leading-[1.15] text-white tracking-[-0.02em] m-0">
+                  Esante as your Australia-study partner
+                </p>
+                <p className="font-poppins text-[clamp(24px,4vw,42px)] font-normal leading-[1.15] text-white tracking-[-0.02em] m-0">
+                  not just an agent.
+                </p>
+              </div>
+              <p className="font-poppins text-[clamp(16px,2.2vw,23px)] font-normal leading-[1.45] text-white/90 text-center max-w-[708px] mt-6 md:mt-8 capitalize tracking-[-0.15px]">
+                Let Our Experts In Brisbane Guide You Every Step Of The Way.
+              </p>
+              <button
+                type="button"
+                onClick={openConsultation}
+                className="mt-6 md:mt-8 inline-flex items-center justify-center bg-white rounded-2xl px-6 py-2.5 min-h-[44px] border-0 cursor-pointer"
+              >
+                <span className="font-poppins text-[17px] md:text-[19px] font-medium text-primary tracking-[-0.15px]">
+                  Book Free Call
+                </span>
+              </button>
+            </div>
           </div>
-
-          {/* Heading overlay — full 1259 px width, starts at top-[59px] */}
-          <div className="absolute top-[59px] left-0 w-full flex flex-col items-center text-center px-4">
-            <p className="font-poppins text-[42px] font-normal leading-[1.15] text-white tracking-[-0.96px]">
-              Think of
-            </p>
-            <p className="font-poppins text-[48px] font-semibold italic leading-[1.15] text-white tracking-[-0.96px]">
-              Esante as your Australia-study partner
-            </p>
-            <p className="font-poppins text-[42px] font-normal leading-[1.15] text-white tracking-[-0.96px]">
-              not just an agent.
-            </p>
-          </div>
-
-          {/* Subtext + button — positioned within image frame (top-[214px] / top-[283px]) */}
-          <p
-            className="absolute w-[708px] font-poppins text-[23px] font-normal leading-normal text-[rgba(255,255,255,0.9)] text-center capitalize tracking-[-0.15px]"
-            style={{ top: 214, left: '50%', transform: 'translateX(-50%)' }}
-          >
-            Let our experts in Brisbane guide you every step of the way.
-          </p>
-
-          <a
-            href="/#book-free-call"
-            className="absolute flex items-center justify-center bg-white rounded-[16px] h-[36px] w-[181px] overflow-hidden"
-            style={{ top: 283, left: '50%', transform: 'translateX(-50%)' }}
-          >
-            <span className="font-['Inter',sans-serif] text-[19px] font-normal leading-normal text-primary tracking-[-0.15px]">
-              Book Free Call
-            </span>
-          </a>
         </div>
-
       </div>
 
       <Footer />

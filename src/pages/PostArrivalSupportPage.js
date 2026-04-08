@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import Header from '../components/Reusable/Header';
 import Footer from '../components/Reusable/Footer';
 
@@ -19,6 +20,17 @@ const imgOnboardIcon = `${ASSET_BASE}/images/post-arrival/onboard-icon.png`;
 const imgHostelIcon = `${ASSET_BASE}/images/post-arrival/hostel-icon.png`;
 const imgJobIcon = `${ASSET_BASE}/images/post-arrival/job-icon.png`;
 const imgBanner = `${ASSET_BASE}/images/post-arrival/banner.png`;
+
+const SUPPORT_CARDS = [
+  { img: imgArrivalIcon, title: 'Arrival Essentials', subtitle: 'SIM • TFN • Bank • Super • OSHC • USI', text: 'Get set up from day one. We help you activate your SIM, open a bank account, apply for TFN, set up superannuation, USI, and health cover — without confusion or delays.' },
+  { img: imgOnboardIcon, title: 'University Onboarding', subtitle: 'Orientation • Check-in • Timetable • Student Portal', text: 'From university check-in to learning portals like Canvas, Moodle, or Blackboard — we help you understand how everything works so you can focus on your studies.' },
+  { img: imgHostelIcon, title: 'Local Living Support', subtitle: 'Metro Card • Groceries • City Navigation', text: 'Public transport cards, best grocery stores, apps you actually need, and how to move around your city like a local — we make daily life easy and affordable.' },
+  { img: imgJobIcon, title: 'Job-Ready Program', subtitle: 'CV • Cover Letter • Job Portals • Interviews', text: 'We prepare you for the Australian job market — CVs, cover letters, SEEK/Indeed profiles, mock interviews, and workplace communication support.' },
+  // ⬇️ REPLACE imgHostelIcon BELOW WITH YOUR CARD 5 IMG IMPORT ⬇️
+  { img: imgHostelIcon, title: 'Accommodation Assistance', subtitle: 'Temporary • Long-Term • Lease Support', text: 'From your first week\'s stay to long-term housing, lease agreements, bond rules, and neighbourhood safety — we’ve got your housing covered.' },
+  // ⬇️ REPLACE imgOnboardIcon BELOW WITH YOUR CARD 6 IMG IMPORT ⬇️
+  { img: imgOnboardIcon, title: 'Student Lifestyle Benefits', subtitle: 'Cafes • Trips • Meetups • Discounts', text: 'Discover the best cafes, budget food spots, weekend trips, student discounts, and Esanté community meetups — because student life is more than classes.' },
+];
 
 const POST_ARRIVAL_FAQ_ITEMS = [
   {
@@ -126,6 +138,46 @@ const POST_ARRIVAL_FAQ_ITEMS = [
 function PostArrivalSupportPage() {
   const openConsultation = () => window.dispatchEvent(new CustomEvent('openConsultationPopup'));
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const containerRef = useRef(null);
+
+  const maxSlide = Math.max(0, SUPPORT_CARDS.length - 4);
+  const nextSlide = () => setCurrentSlide((prev) => Math.min(prev + 1, maxSlide));
+  const prevSlide = () => setCurrentSlide((prev) => Math.max(prev - 1, 0));
+
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const containers = gsap.utils.toArray('.floating-img-container');
+      
+      containers.forEach((container) => {
+        const duration = 2.5 + Math.random() * 1.5;
+        const yOffset = 15 + Math.random() * 10;
+        const delay = Math.random() * -2;
+        
+        const tween = gsap.to(container, {
+          y: yOffset,
+          duration: duration,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+          delay: delay
+        });
+
+        // Pause animation smoothly on hover
+        container.addEventListener('mouseenter', () => {
+          gsap.to(tween, { timeScale: 0.1, duration: 0.5 });
+        });
+        
+        // Resume smoothly on leave
+        container.addEventListener('mouseleave', () => {
+          gsap.to(tween, { timeScale: 1, duration: 0.5 });
+        });
+      });
+    }, containerRef);
+    
+    return () => ctx.revert();
+  }, []);
 
   const toggleFaq = (index) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
@@ -202,60 +254,68 @@ function PostArrivalSupportPage() {
             Gray box:  l=102  t=156  w=1208  h=549
             Text in box: l_offset=83  t_offset=167
         ══════════════════════════════════════════════════ */}
-        <section className="relative w-full" style={{ height: 808 }}>
+        <section ref={containerRef} className="relative w-full" style={{ height: 808 }}>
 
           {/* ── TOP ROW IMAGES ── */}
 
           {/* img47 — students (centre-left, highest) */}
           <div
-            className="absolute rounded-[15px] overflow-hidden pointer-events-none"
-            style={{ left: 329, top: 0, width: 202, height: 181, zIndex: 2 }}
+            className="floating-img-container absolute group z-[2] hover:z-[10]"
+            style={{ left: 329, top: 0, width: 202, height: 181 }}
           >
-            <img
-              alt=""
-              className="absolute max-w-none"
-              style={{ height: '133.15%', left: '-42.58%', top: '-33.12%', width: '179.35%' }}
-              src={imgImage47}
-            />
+            <div className="relative w-full h-full rounded-[15px] overflow-hidden cursor-pointer transition-all duration-[400ms] group-hover:scale-[1.15] group-hover:-rotate-2 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)]">
+              <img
+                alt=""
+                className="absolute max-w-none"
+                style={{ height: '133.15%', left: '-42.58%', top: '-33.12%', width: '179.35%' }}
+                src={imgImage47}
+              />
+            </div>
           </div>
 
           {/* img48 — students (centre-right) */}
           <div
-            className="absolute rounded-[15px] overflow-hidden pointer-events-none"
-            style={{ left: 714, top: 91, width: 189, height: 172, zIndex: 2 }}
+            className="floating-img-container absolute group z-[2] hover:z-[10]"
+            style={{ left: 714, top: 91, width: 189, height: 172 }}
           >
-            <img
-              alt=""
-              className="absolute max-w-none"
-              style={{ height: '147.48%', left: '-0.66%', top: '-7.22%', width: '100.52%' }}
-              src={imgImage48}
-            />
+            <div className="relative w-full h-full rounded-[15px] overflow-hidden cursor-pointer transition-all duration-[400ms] group-hover:scale-[1.15] group-hover:-rotate-2 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)]">
+              <img
+                alt=""
+                className="absolute max-w-none"
+                style={{ height: '147.48%', left: '-0.66%', top: '-7.22%', width: '100.52%' }}
+                src={imgImage48}
+              />
+            </div>
           </div>
 
           {/* img49 — Sydney opera house (far left) */}
           <div
-            className="absolute rounded-[15px] overflow-hidden pointer-events-none"
-            style={{ left: 51, top: 156, width: 159, height: 143, zIndex: 2 }}
+            className="floating-img-container absolute group z-[2] hover:z-[10]"
+            style={{ left: 51, top: 156, width: 159, height: 143 }}
           >
-            <img
-              alt=""
-              className="absolute max-w-none"
-              style={{ height: '194.24%', left: '-0.09%', top: '-49.64%', width: '100.19%' }}
-              src={imgImage49}
-            />
+            <div className="relative w-full h-full rounded-[15px] overflow-hidden cursor-pointer transition-all duration-[400ms] group-hover:scale-[1.15] group-hover:-rotate-2 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)]">
+              <img
+                alt=""
+                className="absolute max-w-none"
+                style={{ height: '194.24%', left: '-0.09%', top: '-49.64%', width: '100.19%' }}
+                src={imgImage49}
+              />
+            </div>
           </div>
 
           {/* c299 — airplane / skyline (far right) */}
           <div
-            className="absolute rounded-[15px] overflow-hidden pointer-events-none"
-            style={{ left: 1158, top: 99, width: 182, height: 164, zIndex: 2 }}
+            className="floating-img-container absolute group z-[2] hover:z-[10]"
+            style={{ left: 1158, top: 99, width: 182, height: 164 }}
           >
-            <img
-              alt=""
-              className="absolute max-w-none"
-              style={{ height: '138.85%', left: '-0.14%', top: '-19.42%', width: '100.28%' }}
-              src={imgC299}
-            />
+            <div className="relative w-full h-full rounded-[15px] overflow-hidden cursor-pointer transition-all duration-[400ms] group-hover:scale-[1.15] group-hover:-rotate-2 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)]">
+              <img
+                alt=""
+                className="absolute max-w-none"
+                style={{ height: '138.85%', left: '-0.14%', top: '-19.42%', width: '100.28%' }}
+                src={imgC299}
+              />
+            </div>
           </div>
 
           {/* ── GRAY ROUNDED TEXT BOX ── */}
@@ -290,54 +350,62 @@ function PostArrivalSupportPage() {
 
           {/* e6c18 — person (far left) */}
           <div
-            className="absolute rounded-[15px] overflow-hidden pointer-events-none"
+            className="floating-img-container absolute group z-[2] hover:z-[10]"
             style={{ left: 81, top: 618, width: 193, height: 173 }}
           >
-            <img
-              alt=""
-              className="absolute max-w-none"
-              style={{ height: '198.56%', left: '-0.1%', top: '-64.75%', width: '100.2%' }}
-              src={imgE6c18}
-            />
+            <div className="relative w-full h-full rounded-[15px] overflow-hidden cursor-pointer transition-all duration-[400ms] group-hover:scale-[1.15] group-hover:-rotate-2 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)]">
+              <img
+                alt=""
+                className="absolute max-w-none"
+                style={{ height: '198.56%', left: '-0.1%', top: '-64.75%', width: '100.2%' }}
+                src={imgE6c18}
+              />
+            </div>
           </div>
 
           {/* f4780 — accommodation (centre-left) */}
           <div
-            className="absolute rounded-[15px] overflow-hidden pointer-events-none"
+            className="floating-img-container absolute group z-[2] hover:z-[10]"
             style={{ left: 430, top: 560, width: 181, height: 162 }}
           >
-            <img
-              alt=""
-              className="absolute max-w-none"
-              style={{ height: '111.51%', left: '0', top: '-11.51%', width: '100%' }}
-              src={imgF4780}
-            />
+            <div className="relative w-full h-full rounded-[15px] overflow-hidden cursor-pointer transition-all duration-[400ms] group-hover:scale-[1.15] group-hover:-rotate-2 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)]">
+              <img
+                alt=""
+                className="absolute max-w-none"
+                style={{ height: '111.51%', left: '0', top: '-11.51%', width: '100%' }}
+                src={imgF4780}
+              />
+            </div>
           </div>
 
           {/* img50 — graduation (centre-right) */}
           <div
-            className="absolute rounded-[15px] overflow-hidden pointer-events-none"
+            className="floating-img-container absolute group z-[2] hover:z-[10]"
             style={{ left: 836, top: 636, width: 189, height: 172 }}
           >
-            <img
-              alt=""
-              className="absolute max-w-none"
-              style={{ height: '147.48%', left: '-0.66%', top: '-7.22%', width: '100.52%' }}
-              src={imgImage50}
-            />
+            <div className="relative w-full h-full rounded-[15px] overflow-hidden cursor-pointer transition-all duration-[400ms] group-hover:scale-[1.15] group-hover:-rotate-2 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)]">
+              <img
+                alt=""
+                className="absolute max-w-none"
+                style={{ height: '147.48%', left: '-0.66%', top: '-7.22%', width: '100.52%' }}
+                src={imgImage50}
+              />
+            </div>
           </div>
 
           {/* c1c91 — city / skyline (far right) */}
           <div
-            className="absolute rounded-[15px] overflow-hidden pointer-events-none"
+            className="floating-img-container absolute group z-[2] hover:z-[10]"
             style={{ left: 1188, top: 560, width: 181, height: 162 }}
           >
-            <img
-              alt=""
-              className="absolute max-w-none"
-              style={{ height: '149.64%', left: '-0.32%', top: '-43.17%', width: '100.65%' }}
-              src={imgC1c91}
-            />
+            <div className="relative w-full h-full rounded-[15px] overflow-hidden cursor-pointer transition-all duration-[400ms] group-hover:scale-[1.15] group-hover:-rotate-2 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)]">
+              <img
+                alt=""
+                className="absolute max-w-none"
+                style={{ height: '149.64%', left: '-0.32%', top: '-43.17%', width: '100.65%' }}
+                src={imgC1c91}
+              />
+            </div>
           </div>
         </section>
 
@@ -357,7 +425,7 @@ function PostArrivalSupportPage() {
           <p
             className="font-poppins font-normal text-[31px] text-black tracking-[-0.15px] leading-[1.2] mb-[37px]"
           >
-            Everything you need after landing \u2014 sorted, step by step.
+            Everything you need after landing - sorted, step by step.
           </p>
         </section>
 
@@ -369,123 +437,58 @@ function PostArrivalSupportPage() {
             CTA badge: h=49, rounded-[21px], text 26px
         ══════════════════════════════════════════════════ */}
         <section className="relative w-full bg-[#eee] pt-[63px] pb-[55px] flex flex-col items-center">
+          
+          <div className="relative flex items-center justify-center w-full max-w-[1440px]">
+            {/* Left Chevron */}
+            <button 
+              onClick={prevSlide}
+              disabled={currentSlide === 0}
+              className="p-4 mr-2 disabled:opacity-20 cursor-pointer border-0 bg-transparent flex items-center justify-center transition-opacity"
+            >
+              <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 2L4 20L22 38" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
 
-          {/* Left navigation indicator */}
-          <div
-            className="absolute flex flex-col gap-[3px] pointer-events-none"
-            style={{ left: 23, top: 268 }}
-          >
-            <div className="bg-black h-[4px]" style={{ width: 17 }} />
-            <div className="bg-black rounded-sm" style={{ width: 17, height: 17 }} />
-          </div>
-
-          {/* Right navigation indicator */}
-          <div
-            className="absolute flex flex-col gap-[3px] pointer-events-none"
-            style={{ right: 23, top: 264 }}
-          >
-            <div className="bg-black h-[4px]" style={{ width: 17 }} />
-            <div className="bg-black rounded-sm" style={{ width: 17, height: 17 }} />
-          </div>
-
-          {/* Cards row */}
-          <div className="flex items-stretch justify-center gap-[28px] px-[63px]">
-
-            {/* ── Card 1: Arrival Essentials ── */}
-            <div className="relative flex flex-col bg-primary rounded-[28px] w-[308px] shrink-0">
-              {/* Icon protrudes: left=-28 relative to card, top=10 */}
-              <img
-                src={imgArrivalIcon}
-                alt=""
-                className="absolute pointer-events-none object-cover"
-                style={{ left: -28, top: 10, width: 149, height: 149 }}
-              />
-              <div className="pt-[131px] px-[26px] pb-[32px] flex-1">
-                <p className="font-poppins font-semibold text-[22px] text-accent leading-[1.58] mb-0">
-                  Arrival Essentials
-                </p>
-                <p className="font-poppins font-bold text-[13px] text-white leading-[1.58] mb-0">
-                  SIM \u2022 TFN \u2022 Bank \u2022 Super \u2022 OSHC \u2022 USI
-                </p>
-                <p className="font-poppins text-[14px] text-white leading-[1.58] mb-0">&nbsp;</p>
-                <p className="font-poppins text-[16px] text-white leading-[1.58]">
-                  Get set up from day one. We help you activate your SIM, open a bank account, apply for TFN,
-                  set up superannuation, USI, and health cover \u2014 without confusion or delays.
-                </p>
+            {/* Carousel Track */}
+            <div className="overflow-hidden w-[1316px] flex-shrink-0">
+              <div 
+                className="flex items-stretch gap-[28px] transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 336}px)` }}
+              >
+                {SUPPORT_CARDS.map((card, idx) => (
+                  <div key={idx} className="flex flex-col bg-primary rounded-[28px] w-[308px] shrink-0 pt-[32px] px-[24px] pb-[32px]">
+                    <img
+                      src={card.img}
+                      alt=""
+                      className="w-[80px] h-[80px] mb-[24px] object-contain"
+                    />
+                    <div className="flex-1 flex flex-col">
+                      <p className="font-poppins font-semibold text-[22px] text-accent leading-[1.58] mb-1">
+                        {card.title}
+                      </p>
+                      <p className="font-poppins font-bold text-[13px] text-white leading-[1.58] mb-[12px]">
+                        {card.subtitle}
+                      </p>
+                      <p className="font-poppins text-[16px] text-white leading-[1.58] mb-0">
+                        {card.text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* ── Card 2: University Onboarding ── */}
-            <div className="relative flex flex-col bg-primary rounded-[28px] w-[308px] shrink-0">
-              {/* Icon: left=19 top=35 relative to card */}
-              <img
-                src={imgOnboardIcon}
-                alt=""
-                className="absolute pointer-events-none object-cover"
-                style={{ left: 19, top: 35, width: 96, height: 96 }}
-              />
-              <div className="pt-[131px] px-[24px] pb-[32px] flex-1">
-                <p className="font-poppins font-semibold text-[22px] text-accent leading-[1.58] mb-0">
-                  University Onboarding
-                </p>
-                <p className="font-poppins font-bold text-[13px] text-white leading-[1.58] mb-0">
-                  Orientation \u2022 Check-in \u2022 Timetable \u2022 Student Portal
-                </p>
-                <p className="font-poppins text-[14px] text-white leading-[1.58] mb-0">&nbsp;</p>
-                <p className="font-poppins text-[16px] text-white leading-[1.58]">
-                  From university check-in to learning portals like Canvas, Moodle, or
-                  Blackboard \u2014 we help you understand how everything works so you can focus on your studies.
-                </p>
-              </div>
-            </div>
-
-            {/* ── Card 3: Local Living Support ── */}
-            <div className="relative flex flex-col bg-primary rounded-[28px] w-[308px] shrink-0">
-              {/* Icon: left=1 top=26 relative to card */}
-              <img
-                src={imgHostelIcon}
-                alt=""
-                className="absolute pointer-events-none object-cover"
-                style={{ left: 1, top: 26, width: 113, height: 113 }}
-              />
-              <div className="pt-[131px] px-[24px] pb-[32px] flex-1">
-                <p className="font-poppins font-semibold text-[22px] text-accent leading-[1.58] mb-0">
-                  Local Living Support
-                </p>
-                <p className="font-poppins font-bold text-[13px] text-white leading-[1.58] mb-0">
-                  Metro Card \u2022 Groceries \u2022 City Navigation
-                </p>
-                <p className="font-poppins text-[14px] text-white leading-[1.58] mb-0">&nbsp;</p>
-                <p className="font-poppins text-[16px] text-white leading-[1.58]">
-                  Public transport cards, best grocery stores, apps you actually need, and how to move around
-                  your city like a local \u2014 we make daily life easy and affordable.
-                </p>
-              </div>
-            </div>
-
-            {/* ── Card 4: Job-Ready Program ── */}
-            <div className="relative flex flex-col bg-primary rounded-[28px] w-[308px] shrink-0">
-              {/* Icon: left=24 top=37 relative to card */}
-              <img
-                src={imgJobIcon}
-                alt=""
-                className="absolute pointer-events-none object-cover"
-                style={{ left: 24, top: 37, width: 92, height: 92 }}
-              />
-              <div className="pt-[131px] px-[24px] pb-[32px] flex-1">
-                <p className="font-poppins font-semibold text-[22px] text-accent leading-[1.58] mb-0">
-                  Job-Ready Program
-                </p>
-                <p className="font-poppins font-bold text-[13px] text-white leading-[1.58] mb-0">
-                  CV \u2022 Cover Letter \u2022 Job Portals \u2022 Interviews
-                </p>
-                <p className="font-poppins text-[14px] text-white leading-[1.58] mb-0">&nbsp;</p>
-                <p className="font-poppins text-[16px] text-white leading-[1.58]">
-                  We prepare you for the Australian job market \u2014 CVs, cover letters, SEEK/Indeed
-                  profiles, mock interviews, and workplace communication support.
-                </p>
-              </div>
-            </div>
+            {/* Right Chevron */}
+            <button 
+              onClick={nextSlide}
+              disabled={currentSlide === maxSlide}
+              className="p-4 ml-2 disabled:opacity-20 cursor-pointer border-0 bg-transparent flex items-center justify-center transition-opacity"
+            >
+              <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2L20 20L2 38" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
 
           {/* CTA badge — Figma: h=49, rounded-[21px], text 26px */}

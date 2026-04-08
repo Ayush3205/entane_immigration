@@ -11,7 +11,13 @@ const BookFreeCallBanner = () => {
           <p className="book-free-call-subtitle">
             Let our experts in Mumbai and Brisbane guide you every step of the way.
           </p>
-          <a href="/#book-free-call" className="book-free-call-btn">Book Free Call</a>
+          <button
+            type="button"
+            className="book-free-call-btn"
+            onClick={() => window.dispatchEvent(new CustomEvent('openConsultationPopup'))}
+          >
+            Book Free Call
+          </button>
         </div>
       </div>
     </section>

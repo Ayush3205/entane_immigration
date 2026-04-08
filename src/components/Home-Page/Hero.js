@@ -58,7 +58,13 @@ const Hero = ({ morphProgress = 0, heroVideoUrl = null }) => {
           <br />
           Dreams amplified.
         </h1>
-        <button type="button" className="hero-cta">Book Free Call</button>
+        <button
+          type="button"
+          className="hero-cta"
+          onClick={() => window.dispatchEvent(new CustomEvent('openConsultationPopup'))}
+        >
+          Book Free Call
+        </button>
       </div>
     </section>
   );
