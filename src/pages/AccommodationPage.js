@@ -177,8 +177,11 @@ const ACCOMMODATION_FAQ_ITEMS = [
 
 export default function AccommodationPage() {
   const [consultationOpen, setConsultationOpen] = useState(false);
-  const [currentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
+
+  const goToPrevSlide = () => setCurrentSlide((p) => (p === 0 ? ACCOMMODATION_SLIDES.length - 1 : p - 1));
+  const goToNextSlide = () => setCurrentSlide((p) => (p === ACCOMMODATION_SLIDES.length - 1 ? 0 : p + 1));
 
   const toggleFaq = (index) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
@@ -238,16 +241,39 @@ export default function AccommodationPage() {
             {/* Dark overlay */}
             <div className="absolute inset-0 rounded-[49px] bg-[#00352B]/55 pointer-events-none" aria-hidden />
 
+            {/* Left arrow */}
+            <button
+              type="button"
+              onClick={goToPrevSlide}
+              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 border border-white/50 cursor-pointer transition-colors"
+              aria-label="Previous slide"
+            >
+              <svg className="w-6 h-6 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            {/* Right arrow */}
+            <button
+              type="button"
+              onClick={goToNextSlide}
+              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 border border-white/50 cursor-pointer transition-colors"
+              aria-label="Next slide"
+            >
+              <svg className="w-6 h-6 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
             {/* Centered group: orange card + room image - sliding carousel */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[812px] h-[557px] overflow-hidden">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100%,812px)] max-w-[calc(100%-32px)] h-[min(100%,557px)] max-h-[calc(100%-120px)] overflow-hidden rounded-[41px]">
               <div
                 className="flex h-full transition-transform duration-500 ease-out"
-                style={{ transform: `translateX(-${currentSlide * 812}px)` }}
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {ACCOMMODATION_SLIDES.map((slide, index) => (
                   <div
                     key={index}
-                    className="relative flex-shrink-0 w-[812px] h-[557px]"
+                    className="relative flex-shrink-0 w-full h-full min-w-full"
                   >
                     {/* Orange card — room image contained inside via overflow-hidden */}
                     {/* Orange card — left text panel, no overflow-hidden so image sits cleanly on top */}
