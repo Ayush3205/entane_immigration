@@ -43,7 +43,7 @@ const ABOUT_US_FAQ_ITEMS = [
   {
     question: 'Who are the key people behind Esante?',
     answer:
-      'The leadership team includes experienced professionals like Deepen Khagram (Founder), Varun Gupta (Legal & Strategy), and global education and migration experts.',
+      'The leadership team includes experienced professionals like Deepen Khagram (Director), Varun Gupta (Legal & Strategy), and global education and migration experts.',
   },
   {
     question: 'Does Esante provide legally compliant migration advice?',

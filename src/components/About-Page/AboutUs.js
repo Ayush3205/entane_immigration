@@ -281,46 +281,74 @@ const AboutUs = () => {
       {/* ═══════════════ FOUNDER SECTION ═══════════════ */}
       <section className="bg-white py-[80px]">
         <div className="max-w-[1440px] mx-auto px-[100px]">
-          <div className="flex gap-[30px] items-start">
-            {/* Left: Founder portrait with red background + SVG decoration */}
-            <div className="relative flex-shrink-0 w-[557px]">
+          <div className="flex gap-[30px]">
+            {/* Left: Founder portrait with red background */}
+            <div className="relative flex-shrink-0" style={{ width: '556.551px', height: '810.018px' }}>
               {/* Red rounded rectangle behind portrait */}
-              <div className="absolute top-[200px] left-0 w-[513px] h-[609px] bg-accent rounded-[24px]" />
-              {/* Founder portrait (transparent PNG sitting on top) */}
+              <div
+                className="absolute left-0 bg-accent rounded-[24px]"
+                style={{ top: '200px', width: '513px', height: '609px' }}
+              />
+              {/* Founder portrait */}
               <img
                 src="/images/about-us/founder-image.png"
                 alt="Deepen Khagram"
-                className="relative z-10 w-full h-auto"
+                className="relative z-10 w-full h-full object-cover object-top"
               />
             </div>
-            {/* Right: Text content */}
-            <div className="flex-1 pt-[110px]">
-              <h3 className="text-[38px] font-normal leading-[1.2] tracking-[-0.15px] text-primary mb-3">
+
+            {/* Right: Text content — positioned relative to match coloured line markers */}
+            <div className="relative flex-1" style={{ height: '810.018px' }}>
+
+              {/* 1) Black line — Our Founder */}
+              <h3
+                className="absolute text-[38px] font-normal leading-[1.2] tracking-[-0.15px] text-primary"
+                style={{ top: '115px' }}
+              >
                 Our <span className="font-semibold italic text-accent">Founder</span>
               </h3>
-              <h4 className="text-[60px] font-medium leading-[57px] tracking-[-0.15px] text-black mb-4">
+
+              {/* 2) Red line — Deepen Khagram */}
+              <h4
+                className="absolute text-[60px] font-medium leading-[57px] tracking-[-0.15px] text-black"
+                style={{ top: '180px' }}
+              >
                 Deepen<br />Khagram
               </h4>
-              <p className="text-[25px] font-normal leading-[57px] tracking-[-0.15px] text-accent">
+
+              {/* 3) Dark green line — Founder & Managing Director */}
+              <p
+                className="absolute text-[25px] font-normal leading-[57px] tracking-[-0.15px] text-accent"
+                style={{ top: '310px' }}
+              >
                 Founder &amp; Managing Director
               </p>
-              <div className="text-[18px] font-normal leading-[31px] tracking-[-0.15px] text-black mt-2">
-                <p className="mb-4">
-                  Born in Nairobi, Kenya, Deepen's own migration journey to Australia began in 1985 — shaping the values
-                  that Esante stands on today. With a background in accounting, business, and entrepreneurship, Deepen
-                  has built and led ventures across services, property, and international trade.
-                </p>
-                <p className="mb-4">
-                  His lived experience as a migrant informs Esanté's people‑first approach — ensuring every decision
-                  balances opportunity with responsibility, ambition with ethics.
-                </p>
-                <p className="mb-0">
-                  <span className="font-poppins text-black text-[18px] italic font-semibold leading-[31px] tracking-[-0.15px]">
-                    “Australia gave me opportunity. Esante exists to help others earn it the right way.”
-                  </span>
-                  {' - Deepen Khagram.'}
-                </p>
-              </div>
+
+              {/* 4) Light brown line — Born in Nairobi paragraph */}
+              <p
+                className="absolute text-[18px] font-normal tracking-[-0.15px] text-[#000]"
+                style={{ top: '370px', width: '539px', fontFamily: 'Poppins', lineHeight: '31px' }}
+              >
+                Born in Nairobi, Kenya, Deepen's own migration journey to Australia began in 1985 — shaping the values that Esante stands on today. With a background in accounting, business, and entrepreneurship, Deepen has built and led ventures across services, property, and international trade.
+              </p>
+
+              {/* 5) Pastel blue line — His lived experience paragraph */}
+              <p
+                className="absolute text-[18px] font-normal tracking-[-0.15px] text-[#000]"
+                style={{ top: '545px', width: '539px', fontFamily: 'Poppins', lineHeight: '31px' }}
+              >
+                His lived experience as a migrant informs Esanté's people‑first approach — ensuring every decision balances opportunity with responsibility, ambition with ethics.
+              </p>
+
+              {/* 6) Pastel purple line — Australia gave me opportunity */}
+              <p
+                className="absolute text-[18px] italic font-semibold tracking-[-0.15px] text-[#000] mb-0"
+                style={{ top: '670px', width: '539px', fontFamily: 'Poppins', lineHeight: '31px' }}
+              >
+                "Australia gave me opportunity. Esante exists to help others earn it the right way."{' '}
+                <span className="not-italic">— Deepen Khagram.</span>
+              </p>
+
             </div>
           </div>
         </div>
