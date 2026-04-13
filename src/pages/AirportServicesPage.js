@@ -229,7 +229,7 @@ function AirportServicesPage() {
           </p>
 
           <p className="font-poppins text-[clamp(18px,2.4vw,23px)] font-semibold italic leading-[1.56] text-black tracking-[-0.15px] mt-8 md:mt-9 m-0">
-            *From the moment you land, we&apos;ve got you covered.*
+            From the moment you land, we&apos;ve got you covered.
           </p>
         </section>
 

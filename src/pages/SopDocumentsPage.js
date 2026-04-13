@@ -21,7 +21,7 @@ export default function SopDocumentsPage() {
     <div className="flex flex-col w-full bg-white">
       <Header />
 
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full overflow-x-hidden">
         <div className="flex flex-col items-center w-full bg-white pb-[67px] pt-[172px] px-6 sm:px-10 lg:px-[100px]">
 
           {/* ── Hero Text Section — Figma: centered 1192 max ── */}
@@ -77,8 +77,12 @@ export default function SopDocumentsPage() {
 
           {/* ── Hero Background Image – layout_B2E8YL: 1440×747 ── */}
           <section
-            className="flex flex-col items-center w-full max-w-[1440px] mx-auto h-[747px] mb-[100px] bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url('${IMG_HERO_BG}')` }}
+            className="flex flex-col items-center h-[747px] mb-[100px] bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('${IMG_HERO_BG}')`,
+              width: '100vw',
+              marginLeft: 'calc(-50vw + 58%)',
+            }}
           >
             <div className="flex flex-col items-center justify-end w-full h-full pb-[50px]">
               {/* layout_WUCKEB: 730×123 / borderRadius 48px / fill_TY0IEG rgba(0,53,43,0.94) */}
@@ -120,16 +124,18 @@ export default function SopDocumentsPage() {
             <div className="flex flex-col lg:flex-row lg:items-start items-stretch gap-10 lg:gap-8 xl:gap-10 w-full min-w-0">
               <div className="w-full min-w-0 lg:flex-1 lg:basis-0">
                 <p
-                  className="font-poppins text-[#000000] break-words"
-                  style={{ fontSize: 23, fontWeight: 400, lineHeight: '1.5em', letterSpacing: '-0.15px' }}
+                  className="font-poppins text-[#000000]"
+                  style={{ fontSize: 22, fontWeight: 400, lineHeight: '36px', letterSpacing: '-0.15px', whiteSpace: 'nowrap' }}
                 >
-                  Every university in Australia evaluates more than just your grades — they evaluate
-                  your purpose, your clarity, your readiness, and your authenticity. That's why a
-                  strong <strong>Statement of Purpose (SOP)</strong> becomes one of the{' '}
+                  Every university in Australia evaluates more than just<br />
+                  your grades — they evaluate your purpose, your clarity,<br />
+                  your readiness, and your authenticity. That's why a<br />
+                  strong <strong>Statement of Purpose (SOP)</strong> becomes one of the<br />
                   <strong>most important documents</strong> in your entire application.
                   <br /><br />
-                  It is not just an academic essay — it is a deciding factor for your{' '}
-                  <strong>offer letter, visa approval, and scholarship eligibility</strong>.
+                  It is not just an academic essay — it is a deciding factor<br />
+                  for your <strong>offer letter, visa approval, and scholarship<br />
+                  eligibility</strong>.
                 </p>
               </div>
               <div className="w-full min-w-0 lg:flex-1 lg:basis-0 flex justify-center lg:justify-end">
@@ -142,7 +148,7 @@ export default function SopDocumentsPage() {
             </div>
 
             {/* Row 2: Left image, Right text */}
-            <div className="flex flex-col-reverse lg:flex-row lg:items-start items-stretch gap-10 lg:gap-8 xl:gap-10 w-full min-w-0">
+            <div className="flex flex-col-reverse lg:flex-row lg:items-center items-stretch gap-10 lg:gap-8 xl:gap-10 w-full min-w-0">
               <div className="w-full min-w-0 lg:flex-1 lg:basis-0 flex justify-center lg:justify-start">
                 <img
                   src={IMG_79}
@@ -150,15 +156,16 @@ export default function SopDocumentsPage() {
                   className="w-full max-w-[min(503px,100%)] h-auto aspect-[503/322] object-cover rounded-[27px]"
                 />
               </div>
-              <div className="w-full min-w-0 lg:flex-1 lg:basis-0">
+              <div className="w-full lg:flex-1 lg:basis-0 flex items-center justify-end">
                 <p
-                  className="font-poppins font-normal text-[23px] text-black break-words sm:text-left lg:text-right"
-                  style={{ lineHeight: '1.5em', letterSpacing: '-0.15px' }}
+                  className="font-poppins font-normal text-[23px] text-black"
+                  style={{ lineHeight: '1.5em', letterSpacing: '-0.15px', textAlign: 'right', whiteSpace: 'nowrap' }}
                 >
-                  <strong>At Esante</strong>, we don't treat SOPs as templates or formalities. We treat them as{' '}
-                  <strong>strategic documents</strong> that clearly explain who you are, why Australia, why this
-                  course, and how it fits your future — exactly what{' '}
-                  <strong>Australian universities and visa officers expect</strong>.
+                  At <strong>Esante</strong>, we don't treat SOPs as templates or<br />
+                  formalities. We treat them as <strong>strategic documents</strong><br />
+                  that clearly explain who you are, why Australia, why<br />
+                  this course, and how it fits your future — exactly what<br />
+                  Australian universities and visa officers expect.
                 </p>
               </div>
             </div>
@@ -343,28 +350,28 @@ export default function SopDocumentsPage() {
           </section>
 
           {/* ── "Documents We Help You With" — Figma: image left, heading + list right ── */}
-          <section className="flex flex-col lg:flex-row items-start justify-between w-full max-w-[1158px] mx-auto mb-[118px] gap-10 lg:gap-[35px] box-border px-4 sm:px-6 lg:px-0">
+          <section className="flex flex-col lg:flex-row items-stretch justify-between w-full max-w-[1158px] mx-auto mb-[118px] gap-10 lg:gap-[35px] box-border px-4 sm:px-6 lg:px-0">
             <img
               src={IMG_77}
               alt="Passport and travel documents for Australia"
               className="w-full max-w-[443px] aspect-[443/433] object-cover shrink-0 rounded-[43px] mx-auto lg:mx-0"
             />
-            <div className="flex flex-col items-start shrink-0 gap-[26px] pt-[11px] w-full lg:max-w-[650px]">
+            <div className="flex flex-col items-start gap-[26px] pt-[11px] w-full lg:flex-1">
               <h2
                 className="font-poppins font-medium text-[clamp(28px,4vw,45px)] text-left leading-[1.2em] tracking-[-0.15px]"
               >
-                <span className="text-[#00352B]">Documents </span>
-                <span className="text-[#FF3300]">We Help You </span>
+                <span className="text-[#00352B]">Documents</span><br />
+                <span className="text-[#FF3300] italic">We Help You </span>
                 <span className="text-[#00352B]">With</span>
               </h2>
               <ul
                 className="font-poppins font-semibold text-[20px] text-left list-disc pl-6 space-y-2 marker:text-[#00352B]"
-                style={{ maxWidth: 575, width: '100%', lineHeight: '1.79em', letterSpacing: '-0.15px', color: 'rgba(0, 0, 0, 0.75)' }}
+                style={{ width: '100%', lineHeight: '1.79em', letterSpacing: '-0.15px', color: 'rgba(0, 0, 0, 0.75)' }}
               >
                 <li>Statement of Purpose (SOP / GS Statement)</li>
                 <li>Scholarship SOP (where required)</li>
                 <li>Letter of Recommendation (LOR) guidance</li>
-                <li>Academic & career justification</li>
+                <li>Academic &amp; career justification</li>
                 <li>Gap explanation (if applicable)</li>
                 <li>Resume (Australian format)</li>
                 <li>Cover letter (Australian format)</li>

@@ -36,16 +36,16 @@ const SkillsShortage = () => {
       requirements: 'Bachelor\'s in IT/Computer Science, Relevant Certifications'
     },
     { 
-      title: 'TRADES & TECHNICIANS', 
+      title: 'Trades & Technicians', 
       description: 'Critical shortage occupations with strong demand and clear migration pathways....',
       fullDescription: 'Critical shortage occupations with strong demand and clear migration pathways.',
       demand: 'High',
       visaPathways: 'Skilled Migration, Employer Sponsored',
       salaryRange: 'A$50,000 - A$75,000',
-      requirements: 'Certificate III/Diploma in TRADES & TECHNICIANS'
+      requirements: 'Certificate III/Diploma in Trades & Technicians'
     },
     { 
-      title: 'ENGINEERING', 
+      title: 'Engineering', 
       description: 'High-demand profession offering global career opportunities and long-term stability....',
       fullDescription: 'High-demand profession offering global career opportunities and long-term stability.',
       demand: 'Very High',
