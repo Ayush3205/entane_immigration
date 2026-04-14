@@ -265,26 +265,20 @@ export default function AccommodationPage() {
             </button>
 
             {/* Centered group: orange card + room image - sliding carousel */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100%,812px)] max-w-[calc(100%-32px)] h-[min(100%,557px)] max-h-[calc(100%-120px)] overflow-hidden rounded-[41px]">
+            {/* Sliding carousel — orange card; slide width = 100% of viewport for smooth responsive transform */}
+            <div className="absolute left-1/2 top-1/2 z-[5] w-[812px] max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] -translate-x-1/2 -translate-y-1/2 h-[557px] max-h-[calc(100%-120px)] sm:max-h-[calc(100%-96px)] overflow-hidden" style={{ borderRadius: 41, background: '#FF3300' }}>
               <div
                 className="flex h-full transition-transform duration-500 ease-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {ACCOMMODATION_SLIDES.map((slide, index) => (
-                  <div
-                    key={index}
-                    className="relative flex-shrink-0 w-full h-full min-w-full"
-                  >
-                    {/* Orange card — room image contained inside via overflow-hidden */}
-                    {/* Orange card — left text panel, no overflow-hidden so image sits cleanly on top */}
-                    <div className="absolute inset-0 bg-[#FF3300] rounded-[41px] pt-[28px] pl-[28px] pb-[28px] box-border">
-                      {/* Text content — left column, safely clear of image (image left edge = 812-370 = 442px) */}
-                      <div
-                        className={`transition-opacity duration-300 ease-out ${
-                          index === currentSlide ? 'opacity-100' : 'opacity-0'
-                        }`}
-                        style={{ maxWidth: 400, position: 'relative', zIndex: 2 }}
-                      >
+                  <div key={index} className="relative h-full w-full min-w-full flex-shrink-0">
+                    <div
+                      className="h-full pt-6 pb-6 pl-25 pr-5 sm:pt-7 sm:pb-7 sm:pl-12 sm:pr-[min(28px,4vw)] box-border flex flex-col justify-center text-left"
+                      style={{ borderRadius: 41, background: '#FF3300' }}
+                    >
+                      <div className="relative z-[2] w-full max-w-[420px] pr-0 md:pr-2"
+                        style={{ opacity: index === currentSlide ? 1 : 0, transition: 'opacity 300ms ease-out' }}>
                         <p className="font-poppins font-normal text-[40px] leading-[1.35] tracking-[-0.00375em] text-white mb-0">
                           {slide.intro}
                         </p>
@@ -294,50 +288,49 @@ export default function AccommodationPage() {
                         <p className="font-poppins font-normal text-[28px] leading-[1.35] tracking-[-0.00536em] text-white mb-[8px]">
                           Starting at Just
                         </p>
-                        <div className="w-[207px] h-[53px] flex items-center justify-center bg-[#00352B] rounded-[15px] mb-[14px] shrink-0">
+                        <div className="w-[207px] h-[53px] flex items-center justify-center bg-[#00352B] rounded-[15px] mb-[14px] shrink-0 border border-white/30">
                           <span className="font-poppins font-normal text-[29px] leading-[1.5] tracking-[-0.00517em] text-white">
                             {slide.price}
                           </span>
                         </div>
-                        <ul className="list-disc list-inside font-poppins font-normal text-[15px] leading-[1.8] tracking-[-0.01em] text-white max-w-[280px] mb-3 [&_li]:marker:text-white">
+                        <ul className="list-disc list-inside font-poppins font-normal text-[15px] leading-[1.8] tracking-[-0.01em] text-white max-w-[280px] mb-4 [&_li]:marker:text-white">
                           {slide.features.map((item, i) => (
                             <li key={i}>{item}</li>
                           ))}
                         </ul>
                         <button
                           type="button"
-                          className="flex items-center justify-center h-9 px-4 w-fit min-w-0 bg-white rounded-[12px] border-0 cursor-pointer font-poppins font-medium text-[14px] text-[#00352B] transition-opacity hover:opacity-95 shrink-0 shadow-[0_2px_6px_rgba(0,0,0,0.15)]"
+                          className="flex items-center justify-center h-9 px-4 w-fit min-w-0 bg-white rounded-[12px] border-0 cursor-pointer font-poppins font-medium text-[14px] text-[#00352B] transition-opacity hover:opacity-95 shrink-0 shadow-[0_2px_6px_rgba(0,0,0,0.15)] min-h-[44px] sm:min-h-0"
                           onClick={() => setConsultationOpen(true)}
                         >
                           Get Free Guidance from Esante
                         </button>
                       </div>
                     </div>
-
-                    {/* Room image — reduced width (370px) so left edge (x=442) clears all text incl. city name */}
-                    <img
-                      src={MELBOURNE_IMG}
-                      alt={`${slide.city} accommodation`}
-                      style={{
-                        position: 'absolute',
-                        right: 0,
-                        top: 58,
-                        width: 370,
-                        height: 440,
-                        objectFit: 'cover',
-                        objectPosition: 'center',
-                        borderRadius: 38,
-                        boxShadow: '-10px 0 28px rgba(0,0,0,0.28)',
-                        zIndex: 3,
-                      }}
-                    />
                   </div>
                 ))}
               </div>
             </div>
-            <span className="absolute top-6 right-6 z-10 font-poppins font-normal text-[32px] leading-[1.5] tracking-[-0.00469em] text-white">
-              {String(currentSlide + 1).padStart(2, '0')}/{String(ACCOMMODATION_SLIDES.length).padStart(2, '0')}
-            </span>
+
+            {/* Room photo */}
+            <img
+              src={MELBOURNE_IMG}
+              alt="Accommodation room"
+              className="absolute z-20 pointer-events-none hidden sm:block"
+              style={{
+                right: 'clamp(16px, 10vw, 198px)',
+                top: 'clamp(56px, 12vh, 92px)',
+                width: 'clamp(200px, 26vw, 400px)',
+                height: 'clamp(260px, 31vw, 500px)',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                borderRadius: 41,
+                background: 'lightgray 50% / cover no-repeat',
+                boxShadow: '10px 10px 5.7px 0px #000',
+              }}
+            />
+
+
           </section>
           </div>
 
