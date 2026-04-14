@@ -285,38 +285,69 @@ function PartTimeJobSupportPage() {
         </div>
 
         {/* ── Description — centered body copy (Figma) ── */}
-        <section className="w-full max-w-[1141px] mx-auto mb-[76px] text-center px-0">
-          <p className="font-poppins font-normal italic text-[23px] leading-[1.5] tracking-[-0.00652em] text-[#FF3300] mb-6">
-            From arrival to your first paycheck—we connect you with trusted employers so you can earn $3,000+ AUD per month.
+        <section className="flex flex-col items-center w-full max-w-[1300px] mx-auto mb-[76px] px-2">
+          <p
+            className="font-poppins text-center text-[#FF3300] mb-12 w-full max-w-full"
+            style={{
+              fontSize: 30,
+              fontStyle: 'italic',
+              fontWeight: 600,
+              lineHeight: '150.37%',
+              letterSpacing: '-0.15px',
+            }}
+          >
+            <span className="hidden xl:inline">From arrival to your first paycheck—we connect you with trusted<br />employers so you can earn $3,000+ AUD per month.</span>
+            <span className="inline xl:hidden">From arrival to your first paycheck—we connect you with trusted employers so you can earn $3,000+ AUD per month.</span>
           </p>
-          <p className="font-poppins font-normal text-[23px] leading-[1.5] tracking-[-0.00652em] text-[#000000] mb-4">
-            For international students, finding a part-time job in Australia is not optional — it&apos;s essential. Rent, groceries, transport, and daily expenses depend on it. At Esante, we understand this reality because we are on the ground in Australia.
-          </p>
-          <p className="font-poppins font-normal text-[23px] leading-[1.5] tracking-[-0.00652em] text-[#000000]">
-            That&apos;s why part-time job support is a core part of our end-to-end student services, not an add-on.
-          </p>
+          
+          <div
+            className="font-poppins text-center text-black w-full max-w-full"
+            style={{
+              fontSize: 23,
+              fontStyle: 'normal',
+              fontWeight: 400,
+              lineHeight: '36px',
+            }}
+          >
+            <div className="hidden xl:block">
+              <p className="m-0">
+                For international students, finding a part-time job in Australia is not optional — it&apos;s essential. Rent,<br />
+                groceries, transport, and daily expenses depend on it. At Esanté, we understand this reality because<br />
+                we are on the ground in Australia.
+              </p>
+              <p className="m-0 mt-[10px]">
+                That&apos;s why part-time job support is a core part of our end-to-end student services, not an add-on.
+              </p>
+            </div>
+            <div className="block xl:hidden mx-auto max-w-[900px]">
+              <p className="m-0 mb-4">
+                For international students, finding a part-time job in Australia is not optional — it&apos;s essential. Rent, groceries, transport, and daily expenses depend on it. At Esanté, we understand this reality because we are on the ground in Australia.
+              </p>
+              <p className="m-0">
+                That&apos;s why part-time job support is a core part of our end-to-end student services, not an add-on.
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* ── How Esante Helps — two-column Figma box, symmetric padding ── */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between w-full max-w-[1213px] mx-auto mb-20 md:mb-[122px] px-8 py-10 md:px-12 md:py-12 rounded-[45px] border-2 border-[#FF3300] bg-white gap-10 lg:gap-16">
-          <div className="flex flex-col items-start w-full lg:max-w-[532px] shrink-0 text-left">
-            <p className="font-poppins font-normal text-[clamp(28px,4vw,45px)] leading-[1.2] tracking-[-0.00333em] text-[#00352B] mb-0">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center w-full max-w-[1213px] mx-auto mb-20 md:mb-[122px] px-8 py-10 md:px-[60px] md:py-[50px] rounded-[45px] border-2 border-[#FF3300] bg-white gap-10 lg:gap-[90px]">
+          <div className="flex flex-col items-start w-full lg:w-[500px] shrink-0 text-left">
+            <h2 className="font-poppins text-[#00352B] m-0 mb-1" style={{ fontSize: 'clamp(28px, 4vw, 45px)', fontStyle: 'normal', fontWeight: 400, lineHeight: '120%', letterSpacing: '-0.15px' }}>
               How Esante Helps You
+            </h2>
+            <p className="font-poppins text-[#FF3300] m-0 mb-4" style={{ fontSize: 'clamp(28px, 4vw, 45px)', fontStyle: 'italic', fontWeight: 500, lineHeight: '120%', letterSpacing: '-0.15px' }}>
+              Get Part-Time Work<br />Faster
             </p>
-            <p className="font-poppins font-normal text-[clamp(28px,4vw,45px)] leading-[1.2] tracking-[-0.00333em] text-[#FF3300] mb-4">
-              Get Part-Time Work Faster
-            </p>
-            <p className="font-poppins font-normal text-[18px] md:text-[20px] leading-[1.5] text-[#1a1a1a]">
-              Esante works closely with multiple verified part-time job partners across Australia, including:
+            <p className="font-poppins text-[#000] m-0" style={{ fontSize: 'clamp(16px, 2vw, 21px)', fontStyle: 'italic', fontWeight: 500, lineHeight: '38px', letterSpacing: '-0.15px' }}>
+              Esante works closely with multiple verified part-<br className="hidden lg:block" />time job partners across Australia, including:
             </p>
           </div>
-          <ul className="flex flex-col items-start list-none pl-0 m-0 pt-0 lg:pt-2 w-full lg:max-w-[480px] gap-3.5 lg:gap-[14px]">
+          <ul className="flex flex-col items-start list-none pl-0 m-0 pt-[27px] lg:-ml-[30px] w-full lg:w-[480px] gap-[8px]">
             {['Cafés & restaurants', 'Petrol stations', 'Grocery stores & supermarkets', 'Shopping malls & retail outlets', 'Hospitality & customer service roles'].map((item) => (
-              <li key={item} className="flex flex-row items-start gap-2 font-poppins font-normal text-[18px] md:text-[20px] leading-[1.35] tracking-[-0.00625em] text-[#1a1a1a] w-full">
-                <span className="shrink-0" aria-hidden="true">
-                  ✅
-                </span>
-                <span>{item}</span>
+              <li key={item} className="flex flex-row items-start gap-[12px] font-poppins font-normal m-0" style={{ fontSize: 'clamp(18px,2.2vw,22px)', leading: '1.35', color: '#000' }}>
+                <span className="shrink-0 leading-[1.2]" aria-hidden="true">✅</span>
+                <span className="leading-[1.2]">{item}</span>
               </li>
             ))}
           </ul>

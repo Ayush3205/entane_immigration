@@ -277,11 +277,11 @@ function AirportServicesPage() {
         </section>
 
         {/* ── TRANSITION QUOTE — Figma: center ── */}
-        <div className="flex flex-col items-center text-center mb-12 md:mb-14 px-2 max-w-[900px] mx-auto w-full">
+        <div className="flex flex-col items-center text-center mb-12 md:mb-14 px-2 w-full mx-auto">
           <p className="font-poppins text-[clamp(28px,5vw,45px)] font-normal leading-[1.2] text-primary tracking-[-0.15px] m-0">
             This is not just a pickup
           </p>
-          <p className="font-poppins text-[clamp(28px,5vw,45px)] font-semibold italic leading-[1.2] text-accent tracking-[-0.15px] mt-2 m-0">
+          <p className="font-poppins text-[clamp(28px,5vw,45px)] font-semibold italic leading-[1.2] text-accent tracking-[-0.15px] mt-2 m-0 w-full">
             it&apos;s your first step into Australia with confidence.
           </p>
         </div>
