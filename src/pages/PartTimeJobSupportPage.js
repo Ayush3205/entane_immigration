@@ -217,7 +217,7 @@ function PartTimeJobSupportPage() {
             </button>
 
             {/* Sliding carousel — dark green card; slide width = 100% of viewport for smooth responsive transform */}
-            <div className="absolute left-1/2 top-1/2 z-[5] w-[min(100%,812px)] max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] -translate-x-1/2 -translate-y-1/2 h-[min(100%,557px)] max-h-[calc(100%-120px)] sm:max-h-[calc(100%-96px)] overflow-hidden rounded-[28px] md:rounded-[41px]">
+            <div className="absolute left-1/2 top-1/2 z-[5] w-[812px] max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] -translate-x-1/2 -translate-y-1/2 h-[557px] max-h-[calc(100%-120px)] sm:max-h-[calc(100%-96px)] overflow-hidden" style={{ borderRadius: 41, background: '#00352B' }}>
               <div
                 className="flex h-full transition-transform duration-500 ease-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -225,8 +225,8 @@ function PartTimeJobSupportPage() {
                 {JOB_SLIDES.map((slide, index) => (
                   <div key={index} className="relative h-full w-full min-w-full flex-shrink-0">
                     <div
-                      className="h-full rounded-[28px] md:rounded-[41px] pt-6 pb-6 pl-5 pr-5 sm:pt-7 sm:pb-7 sm:pl-7 sm:pr-[min(28px,4vw)] box-border flex flex-col justify-center text-left"
-                      style={{ background: '#00352B' }}
+                      className="h-full pt-6 pb-6 pl-25 pr-5 sm:pt-7 sm:pb-7 sm:pl-12 sm:pr-[min(28px,4vw)] box-border flex flex-col justify-center text-left"
+                      style={{ borderRadius: 41, background: '#00352B' }}
                     >
                       <div className="relative z-[2] w-full max-w-[420px] pr-0 md:pr-2">
                         <span className="font-poppins font-normal text-[clamp(16px,2.2vw,22px)] leading-[1.5] tracking-[-0.00682em] text-[#FF3300] mb-0 block">
@@ -271,19 +271,16 @@ function PartTimeJobSupportPage() {
               style={{
                 right: 'clamp(16px, 10vw, 198px)',
                 top: 'clamp(56px, 12vh, 92px)',
-                width: 'clamp(200px, 26vw, 370px)',
-                height: 'clamp(260px, 31vw, 440px)',
+                width: 'clamp(200px, 26vw, 400px)',
+                height: 'clamp(260px, 31vw, 500px)',
                 objectFit: 'cover',
                 objectPosition: 'center',
-                borderRadius: 46,
-                border: '3px solid rgba(0,0,0,0.85)',
-                boxShadow: JOB_PHOTO_SHADOW,
+                borderRadius: 41,
+                background: 'lightgray 50% / cover no-repeat',
+                boxShadow: '10px 10px 5.7px 0px #000',
               }}
             />
 
-            <span className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 font-poppins font-normal text-[clamp(20px,3vw,32px)] leading-[1.5] tracking-[-0.00469em] text-white">
-              {String(currentSlide + 1).padStart(2, '0')}/{String(JOB_SLIDES.length).padStart(2, '0')}
-            </span>
           </section>
         </div>
 
