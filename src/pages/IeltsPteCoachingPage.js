@@ -245,7 +245,7 @@ function IeltsPteCoachingPage() {
             mt = 1118 − 968 = 150px (968 = hero bottom from white-rect top)
         ══════════════════════════════════════════════════════════ */}
         <section
-          className="flex items-start gap-[39px] mt-[150px] mb-[80px]"
+          className="flex items-start gap-[39px] mt-[150px] mb-[200px]"
           style={{ marginLeft: 84 }}
         >
           {/* Josh photo — 259:1501 504×570, rounded-20, crop h=207.24% l=-58.12% t=-5% w=219.29% */}
@@ -334,7 +334,7 @@ function IeltsPteCoachingPage() {
             Figma: 259:1529  1240×400  left=84  4 visible cards 290×400 gap=26
             Card: bg image | top row (play 35×35 + city label) | gradient bottom 130px
         ══════════════════════════════════════════════════════════ */}
-        <section className="relative mb-[80px]" style={{ marginLeft: 84 }}>
+        <section className="relative mb-[40px]" style={{ marginLeft: 84 }}>
 
           {/* Left nav arrow */}
           <button
@@ -420,6 +420,7 @@ function IeltsPteCoachingPage() {
             letterSpacing: '-0.15px',
             marginLeft: 92,
             marginRight: 123,
+            marginBottom: '140px',
           }}
         >
           {'At '}
@@ -440,7 +441,7 @@ function IeltsPteCoachingPage() {
             Bullets: 22px Regular leading-[1.2 / 1.36 / 1.35]
         ══════════════════════════════════════════════════════════ */}
         <section
-          className="flex items-start mb-[66px]"
+          className="flex items-start mb-[100px]"
           style={{ marginLeft: 92, marginRight: 126 }}
         >
           {/* Heading column */}
@@ -469,7 +470,7 @@ function IeltsPteCoachingPage() {
               and &quot;Band 8&quot; sentence structures.
             </p>
             <p style={{ lineHeight: '1.35' }}>
-              ✅ Beyond the Test: Josh prepares you for life in Australia\u2014teaching you the slang,<br />
+              ✅ Beyond the Test: Josh prepares you for life in Australia-teaching you the slang,<br />
               etiquette, and confidence needed to ace job interviews after you land.
             </p>
           </div>
