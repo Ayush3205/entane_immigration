@@ -11,8 +11,8 @@ const IMG_JOB_PETROL = '/images/ptj-job-petrol.png';
 const IMG_STORY_1 = '/images/ptj-story1.png';
 const IMG_STORY_2 = '/images/ptj-story2.png';
 
-const JOB_PHOTO_SHADOW =
-  '14px 18px 32px rgba(0, 0, 0, 0.48), 8px 10px 18px rgba(0, 0, 0, 0.32)';
+// const JOB_PHOTO_SHADOW =
+//   '14px 18px 32px rgba(0, 0, 0, 0.48), 8px 10px 18px rgba(0, 0, 0, 0.32)';
 const STORY_PHOTO_SHADOW =
   '12px 14px 26px rgba(0, 0, 0, 0.45), 6px 8px 14px rgba(0, 0, 0, 0.3)';
 
