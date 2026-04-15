@@ -263,23 +263,28 @@ function PartTimeJobSupportPage() {
               </div>
             </div>
 
-            {/* Job photo — Figma: vertical image, dark drop shadow right + bottom; hidden on very small screens */}
-            <img
-              src={JOB_SLIDES[currentSlide].img}
-              alt={`${JOB_SLIDES[currentSlide].titleLine1} ${JOB_SLIDES[currentSlide].titleLine2}`}
-              className="absolute z-20 pointer-events-none hidden sm:block"
-              style={{
-                right: 'clamp(16px, 10vw, 198px)',
-                top: 'clamp(56px, 12vh, 92px)',
-                width: 'clamp(200px, 26vw, 400px)',
-                height: 'clamp(260px, 31vw, 500px)',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                borderRadius: 41,
-                background: 'lightgray 50% / cover no-repeat',
-                boxShadow: '10px 10px 5.7px 0px #000',
-              }}
-            />
+            {/* Job photo — Map over images to preload them and use CSS opacity transitions */}
+            {JOB_SLIDES.map((slide, idx) => (
+              <img
+                key={idx}
+                src={slide.img}
+                alt={`${slide.titleLine1} ${slide.titleLine2}`}
+                className={`absolute z-20 pointer-events-none hidden sm:block transition-opacity duration-500 ${
+                  currentSlide === idx ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{
+                  right: 'clamp(16px, 10vw, 198px)',
+                  top: 'clamp(56px, 12vh, 92px)',
+                  width: 'clamp(200px, 26vw, 400px)',
+                  height: 'clamp(260px, 31vw, 500px)',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  borderRadius: 41,
+                  background: 'lightgray 50% / cover no-repeat',
+                  boxShadow: '10px 10px 5.7px 0px #000',
+                }}
+              />
+            ))}
 
           </section>
         </div>
