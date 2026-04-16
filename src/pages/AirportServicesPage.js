@@ -110,19 +110,16 @@ function AirportServicesPage() {
         >
           {/* Hero image container */}
           <div
-            className="relative overflow-hidden w-full"
-            style={{ height: "clamp(380px, 45vw, 520px)" }}
-          >
+            className="relative overflow-hidden w-full h-[calc(100vh-104px)]">
             <img
               alt=""
               src={HERO_BG}
               className="absolute pointer-events-none"
               style={{
-                width: "auto",
-                minWidth: "100%",
-                left: "20px",
-                top: 0,
-                objectFit: "unset",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "top",
               }}
             />
 
@@ -140,7 +137,8 @@ function AirportServicesPage() {
               className="absolute flex flex-col items-start"
               style={{
                 left: "clamp(24px, 5vw, 80px)",
-                top: "clamp(40px, 7vw, 100px)", // higher up
+                top: "50%",
+                transform: "translateY(-50%)", // higher up
                 gap: "8px",
               }}
             >
@@ -200,7 +198,7 @@ function AirportServicesPage() {
           <div
             className="absolute pointer-events-none max-md:hidden"
             style={{
-              bottom: "-40px", // lower than before
+              bottom: "-33px", // lower than before
               left: "20px",
               width: "clamp(280px, 36vw, 520px)", // smaller
               height: "clamp(130px, 17vw, 245px)", // smaller
