@@ -749,7 +749,7 @@ img {
 
 /* Green CTA button */
 .cta-button {
-  background: #00a86b;
+  background: #F30;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -763,7 +763,7 @@ img {
   transition: background .18s, transform .16s, box-shadow .16s;
 }
 .cta-button:hover {
-  background: #008c56;
+  background: #F30;
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(0,168,107,.38);
 }
@@ -6183,17 +6183,13 @@ img {
   color: #FF3300;
 }
 
-
-
-
-
 .cta-button {
   display: inline-flex;
   padding: 10px var(--sds-size-space-400, 16px);
   align-items: center;
   gap: 10px;
   border-radius: var(--Corner-Small, 8px);
-  background: var(--Primary-Color, #00352B);
+  background: var(--Primary-Color, #F30);
   color: #FFF;
   border: none;
   font-family: Poppins, sans-serif;
@@ -6395,4 +6391,12 @@ img {
   /* Circle at Top-Right (100% 0) is transparent, rest is green. Creates a slope up to the left. */
   background: radial-gradient(circle at 100% 0, transparent 20px, #3D9E56 20.5px);
   z-index: 10;
+}
+
+/* .header-nav.header-nav--solid .nav-menu > li > a, .header-nav.header-nav--solid .nav-menu > li > .dropdown-toggle{
+  color : #000;
+} */
+
+.header-nav.header-nav--solid{
+  background-color: #00352B;
 }
