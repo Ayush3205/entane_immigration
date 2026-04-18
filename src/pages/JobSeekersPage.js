@@ -572,8 +572,9 @@ function JobSeekersPage() {
 
         {/* ═══ 1. HERO ═══════════════════════════════════════════════════════ */}
         <section
-          className="relative flex flex-col justify-center gap-[33px] px-[100px] py-[80px] w-full"
+          className="relative flex flex-col justify-center gap-[33px] px-[100px] py-[80px] w-screen"
           style={{
+            marginLeft: 'calc(-50vw + 50%)',
             minHeight: 800,
             background: `linear-gradient(rgba(0,53,43,0.57),rgba(0,53,43,0.57)),
                          url('${HERO_BG}') center/cover no-repeat`,
@@ -581,7 +582,7 @@ function JobSeekersPage() {
         >
           <div className="flex flex-col" style={{ width: 840 }}>
             <h1
-              className="font-poppins font-bold text-white m-0"
+              className="font-poppins font-bold font-weight-700 m-0 text-[#fff]"
               style={{ fontSize: 80, lineHeight: '1.5em', letterSpacing: '-0.001875em' }}
             >
               For Job Seekers
@@ -590,26 +591,20 @@ function JobSeekersPage() {
               className="font-poppins font-bold m-0"
               style={{ fontSize: 30, lineHeight: '1.5em', letterSpacing: '-0.005em', color: '#FF3300' }}
             >
-              Pay professional fees ONLY after getting an Offer Letter.
+              Pay professional fees <span className="text-[#fff]">ONLY</span> after getting an Offer Letter.
             </p>
           </div>
 
           <p
-            className="font-poppins font-normal text-white m-0"
-            style={{ fontSize: 16, lineHeight: '1.5em', letterSpacing: '-0.009375em', width: 704 }}
+            className="font-poppins text-white m-0"
+            style={{ fontSize: 16, fontWeight: 400, lineHeight: 'normal', letterSpacing: '-0.15px', width: 704 }}
           >
-            Secure a sponsored job in Australia with Esante.
-            We specialize in 482, 186, and PR visa pathways for skilled professionals.
+            Secure a sponsored job in Australia with <span style={{ fontWeight: 700 }}>Esante</span>.<br />
+            <span style={{ fontWeight: 800 }}>We specialize in 482, 186, and PR visa pathways for skilled professionals.</span>
             <br /><br />
-            Australia continues to face a critical shortage of skilled professionals across
-            healthcare, trades, hospitality, construction, mining, engineering and
-            professional services.
-            <br />
-            At Esante, we specialise in connecting skilled job seekers from around the world
-            with verified Australian employers — through legitimate job offers,
-            employer-sponsored visas and permanent residency pathways.
-            From your first interview to settling in Australia, we manage the entire
-            recruitment and migration journey — ethically, transparently and professionally.
+            Australia continues to face a critical shortage of skilled professionals across healthcare, trades, hospitality, construction, mining, engineering and professional services.<br />
+            At <span style={{ fontWeight: 700 }}>Esante</span>, we specialise in <span style={{ fontWeight: 700 }}>connecting skilled job seekers from around the world with verified Australian employers</span> — through legitimate job offers, employer-sponsored visas and permanent residency pathways.<br />
+            From your first interview to settling in Australia, we manage the entire recruitment and migration journey — ethically, transparently and professionally.
           </p>
 
           <button
@@ -641,24 +636,26 @@ function JobSeekersPage() {
 
         {/* ═══ 3. TOP IN-DEMAND JOBS ═════════════════════════════════════════ */}
         <section
-          className="flex flex-col items-center gap-[25px] px-[100px] py-[80px] w-full"
-          style={{ background: '#FFFBE9' }}
+          className="flex flex-col items-center py-[80px] w-screen"
+          style={{ background: '#FFFBE9', marginLeft: 'calc(-50vw + 50%)' }}
         >
-          <div className="flex flex-col items-center w-full">
-            <h2 className="font-poppins font-bold m-0 text-center" style={{ fontSize: 74, lineHeight: '1.5em', letterSpacing: '-0.002027em', color: '#00352B' }}>
-              Top In-Demand Jobs
-            </h2>
-            <p className="font-poppins font-normal m-0 text-center" style={{ fontSize: 16, lineHeight: '1.5em', letterSpacing: '-0.009375em', width: 724, color: '#00352B' }}>
-              Legal pathways to employment abroad, including skilled migration, corporate,
-              and talent programs. Legal pathways to employment abroad, including
-            </p>
-          </div>
-          <div className="flex flex-row items-stretch gap-[30px] py-[10px] w-full">
-            {JOB_CARDS_ROW1.map((c) => <JobCard key={c.title} {...c} />)}
-          </div>
-          <div className="flex flex-row items-stretch gap-[30px] py-[10px] w-full">
-            {JOB_CARDS_ROW2.map((c) => <JobCard key={c.title} {...c} />)}
-            <SeeFullListCard />
+          <div className="flex flex-col items-center gap-[25px] px-[100px] w-full max-w-[1440px]">
+            <div className="flex flex-col items-center w-full">
+              <h2 className="font-poppins font-bold m-0 text-center" style={{ fontSize: 74, lineHeight: '1.5em', letterSpacing: '-0.002027em', color: '#00352B' }}>
+                Top In-Demand Jobs
+              </h2>
+              <p className="font-poppins font-normal m-0 text-center" style={{ fontSize: 16, lineHeight: '1.5em', letterSpacing: '-0.009375em', width: 724, color: '#00352B' }}>
+                Legal pathways to employment abroad, including skilled migration, corporate,
+                and talent programs. Legal pathways to employment abroad, including
+              </p>
+            </div>
+            <div className="flex flex-row items-stretch gap-[30px] py-[10px] w-full">
+              {JOB_CARDS_ROW1.map((c) => <JobCard key={c.title} {...c} />)}
+            </div>
+            <div className="flex flex-row items-stretch gap-[30px] py-[10px] w-full">
+              {JOB_CARDS_ROW2.map((c) => <JobCard key={c.title} {...c} />)}
+              <SeeFullListCard />
+            </div>
           </div>
         </section>
 
