@@ -63,7 +63,7 @@ export default function MigrationAdvisorsPage() {
     <div className="migration-advisors-page flex flex-col w-full bg-white">
       <Header />
 
-      <main style={{ paddingTop: '120px' }}>
+      <main>
 
         {/* ── Hero ── */}
         <section className="w-full max-w-[1280px] mx-auto px-6 pt-6 pb-12">

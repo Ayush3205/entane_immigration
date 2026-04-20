@@ -104,7 +104,7 @@ export default function RecruitmentPage() {
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
 
-      <main className="flex flex-col w-full max-w-[1440px] mx-auto" style={{ paddingTop: 120 }}>
+      <main className="flex flex-col w-full max-w-[1440px] mx-auto">
         <section className="flex flex-col items-center px-6 md:px-[60px] lg:px-[100px] pt-[48px] pb-[32px] text-center">
           <h1
             className="font-poppins font-bold text-[#00352B] m-0"

@@ -308,7 +308,7 @@ function NewsBlogsPage() {
   return (
     <div className="news-blogs-page">
       <Header />
-      <main style={{ paddingTop: '120px' }}>
+      <main>
         <div className="bg-white flex flex-col" style={{ gap: '65px' }}>
 
           {/* ── Hero / Header Section (96px gap from navbar per Figma) ── */}
