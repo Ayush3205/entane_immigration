@@ -20,27 +20,7 @@ const HERO_VIDEO_URL = 'https://cdn.jsdelivr.net/npm/video-media-samples@1.0.0/b
 const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 const easeOutCubic   = (t) => 1 - Math.pow(1 - t, 3);
 
-// Slower, custom smooth scroll function
-const customSmoothScrollTo = (targetY, duration) => {
-  const startY = window.scrollY || document.documentElement.scrollTop;
-  const change = targetY - startY;
-  const startTime = performance.now();
 
-  // Gentle ease in out cubic for pleasing scroll
-  const easeInOut = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-  const animateScroll = (currentTime) => {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const easedProgress = easeInOut(progress);
-    window.scrollTo(0, startY + change * easedProgress);
-
-    if (progress < 1) {
-      requestAnimationFrame(animateScroll);
-    }
-  };
-  requestAnimationFrame(animateScroll);
-};
 
 const HOME_FAQ_ITEMS = [
   {
