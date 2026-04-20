@@ -222,25 +222,7 @@ function HomePage() {
       const vw  = window.innerWidth;
       const vh  = window.innerHeight;
 
-      // 0. Auto-Snap to Australia Section after Morph
-      if (!autoScrollState.current.active && autoScrollTargetRef.current) {
-        const prevY = autoScrollState.current.lastY;
-        
-        // If scrolling downwards and we are looking at the bottom of the Dream section
-        // (Australia section is taking up the bottom half or third of the viewport)
-        if (y > prevY) {
-          const rect = autoScrollTargetRef.current.getBoundingClientRect();
-          // Trigger when the Australia Section is visibly entering the screen,
-          // roughly when its top is at 75% of the viewport height (so 25% of it is visible),
-          // but stop triggering if we're already almost there.
-          if (rect.top < vh * 0.75 && rect.top > 50) {
-            autoScrollState.current.active = true;
-            // Native smooth scroll is too fast (~300ms). Use custom 1800ms slower scroll.
-            customSmoothScrollTo(y + rect.top, 1800);
-            setTimeout(() => { autoScrollState.current.active = false; }, 1900);
-          }
-        }
-      }
+      // 0. Auto-Snap to Australia Section after Morph (Disabled to remove lag)
       autoScrollState.current.lastY = y;
 
       // 1. Header scroll state is now managed inside Header.js itself —

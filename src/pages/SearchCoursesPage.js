@@ -573,7 +573,7 @@ export default function SearchCoursesPage() {
     <div style={{ fontFamily: 'Poppins', background: '#fff', minHeight: '100vh' }}>
       <Header />
 
-      <main style={{ paddingTop: 120 }}>
+      <main>
 
         {/* ══════════════════════════════════════
             HERO SECTION

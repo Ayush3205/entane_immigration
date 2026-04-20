@@ -66,23 +66,21 @@ const AustraliaSection = () => {
       ref={sectionRef}
       className="w-full bg-white overflow-hidden -my-[4px] relative z-10"
     >
-      <div className="w-full min-h-[740px] grid grid-cols-1 lg:grid-cols-2 items-stretch">
-        
+      <div className="w-full min-h-[calc(100vh-90px)] lg:h-[calc(100vh-90px)] lg:min-h-0 grid grid-cols-1 lg:grid-cols-2 items-stretch">
+
         {/* Left Column */}
-        <div className="bg-cream px-5 py-[36px] md:px-[50px] md:py-[40px] lg:pl-[max(100px,calc((100vw-1436px)/2))] lg:pr-[60px] lg:py-[48px] flex flex-col justify-center min-h-full">
-          
-          <h2 
-            className={`font-poppins text-[24px] md:text-[36px] lg:text-[45px] font-medium leading-[1.2] text-primary mb-6 transition-all duration-[650ms] ease-out ${
-              isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[20px] scale-[0.98]'
-            }`}
+        <div className="bg-cream px-5 py-[40px] md:px-[50px] md:py-[60px] lg:pl-[max(100px,calc((100vw-1436px)/2))] lg:pr-[60px] lg:py-[40px] flex flex-col justify-center min-h-full">
+
+          <h2
+            className={`font-poppins text-[24px] md:text-[36px] lg:text-[45px] font-medium leading-[1.2] text-primary mb-6 transition-all duration-[650ms] ease-out ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[20px] scale-[0.98]'
+              }`}
           >
             Why <span className="text-accent italic tracking-[-0.15px]">Australia</span> is the Global Destination of Choice
           </h2>
-          
-          <p 
-            className={`font-poppins text-[14px] md:text-[16px] lg:text-[18px] font-normal leading-[1.62] text-text-dark mb-[32px] lg:mb-[40px] max-w-[575px] transition-all duration-[650ms] ease-out delay-[120ms] ${
-              isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
-            }`}
+
+          <p
+            className={`font-poppins text-[14px] md:text-[16px] lg:text-[18px] font-normal leading-[1.62] text-text-dark mb-[32px] lg:mb-[40px] max-w-[575px] transition-all duration-[650ms] ease-out delay-[120ms] ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[18px]'
+              }`}
           >
             With 42 top universities, studying in Australia offers high-quality
             education, career opportunities, and cultural experience. It is known
@@ -93,10 +91,9 @@ const AustraliaSection = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-[24px] md:gap-y-[32px] gap-x-[40px]">
             {/* Stat Box 1 */}
-            <div 
-              className={`group text-left py-4 rounded-xl transition-all duration-[450ms] ease-out hover:bg-primary/5 ${
-                isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[16px]'
-              } ${STATS[0].delay}`}
+            <div
+              className={`group text-left py-4 rounded-xl transition-all duration-[450ms] ease-out hover:bg-primary/5 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[16px]'
+                } ${STATS[0].delay}`}
             >
               <h3 className="text-[32px] md:text-[40px] font-bold text-accent mb-2 font-poppins leading-[1.2] tracking-[-0.15px] inline-block origin-left transition-colors transition-transform duration-[350ms] ease-out group-hover:text-primary group-hover:scale-[1.02]">
                 {stat1}{STATS[0].suffix}
@@ -107,10 +104,9 @@ const AustraliaSection = () => {
             </div>
 
             {/* Stat Box 2 */}
-            <div 
-              className={`group text-left py-4 rounded-xl transition-all duration-[450ms] ease-out hover:bg-primary/5 ${
-                isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[16px]'
-              } ${STATS[1].delay}`}
+            <div
+              className={`group text-left py-4 rounded-xl transition-all duration-[450ms] ease-out hover:bg-primary/5 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[16px]'
+                } ${STATS[1].delay}`}
             >
               <h3 className="text-[32px] md:text-[40px] font-bold text-accent mb-2 font-poppins leading-[1.2] tracking-[-0.15px] inline-block origin-left transition-colors transition-transform duration-[350ms] ease-out group-hover:text-primary group-hover:scale-[1.02]">
                 {stat2}{STATS[1].suffix}
@@ -121,10 +117,9 @@ const AustraliaSection = () => {
             </div>
 
             {/* Stat Box 3 */}
-            <div 
-              className={`group col-span-1 text-left py-4 rounded-xl transition-all duration-[450ms] ease-out hover:bg-primary/5 ${
-                isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[16px]'
-              } ${STATS[2].delay}`}
+            <div
+              className={`group col-span-1 text-left py-4 rounded-xl transition-all duration-[450ms] ease-out hover:bg-primary/5 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[16px]'
+                } ${STATS[2].delay}`}
             >
               <h3 className="text-[32px] md:text-[40px] font-bold text-accent mb-2 font-poppins leading-[1.2] tracking-[-0.15px] inline-block origin-left transition-colors transition-transform duration-[350ms] ease-out group-hover:text-primary group-hover:scale-[1.02]">
                 {stat3}{STATS[2].suffix}
@@ -137,27 +132,44 @@ const AustraliaSection = () => {
         </div>
 
         {/* Right Column */}
-        <div 
-          className={`relative min-h-[180px] md:min-h-[220px] lg:min-h-full overflow-hidden transition-all duration-[850ms] ease-out delay-[80ms] ${
-            isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[56px] scale-[0.94]'
-          }`}
+        <div
+          className={`relative min-h-[180px] md:min-h-[220px] lg:min-h-full overflow-hidden transition-all duration-[850ms] ease-out delay-[80ms] ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[56px] scale-[0.94]'
+            }`}
         >
           {/* Background Image */}
-          <div 
+          <div
             className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-[900ms] "
             style={{ backgroundImage: 'url(/images/home-page/australia.png)' }}
           />
-          
-          {/* Overlay Image Envelope */}
+
+          {/* Overlay Images Envelope */}
           <div className="absolute top-[8%] left-0 w-full h-[88%] flex items-center justify-center p-4 md:p-6">
-            <img 
-              src="/images/home-page/overlay-image.png" 
-              alt="Australia Illustration" 
-              className={`max-w-[220px] max-h-[170px] md:max-w-[280px] md:max-h-[220px] lg:max-w-full lg:max-h-[85%] w-auto h-auto object-contain block rounded-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[1000ms] delay-[300ms] ${
-                isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[40px] scale-[0.5]'
-              }`} 
-              style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-            />
+            <div className="grid grid-cols-2 gap-0 max-w-[220px] md:max-w-[280px] lg:max-h-[85%] lg:max-w-[60%]">
+              <img
+                src="/images/home-page/overlay-top-1.png"
+                alt="Australia Illustration Top Left"
+                className={`w-full h-full object-cover block rounded-tl-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[1000ms] delay-[150ms] ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[40px] scale-[0.5]'}`}
+                style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+              />
+              <img
+                src="/images/home-page/overlay-top-2.png"
+                alt="Australia Illustration Top Right"
+                className={`w-full h-full object-cover block rounded-tr-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[1000ms] delay-[300ms] ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[40px] scale-[0.5]'}`}
+                style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+              />
+              <img
+                src="/images/home-page/overlay-bottom-1.png"
+                alt="Australia Illustration Bottom Left"
+                className={`w-full h-full object-cover block rounded-bl-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[1000ms] delay-[450ms] ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[40px] scale-[0.5]'}`}
+                style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+              />
+              <img
+                src="/images/home-page/overlay-bottom-2.png"
+                alt="Australia Illustration Bottom Right"
+                className={`w-full h-full object-cover block rounded-br-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[1000ms] delay-[600ms] ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[40px] scale-[0.5]'}`}
+                style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
+              />
+            </div>
           </div>
         </div>
 

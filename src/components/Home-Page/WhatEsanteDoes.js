@@ -108,10 +108,10 @@ const WhatEsanteDoes = () => {
               We bridge the gap between global talent and Australian employers. With a structured recruitment approach, we help skilled professionals secure the right opportunities in high-demand sectors.
             </p>
             <ul className="what-esante-card-list">
-              <li>Personalised migration assessment</li>
-              <li>Skilled occupation & eligibility guidance</li>
-              <li>End-to-end documentation support</li>
-              <li>Transparent and ethical advice</li>
+              <li>Access to verified Australian employers</li>
+              <li>Profile screening & job matching</li>
+              <li>Interview preparation & support</li>
+              <li>End-to-end recruitment coordination</li>
             </ul>
             <button className="what-esante-btn">Learn More</button>
           </div>
