@@ -19,16 +19,13 @@ const COACH_W = 644;
 /* ── Testimonial data — local images from public/images ── */
 const CARDS = [
   {
-    img:  '/images/ielts-testi-1.png',
-    city: 'Melbourne (State of Victoria)', quote: '"Changed how I study for IELTS entirely."',              uni: 'The University of Melbourne',         hasOverlay: true,
+    img:  '/images/ielts-testi-1.png', quote: '"Changed how I study for IELTS entirely."',              uni: 'The University of Melbourne',         hasOverlay: true,
   },
   {
-    img:  '/images/ielts-testi-2.png',
-    city: 'Sydney (New South Wales)',      quote: '"My PTE score went from 58 to 79 in 6 weeks."',         uni: 'University of Sydney',                hasOverlay: true,
+    img:  '/images/ielts-testi-2.png', quote: '"My PTE score went from 58 to 79 in 6 weeks."',         uni: 'University of Sydney',                hasOverlay: true,
   },
   {
-    img:  '/images/ielts-testi-3.png',
-    city: 'Brisbane (Queensland)',         quote: '"Genuine coaching, real confidence builder."',           uni: 'Queensland University of Technology', hasOverlay: true,
+    img:  '/images/ielts-testi-3.png', quote: '"Genuine coaching, real confidence builder."',           uni: 'Queensland University of Technology', hasOverlay: true,
   },
   {
     /* Card 4 — plain image, no overlay (play button) */
