@@ -317,7 +317,7 @@ function PartTimeJobSupportPage() {
             <div className="hidden xl:block">
               <p className="m-0">
                 For international students, finding a part-time job in Australia is not optional — it&apos;s essential. Rent,<br />
-                groceries, transport, and daily expenses depend on it. At Esanté, we understand this reality because<br />
+                groceries, transport, and daily expenses depend on it. At Esante``, we understand this reality because<br />
                 we are on the ground in Australia.
               </p>
               <p className="m-0 mt-[10px]">
@@ -345,7 +345,7 @@ function PartTimeJobSupportPage() {
               Get Part-Time Work<br />Faster
             </p>
             <p className="font-poppins text-[#000] m-0" style={{ fontSize: 'clamp(16px, 2vw, 21px)', fontStyle: 'italic', fontWeight: 500, lineHeight: '38px', letterSpacing: '-0.15px' }}>
-              Esante works closely with multiple verified part-<br className="hidden lg:block" />time job partners across Australia, including:
+              Esante works closely with multiple verified part-time job partners across Australia, including:
             </p>
           </div>
           <ul className="flex flex-col items-start list-none pl-0 m-0 pt-[27px] lg:-ml-[30px] w-full lg:w-[480px] gap-[8px]">
