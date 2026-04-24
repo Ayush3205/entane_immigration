@@ -103,7 +103,7 @@ const AboutUs = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 via-30% to-transparent" />
         <div className="relative z-10 text-center max-w-[960px] pt-[120px] px-5 pb-[60px]">
-          <p className="text-[16px] font-medium leading-[1.5] tracking-[-0.15px] text-primary underline underline-offset-4 mb-6">
+          <p className="text-[28px] font-medium leading-[1.5] tracking-[-0.15px] text-primary underline underline-offset-4 mb-6">
             About Us
           </p>
           <h2 className="text-[52px] font-light leading-[0.98] text-primary mb-7">
