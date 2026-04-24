@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CTA_BG = '/images/home-page/book-free-call-banner-bg.png';
+const CTA_BG = '/images/book-free-call-banner-bg.png';
 
 const EsanteBanner = () => {
   return (

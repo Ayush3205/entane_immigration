@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Header from '../components/Reusable/Header';
 import Footer from '../components/Reusable/Footer';
+import EsanteBanner from '../components/Reusable/EsanteBanner';
 
 /* ── Local images ── */
 const imgCoach  = '/images/ielts-coach.png';
 const imgJosh   = '/images/ielts-josh-photo.png';
-const imgBanner = '/images/home-page/book-free-call-banner-bg.png';
 
 /* Hero background is a local asset (1440×982 building photo) */
 const HERO_BG = '/images/ielts-hero-bg.png';
@@ -547,73 +547,8 @@ function IeltsPteCoachingPage() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════════════════════
-            CLOSING BANNER  (Group 82 — 257:1536)
-            1259×367 group: image at left=106, heading overlay centred at top=59
-            Sub-text + Book Free Call button inside image
-            Same structure as PostArrivalSupportPage closing section
-        ══════════════════════════════════════════════════════════ */}
-        <section className="w-full flex justify-center mb-[69px]">
-          <div className="relative" style={{ width: 1259, height: 367 }}>
-
-            {/* Background image container — left=106 rounded-[37px] */}
-            <div
-              className="absolute rounded-[37px] overflow-hidden"
-              style={{ left: 106, top: 0, width: 1047, height: 367 }}
-            >
-              <img
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover"
-                src={imgBanner}
-              />
-
-              {/* Sub-text: centred at x=523 within image, top=214 */}
-              <p
-                className="absolute font-poppins text-[23px] text-center capitalize tracking-[-0.15px] whitespace-pre-wrap"
-                style={{
-                  color: 'rgba(255,255,255,0.9)',
-                  left: 523 - 354,   /* 523 – 708/2 = 169 */
-                  top: 214,
-                  width: 708,
-                  lineHeight: 'normal',
-                }}
-              >
-                Let our experts in Brisbane guide you every step of the way.
-              </p>
-
-              {/* Book Free Call button: left=433 top=283 181×36 (opens lead form) */}
-              <button
-                type="button"
-                onClick={openConsultation}
-                className="absolute bg-white flex items-center justify-center rounded-[16px] overflow-hidden"
-                style={{ left: 433, top: 283, width: 181, height: 36 }}
-              >
-                <span
-                  className="font-normal text-[19px] text-primary tracking-[-0.15px]"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Book Free Call
-                </span>
-              </button>
-            </div>
-
-            {/* Heading overlay — spans full 1259 px width, top=59 */}
-            <div
-              className="absolute w-full flex flex-col items-center font-poppins text-center text-white tracking-[-0.96px]"
-              style={{ top: 59 }}
-            >
-              <p className="text-[42px] font-normal mb-0" style={{ lineHeight: 1 }}>
-                Think of
-              </p>
-              <p className="text-[48px] font-semibold italic mb-0" style={{ lineHeight: 1 }}>
-                Esante as your Australia-study partner
-              </p>
-              <p className="text-[42px] font-normal mb-0" style={{ lineHeight: 1 }}>
-                not just an agent.
-              </p>
-            </div>
-          </div>
-        </section>
+        {/* ── CTA BANNER (reusable) ── */}
+        <EsanteBanner />
 
         </div>
       </div>

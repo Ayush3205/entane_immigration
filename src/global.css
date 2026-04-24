@@ -3725,10 +3725,10 @@ img {
   max-width: 683px;
 }
 
-/* Card strip — full viewport width, proportions: 403fr 636fr 400fr */
+/* Card strip — full viewport width, equal card sizes */
 .service-cards-strip {
   display: grid;
-  grid-template-columns: 403fr 636fr 400fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
   width: 100vw;
   position: relative;
