@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Header from "../components/Reusable/Header";
 import Footer from "../components/Reusable/Footer";
+import EsanteBanner from "../components/Reusable/EsanteBanner";
 
 const HERO_BG = "/images/airport-hero-bg.png";
 const AIRPLANE = "/images/passenger-jet.png";
 const WHAT_WE_DO_IMG = "/images/airport-we_do-bg.png";
-const CTA_BG = "/images/esante-cta-bg.png";
 
 const WHAT_WE_DO_IMG_SHADOW =
   "14px 18px 32px rgba(0, 0, 0, 0.48), 8px 10px 18px rgba(0, 0, 0, 0.32)";
@@ -364,41 +364,8 @@ function AirportServicesPage() {
           </div>
         </section>
 
-        {/* ── CTA BANNER — below FAQ: Think of Esante… ── */}
-        <div className="relative w-full max-w-[1259px] mx-auto mb-16 md:mb-[84px] px-0 mt-4">
-          <div className="relative w-full min-h-[280px] sm:min-h-[320px] md:h-[367px] rounded-[28px] md:rounded-[37px] overflow-hidden">
-            <img
-              src={CTA_BG}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="relative z-[1] flex flex-col items-center justify-center text-center px-6 py-10 md:py-12 md:px-12 min-h-[280px] sm:min-h-[320px] md:min-h-[367px]">
-              <div className="flex flex-col items-center gap-0">
-                <p className="font-poppins text-[clamp(24px,4vw,42px)] font-normal leading-[1.15] text-white tracking-[-0.02em] m-0">
-                  Think of
-                </p>
-                <p className="font-poppins text-[clamp(26px,4.5vw,48px)] font-semibold italic leading-[1.15] text-white tracking-[-0.02em] m-0">
-                  Esante as your Australia-study partner
-                </p>
-                <p className="font-poppins text-[clamp(24px,4vw,42px)] font-normal leading-[1.15] text-white tracking-[-0.02em] m-0">
-                  not just an agent.
-                </p>
-              </div>
-              <p className="font-poppins text-[clamp(16px,2.2vw,23px)] font-normal leading-[1.45] text-white/90 text-center max-w-[708px] mt-6 md:mt-8 capitalize tracking-[-0.15px]">
-                Let Our Experts In Brisbane Guide You Every Step Of The Way.
-              </p>
-              <button
-                type="button"
-                onClick={openConsultation}
-                className="mt-6 md:mt-8 inline-flex items-center justify-center bg-white rounded-2xl px-6 py-2.5 min-h-[44px] border-0 cursor-pointer"
-              >
-                <span className="font-poppins text-[17px] md:text-[19px] font-medium text-primary tracking-[-0.15px]">
-                  Book Free Call
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
+        {/* ── CTA BANNER (reusable) ── */}
+        <EsanteBanner />
       </div>
 
       <Footer />

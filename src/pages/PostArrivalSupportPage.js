@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Header from '../components/Reusable/Header';
 import Footer from '../components/Reusable/Footer';
+import EsanteBanner from '../components/Reusable/EsanteBanner';
 
 
 const ASSET_BASE = process.env.PUBLIC_URL || '';
@@ -19,7 +20,6 @@ const imgArrivalIcon = `${ASSET_BASE}/images/post-arrival/arrival-icon.png`;
 const imgOnboardIcon = `${ASSET_BASE}/images/post-arrival/onboard-icon.png`;
 const imgHostelIcon = `${ASSET_BASE}/images/post-arrival/hostel-icon.png`;
 const imgJobIcon = `${ASSET_BASE}/images/post-arrival/job-icon.png`;
-const imgBanner = `${ASSET_BASE}/images/post-arrival/banner.png`;
 
 const SUPPORT_CARDS = [
   { img: imgArrivalIcon, imgScale: 1.3, title: 'Arrival Essentials', subtitle: 'SIM • TFN • Bank • Super • OSHC • USI', text: 'Get set up from day one. We help you activate your SIM, open a bank account, apply for TFN, set up superannuation, USI, and health cover — without confusion or delays.' },
@@ -579,77 +579,10 @@ function PostArrivalSupportPage() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════════════
-            CLOSING BANNER
-            Figma: group 1259×367 px, image offset left=106
-            Text heading overlays from top=59
-            Sub-text + "Book Free Call" inside the image
-            Gap from cards section: 108 px
-        ══════════════════════════════════════════════════ */}
-        <section className="w-full flex justify-center mt-[108px] mb-[69px]">
-          {/* Outer group: 1259×367 */}
-          <div className="relative" style={{ width: 1259, height: 367 }}>
-
-            {/* Background image container — left=106, full height */}
-            <div
-              className="absolute rounded-[37px] overflow-hidden"
-              style={{ left: 106, top: 0, width: 1047, height: 367 }}
-            >
-              <img
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover"
-                src={imgBanner}
-              />
-
-              {/* Sub-text inside image — Figma: top=214, centred at x=523 within image */}
-              <p
-                className="absolute font-poppins text-[23px] text-center capitalize tracking-[-0.15px] whitespace-pre-wrap"
-                style={{
-                  color: 'rgba(255,255,255,0.9)',
-                  left: 523 - 354,   /* 523 – (708/2) = 169 */
-                  top: 214,
-                  width: 708,
-                  lineHeight: 'normal',
-                }}
-              >
-                Let our experts in Brisbane guide you every step of the way.
-              </p>
-
-              {/* Book Free Call button — Figma: left=433 top=283, 181×36 */}
-              <a
-                href="#contact"
-                className="absolute bg-white flex items-center justify-center rounded-[16px] overflow-hidden"
-                style={{ left: 433, top: 283, width: 181, height: 36 }}
-              >
-                <span
-                  className="font-normal text-[19px] text-primary tracking-[-0.15px]"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Book Free Call
-                </span>
-              </a>
-            </div>
-
-            {/* Heading text overlay — spans full 1259 px group width, top=59 */}
-            <div
-              className="absolute w-full flex flex-col items-center font-poppins text-center text-white tracking-[-0.96px]"
-              style={{ top: 59 }}
-            >
-              <p className="text-[42px] font-normal mb-0" style={{ lineHeight: 1 }}>
-                Think of
-              </p>
-              <p
-                className="text-[48px] font-semibold italic mb-0"
-                style={{ lineHeight: 1 }}
-              >
-                Esante as your Australia-study partner
-              </p>
-              <p className="text-[42px] font-normal mb-0" style={{ lineHeight: 1 }}>
-                not just an agent.
-              </p>
-            </div>
-          </div>
-        </section>
+        {/* ── CTA BANNER (reusable) ── */}
+        <div className="mt-[108px]">
+          <EsanteBanner />
+        </div>
 
       </main>
 
