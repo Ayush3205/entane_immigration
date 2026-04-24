@@ -6,7 +6,7 @@ function BookConsultationPage() {
   return (
     <div className="service-page">
       <Header />
-      <main className="service-page__main" style={{ paddingTop: 120, paddingBottom: 80 }}>
+      <main className="service-page__main" style={{ paddingTop: 30, paddingBottom: 80 }}>
         <section className="container">
           <h1>Book 1:1 Consultation</h1>
           <p>Schedule a personalised consultation with our experts.</p>

@@ -177,7 +177,7 @@ export default function AncillaryServicesPage() {
       <Header />
 
       <main className="flex flex-col w-full bg-white" style={{ overflow: 'visible' }}>
-        <div className="flex flex-col items-center w-full pt-[150px] pb-16" style={{ overflow: 'visible' }}>
+        <div className="flex flex-col items-center w-full pt-[60px] pb-16" style={{ overflow: 'visible' }}>
 
           {/* ── Heading and Badge ── layout_NN129N: column/center/gap-16/1240×108 ── */}
           <section

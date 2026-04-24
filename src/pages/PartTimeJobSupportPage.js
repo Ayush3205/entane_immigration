@@ -158,7 +158,7 @@ function PartTimeJobSupportPage() {
       <div className="flex flex-col w-full max-w-[1440px] mx-auto px-6 lg:px-[100px]">
 
         {/* ── Hero text block — centered, Figma alignment ── */}
-        <div className="flex flex-col items-center self-stretch bg-white pt-[120px] sm:pt-[160px] md:pt-[186px] pb-10 md:pb-[67px] max-w-[900px] mx-auto w-full">
+        <div className="flex flex-col items-center self-stretch bg-white pt-[30px] sm:pt-[70px] md:pt-[96px] pb-10 md:pb-[67px] max-w-[900px] mx-auto w-full">
           {/* Page label — Poppins 500, underlined forest green */}
           <span className="font-poppins font-medium text-[clamp(18px,2.6vw,28px)] leading-[1.4] tracking-[-0.02em] text-[#00352B] mb-4 text-center underline decoration-[#00352B] decoration-2 underline-offset-[6px]">
             Part-Time Job Support in Australia
