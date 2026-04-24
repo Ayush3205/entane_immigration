@@ -193,7 +193,7 @@ function PostArrivalSupportPage() {
             HERO SECTION
             Figma: label y=174 from white-rect top, centered
         ══════════════════════════════════════════════════ */}
-        <section className="flex flex-col items-center w-full pt-[174px] pb-[96px]">
+        <section className="flex flex-col items-center w-full pt-[84px] pb-[96px]">
 
           {/* Label */}
           <p

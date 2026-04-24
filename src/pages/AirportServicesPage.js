@@ -102,15 +102,14 @@ function AirportServicesPage() {
     <div className="flex flex-col items-start w-full bg-white">
       <Header />
 
-      <div className="flex flex-col items-center self-stretch w-full max-w-[1440px] mx-auto bg-white px-6 lg:px-[100px] pt-[94px]">
+      <div className="flex flex-col items-center self-stretch w-full max-w-[1440px] mx-auto bg-white px-6 lg:px-[100px] pt-0">
         {/* ── HERO ── */}
         <div
-          className="relative w-screen mb-[120px] mt-[10px]"
+          className="relative w-screen mb-[120px]"
           style={{ marginLeft: "calc(-50vw + 61%)" }}
         >
           {/* Hero image container */}
-          <div
-            className="relative overflow-hidden w-full h-[calc(100vh-104px)]">
+          <div className="relative overflow-hidden w-full h-[90vh]">
             <img
               alt=""
               src={HERO_BG}
@@ -198,7 +197,7 @@ function AirportServicesPage() {
           <div
             className="absolute pointer-events-none max-md:hidden"
             style={{
-              bottom: "-33px", // lower than before
+              bottom: "-100px", // lower than before
               left: "20px",
               width: "clamp(280px, 36vw, 520px)", // smaller
               height: "clamp(130px, 17vw, 245px)", // smaller

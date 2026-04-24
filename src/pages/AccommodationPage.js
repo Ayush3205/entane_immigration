@@ -192,7 +192,7 @@ export default function AccommodationPage() {
       <Header />
 
       <main className="flex flex-col w-full max-w-[1440px] mx-auto bg-[#FFFFFF]">
-        <div className="flex flex-col items-center w-full pt-[130px] pb-16 px-[100px]">
+        <div className="flex flex-col items-center w-full pt-[40px] pb-16 px-[100px]">
           {/* Hero: text block — matches reference design */}
           <section className="flex flex-col items-center w-full max-w-[1192px] mb-[64px] gap-0">
             {/* Page label — underlined, dark green */}

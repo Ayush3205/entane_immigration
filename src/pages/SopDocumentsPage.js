@@ -22,7 +22,7 @@ export default function SopDocumentsPage() {
       <Header />
 
       <div className="flex flex-col w-full overflow-x-hidden">
-        <div className="flex flex-col items-center w-full bg-white pb-[67px] pt-[172px] px-6 sm:px-10 lg:px-[100px]">
+        <div className="flex flex-col items-center w-full bg-white pb-[67px] pt-[82px] px-6 sm:px-10 lg:px-[100px]">
 
           {/* ── Hero Text Section — Figma: centered 1192 max ── */}
           <section
