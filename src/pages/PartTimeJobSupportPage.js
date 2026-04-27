@@ -344,7 +344,7 @@ function PartTimeJobSupportPage() {
             <p className="font-poppins text-[#FF3300] m-0 mb-4" style={{ fontSize: 'clamp(28px, 4vw, 45px)', fontStyle: 'italic', fontWeight: 500, lineHeight: '120%', letterSpacing: '-0.15px' }}>
               Get Part-Time Work<br />Faster
             </p>
-            <p className="font-poppins text-[#000] m-0" style={{ fontSize: 'clamp(16px, 2vw, 21px)', fontStyle: 'italic', fontWeight: 500, lineHeight: '38px', letterSpacing: '-0.15px' }}>
+            <p className="font-poppins text-[#000] m-0" style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontStyle: 'italic', fontWeight: 500, lineHeight: '38px', letterSpacing: '-0.15px' }}>
               Esante works closely with multiple verified part-time job partners across Australia, including:
             </p>
           </div>

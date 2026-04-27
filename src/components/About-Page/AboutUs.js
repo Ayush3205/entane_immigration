@@ -101,8 +101,8 @@ const AboutUs = () => {
         className="relative min-h-[900px] bg-cover bg-center bg-no-repeat flex items-start justify-center"
         style={{ backgroundImage: `url(${process.env.PUBLIC_URL || ''}/images/about-us/hero-bg.png)` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 via-30% to-transparent" />
-        <div className="relative z-10 text-center max-w-[960px] pt-[120px] px-5 pb-[60px]">
+        {/* Keep hero image colors true-to-source (no white wash overlay) */}
+        <div className="relative z-10 text-center max-w-[960px] pt-[30px] px-5 pb-[60px]">
           <p className="text-[28px] font-medium leading-[1.5] tracking-[-0.15px] text-primary underline underline-offset-4 mb-6">
             About Us
           </p>
