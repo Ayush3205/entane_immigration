@@ -47,7 +47,7 @@ const CARDS = [
   {
     img: '/images/anc-img-63.png',
     alt: 'Part-time job',
-    label: 'PART TIME',
+    label: 'PART TIME JOB',
     x: 195, y: 26, rotate: 18, z: 2, br: 28,
     grayscale: true, opacity: 1,
   },
@@ -188,7 +188,7 @@ export default function AncillaryServicesPage() {
             {/* fills: Primary Color (#00352B) — mixed text runs give line 2 its red/italic */}
             <h1 className="font-poppins text-center" style={{ lineHeight: 1 }}>
               <span
-                className="block font-semibold text-[48px] text-[#00352B]"
+                className="block text-[48px] text-[#00352B]"
                 style={{ letterSpacing: '-0.96px', lineHeight: '54px' }}
               >
                 Ancillary Services
@@ -200,31 +200,13 @@ export default function AncillaryServicesPage() {
                 That Actually Matter
               </span>
             </h1>
-
-            {/* Badge button – layout_MYW2I2: row/center/pad 4px 12px/hug
-                fill_P7T27W #FF3300, borderRadius 16px
-                style_CK69WR: Poppins 500 / 14px / 1.43em / CENTER
-                fills: Light Background #FFFBE9 */}
-            <button
-              type="button"
-              onClick={openConsultation}
-              className="inline-flex justify-center items-center rounded-[16px] border-0 cursor-pointer"
-              style={{ background: '#FF3300', padding: '4px 12px' }}
-            >
-              <span
-                className="font-poppins text-center font-medium"
-                style={{ color: '#FFFBE9', fontSize: 14, lineHeight: '1.43em' }}
-              >
-                Get Free Guidance from Esante
-              </span>
-            </button>
           </section>
 
           {/* ── Supporting text ── layout_PGLZJH: 867×190
               style_29U0JM: Poppins 400 / 20px / 1.5em / CENTER
               fills: fill_6ECEP5 #000000 ── */}
           <section
-            className="flex flex-col items-center w-full mb-[48px]"
+            className="flex flex-col items-center w-full mb-[30px]"
             style={{ maxWidth: 867 }}
           >
             <p
@@ -237,7 +219,23 @@ export default function AncillaryServicesPage() {
               That's where Esante's end-to-end ancillary services come in.
             </p>
           </section>
-
+          {/* Badge button – layout_MYW2I2: row/center/pad 4px 12px/hug
+                fill_P7T27W #FF3300, borderRadius 16px
+                style_CK69WR: Poppins 500 / 14px / 1.43em / CENTER
+                fills: Light Background #FFFBE9 */}
+            <button
+              type="button"
+              onClick={openConsultation}
+              className="inline-flex justify-center items-center rounded-[16px] border-0 cursor-pointer mb-[40px]"
+              style={{ background: '#FF3300', padding: '4px 12px' }}
+            >
+              <span
+                className="font-poppins text-center font-medium"
+                style={{ color: '#FFFBE9', fontSize: 14, lineHeight: '1.43em' }}
+              >
+                Get Free Guidance from Esante
+              </span>
+            </button>
           {/* ── Fan Cards ── layout_678G42 center: 310×407 / layout_GY3D9A: 309×407 ── */}
           <section
             ref={fanSectionRef}

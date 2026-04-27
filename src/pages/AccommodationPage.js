@@ -335,21 +335,24 @@ export default function AccommodationPage() {
           </div>
 
           {/* Section: Long copy — Figma typography (Accent / At Esante / Partner / B2B body) */}
-          <section className="flex flex-col items-center w-full max-w-[1117px] mx-auto mb-[100px] px-4">
+          <section className="flex flex-col items-center w-full max-w-[1300px] mx-auto mb-[100px] px-4">
             <p
-              className="font-poppins text-center text-[#FF3300] mb-8 max-w-[1024px]"
+              className="font-poppins text-[#F30] mb-8 w-full max-w-full whitespace-nowrap"
               style={{
                 fontSize: 30,
+                fontFamily: 'Poppins',
+                textAlign: 'center',
                 fontStyle: 'italic',
                 fontWeight: 600,
                 lineHeight: '150.37%',
                 letterSpacing: '-0.15px',
               }}
             >
-              Finding cheap student accommodation in Australia is one of the biggest challenges for
-              international students — inflated prices, unreliable listings, and hidden fees make it
-              harder than it should be.
+              Finding cheap student accommodation in Australia is one of the biggest<br />
+              challenges for international students — inflated prices, unreliable listings,<br />
+              and hidden fees make it harder than it should be.
             </p>
+
             <p
               className="font-poppins text-center text-black mb-4 max-w-[1024px]"
               style={{
@@ -362,7 +365,7 @@ export default function AccommodationPage() {
               At Esante, we do it differently. We don&apos;t list properties.
             </p>
             <p
-              className="font-poppins text-center text-[#FF3300] mb-4 max-w-[1024px]"
+              className="font-poppins text-center text-[#FF3300] mb-7 max-w-full whitespace-nowrap"
               style={{
                 fontSize: 30,
                 fontWeight: 400,
@@ -395,7 +398,7 @@ export default function AccommodationPage() {
               />
               <div className="flex flex-col items-start flex-1 min-w-0 pt-0">
                 <h2 className="font-poppins font-normal text-[45px] leading-[1.2] tracking-[-0.00333em] text-[#00352B] mb-8 max-w-[603px]">
-                  Why Esante Accommodation Support Is Different
+                  Why <span className="font-semibold italic text-[#FF3300]">Esante</span> Accommodation Support Is Different
                 </h2>
                 <ul className="flex flex-col gap-[12px] list-none p-0 m-0">
                   <li className="font-poppins font-normal text-[22px] leading-[1.2] tracking-[-0.00682em] text-black">

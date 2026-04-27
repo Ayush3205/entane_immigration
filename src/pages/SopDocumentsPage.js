@@ -148,7 +148,7 @@ export default function SopDocumentsPage() {
             </div>
 
             {/* Row 2: Left image, Right text */}
-            <div className="flex flex-col-reverse lg:flex-row lg:items-center items-stretch gap-10 lg:gap-8 xl:gap-10 w-full min-w-0">
+            <div className="flex flex-col-reverse lg:flex-row lg:items-center items-stretch gap-10 lg:gap-8 xl:gap-10 w-full min-w-0 mb-[-70px]">
               <div className="w-full min-w-0 lg:flex-1 lg:basis-0 flex justify-center lg:justify-start">
                 <img
                   src={IMG_79}
@@ -180,7 +180,7 @@ export default function SopDocumentsPage() {
               >
                 <p className="italic mb-0">
                   While other agencies charge{' '}
-                  <span className="font-semibold not-italic">$2,000 - $5,000</span>
+                  <span className="font-semibold not-italic">₹3,000 - ₹5,000 ($75 AUD)</span>
                   {' '}
                   for &quot;copy-paste&quot; services,
                 </p>
@@ -195,10 +195,8 @@ export default function SopDocumentsPage() {
                 </span>
                 <span className="font-semibold italic text-[#00352B] text-[30px] leading-[150%] tracking-[-0.15px]">
                   custom-written SOP service that aligns your career goals with the Department of Home Affairs&apos; strict &quot;Genuine Student&quot; requirements.
-                </span>
-                <p className="font-semibold italic text-[#00352B] text-[30px] leading-[150%] tracking-[-0.15px] mt-4 mb-0">
                   We don&apos;t just write to get you admitted; we write to get you funding.
-                </p>
+                </span>
               </div>
               <button
                 type="button"
