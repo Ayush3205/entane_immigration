@@ -1,10 +1,182 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "../components/Reusable/Header";
 import Footer from "../components/Reusable/Footer";
 import EsanteBanner from "../components/Reusable/EsanteBanner";
 
 const HERO_BG = "/images/recruitment/Hero_Background.png";
 const HERO_OVERLAY = "/images/recruitment/Hero_Overlay.png";
+const SKILLED_PROFESSIONALS_IMAGE =
+  "/images/recruitment/Skilled_Professionals.png";
+const PATHWAY_IMAGE = "/images/recruitment/Pathway_PR.png";
+
+const ROLE_ROWS = [
+  [
+    {
+      icon: "/images/recruitment/medical_team.png",
+      title: "Healthcare",
+      body: "Registered Nurses, Aged Care, GPs.",
+    },
+    {
+      icon: "/images/recruitment/hard_hat.png",
+      title: "Mining & Resources",
+      body: "Boilermakers, Drillers, Fitters.",
+    },
+    {
+      icon: "/images/recruitment/crane.png",
+      title: "Trades & Construction",
+      body: "Carpenters, Electricians, Diesel Motor Mechanics, Welders.",
+    },
+  ],
+  [
+    {
+      icon: "/images/recruitment/team.png",
+      title: "Professional Services",
+      body: "CPAs, Accountants, Engineers.",
+    },
+    {
+      icon: "/images/recruitment/hospitality.png",
+      title: "Hospitality",
+      body: "Chefs, Cooks, Restaurant Managers.",
+    },
+    {
+      featured: true,
+      title: "See full list",
+      body: "View the complete Top in demand jobs list",
+      cta: "Download PDF",
+    },
+  ],
+];
+
+const PATHWAY_POINTS = [
+  {
+    label: "• Employer-Sponsored Visas:",
+    value: "Subclass 482 (TSS) & 186 (ENS).",
+  },
+  {
+    label: "• Skilled Migration:",
+    value: "Subclass 189, 190, & 491.",
+  },
+  {
+    label: "• Regional Migration:",
+    value: "Opportunities in regional areas with priority processing.",
+  },
+];
+
+const SUCCESS_STORIES = [
+  {
+    title: "The Zimbabwe Success",
+    body:
+      "We placed specialized Boilermakers from Zimbabwe into a top Mining firm in WA with full sponsorship.",
+    color: "#FF3300",
+  },
+  {
+    title: "The Kerala Connection",
+    body:
+      "Helping dozens of Nurses from Kerala transition into Australian hospitals with AHPRA registration support.",
+    color: "#FF3300",
+  },
+  {
+    title: "The Pacific Skill",
+    body:
+      "Carpenters from Papua New Guinea now building homes in Queensland",
+    color: "#FF3300",
+  },
+  {
+    title: "The Global Trade Route",
+    body:
+      "The Corporate Leap: CPA’s from India secured a Senior Accountant role in Melbourne within 4 weeks.",
+    color: "#FF3300",
+  },
+  {
+    title: "The Trade Experts",
+    body:
+      "Diesel Motor Mechanics and Electricians from across Asia now earning top dollar in Australian workshops.",
+    color: "#FF3300",
+  },
+];
+
+const DEMAND_LIST = [
+  "Healthcare & Nursing",
+  "Trades & Construction",
+  "Mining & Resources",
+  "Technical & Engineering Professions",
+  "Accounting & Professional Services",
+];
+
+function RoleCard({ item }) {
+  if (item.featured) {
+    return (
+      <div className="flex min-h-[250px] flex-1 flex-col items-center justify-center rounded-[11px] bg-[#00352B] px-5 py-8 text-center">
+        <h3
+          className="font-poppins text-white"
+          style={{
+            fontSize: "clamp(30px, 3vw, 40px)",
+            fontWeight: 600,
+            lineHeight: "1.05",
+            letterSpacing: "-0.15px",
+          }}
+        >
+          {item.title}
+        </h3>
+        <p
+          className="mt-4 max-w-[300px] font-poppins text-white"
+          style={{
+            fontSize: "16px",
+            fontWeight: 400,
+            lineHeight: "1.45",
+            letterSpacing: "-0.15px",
+          }}
+        >
+          {item.body}
+        </p>
+        <button
+          type="button"
+          className="mt-6 rounded-[9px] bg-[#FF3300] px-5 py-2.5 font-poppins text-white"
+          style={{
+            fontSize: "20px",
+            fontWeight: 500,
+            lineHeight: "1.2",
+            letterSpacing: "-0.15px",
+          }}
+        >
+          {item.cta}
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex min-h-[250px] flex-1 flex-col justify-center rounded-[11px] border border-black/10 bg-white px-5 py-6">
+      <img
+        src={item.icon}
+        alt=""
+        className="mb-4 h-[82px] w-[82px] object-contain"
+      />
+      <h3
+        className="font-poppins text-black"
+        style={{
+          fontSize: "clamp(28px, 2.2vw, 30px)",
+          fontWeight: 600,
+          lineHeight: "1.2",
+          letterSpacing: "-0.15px",
+        }}
+      >
+        {item.title}
+      </h3>
+      <p
+        className="mt-3 max-w-[340px] font-poppins text-black"
+        style={{
+          fontSize: "20px",
+          fontWeight: 400,
+          lineHeight: "1.4",
+          letterSpacing: "-0.15px",
+        }}
+      >
+        {item.body}
+      </p>
+    </div>
+  );
+}
 
 const RECRUITMENT_FAQ_ITEMS = [
   {
@@ -102,11 +274,28 @@ const RECRUITMENT_FAQ_ITEMS = [
 export default function RecruitmentPage() {
   const openConsultation = () =>
     window.dispatchEvent(new CustomEvent("openConsultationPopup"));
+  const successStoriesRef = useRef(null);
 
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
   const toggleFaq = (index) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
+  };
+
+  const scrollSuccessStories = () => {
+    const container = successStoriesRef.current;
+    if (!container) return;
+    const firstCard = container.querySelector("article");
+    const scrollAmount = firstCard ? firstCard.offsetWidth + 28 : 420;
+    container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  };
+
+  const scrollSuccessStoriesLeft = () => {
+    const container = successStoriesRef.current;
+    if (!container) return;
+    const firstCard = container.querySelector("article");
+    const scrollAmount = firstCard ? firstCard.offsetWidth + 28 : 420;
+    container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
   };
 
   return (
@@ -391,6 +580,398 @@ export default function RecruitmentPage() {
                     </span>
                   </div>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="grid items-center gap-10 px-6 py-[70px] md:px-[60px] lg:grid-cols-[454px_minmax(0,632px)] lg:px-[100px]">
+            <div className="overflow-hidden rounded-[27px]">
+              <img
+                src={SKILLED_PROFESSIONALS_IMAGE}
+                alt="Skilled professionals in Australia"
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <div>
+              <h2
+                className="font-poppins text-[#00352B]"
+                style={{
+                  fontSize: "clamp(36px, 3.2vw, 45px)",
+                  fontWeight: 400,
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.15px",
+                }}
+              >
+                Why Australia Needs{" "}
+                <span className="font-medium italic text-accent">
+                  Skilled Professionals
+                </span>
+              </h2>
+
+              <p
+                className="mt-5 max-w-[632px] font-poppins text-black"
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 400,
+                  lineHeight: "28px",
+                }}
+              >
+                Australia faces a nationwide skills shortage across multiple
+                industries, making skilled migration one of the strongest
+                pathways to work and permanent residency (PR).
+              </p>
+
+              <p
+                className="mt-6 font-poppins text-black"
+                style={{
+                  fontSize: "23px",
+                  fontWeight: 500,
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.15px",
+                }}
+              >
+                Roles in demand include:
+              </p>
+
+              <div className="mt-3 space-y-2.5">
+                {DEMAND_LIST.map((item) => (
+                  <p
+                    key={item}
+                    className="font-poppins text-black"
+                    style={{
+                      fontSize: "clamp(20px, 1.9vw, 22px)",
+                      fontWeight: 400,
+                      lineHeight: "1.15",
+                      letterSpacing: "-0.15px",
+                    }}
+                  >
+                    {"✅ "}
+                    {item}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-[#FFFBE9] px-6 py-[80px] md:px-[60px] lg:px-[100px]">
+            <div className="mx-auto max-w-[1240px] text-center">
+              <h2
+                className="font-poppins text-[#00352B]"
+                style={{
+                  fontSize: "clamp(42px, 5.2vw, 74px)",
+                  fontWeight: 700,
+                  lineHeight: "0.99",
+                  letterSpacing: "-0.15px",
+                }}
+              >
+                High-Demand Roles
+              </h2>
+              <p
+                className="mt-3 font-poppins text-accent"
+                style={{
+                  fontSize: "clamp(34px, 4.3vw, 60px)",
+                  fontWeight: 700,
+                  lineHeight: "1.2",
+                }}
+              >
+                Visa Sponsorship Ready
+              </p>
+              <p
+                className="mx-auto mt-10 max-w-[896px] font-poppins text-[#00352B]"
+                style={{
+                  fontSize: "16px",
+                  fontWeight: 400,
+                  lineHeight: "1.45",
+                }}
+              >
+                Australia is facing a critical skills shortage. We hold direct
+                contracts with employers across the continent-from
+                <br />
+                the mines of Western Australia to the hospitals of
+                Sydney-looking for you.
+              </p>
+            </div>
+
+            <div className="mx-auto mt-16 max-w-[1240px] space-y-[25px]">
+              {ROLE_ROWS.map((row, rowIndex) => (
+                <div
+                  key={rowIndex}
+                  className="grid gap-[30px] lg:grid-cols-3"
+                >
+                  {row.map((item) => (
+                    <RoleCard key={item.title} item={item} />
+                  ))}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="grid items-center gap-12 px-6 py-[70px] md:px-[90px] lg:gap-20 lg:grid-cols-[minmax(0,710px)_349px] lg:px-[100px]">
+            <div className="justify-self-start text-left lg:ml-[-90px]">
+              <h2
+                className="font-poppins text-[#00352B]"
+                style={{
+                  fontSize: "clamp(36px, 3.8vw, 56px)",
+                  fontWeight: 500,
+                  lineHeight: "1.18",
+                  letterSpacing: "-0.15px",
+                }}
+              >
+                More Than Just a Job
+              </h2>
+              <p
+                className="font-poppins italic text-accent"
+                style={{
+                  fontSize: "clamp(36px, 3.8vw, 56px)",
+                  fontWeight: 600,
+                  lineHeight: "1.05",
+                }}
+              >
+                A Pathway to PR
+              </p>
+
+              <p
+                className="mt-6 max-w-[710px] font-poppins text-black"
+                style={{
+                  left: "0px",
+                  fontSize: "18px",
+                  fontWeight: 400,
+                  lineHeight: "28px",
+                  letterSpacing: "-0.15px",
+                }}
+              >
+                We don&apos;t just fill vacancies; we build migration pathways. Our recruitment
+                <br />
+                strategy aligns with the Australian Skilled Occupation List (SOL) to maximize
+                <br />
+                your chances of obtaining Permanent Residency.
+              </p>
+
+              <ul className="mt-8 space-y-3 pl-6 text-left lg:ml-[-30px]">
+                {PATHWAY_POINTS.map((item) => (
+                  <li
+                    key={item.label}
+                    className="font-poppins text-black"
+                    style={{
+                      fontSize: "22px",
+                      fontWeight: 400,
+                      lineHeight: "1.5",
+                      letterSpacing: "-0.15px",
+                    }}
+                  >
+                    {item.label} <strong>{item.value}</strong>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="justify-self-end overflow-hidden rounded-[39px] lg:mr-[-130px]">
+              <img
+                src={PATHWAY_IMAGE}
+                alt="Permanent residency pathway support"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </section>
+
+          <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-[#FFFBE9] px-6 py-[90px] md:px-[60px] lg:px-[100px]">
+            <div className="mx-auto max-w-[1240px] text-center">
+              <h2
+                className="font-poppins italic text-accent"
+                style={{
+                  fontSize: "clamp(34px, 4vw, 52px)",
+                  fontWeight: 600,
+                  lineHeight: "1.2",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                From the World to Down Under.
+              </h2>
+
+              <p
+                className="mx-auto mt-6 max-w-[859px] font-poppins text-[#00373E]"
+                style={{
+                  fontSize: "22px",
+                  fontWeight: 400,
+                  lineHeight: "34px",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                Esante has successfully placed skilled professionals from every corner of
+                <br />
+                the globe into high-paying Australian careers.
+              </p>
+            </div>
+
+            {/* Cards area with scroll buttons at left/right corners */}
+            <div className="relative mx-auto mt-16 max-w-[1380px]">
+              {/* Left scroll button */}
+              <button
+                type="button"
+                onClick={scrollSuccessStoriesLeft}
+                className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full border border-[#00373E] bg-[#FFFBE9] text-[#00373E] cursor-pointer"
+                aria-label="Scroll success stories left"
+              >
+                <span
+                  style={{
+                    fontSize: "40px",
+                    lineHeight: 1,
+                    transform: "translateX(-2px)",
+                  }}
+                >
+                  ‹
+                </span>
+              </button>
+
+              {/* Right scroll button */}
+              <button
+                type="button"
+                onClick={scrollSuccessStories}
+                className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full border border-[#00373E] bg-[#FFFBE9] text-[#00373E] cursor-pointer"
+                aria-label="Scroll success stories right"
+              >
+                <span
+                  style={{
+                    fontSize: "40px",
+                    lineHeight: 1,
+                    transform: "translateX(2px)",
+                  }}
+                >
+                  ›
+                </span>
+              </button>
+
+              <div
+                ref={successStoriesRef}
+                className="flex overflow-x-auto pb-4 scroll-smooth"
+                style={{
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                  gap: "28px",
+                }}
+              >
+                {SUCCESS_STORIES.map((story) => (
+                  <article
+                    key={story.title}
+                    className="flex min-h-[404px] flex-col items-center rounded-[59px] bg-white px-8 py-10 text-center shrink-0"
+                    style={{
+                      width: "calc((100% - 56px) / 3)",
+                    }}
+                  >
+                    <h3
+                      className="flex min-h-[90px] items-center justify-center font-poppins text-[#00373E]"
+                      style={{
+                        fontSize: "clamp(28px, 2.5vw, 30px)",
+                        fontWeight: 600,
+                        lineHeight: "1.2",
+                        letterSpacing: "0.5px",
+                      }}
+                    >
+                      {story.title === "The Zimbabwe Success" ? (
+                        <>
+                          The Zimbabwe
+                          <br />
+                          Success
+                        </>
+                      ) : story.title === "The Kerala Connection" ? (
+                        <>
+                          The Kerala
+                          <br />
+                          Connection
+                        </>
+                      ) : story.title === "The Global Trade Route" ? (
+                        <>
+                          The Corporate
+                          <br />
+                          Leap
+                        </>
+                      ) : story.title === "The Trade Experts" ? (
+                        <>
+                          The Trade
+                          <br />
+                          Experts
+                        </>
+                      ) : (
+                        story.title
+                      )}
+                    </h3>
+
+                    <p
+                      className="mx-auto mt-6 flex min-h-[130px] max-w-[307px] items-center font-poppins text-[#00373E]"
+                      style={{
+                        fontSize: "18px",
+                        fontWeight: 400,
+                        lineHeight: "26px",
+                        letterSpacing: "0.5px",
+                      }}
+                    >
+                      {story.title === "The Zimbabwe Success" ? (
+                        <>
+                          We placed specialized
+                          <br />
+                          Boilermakers from Zimbabwe
+                          <br />
+                          into a top Mining firm in WA with
+                          <br />
+                          full sponsorship.
+                        </>
+                      ) : story.title === "The Kerala Connection" ? (
+                        <>
+                          Helping dozens of Nurses from
+                          <br />
+                          Kerala transition into Australian
+                          <br />
+                          hospitals with AHPRA
+                          <br />
+                          registration support.
+                        </>
+                      ) : story.title === "The Global Trade Route" ? (
+                        <>
+                          CPA&apos;s from India secured a
+                          <br />
+                          Senior Accountant role in
+                          <br />
+                          Melbourne within
+                          <br />
+                          4 weeks.
+                        </>
+                      ) : story.title === "The Trade Experts" ? (
+                        <>
+                          Diesel Motor Mechanics and
+                          <br />
+                          Electricians from across Asia
+                          <br />
+                          now earning top dollar in
+                          <br />
+                          Australian workshops.
+                        </>
+                      ) : (
+                        <>
+                          Carpenters from Papua New
+                          <br />
+                          Guinea now building homes in
+                          <br />
+                          Queensland
+                        </>
+                      )}
+                    </p>
+
+                    <button
+                      type="button"
+                      className="mt-auto rounded-full px-7 py-3 font-poppins text-white"
+                      style={{
+                        backgroundColor: story.color,
+                        fontSize: "20px",
+                        fontWeight: 600,
+                        lineHeight: "1.2",
+                        letterSpacing: "0.5px",
+                      }}
+                    >
+                      Explore
+                    </button>
+                  </article>
+                ))}
               </div>
             </div>
           </section>
