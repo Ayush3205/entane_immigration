@@ -103,7 +103,7 @@ const DEMAND_LIST = [
   "Accounting & Professional Services",
 ];
 
-function RoleCard({ item }) {
+function RoleCard({ item, onConsultation }) {
   if (item.featured) {
     return (
       <div className="flex min-h-[250px] flex-1 flex-col items-center justify-center rounded-[11px] bg-[#00352B] px-5 py-8 text-center">
@@ -131,6 +131,7 @@ function RoleCard({ item }) {
         </p>
         <button
           type="button"
+          onClick={onConsultation}
           className="mt-6 rounded-[9px] bg-[#FF3300] px-5 py-2.5 font-poppins text-white"
           style={{
             fontSize: "20px",
@@ -383,10 +384,13 @@ export default function RecruitmentPage() {
                   lineHeight: "normal",
                 }}
               >
-                Australia is calling for skilled professionals. We connect you
-                with top employers in Healthcare, Mining, and Trades-and you
-                don&apos;t pay our professional fee until you have the Offer Letter
-                in your hand.
+                Australia is calling for skilled professionals. We connect 
+                <br />
+                you with top employers in Healthcare, Mining, and Trades
+                <br />
+                -and you don&apos;t pay our professional fee until you have 
+                <br />
+                the Offer Letter in your hand.
               </p>
 
               <button
@@ -700,7 +704,7 @@ export default function RecruitmentPage() {
                   className="grid gap-[30px] lg:grid-cols-3"
                 >
                   {row.map((item) => (
-                    <RoleCard key={item.title} item={item} />
+                    <RoleCard key={item.title} item={item} onConsultation={openConsultation} />
                   ))}
                 </div>
               ))}
@@ -959,6 +963,7 @@ export default function RecruitmentPage() {
 
                     <button
                       type="button"
+                      onClick={openConsultation}
                       className="mt-auto rounded-full px-7 py-3 font-poppins text-white"
                       style={{
                         backgroundColor: story.color,
