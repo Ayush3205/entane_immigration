@@ -99,118 +99,115 @@ function AirportServicesPage() {
   };
 
   return (
-    <div className="flex flex-col items-start w-full bg-white">
+    <div className="flex flex-col w-full bg-white overflow-x-hidden">
       <Header />
 
-      <div className="flex flex-col items-center self-stretch w-full max-w-[1440px] mx-auto bg-white px-6 lg:px-[100px] pt-0">
-        {/* ── HERO ── */}
-        <div
-          className="relative w-screen mb-[120px]"
-          style={{ marginLeft: "calc(-50vw + 61%)" }}
-        >
-          {/* Hero image container */}
-          <div className="relative overflow-hidden w-full h-[90vh]">
-            <img
-              alt=""
-              src={HERO_BG}
-              className="absolute pointer-events-none"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "top",
-              }}
-            />
-
-            {/* Dark overlay */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.04) 35%, transparent 60%)",
-              }}
-            />
-
-            {/* Text overlay */}
-            <div
-              className="absolute flex flex-col items-start"
-              style={{
-                left: "clamp(24px, 5vw, 80px)",
-                top: "50%",
-                transform: "translateY(-50%)", // higher up
-                gap: "8px",
-              }}
-            >
-              <p
-                className="font-poppins font-medium tracking-[-0.56px] text-[#00352B] underline decoration-solid m-0"
-                style={{
-                  fontSize: "clamp(14px, 1.6vw, 22px)", // smaller
-                  lineHeight: "1.3",
-                }}
-              >
-                Free Airport Pickup in Australia
-              </p>
-
-              <p
-                className="font-poppins font-semibold italic text-accent m-0"
-                style={{
-                  fontSize: "clamp(28px, 3.6vw, 52px)", // smaller
-                  lineHeight: "1.1",
-                }}
-              >
-                Welcome Home
-              </p>
-
-              <p
-                className="font-poppins font-normal text-primary m-0"
-                style={{
-                  fontSize: "clamp(20px, 2.8vw, 42px)", // smaller
-                  lineHeight: "1.1",
-                }}
-              >
-                Your Personal Chauffeur Awaits.
-              </p>
-
-              <button
-                type="button"
-                onClick={openConsultation}
-                className="inline-flex items-center justify-center bg-accent cursor-pointer border-0 mt-1"
-                style={{
-                  padding: "7px 16px",
-                  borderRadius: "20px",
-                }}
-              >
-                <span
-                  className="font-poppins font-medium text-cream text-center"
-                  style={{
-                    fontSize: "clamp(11px, 1vw, 14px)",
-                    lineHeight: "1.4",
-                  }}
-                >
-                  Get Free Guidance from Esante
-                </span>
-              </button>
-            </div>
-          </div>
-
-          {/* Airplane overlay */}
-          <div
-            className="absolute pointer-events-none max-md:hidden"
+      <div className="relative w-full mb-[120px]">
+        {/* Hero image container */}
+        <div className="relative overflow-hidden w-full h-[90vh]">
+          <img
+            alt=""
+            src={HERO_BG}
+            className="absolute pointer-events-none"
             style={{
-              bottom: "-100px", // lower than before
-              left: "20px",
-              width: "clamp(280px, 36vw, 520px)", // smaller
-              height: "clamp(130px, 17vw, 245px)", // smaller
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "top",
+            }}
+          />
+
+          {/* Dark overlay */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.04) 35%, transparent 60%)",
+            }}
+          />
+
+          {/* Text overlay */}
+          <div
+            className="absolute flex flex-col items-start"
+            style={{
+              left: "clamp(24px, 5vw, 80px)",
+              top: "50%",
+              transform: "translateY(-50%)", // higher up
+              gap: "8px",
             }}
           >
-            <img
-              alt=""
-              src={AIRPLANE}
-              className="w-full h-full object-contain"
-              style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.15))" }}
-            />
+            <p
+              className="font-poppins font-medium tracking-[-0.56px] text-[#00352B] underline decoration-solid m-0"
+              style={{
+                fontSize: "clamp(14px, 1.6vw, 22px)", // smaller
+                lineHeight: "1.3",
+              }}
+            >
+              Free Airport Pickup in Australia
+            </p>
+
+            <p
+              className="font-poppins font-semibold italic text-accent m-0"
+              style={{
+                fontSize: "clamp(28px, 3.6vw, 52px)", // smaller
+                lineHeight: "1.1",
+              }}
+            >
+              Welcome Home
+            </p>
+
+            <p
+              className="font-poppins font-normal text-primary m-0"
+              style={{
+                fontSize: "clamp(20px, 2.8vw, 42px)", // smaller
+                lineHeight: "1.1",
+              }}
+            >
+              Your Personal Chauffeur Awaits.
+            </p>
+
+            <button
+              type="button"
+              onClick={openConsultation}
+              className="inline-flex items-center justify-center bg-accent cursor-pointer border-0 mt-1"
+              style={{
+                padding: "7px 16px",
+                borderRadius: "20px",
+              }}
+            >
+              <span
+                className="font-poppins font-medium text-cream text-center"
+                style={{
+                  fontSize: "clamp(11px, 1vw, 14px)",
+                  lineHeight: "1.4",
+                }}
+              >
+                Get Free Guidance from Esante
+              </span>
+            </button>
           </div>
         </div>
+
+        {/* Airplane overlay */}
+        <div
+          className="absolute pointer-events-none max-md:hidden"
+          style={{
+            bottom: "-100px", // lower than before
+            left: "0px",
+            width: "clamp(280px, 36vw, 520px)", // smaller
+            height: "clamp(130px, 17vw, 245px)", // smaller
+          }}
+        >
+          <img
+            alt=""
+            src={AIRPLANE}
+            className="w-full h-full object-contain"
+            style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.15))" }}
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center self-stretch w-full max-w-[1440px] mx-auto bg-white px-6 lg:px-[100px] pt-0">
 
         {/* ── INTRO — Figma: center-aligned ── */}
         <section className="flex flex-col items-center text-center w-full max-w-[1007px] mx-auto mb-10 md:mb-12 px-0">
@@ -363,10 +360,9 @@ function AirportServicesPage() {
           </div>
         </section>
 
-        {/* ── CTA BANNER (reusable) ── */}
-        <EsanteBanner />
       </div>
-
+      {/* ── CTA BANNER (reusable) ── */}
+      <EsanteBanner />
       <Footer />
     </div>
   );

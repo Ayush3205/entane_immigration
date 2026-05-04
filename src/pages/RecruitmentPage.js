@@ -300,121 +300,122 @@ export default function RecruitmentPage() {
   };
 
   return (
-    <div className="flex flex-col items-start w-full bg-white">
+    <div className="flex flex-col w-full bg-white overflow-x-hidden">
       <Header />
 
-      <div className="flex flex-col items-center self-stretch w-full max-w-[1440px] mx-auto bg-white px-6 lg:px-[100px] pt-0">
-        <div className="relative w-screen mb-[120px]">
-          <div className="relative overflow-hidden w-full h-[90vh]">
+      <div className="relative w-full mb-[120px]">
+        <div className="relative overflow-hidden w-full h-[90vh]">
+          <img
+            alt=""
+            src={HERO_BG}
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "top",
+            }}
+          />
+
+          <div
+            className="absolute z-[2] overflow-hidden pointer-events-none"
+            style={{
+              right: "80px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "636px",
+              height: "477px",
+              borderRadius: "50px",
+              aspectRatio: "4 / 3",
+            }}
+          >
             <img
               alt=""
-              src={HERO_BG}
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "top",
-              }}
+              src={HERO_OVERLAY}
+              className="h-full w-full object-cover object-center"
             />
+          </div>
 
-            <div
-              className="absolute z-[2] overflow-hidden pointer-events-none"
+          <div
+            className="absolute z-[3] flex flex-col items-start"
+            style={{
+              left: "clamp(24px, 5vw, 80px)",
+              top: "50%",
+              transform: "translateY(-50%)",
+              gap: "8px",
+              maxWidth: "45%",
+            }}
+          >
+            <p
+              className="font-poppins font-medium tracking-[-0.56px] text-[#00352B] underline decoration-solid mb-7"
               style={{
-                right: "80px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                width: "636px",
-                height: "477px",
-                borderRadius: "50px",
-                aspectRatio: "4 / 3",
+                fontSize: "28px",
+                lineHeight: "28px",
+                height: "21px",
               }}
             >
-              <img
-                alt=""
-                src={HERO_OVERLAY}
-                className="h-full w-full object-cover object-center"
-              />
-            </div>
+              Recruitment
+            </p>
 
-            <div
-              className="absolute z-[3] flex flex-col items-start"
+            <p
+              className="font-poppins font-semibold italic text-accent m-0"
               style={{
-                left: "clamp(24px, 5vw, 80px)",
-                top: "50%",
-                transform: "translateY(-50%)",
-                gap: "8px",
-                maxWidth: "45%",
+                fontSize: "clamp(28px, 3.6vw, 52px)",
+                lineHeight: "1.1",
               }}
             >
-              <p
-                className="font-poppins font-medium tracking-[-0.56px] text-[#00352B] underline decoration-solid mb-7"
-                style={{
-                  fontSize: "28px",
-                  lineHeight: "28px",
-                  height: "21px",
-                }}
-              >
-                Recruitment
-              </p>
+              Your Skills. Our Network
+            </p>
+            <p
+              className="font-poppins font-semibold italic text-accent mb-7"
+              style={{
+                fontSize: "clamp(28px, 3.6vw, 52px)",
+                lineHeight: "1.1",
+              }}
+            >
+              Your Australian Career
+            </p>
 
-              <p
-                className="font-poppins font-semibold italic text-accent m-0"
-                style={{
-                  fontSize: "clamp(28px, 3.6vw, 52px)",
-                  lineHeight: "1.1",
-                }}
-              >
-                Your Skills. Our Network
-              </p>
-              <p
-                className="font-poppins font-semibold italic text-accent mb-7"
-                style={{
-                  fontSize: "clamp(28px, 3.6vw, 52px)",
-                  lineHeight: "1.1",
-                }}
-              >
-                Your Australian Career
-              </p>
+            <p
+              className="font-poppins font-normal text-primary mb-7"
+              style={{
+                fontSize: "clamp(20px, 2.8vw, 21px)",
+                lineHeight: "normal",
+              }}
+            >
+              Australia is calling for skilled professionals. We connect 
+              <br />
+              you with top employers in Healthcare, Mining, and Trades
+              <br />
+              -and you don&apos;t pay our professional fee until you have 
+              <br />
+              the Offer Letter in your hand.
+            </p>
 
-              <p
-                className="font-poppins font-normal text-primary mb-7"
+            <button
+              type="button"
+              onClick={openConsultation}
+              className="inline-flex items-center justify-center bg-accent cursor-pointer border-0 mt-1"
+              style={{
+                padding: "7px 16px",
+                borderRadius: "20px",
+              }}
+            >
+              <span
+                className="font-poppins font-medium text-cream text-center"
                 style={{
-                  fontSize: "clamp(20px, 2.8vw, 21px)",
-                  lineHeight: "normal",
+                  fontSize: "clamp(11px, 1vw, 14px)",
+                  lineHeight: "1.4",
                 }}
               >
-                Australia is calling for skilled professionals. We connect 
-                <br />
-                you with top employers in Healthcare, Mining, and Trades
-                <br />
-                -and you don&apos;t pay our professional fee until you have 
-                <br />
-                the Offer Letter in your hand.
-              </p>
-
-              <button
-                type="button"
-                onClick={openConsultation}
-                className="inline-flex items-center justify-center bg-accent cursor-pointer border-0 mt-1"
-                style={{
-                  padding: "7px 16px",
-                  borderRadius: "20px",
-                }}
-              >
-                <span
-                  className="font-poppins font-medium text-cream text-center"
-                  style={{
-                    fontSize: "clamp(11px, 1vw, 14px)",
-                    lineHeight: "1.4",
-                  }}
-                >
-                  Get Free Guidance from Esante
-                </span>
-              </button>
-            </div>
+                Get Free Guidance from Esante
+              </span>
+            </button>
           </div>
         </div>
+      </div>
+
+      <div className="flex flex-col items-center self-stretch w-full max-w-[1440px] mx-auto bg-white px-6 lg:px-[100px] pt-0">
 
         <main className="flex flex-col w-full max-w-[1440px] mx-auto">
           <section className="flex flex-col items-center text-center py-[80px] px-6 md:px-[60px] lg:px-[100px]">
@@ -425,7 +426,6 @@ export default function RecruitmentPage() {
                 fontWeight: 600,
                 lineHeight: "1.05",
                 letterSpacing: "-1.12px",
-                whiteSpace: "nowrap",
               }}
             >
               We Don&apos;t Get Paid Until You Get Hired.
@@ -437,7 +437,6 @@ export default function RecruitmentPage() {
                 fontSize: "clamp(18px, 1.95vw, 25px)",
                 fontWeight: 600,
                 lineHeight: "30px",
-                whiteSpace: "nowrap",
               }}
             >
               Most agencies ask for thousands of dollars just to &quot;look&quot;
@@ -1043,8 +1042,8 @@ export default function RecruitmentPage() {
             </div>
           </section>
         </main>
-        <EsanteBanner />
       </div>
+      <EsanteBanner />
       <Footer />
     </div>
   );
