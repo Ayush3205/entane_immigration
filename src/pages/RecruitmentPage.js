@@ -1043,7 +1043,13 @@ export default function RecruitmentPage() {
           </section>
         </main>
       </div>
-      <EsanteBanner />
+      <EsanteBanner
+        line1=""
+        line2="You Have the Skill. We Have the Job."
+        line3="If we don't succeed, you don't pay."
+        line4="It's that simple."
+        subtext=""
+      />
       <Footer />
     </div>
   );

@@ -855,7 +855,12 @@ function MigrationAdvisorsPage() {
           </div>
         </section>
       </main>
-      <EsanteBanner />
+      <EsanteBanner
+        line1=""
+        line2={'Start Your Migration\nJourney'}
+        line3=""
+        subtext="Take the first step with clarity and confidence."
+      />
       <Footer />
     </div>
   );

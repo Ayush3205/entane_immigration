@@ -9,7 +9,12 @@ function WhyAustraliaPage() {
     <div className="why-australia-page">
       <Header />
       <WhyAustralia />
-      <EsanteBanner />
+      <EsanteBanner
+        line1=""
+        line2="Your Journey, Done Right with Esante"
+        line3=""
+        subtext="At Esante, we don’t just guide you to Australia — we help you build a structured pathway for long-term success through education, migration, and career opportunities."
+      />
       <Footer />
     </div>
   );

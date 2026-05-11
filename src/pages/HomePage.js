@@ -460,7 +460,12 @@ function HomePage() {
           </div>
         </section>
 
-        <EsanteBanner />
+        <EsanteBanner
+          line1=""
+          line2="Ready to Start your Australian Journey?"
+          line3=""
+          subtext="Let our experts in Mumbai and Brisbane guide you every step of the way."
+        />
         <Footer />
       </main>
     </div>
