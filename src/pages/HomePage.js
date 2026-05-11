@@ -440,24 +440,7 @@ function HomePage() {
             })}
           </div>
 
-          <div className="flex flex-col items-center gap-[20px] max-w-[640px] text-center mt-[8px]">
-            <p className="font-poppins text-[18px] text-[#00352B] leading-[1.5]">
-              Still have questions? Get personalised guidance from an Esante expert.
-            </p>
-            <button
-              type="button"
-              onClick={openConsultation}
-              className="inline-flex justify-center items-center rounded-[16px] border-0 cursor-pointer"
-              style={{ background: '#FF3300', padding: '12px 28px' }}
-            >
-              <span
-                className="font-poppins font-medium text-center"
-                style={{ color: '#FFFBE9', fontSize: 16, lineHeight: '1.43em' }}
-              >
-                Book Free Counselling
-              </span>
-            </button>
-          </div>
+          
         </section>
 
         <EsanteBanner
