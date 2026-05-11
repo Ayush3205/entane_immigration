@@ -29,7 +29,7 @@ const EsanteBanner = ({
   subtext = DEFAULT_CONTENT.subtext,
   buttonText = DEFAULT_CONTENT.buttonText,
 }) => {
-  const regularLines = [line1, line3, line4].filter(Boolean);
+  const regularLines = [line3, line4].filter(Boolean);
 
   return (
     <div className="w-full">
