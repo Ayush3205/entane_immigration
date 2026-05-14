@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import ConsultationPopup from './components/Reusable/ConsultationPopup';
 import HomePage from './pages/HomePage';
@@ -27,6 +27,29 @@ import IeltsPteCoachingPage from './pages/IeltsPteCoachingPage';
 import AirportServicesPage from './pages/AirportServicesPage';
 import PostArrivalSupportPage from './pages/PostArrivalSupportPage';
 
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.slice(1);
+      window.setTimeout(() => {
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 0);
+      return;
+    }
+
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [location.pathname, location.hash]);
+
+  return null;
+}
+
 function App() {
   const [consultationOpen, setConsultationOpen] = useState(false);
 
@@ -40,6 +63,7 @@ function App() {
     <>
     <ConsultationPopup isOpen={consultationOpen} onClose={() => setConsultationOpen(false)} />
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about-us" element={<AboutPage />} />

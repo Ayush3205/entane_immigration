@@ -15,7 +15,8 @@ import Footer from '../components/Reusable/Footer';
 const MORPH_END    = 800;  // scroll px that span the full morph animation
 // Navbar slides up + fades out over first HEADER_FADE px of scroll
 // const HEADER_FADE  = 120;
-const HERO_VIDEO_URL = 'https://cdn.jsdelivr.net/npm/video-media-samples@1.0.0/big-buck-bunny-480p-30sec.mp4';
+const HERO_VIDEO_URL = '/videos/hero.mp4';
+const HERO_VIDEO_MUTE_PROGRESS = 0.85;
 
 const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 const easeOutCubic   = (t) => 1 - Math.pow(1 - t, 3);
@@ -161,7 +162,14 @@ function HomePage() {
     const video = morphVideoRef.current;
     if (!video || !HERO_VIDEO_URL) return;
     video.muted = true;
-    const play = () => { video.muted = true; video.play().catch(() => {}); };
+    video.defaultMuted = true;
+    video.volume = 1;
+    const play = () => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.volume = 1;
+      video.play().catch(() => {});
+    };
     play();
     video.addEventListener('loadeddata', play);
     video.addEventListener('canplay', play);
@@ -201,6 +209,14 @@ function HomePage() {
       const pin = Math.min(y, MORPH_END);
       const vw  = window.innerWidth;
       const vh  = window.innerHeight;
+
+      if (morphVideoRef.current) {
+        const shouldMuteHeroVideo = raw >= HERO_VIDEO_MUTE_PROGRESS;
+        if (shouldMuteHeroVideo) {
+          morphVideoRef.current.muted = true;
+          morphVideoRef.current.defaultMuted = true;
+        }
+      }
 
       // 0. Auto-Snap to Australia Section after Morph (Disabled to remove lag)
       autoScrollState.current.lastY = y;

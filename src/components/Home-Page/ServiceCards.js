@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CARDS = [
   {
@@ -6,22 +7,28 @@ const CARDS = [
     badge: 'For Students',
     subtitle: 'World - Class Education',
     cta: 'Book 1:1 Counselling',
+    href: '/ancillary-services',
   },
   {
     image: '/images/home-page/image 53.png',
     badge: 'For Professionals',
     subtitle: 'Advance Your Career',
     cta: 'Book 1:1 Counselling',
+    href: '/recruitment',
   },
   {
     image: '/images/home-page/image 54.png',
     badge: 'For Migration',
     subtitle: 'Start Your New Life',
     cta: 'Book 1:1 Counselling',
+    href: '/migration-advisors',
   },
 ];
 
 const ServiceCards = () => {
+  const openConsultation = () =>
+    window.dispatchEvent(new CustomEvent('openConsultationPopup'));
+
   return (
     <section className="service-cards-section">
       <div className="service-cards-container">
@@ -32,11 +39,11 @@ const ServiceCards = () => {
             <span className="service-cards-title-accent">Australia Dream</span>
           </h2>
           <p className="service-cards-description">
-            From course selection to visa approval — we provide complete end-to-end support designed to maximise your success.
+            From course selection to visa approval - we provide complete end-to-end support designed to maximise your success.
           </p>
         </div>
 
-        {/* Figma: 3 cards — widths 403 : 636 : 400, full-width strip */}
+        {/* Figma: 3 cards - widths 403 : 636 : 400, full-width strip */}
         <div className="service-cards-strip">
           {CARDS.map((card, i) => (
             <div key={i} className="service-card">
@@ -47,17 +54,16 @@ const ServiceCards = () => {
                   <span className="service-card-play-icon" />
                 </div>
                 <div className="service-card-content">
-                  {/* Orange badge with arrow */}
-                  <div className="service-card-badge">
+                  <Link to={card.href} className="service-card-badge">
                     {card.badge}
-                    <span className="service-card-arrow" aria-hidden="true">↗</span>
-                  </div>
-                  {/* White horizontal divider */}
+                    <span className="service-card-arrow" aria-hidden="true">&#8599;</span>
+                  </Link>
                   <div className="service-card-divider" />
-                  {/* Subtitle + CTA row */}
                   <div className="service-card-bottom-row">
                     <h3 className="service-card-subtitle">{card.subtitle}</h3>
-                    <span className="service-card-cta">{card.cta}</span>
+                    <button type="button" className="service-card-cta" onClick={openConsultation}>
+                      {card.cta}
+                    </button>
                   </div>
                 </div>
               </div>

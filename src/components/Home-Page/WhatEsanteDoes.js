@@ -10,6 +10,9 @@ const WhatEsanteDoes = () => {
   // Clear the ref array to prevent duplicates in React StrictMode
   cardsRef.current = [];
 
+  const openConsultation = () =>
+    window.dispatchEvent(new CustomEvent('openConsultationPopup'));
+
   const addToRefs = (el) => {
     if (el && !cardsRef.current.includes(el)) {
       cardsRef.current.push(el);
@@ -67,7 +70,7 @@ const WhatEsanteDoes = () => {
               <li>End-to-end documentation support</li>
               <li>Transparent and ethical advice</li>
             </ul>
-            <button className="what-esante-btn">Learn More</button>
+            <button type="button" className="what-esante-btn" onClick={openConsultation}>Learn More</button>
           </div>
           <div 
             className="what-esante-card-image"
@@ -96,7 +99,7 @@ const WhatEsanteDoes = () => {
               <li>Student visa (Subclass 500) guidance</li>
               <li>Pre-departure and post-settlement support</li>
             </ul>
-            <button className="what-esante-btn what-esante-btn-light">Learn More</button>
+            <button type="button" className="what-esante-btn what-esante-btn-light" onClick={openConsultation}>Learn More</button>
           </div>
         </div>
 
@@ -113,7 +116,7 @@ const WhatEsanteDoes = () => {
               <li>Interview preparation & support</li>
               <li>End-to-end recruitment coordination</li>
             </ul>
-            <button className="what-esante-btn">Learn More</button>
+            <button type="button" className="what-esante-btn" onClick={openConsultation}>Learn More</button>
           </div>
           <div 
             className="what-esante-card-image"

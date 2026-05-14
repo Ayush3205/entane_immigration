@@ -60,7 +60,7 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
               <svg className="header-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3 2h3l1 3-2 2c1 2 2 3 4 4l2-2 3 1v3c0 1-1 2-2 2-6 0-11-5-11-11 0-1 1-2 2-2z" stroke="white" strokeWidth="1.5" fill="none" />
               </svg>
-              +44 1234 5678 90
+              +61409557421
             </div>
           </div>
         </div>

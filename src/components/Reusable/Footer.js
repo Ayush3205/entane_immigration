@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -6,7 +7,6 @@ const Footer = () => {
       <div className="footer-main">
         <div className="container">
           <div className="footer-grid">
-            {/* Column 1: Logo, tagline, social */}
             <div className="footer-column footer-brand">
               <div className="footer-logo">
                 <img src="/logo.png" alt="Esante Logo" />
@@ -42,30 +42,30 @@ const Footer = () => {
             <div className="footer-column">
               <h3 className="footer-heading">Study in Australia</h3>
               <ul className="footer-links">
-                <li><a href="#services">Our Free End-to-End Services</a></li>
-                <li><a href="#accommodation">Accommodation & Job Support</a></li>
-                <li><a href="#finder">University & Course Finder</a></li>
-                <li><a href="#visa">Student Visa Guidelines 3001</a></li>
+                <li><Link to="/ancillary-services">Our Free End-to-End Services</Link></li>
+                <li><Link to="/accommodation">Accommodation &amp; Job Support</Link></li>
+                <li><Link to="/search-universities">University &amp; Course Finder</Link></li>
+                <li><Link to="/post-arrival-support">Post Arrival Support</Link></li>
               </ul>
             </div>
 
             <div className="footer-column">
               <h3 className="footer-heading">Skilled Migration</h3>
               <ul className="footer-links">
-                <li><a href="#calculator">PR Points Calculator</a></li>
-                <li><a href="#sol">Skilled Occupation List (SOL)</a></li>
-                <li><a href="#jobs">Top In-Demand Jobs</a></li>
-                <li><a href="#pathways">Skilled Visa Pathways</a></li>
+                <li><Link to="/job-seekers#pr-points-calculator">PR Points Calculator</Link></li>
+                <li><Link to="/job-seekers#skilled-occupation-list">Skilled Occupation List (SOL)</Link></li>
+                <li><Link to="/job-seekers#top-in-demand">Top In-Demand Jobs</Link></li>
+                <li><Link to="/recruitment">Skilled Visa Pathways</Link></li>
               </ul>
             </div>
 
             <div className="footer-column">
               <h3 className="footer-heading">Company</h3>
               <ul className="footer-links">
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#stories">Success Stories</a></li>
-                <li><a href="#expense">Expense Calculator</a></li>
-                <li><a href="#events">Events & Webinars</a></li>
+                <li><Link to="/news-blogs">Blog</Link></li>
+                <li><Link to="/about-us">About us</Link></li>
+                <li><Link to="/why-australia">Why Australia</Link></li>
+                <li><Link to="/case-studies">Case studies</Link></li>
               </ul>
             </div>
 
@@ -76,19 +76,23 @@ const Footer = () => {
                   <span className="footer-contact-icon" aria-hidden>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                   </span>
-                  <a href="mailto:admin@esante.com.au">admin@esante.com.au</a>
+                  <a href="mailto:admin@esante.com">admin@esante.com</a>
                 </li>
                 <li>
                   <span className="footer-contact-icon" aria-hidden>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                   </span>
-                  <a href="tel:+611234567890">+61 1234 5678 90</a>
+                  <a href="tel:+61409557421">+61409557421</a>
                 </li>
                 <li>
                   <span className="footer-contact-icon" aria-hidden>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   </span>
-                  <span>Address</span>
+                  <span>
+                    2/40 Brookes Street, Bowen Hills 4006
+                    <br />
+                    Queensland, Australia.
+                  </span>
                 </li>
               </ul>
             </div>

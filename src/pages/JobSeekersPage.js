@@ -261,7 +261,7 @@ function SkilledOccupationList() {
   }, [search, activeFilter]);
 
   return (
-    <section className="w-full bg-white" style={{ padding: '80px 100px' }}>
+    <section id="skilled-occupation-list" className="w-full bg-white" style={{ padding: '80px 100px' }}>
       <div className="flex gap-[60px] items-start w-full">
         {/* LEFT PANEL */}
         <div className="flex flex-col gap-[20px]" style={{ width: 420, flexShrink: 0 }}>
@@ -446,7 +446,7 @@ function PRPointsCalculator() {
   };
 
   return (
-    <section style={{ background: '#00291F', padding: '80px 100px' }} className="w-full">
+    <section id="pr-points-calculator" style={{ background: '#00291F', padding: '80px 100px' }} className="w-full">
       {/* heading */}
       <h2
         className="font-poppins font-bold text-white text-center m-0"
@@ -636,6 +636,7 @@ function JobSeekersPage() {
 
         {/* ═══ 3. TOP IN-DEMAND JOBS ═════════════════════════════════════════ */}
         <section
+          id="top-in-demand"
           className="flex flex-col items-center py-[80px] w-screen"
           style={{ background: '#FFFBE9', marginLeft: 'calc(-50vw + 50%)' }}
         >
