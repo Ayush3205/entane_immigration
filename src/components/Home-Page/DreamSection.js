@@ -56,7 +56,11 @@ const DreamSection = ({ morphTargetRef, heroVideoUrl = null }) => {
                     ref={dreamCardVideoRef}
                     src={heroVideoUrl}
                     className="dream-image dream-card-video"
-                    autoPlay muted loop playsInline aria-hidden="true"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    aria-hidden="true"
                   />
                 ) : (
                   <img src={src} alt="" className="dream-image" />

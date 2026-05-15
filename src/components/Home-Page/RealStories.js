@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 
 const STORY_VIDEOS = [
-  '/images/home-page/testimonial-1.mp4',
-  '/images/home-page/testimonial-2.mp4',
-  '/images/home-page/testimonial-3.mp4',
-  '/images/home-page/testimonial-4.mp4',
+  'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/testimonial-1.mp4',
+  'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/testimonial-2.mp4',
+  'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/testimonial-3.mp4',
+  'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/testimonial-4.mp4',
 ];
 
 const RealStories = () => {
@@ -42,6 +42,7 @@ const RealStories = () => {
                     className="real-story-video"
                     src={src}
                     controls
+                    muted
                     playsInline
                     preload="metadata"
                     onPlay={() => handleVideoPlay(index)}

@@ -15,7 +15,7 @@ import Footer from '../components/Reusable/Footer';
 const MORPH_END    = 800;  // scroll px that span the full morph animation
 // Navbar slides up + fades out over first HEADER_FADE px of scroll
 // const HEADER_FADE  = 120;
-const HERO_VIDEO_URL = '/videos/hero.mp4';
+const HERO_VIDEO_URL = 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/hero.mp4';
 const HERO_VIDEO_MUTE_PROGRESS = 0.85;
 
 const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
