@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Header from '../components/Reusable/Header';
@@ -24,6 +25,7 @@ const CARDS = [
     img: '/images/anc-img-65.png',
     alt: 'Airport service',
     label: 'Airport service',
+    path: '/airport-services',
     x: -380, y: 120, rotate: -36, z: 1, br: 28,
     grayscale: true, opacity: 1,
   },
@@ -32,6 +34,7 @@ const CARDS = [
     img: '/images/anc-rect-22.png',
     alt: 'Post-arrival support',
     label: 'Post-arrival support',
+    path: '/post-arrival-support',
     x: -195, y: 26, rotate: -18, z: 2, br: 28,
     grayscale: true, opacity: 1,
   },
@@ -40,6 +43,7 @@ const CARDS = [
     img: '/images/anc-img-62.png',
     alt: 'Accommodation',
     label: 'Accommodation',
+    path: '/accommodation',
     x: 0, y: 0, rotate: 0, z: 5, br: 29,
     grayscale: false, opacity: 1,
   },
@@ -48,6 +52,7 @@ const CARDS = [
     img: '/images/anc-img-63.png',
     alt: 'Part-time job',
     label: 'PART TIME JOB',
+    path: '/part-time-job-support',
     x: 195, y: 26, rotate: 18, z: 2, br: 28,
     grayscale: true, opacity: 1,
   },
@@ -56,6 +61,7 @@ const CARDS = [
     img: '/images/anc-img-64.png',
     alt: 'Free SOP support',
     label: 'FREE SOP',
+    path: '/sop-documents',
     x: 380, y: 120, rotate: 36, z: 1, br: 28,
     grayscale: true, opacity: 1,
   },
@@ -123,6 +129,7 @@ const ANCILLARY_FAQ_ITEMS = [
 const FAN_SECTION_BOTTOM = 72;
 
 export default function AncillaryServicesPage() {
+  const navigate = useNavigate();
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
   const fanSectionRef = useRef(null);
@@ -251,11 +258,15 @@ export default function AncillaryServicesPage() {
               const dimOthers = hoveredCardIndex !== null && !isHovered;
 
               return (
-                <div
+                <button
                   key={i}
-                  role="presentation"
+                  type="button"
+                  aria-label={`Go to ${card.label}`}
+                  onClick={() => navigate(card.path)}
                   onMouseEnter={() => setHoveredCardIndex(i)}
                   onMouseLeave={() => setHoveredCardIndex(null)}
+                  onFocus={() => setHoveredCardIndex(i)}
+                  onBlur={() => setHoveredCardIndex(null)}
                   className="cursor-pointer"
                   style={{
                     position: 'absolute',
@@ -265,6 +276,9 @@ export default function AncillaryServicesPage() {
                     top: card.y,
                     zIndex: z,
                     overflow: 'visible',
+                    background: 'transparent',
+                    border: 'none',
+                    padding: 0,
                   }}
                 >
                   {/* GSAP animates this layer only; keeps transforms stable on React updates */}
@@ -341,7 +355,7 @@ export default function AncillaryServicesPage() {
                       {card.label}
                     </span>
                   </div>
-                </div>
+                </button>
               );
             })}
           </section>

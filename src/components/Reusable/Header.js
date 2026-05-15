@@ -9,6 +9,9 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [mobileOpen, setMobileOpen] = useState(false);
+  const openConsultation = () => {
+    window.dispatchEvent(new CustomEvent('openConsultationPopup'));
+  };
 
   // navPhase: 'transparent' | 'hidden' | 'solid'
   // transparent — over the hero video at the top of the page
@@ -107,7 +110,14 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
                           <li><Link to="/post-arrival-support">Post-Arrival Support</Link></li>
                         </ul>
                       </li>
-                      <li><Link to="/book-consultation">Book 1:1 Consultation</Link></li>
+                      <li>
+                        <Link
+                          to="/book-consultation"
+                          className="dropdown-mega-action"
+                        >
+                          Book 1:1 Consultation
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                   <div className="dropdown-mega-column">
@@ -140,7 +150,7 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
               <button
                 type="button"
                 className="cta-button"
-                onClick={() => window.dispatchEvent(new CustomEvent('openConsultationPopup'))}
+                onClick={openConsultation}
               >
                 Book 1:1 Counselling
               </button>
@@ -171,7 +181,7 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
               className="cta-button cta-button--mobile"
               onClick={() => {
                 setMobileOpen(false);
-                window.dispatchEvent(new CustomEvent('openConsultationPopup'));
+                openConsultation();
               }}
             >
               Book 1:1 Counselling

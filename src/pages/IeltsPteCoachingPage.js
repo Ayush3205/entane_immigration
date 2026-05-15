@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Header from '../components/Reusable/Header';
 import Footer from '../components/Reusable/Footer';
 import EsanteBanner from '../components/Reusable/EsanteBanner';
 
 /* ── Local images ── */
 const imgCoach  = '/images/ielts-coach.png';
-const imgJosh   = '/images/ielts-josh-photo.png';
+const joshVideoUrl = 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-josh-video.mp4';
 
 /* Hero background is a local asset (1440×982 building photo) */
 const HERO_BG = '/images/ielts-hero-bg.png';
@@ -19,17 +19,17 @@ const COACH_W = 644;
 /* ── Testimonial data — local images from public/images ── */
 const CARDS = [
   {
-    img:  '/images/ielts-testi-1.png', quote: '"Changed how I study for IELTS entirely."',              uni: 'The University of Melbourne',
+    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-1.mp4', quote: '"Changed how I study for IELTS entirely."',              uni: 'The University of Melbourne',
   },
   {
-    img:  '/images/ielts-testi-2.png', quote: '"My PTE score went from 58 to 79 in 6 weeks."',         uni: 'University of Sydney',
+    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-2.mp4', quote: '"My PTE score went from 58 to 79 in 6 weeks."',         uni: 'University of Sydney',
   },
   {
-    img:  '/images/ielts-testi-3.png', quote: '"Genuine coaching, real confidence builder."',           uni: 'Queensland University of Technology',
+    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-3.mp4', quote: '"Genuine coaching, real confidence builder."',           uni: 'Queensland University of Technology',
   },
   {
     /* Card 4 — plain image, no overlay (play button) */
-    img:  '/images/ielts-testi-4.png',
+    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-4.mp4',
     city: '', quote: '', uni: '',                                                                                                                    hasOverlay: false,
   },
   {
@@ -47,6 +47,7 @@ const CARDS = [
 ];
 
 const CARD_W   = 290;
+const CARD_H   = 460;
 const CARD_GAP = 26;
 const VISIBLE  = 4;
 
@@ -134,6 +135,12 @@ function IeltsPteCoachingPage() {
 
   const [tIdx, setTIdx] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const [joshIsPlaying, setJoshIsPlaying] = useState(false);
+  const [playingTestimonials, setPlayingTestimonials] = useState(() =>
+    CARDS.map(() => false)
+  );
+  const joshVideoRef = useRef(null);
+  const testimonialVideoRefs = useRef([]);
 
   const toggleFaq = (index) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
@@ -142,11 +149,57 @@ function IeltsPteCoachingPage() {
   const prevT  = () => setTIdx(i => Math.max(0, i - 1));
   const nextT  = () => setTIdx(i => Math.min(maxIdx, i + 1));
 
+  const pauseAllExcept = (targetType, targetIndex = null) => {
+    if (joshVideoRef.current && targetType !== 'josh') {
+      joshVideoRef.current.pause();
+      setJoshIsPlaying(false);
+    }
+
+    testimonialVideoRefs.current.forEach((video, index) => {
+      if (!video || (targetType === 'testimonial' && targetIndex === index)) return;
+      video.pause();
+    });
+
+    setPlayingTestimonials((prev) => prev.map((_, index) => (
+      targetType === 'testimonial' && targetIndex === index ? true : false
+    )));
+  };
+
+  const toggleJoshVideo = () => {
+    const video = joshVideoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      pauseAllExcept('josh');
+      video.play().then(() => setJoshIsPlaying(true)).catch(() => {});
+      return;
+    }
+
+    video.pause();
+    setJoshIsPlaying(false);
+  };
+
+  const toggleTestimonialVideo = (index) => {
+    const video = testimonialVideoRefs.current[index];
+    if (!video) return;
+
+    if (video.paused) {
+      pauseAllExcept('testimonial', index);
+      video.play().then(() => {
+        setPlayingTestimonials((prev) => prev.map((value, idx) => (idx === index ? true : value)));
+      }).catch(() => {});
+      return;
+    }
+
+    video.pause();
+    setPlayingTestimonials((prev) => prev.map((value, idx) => (idx === index ? false : value)));
+  };
+
   return (
-    <div className="flex flex-col w-full bg-white">
+    <div className="flex flex-col w-full overflow-x-hidden bg-white">
       <Header />
 
-      <div className="w-full">
+      <div className="w-full overflow-x-hidden">
 
         {/* ══════════════════════════════════════════════════════════
             HERO — Figma: bg 1440×982 (aspect-ratio 349/238), coach 644×882 (46/63)
@@ -233,7 +286,7 @@ function IeltsPteCoachingPage() {
           </div>
         </section>
 
-        <div className="w-full max-w-[1440px] mx-auto">
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-10 lg:px-[84px] box-border overflow-x-hidden">
         {/* ══════════════════════════════════════════════════════════
             MEET JOSHUA SECTION
             Figma: photo 259:1501 at left=84 top=1118 (504×570)
@@ -242,37 +295,43 @@ function IeltsPteCoachingPage() {
             mt = 1118 − 968 = 150px (968 = hero bottom from white-rect top)
         ══════════════════════════════════════════════════════════ */}
         <section
-          className="flex items-start gap-[39px] mt-[150px] mb-[200px]"
-          style={{ marginLeft: 84 }}
+          className="flex w-full flex-col items-start gap-10 mt-[150px] mb-[200px] lg:flex-row lg:gap-[39px]"
         >
           {/* Josh photo — 259:1501 504×570, rounded-20, crop h=207.24% l=-58.12% t=-5% w=219.29% */}
           <div
-            className="relative shrink-0 overflow-hidden"
-            style={{ width: 504, height: 570, borderRadius: 20 }}
+            className="relative shrink-0 overflow-hidden w-full max-w-[504px]"
+            style={{ height: 570, borderRadius: 20 }}
           >
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img
-                alt="Joshua Michael William G."
-                className="absolute max-w-none"
-                style={{ height: '207.24%', left: '-58.12%', top: '-5%', width: '219.29%' }}
-                src={imgJosh}
+            <div className="absolute inset-0 overflow-hidden">
+              <video
+                ref={joshVideoRef}
+                src={joshVideoUrl}
+                className="h-full w-full object-cover"
+                muted
+                loop
+                playsInline
+                preload="metadata"
               />
             </div>
-            {/* Play-button overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/20 cursor-pointer">
-              <div
-                className="flex items-center justify-center rounded-full bg-white/90"
-                style={{ width: 72, height: 72 }}
-              >
-                <svg className="ml-1" width="28" height="28" viewBox="0 0 24 24" fill="#222" aria-hidden>
-                  <path d="M8 5v14l11-7L8 5z" />
-                </svg>
-              </div>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
+            <button
+              type="button"
+              onClick={toggleJoshVideo}
+              className="absolute inset-0 z-[2] flex items-center justify-center"
+              aria-label={joshIsPlaying ? 'Pause Josh video' : 'Play Josh video'}
+            >
+              {!joshIsPlaying && (
+                <span className="flex h-[84px] w-[84px] items-center justify-center rounded-full bg-white/90 text-[#FF3300] shadow-[0_18px_45px_rgba(0,0,0,0.28)]">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+                    <path d="M6 4.05C6 2.97 7.2 2.32 8.1 2.92L18.68 9.87C19.49 10.4 19.49 11.6 18.68 12.13L8.1 19.08C7.2 19.68 6 19.03 6 17.95V4.05Z" fill="currentColor" />
+                  </svg>
+                </span>
+              )}
+            </button>
           </div>
 
           {/* Text column */}
-          <div className="flex flex-1 flex-col items-start">
+          <div className="flex min-w-0 flex-1 flex-col items-start">
 
             {/* Title — 258:1521: "Meet <bold-italic-red>Joshua...</red>" 43px / "Your..." 29px */}
             <p
@@ -331,14 +390,14 @@ function IeltsPteCoachingPage() {
             Figma: 259:1529  1240×400  left=84  4 visible cards 290×400 gap=26
             Card: bg image | top row (play 35×35 + city label) | gradient bottom 130px
         ══════════════════════════════════════════════════════════ */}
-        <section className="relative mb-[40px]" style={{ marginLeft: 84 }}>
+        <section className="relative mb-[40px] w-full overflow-hidden">
 
           {/* Left nav arrow */}
           <button
             type="button"
             onClick={prevT}
             disabled={tIdx === 0}
-            className="absolute -left-[56px] top-1/2 -translate-y-1/2 z-10 disabled:opacity-25 transition-opacity cursor-pointer"
+            className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 disabled:opacity-25 transition-opacity cursor-pointer"
             aria-label="Previous testimonials"
           >
             <svg width="34" height="44" viewBox="0 0 34 44" fill="none" aria-hidden>
@@ -347,7 +406,7 @@ function IeltsPteCoachingPage() {
           </button>
 
           {/* Sliding track — exactly 4 cards wide */}
-          <div style={{ overflow: 'hidden', width: CARD_W * VISIBLE + CARD_GAP * (VISIBLE - 1) }}>
+          <div className="max-w-full overflow-hidden" style={{ width: 'min(1238px, 100%)' }}>
             <div
               className="flex"
               style={{
@@ -359,32 +418,43 @@ function IeltsPteCoachingPage() {
               {CARDS.map((c, i) => (
                 <div
                   key={i}
-                  className="relative shrink-0 overflow-hidden"
-                  style={{ width: CARD_W, height: 400, borderRadius: 15 }}
+                  className="relative shrink-0 overflow-hidden bg-black"
+                  style={{ width: CARD_W, height: CARD_H, borderRadius: 15 }}
                 >
                   {/* Card background */}
-                  <img
-                    src={c.img}
-                    alt={c.city}
-                    className="absolute inset-0 w-full h-full object-cover rounded-[15px] pointer-events-none"
-                  />
-
-                  {c.hasOverlay ? (
-                    /* Cards 1–3: city label top-right only */
-                    <div className="absolute top-[10px] right-[10px] z-10 bg-black rounded-[5px] p-[5px]">
-                      <p className="font-poppins font-normal text-white text-[12px] leading-[1.2] tracking-[-0.15px]">
-                        {c.city}
-                      </p>
-                    </div>
+                  {c.video ? (
+                    <>
+                      <video
+                        ref={(element) => { testimonialVideoRefs.current[i] = element; }}
+                        src={c.video}
+                        className="absolute inset-0 w-full h-full object-contain rounded-[15px] bg-black"
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10 pointer-events-none" />
+                      <button
+                        type="button"
+                        onClick={() => toggleTestimonialVideo(i)}
+                        className="absolute inset-0 z-10 flex items-center justify-center"
+                        aria-label={playingTestimonials[i] ? `Pause testimonial video ${i + 1}` : `Play testimonial video ${i + 1}`}
+                      >
+                        {!playingTestimonials[i] && (
+                          <span className="flex h-[68px] w-[68px] items-center justify-center rounded-full bg-white/90 text-[#FF3300] shadow-[0_16px_36px_rgba(0,0,0,0.26)]">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
+                              <path d="M5 3.35C5 2.45 6 1.91 6.75 2.41L15.57 8.23C16.24 8.67 16.24 9.67 15.57 10.11L6.75 15.93C6 16.43 5 15.89 5 14.99V3.35Z" fill="currentColor" />
+                            </svg>
+                          </span>
+                        )}
+                      </button>
+                    </>
                   ) : (
-                    /* Card 4: centered white play button */
-                    <div className="absolute inset-0 flex items-center justify-center z-10">
-                      <div className="flex items-center justify-center rounded-full bg-white" style={{ width: 56, height: 56 }}>
-                        <svg width="20" height="22" viewBox="0 0 20 22" fill="none" aria-hidden>
-                          <path d="M2 2L18 11L2 20V2Z" fill="black" />
-                        </svg>
-                      </div>
-                    </div>
+                    <img
+                      src={c.img}
+                      alt={c.city}
+                      className="absolute inset-0 w-full h-full object-cover rounded-[15px] pointer-events-none"
+                    />
                   )}
                 </div>
               ))}
@@ -396,7 +466,7 @@ function IeltsPteCoachingPage() {
             type="button"
             onClick={nextT}
             disabled={tIdx >= maxIdx}
-            className="absolute -right-[56px] top-1/2 -translate-y-1/2 z-10 disabled:opacity-25 transition-opacity cursor-pointer"
+            className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 z-10 disabled:opacity-25 transition-opacity cursor-pointer"
             aria-label="Next testimonials"
           >
             <svg width="34" height="44" viewBox="0 0 34 44" fill="none" aria-hidden>
@@ -415,8 +485,6 @@ function IeltsPteCoachingPage() {
             fontSize: 24,
             lineHeight: '32px',
             letterSpacing: '-0.15px',
-            marginLeft: 92,
-            marginRight: 123,
             marginBottom: '140px',
           }}
         >
@@ -438,8 +506,7 @@ function IeltsPteCoachingPage() {
             Bullets: 22px Regular leading-[1.2 / 1.36 / 1.35]
         ══════════════════════════════════════════════════════════ */}
         <section
-          className="flex items-start mb-[100px]"
-          style={{ marginLeft: 92, marginRight: 126 }}
+          className="flex w-full flex-col items-start gap-8 mb-[100px] lg:flex-row"
         >
           {/* Heading column */}
           <div
@@ -456,7 +523,7 @@ function IeltsPteCoachingPage() {
 
           {/* Bullets column */}
           <div
-            className="font-poppins font-normal text-black flex flex-col"
+            className="font-poppins font-normal text-black flex flex-col min-w-0"
             style={{ fontSize: 22, letterSpacing: '-0.15px' }}
           >
             <p className="mb-[13px]" style={{ lineHeight: '1.2' }}>
