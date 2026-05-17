@@ -357,7 +357,7 @@ const LogoFallback = ({ name }) => (
    white card, logo top-left, title, university, divider,
    6 detail rows, "View Details" outlined pill button
    ══════════════════════════════════════════════════════ */
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, onConsultation }) => {
   const [logoErr, setLogoErr] = useState(false);
 
   return (
@@ -468,13 +468,18 @@ const CourseCard = ({ course }) => {
 
       {/* ── "View Details" pill — Figma: x:14, radius 21px, border #BABABA ── */}
       <div style={{ padding: '16px 14px 18px' }}>
-        <div style={{
+        <button
+          type="button"
+          onClick={onConsultation}
+          style={{
           border: '1px solid #BABABA',
           borderRadius: 21,
           padding: '12px 0',
           textAlign: 'center',
           cursor: 'pointer',
           transition: 'border-color 0.2s, background 0.2s',
+          width: '100%',
+          background: 'transparent',
         }}
           onMouseEnter={e => {
             e.currentTarget.style.borderColor = '#00352B';
@@ -494,7 +499,7 @@ const CourseCard = ({ course }) => {
           }}>
             View Details
           </span>
-        </div>
+        </button>
       </div>
     </div>
   );
@@ -712,7 +717,7 @@ export default function SearchCoursesPage() {
               gap: 24,
             }}>
               {filtered.map(course => (
-                <CourseCard key={course.id} course={course} />
+                <CourseCard key={course.id} course={course} onConsultation={openConsultation} />
               ))}
             </div>
           )}
@@ -769,26 +774,25 @@ export default function SearchCoursesPage() {
                   fontSize: 'clamp(26px, 2.4vw, 36px)', lineHeight: '1.2em',
                   color: '#fff', margin: '0 0 4px 0',
                 }}>
-                  Study in 10+<br />countries.
+                  Study in <br />AUSTRALIA.
                 </h2>
                 <h2 style={{
                   fontFamily: 'Poppins', fontWeight: 700,
                   fontSize: 'clamp(26px, 2.4vw, 36px)', lineHeight: '1.2em',
-                  color: '#FF3300', margin: '0 0 20px 0',
+                  color: '#fff', margin: '0 0 20px 0',
                 }}>
-                  Dream big.
+                  Your Australia Dream <span style={{ color: '#FF3300' }}>Starts Here.</span>
                 </h2>
                 <p style={{
                   fontFamily: 'Poppins', fontWeight: 400, fontSize: 14,
                   lineHeight: '1.7em', color: 'rgba(255,255,255,0.82)', margin: 0,
                 }}>
-                  Get expert guidance for your international education journey.
-                  Book a 1:1 session with our top counselors today.
+                  Get expert guidance for studying, migrating, and building your future in Australia — with complete end-to-end support.
                 </p>
               </div>
               {/* Stats */}
               <div style={{ position: 'relative', zIndex: 1, display: 'flex', gap: 32, marginTop: 36 }}>
-                {[{ value: '5k+', label: 'Students Placed' }, { value: '98%', label: 'Success Rate' }].map(s => (
+                {[{ value: '5k+', label: 'Student Guided' }, { value: '98%', label: 'Success Rate' }].map(s => (
                   <div key={s.label}>
                     <p style={{ fontFamily: 'Poppins', fontWeight: 700, fontSize: 24, color: '#fff', margin: '0 0 2px 0' }}>{s.value}</p>
                     <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 12, color: 'rgba(255,255,255,0.7)', margin: 0 }}>{s.label}</p>

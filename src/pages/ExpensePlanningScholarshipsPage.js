@@ -563,6 +563,7 @@ export default function ExpensePlanningScholarshipsPage() {
                   {/* View Details */}
                   <button
                     type="button"
+                    onClick={openConsultation}
                     style={{
                       width: '100%',
                       padding: '9px',
@@ -646,13 +647,24 @@ export default function ExpensePlanningScholarshipsPage() {
 
               {/* ─── Left dark panel: content at BOTTOM ─── */}
               <div style={{
+                backgroundImage: 'url(/images/Scholarship-Enquiry.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center center',
                 backgroundColor: '#00352B',
                 padding: '32px 26px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'flex-end',
                 gap: '18px',
+                position: 'relative',
+                overflow: 'hidden',
               }}>
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(180deg, rgba(0,53,43,0.08) 0%, rgba(0,53,43,0.74) 58%, rgba(0,53,43,0.88) 100%)',
+                  pointerEvents: 'none',
+                }} />
                 <p style={{
                   fontFamily: 'Poppins, sans-serif',
                   fontWeight: 600,
@@ -660,12 +672,14 @@ export default function ExpensePlanningScholarshipsPage() {
                   lineHeight: '1.7em',
                   color: '#fff',
                   margin: 0,
+                  position: 'relative',
+                  zIndex: 1,
                 }}>
                   Scholarship applications are highly competitive. Early assessment
                   increases your success rate.
                 </p>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', position: 'relative', zIndex: 1 }}>
                   {['Check exact eligibility score', 'Get deadline alerts', 'Application essay review'].map((t) => (
                     <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                       <RedCheck size={20} />

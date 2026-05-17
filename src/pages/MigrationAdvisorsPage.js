@@ -179,7 +179,7 @@ function MigrationAdvisorsPage() {
                 position: 'absolute',
                 inset: 0,
                 background:
-                  'linear-gradient(180deg, rgba(4, 39, 31, 0.72) 0%, rgba(4, 39, 31, 0.50) 36%, rgba(4, 39, 31, 0.42) 100%)',
+                  'linear-gradient(180deg, rgba(4, 39, 31, 0.38) 0%, rgba(4, 39, 31, 0.22) 36%, rgba(4, 39, 31, 0.16) 100%)',
               }}
             />
             <div

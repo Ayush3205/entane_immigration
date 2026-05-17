@@ -7,6 +7,11 @@ const HERO_BG = '/images/job-seekers/js-hero-bg.png';
 const RECT_19 = '/images/job-seekers/js-rect-19-53537d.png';
 const IMG_59  = '/images/job-seekers/js-image-59-510b85.png';
 const IMG_60  = '/images/job-seekers/js-image-60.png';
+const DOCTOR_ICON = '/images/job-seekers/Doctor.png';
+const NURSE_ICON = '/images/job-seekers/Nurse.png';
+const ENGINEER_ICON = '/images/job-seekers/Engineer.png';
+const HOSPITALITY_ICON = '/images/job-seekers/Hospitality.png';
+const CONSTRUCTION_ICON = '/images/job-seekers/Construction.png';
 
 /* ── Occupation List Data (SOL) ───────────────────────────────────────────── */
 const SOL_IMG = '/images/job-seekers/js-wave-illustration.png';
@@ -61,13 +66,13 @@ const STATS = [
 ];
 
 const JOB_CARDS_ROW1 = [
-  { title: 'Doctors',   desc: 'High quality Doctors, are required\nfor this role' },
-  { title: 'Nurses',    desc: 'High quality Nurses, are required\nfor this role' },
-  { title: 'Engineers', desc: 'High quality Engineers, are required\nfor this role' },
+  { title: 'Doctors', icon: DOCTOR_ICON, desc: 'High quality Doctors, are required\nfor this role' },
+  { title: 'Nurses', icon: NURSE_ICON, desc: 'High quality Nurses, are required\nfor this role' },
+  { title: 'Engineers', icon: ENGINEER_ICON, desc: 'High quality Engineers, are required\nfor this role' },
 ];
 const JOB_CARDS_ROW2 = [
-  { title: 'Hospitality',  desc: 'High quality hospitality professionals\nare required' },
-  { title: 'Construction', desc: 'High quality construction workers\nare required' },
+  { title: 'Hospitality', icon: HOSPITALITY_ICON, desc: 'High quality hospitality professionals\nare required' },
+  { title: 'Construction', icon: CONSTRUCTION_ICON, desc: 'High quality construction workers\nare required' },
 ];
 
 const VISA_POINTS = [
@@ -181,22 +186,21 @@ const JOB_SEEKERS_FAQ_ITEMS = [
    SUB-COMPONENTS
    ══════════════════════════════════════════════════════════════════════════════ */
 
-function JobIconBox() {
+function JobIconBox({ icon, title }) {
   return (
-    <div
-      className="flex-shrink-0 rounded-[13px]"
-      style={{ width: 64, height: 65, background: 'rgba(255,51,0,0.25)' }}
-    />
+    <div className="flex items-center justify-start" style={{ width: 52, height: 52 }}>
+      <img src={icon} alt={title} className="block object-contain" style={{ width: 42, height: 42 }} />
+    </div>
   );
 }
 
-function JobCard({ title, desc }) {
+function JobCard({ title, desc, icon }) {
   return (
     <div
       className="flex flex-col gap-[10px] px-[20px] py-[10px] bg-white rounded-[11px] flex-1"
       style={{ border: '1px solid rgba(0,0,0,0.09)' }}
     >
-      <JobIconBox />
+      <JobIconBox icon={icon} title={title} />
       <p
         className="font-poppins font-semibold text-black m-0"
         style={{ fontSize: 30, lineHeight: '1.5em', letterSpacing: '-0.005em' }}
@@ -213,7 +217,7 @@ function JobCard({ title, desc }) {
   );
 }
 
-function SeeFullListCard() {
+function SeeFullListCard({ onConsultation }) {
   return (
     <div
       className="flex flex-col items-center justify-center gap-[17px] px-[20px] py-[10px]
@@ -234,6 +238,7 @@ function SeeFullListCard() {
       </p>
       <button
         type="button"
+        onClick={onConsultation}
         className="font-poppins font-medium text-white rounded-[9px] px-[10px] py-[10px] border-0 cursor-pointer"
         style={{ background: '#FF3300', fontSize: 20, lineHeight: '1.5em', letterSpacing: '-0.0075em' }}
       >
@@ -245,7 +250,7 @@ function SeeFullListCard() {
 
 /* ── Skilled Occupation List (SOL) ────────────────────────────────────────── */
 
-function SkilledOccupationList() {
+function SkilledOccupationList({ onConsultation }) {
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
 
@@ -296,13 +301,15 @@ function SkilledOccupationList() {
               STSOL (Short Term)
             </span>
           </div>
-          <button
-            type="button"
-            className="font-poppins font-semibold text-white rounded-[10px] border-0 cursor-pointer w-full"
+          <a
+            href="https://immi.homeaffairs.gov.au/visas/working-in-australia/skill-occupation-list"
+            target="_blank"
+            rel="noreferrer"
+            className="font-poppins font-semibold text-white rounded-[10px] border-0 cursor-pointer w-full text-center"
             style={{ background: '#00352B', fontSize: 16, padding: '14px 24px', marginTop: 8 }}
           >
             Download Full PDF Guide
-          </button>
+          </a>
         </div>
 
         {/* RIGHT PANEL */}
@@ -360,6 +367,15 @@ function SkilledOccupationList() {
             {filtered.slice(0, 5).map((o) => (
               <div
                 key={o.code}
+                role="button"
+                tabIndex={0}
+                onClick={onConsultation}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onConsultation();
+                  }
+                }}
                 className="flex items-center justify-between rounded-[10px] border transition-all"
                 style={{
                   padding: '16px 20px',
@@ -405,7 +421,7 @@ function SkilledOccupationList() {
 
 /* ── PR Points Calculator ─────────────────────────────────────────────────── */
 
-function PRPointsCalculator() {
+function PRPointsCalculator({ onConsultation }) {
   const [age, setAge] = useState(1);
   const [english, setEnglish] = useState(1);
   const [education, setEducation] = useState(1);
@@ -539,6 +555,7 @@ function PRPointsCalculator() {
           </p>
           <button
             type="button"
+            onClick={onConsultation}
             className="font-poppins font-semibold text-white border-0 cursor-pointer rounded-[8px] transition-opacity hover:opacity-90"
             style={{ background: '#FF3300', fontSize: 15, padding: '12px 28px' }}
           >
@@ -565,22 +582,21 @@ function JobSeekersPage() {
     window.dispatchEvent(new CustomEvent('openConsultationPopup'));
 
   return (
-    <div className="flex flex-col items-center w-full bg-white">
+    <div className="flex flex-col items-center w-full bg-white overflow-x-hidden">
       <Header />
 
-      <div className="flex flex-col w-full" style={{ maxWidth: 1440, margin: '0 auto' }}>
+      <div className="flex flex-col w-full">
 
         {/* ═══ 1. HERO ═══════════════════════════════════════════════════════ */}
         <section
-          className="relative flex flex-col justify-center gap-[33px] px-[100px] py-[80px] w-screen"
+          className="relative flex flex-col justify-center gap-[33px] px-[100px] py-[80px] w-full"
           style={{
-            marginLeft: 'calc(-50vw + 50%)',
             minHeight: 800,
             background: `linear-gradient(rgba(0,53,43,0.57),rgba(0,53,43,0.57)),
                          url('${HERO_BG}') center/cover no-repeat`,
           }}
         >
-          <div className="flex flex-col" style={{ width: 840 }}>
+          <div className="flex flex-col w-full" style={{ maxWidth: 840 }}>
             <h1
               className="font-poppins font-bold font-weight-700 m-0 text-[#fff]"
               style={{ fontSize: 80, lineHeight: '1.5em', letterSpacing: '-0.001875em' }}
@@ -597,7 +613,7 @@ function JobSeekersPage() {
 
           <p
             className="font-poppins text-white m-0"
-            style={{ fontSize: 16, fontWeight: 400, lineHeight: 'normal', letterSpacing: '-0.15px', width: 704 }}
+            style={{ fontSize: 16, fontWeight: 400, lineHeight: 'normal', letterSpacing: '-0.15px', width: '100%', maxWidth: 704 }}
           >
             Secure a sponsored job in Australia with <span style={{ fontWeight: 700 }}>Esante</span>.<br />
             <span style={{ fontWeight: 800 }}>We specialize in 482, 186, and PR visa pathways for skilled professionals.</span>
@@ -608,6 +624,8 @@ function JobSeekersPage() {
           </p>
 
           <button
+            type="button"
+            onClick={openConsultation}
             className="font-poppins font-normal text-white rounded-[12px] border-0 cursor-pointer"
             style={{
               position: 'absolute', left: 100, bottom: 80,
@@ -637,15 +655,18 @@ function JobSeekersPage() {
         {/* ═══ 3. TOP IN-DEMAND JOBS ═════════════════════════════════════════ */}
         <section
           id="top-in-demand"
-          className="flex flex-col items-center py-[80px] w-screen"
-          style={{ background: '#FFFBE9', marginLeft: 'calc(-50vw + 50%)' }}
+          className="flex flex-col items-center py-[80px] w-full"
+          style={{ background: '#FFFBE9' }}
         >
           <div className="flex flex-col items-center gap-[25px] px-[100px] w-full max-w-[1440px]">
             <div className="flex flex-col items-center w-full">
               <h2 className="font-poppins font-bold m-0 text-center" style={{ fontSize: 74, lineHeight: '1.5em', letterSpacing: '-0.002027em', color: '#00352B' }}>
                 Top In-Demand Jobs
               </h2>
-              <p className="font-poppins font-normal m-0 text-center" style={{ fontSize: 16, lineHeight: '1.5em', letterSpacing: '-0.009375em', width: 724, color: '#00352B' }}>
+              <p
+                className="font-poppins font-normal m-0 text-center"
+                style={{ fontSize: 16, lineHeight: '1.5em', letterSpacing: '-0.009375em', width: '100%', maxWidth: 724, color: '#00352B' }}
+              >
                 Legal pathways to employment abroad, including skilled migration, corporate,
                 and talent programs. Legal pathways to employment abroad, including
               </p>
@@ -655,7 +676,7 @@ function JobSeekersPage() {
             </div>
             <div className="flex flex-row items-stretch gap-[30px] py-[10px] w-full">
               {JOB_CARDS_ROW2.map((c) => <JobCard key={c.title} {...c} />)}
-              <SeeFullListCard />
+              <SeeFullListCard onConsultation={openConsultation} />
             </div>
           </div>
         </section>
@@ -770,14 +791,35 @@ function JobSeekersPage() {
         <section
           className="flex flex-col items-center justify-center gap-[20px] px-[100px] py-[80px] w-full text-center bg-white"
         >
-          <p className="font-poppins font-bold m-0" style={{ fontSize: 44, lineHeight: '1.4em' }}>
-            <span style={{ color: '#00352B' }}>Stop Searching. </span>
-            <span style={{ color: '#FF3300' }}>Start Working.</span>
-          </p>
-          <p className="font-poppins font-normal m-0" style={{ fontSize: 23, lineHeight: '1.5em', letterSpacing: '-0.006522em', color: '#333' }}>
+          <h2
+            className="font-poppins m-0"
+            style={{
+              fontSize: 'clamp(44px, 5vw, 64px)',
+              lineHeight: 1.08,
+              fontWeight: 300,
+              letterSpacing: '-0.03em',
+            }}
+          >
+            <span style={{ color: '#FF3300', fontStyle: 'italic', fontWeight: 500 }}>Stop</span>
+            <span style={{ color: '#000000' }}> Searching. </span>
+            <span style={{ color: '#FF3300', fontStyle: 'italic', fontWeight: 500 }}>Start</span>
+            <span style={{ color: '#000000' }}> Working.</span>
+          </h2>
+          <p
+            className="font-poppins m-0"
+            style={{
+              fontSize: 'clamp(22px, 2.3vw, 30px)',
+              lineHeight: 1.2,
+              letterSpacing: '-0.02em',
+              color: '#111111',
+              fontWeight: 400,
+            }}
+          >
             You have the skill. We have the sponsor. Let&apos;s make it happen.
           </p>
           <button
+            type="button"
+            onClick={openConsultation}
             className="font-poppins font-normal text-white rounded-[12px] border-0 cursor-pointer"
             style={{ fontSize: 18, lineHeight: '1.5em', letterSpacing: '-0.008333em', background: '#FF3300', padding: '15px 25px', marginTop: 8 }}
           >
@@ -786,10 +828,10 @@ function JobSeekersPage() {
         </section>
 
         {/* ═══ 8. SKILLED OCCUPATION LIST (interactive) ══════════════════════ */}
-        <SkilledOccupationList />
+        <SkilledOccupationList onConsultation={openConsultation} />
 
         {/* ═══ 9. PR POINTS CALCULATOR (interactive) ═════════════════════════ */}
-        <PRPointsCalculator />
+        <PRPointsCalculator onConsultation={openConsultation} />
 
         {/* ═══ 10. FAQ — skilled jobs & employer sponsorship ═══════════════ */}
         <section

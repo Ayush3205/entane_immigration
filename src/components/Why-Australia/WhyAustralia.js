@@ -156,7 +156,7 @@ export default function WhyAustralia() {
                 lineHeight: "29px",
               }}
             >
-              Invest in Yourself in a CountryThat Invests in You
+              Invest in Yourself in a Country that Invests in You
             </div>
           </div>
         </div>

@@ -201,7 +201,7 @@ const LogoFallback = ({ name }) => (
    logo top-left, name + "View all courses" text,
    divider, image banner, "View Details" pill button
    ══════════════════════════════════════════════════════ */
-const UniversityCard = ({ university }) => {
+const UniversityCard = ({ university, onConsultation }) => {
   const [logoErr, setLogoErr] = useState(false);
   const [imgErr, setImgErr] = useState(false);
 
@@ -336,7 +336,9 @@ const UniversityCard = ({ university }) => {
         Card bottom = 444  →  button bottom = 417  →  bottom padding: 27px
       */}
       <div style={{ padding: '0 14px 27px' }}>
-        <div
+        <button
+          type="button"
+          onClick={onConsultation}
           style={{
             border: '1px solid #BABABA',
             borderRadius: 21,
@@ -346,6 +348,8 @@ const UniversityCard = ({ university }) => {
             justifyContent: 'center',
             cursor: 'pointer',
             transition: 'border-color 0.2s, background 0.2s',
+            width: '100%',
+            background: 'transparent',
           }}
           onMouseEnter={e => {
             e.currentTarget.style.borderColor = '#00352B';
@@ -366,7 +370,7 @@ const UniversityCard = ({ university }) => {
           }}>
             View Details
           </span>
-        </div>
+        </button>
       </div>
     </div>
   );
@@ -582,7 +586,7 @@ export default function SearchUniversitiesPage() {
               gap: 24,
             }}>
               {filtered.map(uni => (
-                <UniversityCard key={uni.id} university={uni} />
+                <UniversityCard key={uni.id} university={uni} onConsultation={openConsultation} />
               ))}
             </div>
           )}
@@ -653,7 +657,7 @@ export default function SearchUniversitiesPage() {
                 </p>
               </div>
               <div style={{ position: 'relative', zIndex: 1, display: 'flex', gap: 32, marginTop: 36 }}>
-                {[{ value: '5k+', label: 'Students Placed' }, { value: '98%', label: 'Success Rate' }].map(s => (
+                {[{ value: '5k+', label: 'Student Guided' }, { value: '98%', label: 'Success Rate' }].map(s => (
                   <div key={s.label}>
                     <p style={{ fontFamily: 'Poppins', fontWeight: 700, fontSize: 24, color: '#fff', margin: '0 0 2px 0' }}>{s.value}</p>
                     <p style={{ fontFamily: 'Poppins', fontWeight: 400, fontSize: 12, color: 'rgba(255,255,255,0.7)', margin: 0 }}>{s.label}</p>

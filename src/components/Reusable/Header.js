@@ -103,7 +103,6 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
                           <li><Link to="/ancillary-services">Ancillary Services Overview</Link></li>
                           <li><Link to="/sop-documents">SOP &amp; Other Documents</Link></li>
                           <li><Link to="/accommodation">Accommodation</Link></li>
-                          <li><Link to="/post-study-work-visa">Post Study Work Visa</Link></li>
                           <li><Link to="/part-time-job-support">Part time job support</Link></li>
                           <li><Link to="/ielts-pte-coaching">IELTS/PTE Coaching</Link></li>
                           <li><Link to="/airport-services">Airport Services</Link></li>
@@ -125,7 +124,11 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
                     <ul>
                       <li><Link to="/recruitment">Recruitment</Link></li>
                       <li><Link to="/job-seekers">For Job Seekers</Link></li>
-                      <li><Link to="/job-seekers#top-in-demand">Top In-Demand Jobs</Link></li>
+                      <li>
+                        <Link to={{ pathname: '/job-seekers', hash: '#top-in-demand' }}>
+                          Top In-Demand Jobs
+                        </Link>
+                      </li>
                       <li><Link to="/employers">For Employers</Link></li>
                     </ul>
                   </div>
@@ -140,7 +143,6 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
                   <li><Link to="/news-blogs">News &amp; Blogs</Link></li>
                   <li><Link to="/case-studies">Case Studies</Link></li>
                   <li><Link to="/eligibility-calculator">Eligibility Calculator</Link></li>
-                  <li><Link to="/cost-of-living-calculator">Cost of Living Calculator</Link></li>
                 </ul>
               </li>
             </ul>
