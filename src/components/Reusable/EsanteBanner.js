@@ -28,6 +28,10 @@ const EsanteBanner = ({
   line4 = DEFAULT_CONTENT.line4,
   subtext = DEFAULT_CONTENT.subtext,
   buttonText = DEFAULT_CONTENT.buttonText,
+  line1ClassName = "font-poppins text-[42px] font-normal leading-[1.15] text-white tracking-[-0.96px]",
+  line2ClassName = "font-poppins text-[48px] font-semibold italic leading-[1.15] text-white tracking-[-0.96px]",
+  regularLineClassName = "font-poppins text-[42px] font-normal leading-[1.15] text-white tracking-[-0.96px]",
+  subtextClassName = "mt-8 w-full max-w-[708px] font-poppins text-[23px] font-normal leading-normal text-[rgba(255,255,255,0.9)] text-center tracking-[-0.15px]",
 }) => {
   const regularLines = [line3, line4].filter(Boolean);
 
@@ -45,13 +49,13 @@ const EsanteBanner = ({
         <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-[59px]">
           <div className="flex flex-col items-center">
             {line1 ? (
-              <p className="font-poppins text-[42px] font-normal leading-[1.15] text-white tracking-[-0.96px]">
+              <p className={line1ClassName}>
                 {renderMultilineText(line1)}
               </p>
             ) : null}
 
             {line2 ? (
-              <p className="font-poppins text-[48px] font-semibold italic leading-[1.15] text-white tracking-[-0.96px]">
+              <p className={line2ClassName}>
                 {renderMultilineText(line2)}
               </p>
             ) : null}
@@ -59,7 +63,7 @@ const EsanteBanner = ({
             {regularLines.map((line, index) => (
               <p
                 key={`${line}-${index}`}
-                className="font-poppins text-[42px] font-normal leading-[1.15] text-white tracking-[-0.96px]"
+                className={regularLineClassName}
               >
                 {renderMultilineText(line)}
               </p>
@@ -67,7 +71,7 @@ const EsanteBanner = ({
           </div>
 
           {subtext ? (
-            <p className="mt-8 w-full max-w-[708px] font-poppins text-[23px] font-normal leading-normal text-[rgba(255,255,255,0.9)] text-center tracking-[-0.15px]">
+            <p className={subtextClassName}>
               {renderMultilineText(subtext)}
             </p>
           ) : null}

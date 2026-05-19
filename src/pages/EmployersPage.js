@@ -1,227 +1,54 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../components/Reusable/Header';
 import Footer from '../components/Reusable/Footer';
+import EsanteBanner from '../components/Reusable/EsanteBanner';
 
 const HERO_IMAGE = '/images/employers/Hero.png';
 const EMPLOYERS_CHOOSE_IMAGE = '/images/employers/Employers-Choose.png';
+const RED_TAPE_IMAGE = '/images/employers/Red-Tape.png';
+const RECRUITMENT_IMAGE = '/images/employers/Recruitment.png';
 
-function CollaborationForm() {
-  const [form, setForm] = useState({
-    companyName: '',
-    contactPerson: '',
-    workEmail: '',
-    phoneNumber: '',
-    industry: '',
-    hiringNeeds: '',
-    requirements: '',
-  });
-
-  const handleChange = (field) => (e) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
-  };
-
-  const inputStyle = {
-    width: '100%',
-    padding: '12px 16px',
-    fontSize: 14,
-    fontFamily: 'Poppins, sans-serif',
-    border: '1px solid #ddd',
-    borderRadius: 8,
-    outline: 'none',
-    color: '#1a1a1a',
-    background: '#fff',
-  };
-
-  const labelStyle = {
-    fontSize: 11,
-    fontWeight: 700,
-    letterSpacing: '1.2px',
-    color: '#1a1a1a',
-    marginBottom: 6,
-    fontFamily: 'Poppins, sans-serif',
-    textTransform: 'uppercase',
-  };
-
-  const selectStyle = {
-    ...inputStyle,
-    appearance: 'none',
-    backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right 16px center',
-    paddingRight: 40,
-  };
-
-  return (
-    <div className="w-full rounded-[16px] bg-white" style={{ padding: '40px 44px', maxWidth: 660, margin: '0 auto' }}>
-      <div className="flex" style={{ gap: 24, marginBottom: 24 }}>
-        <div className="flex flex-col" style={{ flex: 1 }}>
-          <label style={labelStyle}>Company Name</label>
-          <input
-            type="text"
-            placeholder="Your Business Name"
-            value={form.companyName}
-            onChange={handleChange('companyName')}
-            style={inputStyle}
-          />
-        </div>
-        <div className="flex flex-col" style={{ flex: 1 }}>
-          <label style={labelStyle}>Contact Person</label>
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={form.contactPerson}
-            onChange={handleChange('contactPerson')}
-            style={inputStyle}
-          />
-        </div>
-      </div>
-
-      <div className="flex" style={{ gap: 24, marginBottom: 24 }}>
-        <div className="flex flex-col" style={{ flex: 1 }}>
-          <label style={labelStyle}>Work Email</label>
-          <input
-            type="email"
-            placeholder="name@company.com"
-            value={form.workEmail}
-            onChange={handleChange('workEmail')}
-            style={inputStyle}
-          />
-        </div>
-        <div className="flex flex-col" style={{ flex: 1 }}>
-          <label style={labelStyle}>Phone Number</label>
-          <input
-            type="tel"
-            placeholder="+61 ..."
-            value={form.phoneNumber}
-            onChange={handleChange('phoneNumber')}
-            style={inputStyle}
-          />
-        </div>
-      </div>
-
-      <div className="flex" style={{ gap: 24, marginBottom: 24 }}>
-        <div className="flex flex-col" style={{ flex: 1 }}>
-          <label style={labelStyle}>Industry</label>
-          <select
-            value={form.industry}
-            onChange={handleChange('industry')}
-            style={selectStyle}
-          >
-            <option value="" disabled>Select Industry</option>
-            <option value="healthcare">Healthcare</option>
-            <option value="construction">Construction</option>
-            <option value="hospitality">Hospitality</option>
-            <option value="engineering">Engineering</option>
-            <option value="it">IT & Technology</option>
-            <option value="mining">Mining</option>
-            <option value="trades">Trades</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div className="flex flex-col" style={{ flex: 1 }}>
-          <label style={labelStyle}>Hiring Needs</label>
-          <select
-            value={form.hiringNeeds}
-            onChange={handleChange('hiringNeeds')}
-            style={selectStyle}
-          >
-            <option value="" disabled>Select Volume</option>
-            <option value="1-5">1–5 positions</option>
-            <option value="6-20">6–20 positions</option>
-            <option value="21-50">21–50 positions</option>
-            <option value="50+">50+ positions</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="flex flex-col" style={{ marginBottom: 28 }}>
-        <label style={labelStyle}>Specific Requirements</label>
-        <textarea
-          placeholder="Tell us about the roles you are looking to fill..."
-          value={form.requirements}
-          onChange={handleChange('requirements')}
-          rows={5}
-          style={{ ...inputStyle, resize: 'vertical', minHeight: 110 }}
-        />
-      </div>
-
-      <button
-        className="w-full font-poppins"
-        style={{
-          padding: '15px 0',
-          fontSize: 14,
-          fontWeight: 700,
-          letterSpacing: '1.5px',
-          color: '#fff',
-          background: '#00352B',
-          border: 'none',
-          borderRadius: 8,
-          cursor: 'pointer',
-          textTransform: 'uppercase',
-        }}
-      >
-        Submit Enquiry
-      </button>
-    </div>
-  );
-}
-
-const EMPLOYERS_FAQ_ITEMS = [
+const INDUSTRY_CARDS = [
   {
-    question: 'How can Australian employers hire overseas workers legally?',
-    answer:
-      'Australian employers can hire overseas workers through employer-sponsored visa programs such as Subclass 482 (TSS), 186 (ENS), and 494 (regional). This requires meeting sponsorship criteria and following migration compliance processes.',
+    title: 'Healthcare & Nursing',
+    body: 'Hospitals, Aged Care, Disability Care',
+    image: '/images/employers/Health.png',
   },
   {
-    question: 'What are the benefits of hiring skilled migrants in Australia?',
-    answer:
-      'Hiring skilled migrants helps employers:\n• Fill critical skill shortages\n• Improve workforce productivity\n• Access global talent pools\n• Support long-term business growth',
+    title: 'Hospitality',
+    body: 'Chefs, Cooks, Restaurant Managers',
+    image: '/images/employers/Hospitality.png',
   },
   {
-    question: 'What visa options are available for employers to sponsor workers?',
-    answer:
-      'Common employer-sponsored visa options include:\n• Subclass 482 – Temporary Skill Shortage (TSS)\n• Subclass 186 – Employer Nomination Scheme (PR)\n• Subclass 494 – Regional Sponsored Migration\n• Subclass 407 – Training Visa\n\nThe right option depends on role, location, and long-term workforce plans.',
+    title: 'Construction & Trades',
+    body: 'Carpenters, Electricians, Boilermakers, Fitters',
+    image: '/images/employers/Construction.png',
   },
   {
-    question: 'Is hiring overseas workers complicated for employers?',
-    answer:
-      'It can be complex due to visa rules, compliance, and documentation. However, with the right recruitment and migration partner, the entire process can be handled end-to-end, reducing risk and administrative burden.',
+    title: 'Mining & Resources',
+    body: 'Boilermakers, Drillers, Fitters, Heavy Equipment Operators',
+    image: '/images/employers/Mining.png',
   },
   {
-    question: 'How long does it take to hire an overseas employee in Australia?',
-    answer:
-      'Timelines vary based on visa type and role demand, but typically range between 4 to 12 weeks from candidate selection to onboarding.',
+    title: 'Mechanical Trades',
+    body: 'Diesel Motor Mechanics, Automotive Technicians',
+    image: '/images/employers/Mechanical.png',
   },
   {
-    question: 'What costs are involved in hiring overseas talent?',
-    answer:
-      'Costs may include:\n• Sponsorship and nomination fees\n• Visa application costs\n• Recruitment fees\n\nHowever, structured hiring ensures long-term ROI through skilled, reliable employees.',
-  },
-  {
-    question: 'How does Esante support employers in overseas recruitment?',
-    answer:
-      'Esante provides:\n• Pre-screened global talent\n• Skills and visa eligibility checks\n• Employer sponsorship guidance\n• Compliance and documentation management\n• Post-arrival onboarding and retention support',
-  },
-  {
-    question: 'Can Esante help with regional and high-demand hiring needs?',
-    answer:
-      'Yes, Esante supports employers across metro and regional Australia, especially in high-demand sectors like healthcare, trades, mining, hospitality, and engineering.',
+    title: 'Professional Services',
+    body: 'Accountants, Engineers, IT professionals',
+    image: '/images/employers/Professional.png',
   },
 ];
 
 function EmployersPage() {
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
-
-  const toggleFaq = (index) => {
-    setOpenFaqIndex((prev) => (prev === index ? null : index));
-  };
-
   const openConsultation = () =>
     window.dispatchEvent(new CustomEvent('openConsultationPopup'));
 
   return (
     <div className="service-page">
       <Header />
+
       <main className="service-page__main" style={{ paddingTop: 0, paddingBottom: 0 }}>
         <section
           className="relative w-full overflow-hidden bg-[#f7f2e8]"
@@ -243,44 +70,66 @@ function EmployersPage() {
           >
             <div className="flex w-full items-center">
               <div className="flex w-full max-w-[560px] flex-col gap-5 lg:gap-7">
-                <p
-                  className="font-poppins text-[#FF3300]"
-                  style={{
-                    fontSize: 'clamp(16px, 1.6vw, 20px)',
-                    fontStyle: 'italic',
-                    fontWeight: 600,
-                    letterSpacing: '-0.15px',
-                    lineHeight: 1.2,
-                  }}
-                >
-                  For Employers
-                </p>
-
                 <h1
                   className="font-poppins text-[#00352B]"
                   style={{
-                    fontSize: 'clamp(42px, 6vw, 78px)',
+                    fontSize: '72px',
                     fontWeight: 700,
-                    letterSpacing: '-0.04em',
-                    lineHeight: 0.96,
+                    letterSpacing: '-0.15px',
+                    lineHeight: 'normal',
                   }}
                 >
-                  Hire Skilled Global Talent with Confidence
+                  For Employers
                 </h1>
 
                 <p
-                  className="font-poppins max-w-[520px] text-black/70"
+                  className="max-w-[520px] font-poppins text-[#FF3300]"
                   style={{
-                    fontSize: 'clamp(16px, 1.7vw, 18px)',
-                    fontWeight: 400,
+                    fontSize: '30px',
+                    fontWeight: 700,
                     letterSpacing: '-0.15px',
-                    lineHeight: 1.65,
+                    lineHeight: '131.8%',
+                    marginTop: -2,
                   }}
                 >
-                  Esante helps Australian employers source pre-screened, visa-aware professionals
-                  across healthcare, trades, hospitality, engineering, and high-demand sectors.
-                  We support recruitment, sponsorship readiness, and migration coordination so you
-                  can fill roles faster with less friction.
+                  Hire Skilled Overseas Talent —
+                  <br />
+                  Without the Complexity
+                </p>
+
+                <div
+                  className="max-w-[520px] font-poppins text-black"
+                  style={{
+                    fontSize: '21px',
+                    fontWeight: 400,
+                    letterSpacing: '-0.15px',
+                    lineHeight: 'normal',
+                  }}
+                >
+                  <p className="m-0">
+                    Australia faces critical skill shortages
+                    <br />
+                    across key industries.
+                  </p>
+                  <p className="m-0 mt-[8px]">
+                    Esante helps you source, sponsor, and
+                    <br />
+                    onboard skilled overseas talent — end-to-end.
+                  </p>
+                </div>
+
+                <p
+                  className="max-w-[520px] font-poppins text-black"
+                  style={{
+                    fontSize: '21px',
+                    fontWeight: 700,
+                    letterSpacing: '-0.15px',
+                    lineHeight: 'normal',
+                  }}
+                >
+                  We’re your recruitment + migration partner
+                  <br />
+                  — not just a sourcing agency.
                 </p>
 
                 <div className="pt-1">
@@ -289,10 +138,10 @@ function EmployersPage() {
                     onClick={openConsultation}
                     className="inline-flex items-center justify-center rounded-[10px] border border-[#FF3300] bg-[#FF3300] px-[24px] py-[14px] font-poppins text-white transition-transform duration-200 hover:-translate-y-[1px]"
                     style={{
-                      fontSize: '18px',
+                      fontSize: '16px',
                       fontWeight: 400,
                       letterSpacing: '-0.15px',
-                      lineHeight: 1.5,
+                      lineHeight: 1.35,
                     }}
                   >
                     Explore Partnership
@@ -304,9 +153,7 @@ function EmployersPage() {
         </section>
 
         <section className="w-full bg-white px-5 py-[72px] sm:px-8 lg:px-[100px] lg:py-[88px]">
-          <div
-            className="mx-auto flex max-w-[1240px] flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-[34px]"
-          >
+          <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-[52px]">
             <div className="w-full max-w-[473px] flex-shrink-0 overflow-hidden rounded-[34px] lg:rounded-[40px]">
               <img
                 src={EMPLOYERS_CHOOSE_IMAGE}
@@ -328,13 +175,12 @@ function EmployersPage() {
                 Why Employers Choose
               </h2>
               <p
-                className="font-poppins italic text-[#FF3300]"
+                className="mt-1 font-poppins italic text-[#FF3300]"
                 style={{
                   fontSize: 'clamp(34px, 4.2vw, 54px)',
                   fontWeight: 700,
                   letterSpacing: '-0.03em',
                   lineHeight: 1.08,
-                  marginTop: 4,
                 }}
               >
                 Esante
@@ -370,7 +216,7 @@ function EmployersPage() {
                       ✓
                     </span>
                     <p
-                      className="font-poppins m-0 text-black"
+                      className="m-0 font-poppins text-black"
                       style={{
                         fontSize: 'clamp(18px, 1.55vw, 30px)',
                         fontWeight: 400,
@@ -385,154 +231,361 @@ function EmployersPage() {
               </div>
 
               <p
-                className="font-poppins m-0 text-black"
+                className="m-0 max-w-[640px] font-poppins text-black lg:whitespace-nowrap"
                 style={{
-                  fontSize: 'clamp(20px, 1.7vw, 32px)',
+                  fontSize: 'clamp(18px, 1.45vw, 30px)',
                   fontWeight: 400,
                   letterSpacing: '-0.02em',
                   lineHeight: 1.28,
                   marginTop: 28,
                 }}
               >
-                So your team can focus on business{' '}
-                <span className="text-[#000000]">— </span>
+                So your team can focus on business <span>- </span>
                 <span className="text-[#FF3300]">not immigration.</span>
               </p>
             </div>
           </div>
         </section>
 
-        <section
-          id="employers-collaborate"
-          className="flex w-full flex-col items-center"
-          style={{
-            background: '#00291F',
-            padding: '80px 100px',
-            position: 'relative',
-          }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '80%',
-              height: '50%',
-              background: 'radial-gradient(ellipse at center top, rgba(74,140,127,0.12) 0%, transparent 70%)',
-              pointerEvents: 'none',
-            }}
-          />
+        <section className="w-full bg-[#FFFBE9] px-5 py-[72px] sm:px-8 lg:px-[100px] lg:py-[86px]">
+          <div className="mx-auto flex max-w-[1240px] flex-col items-center">
+            <h2
+              className="text-center font-poppins text-[#00352B]"
+              style={{
+                fontSize: 'clamp(40px, 5vw, 72px)',
+                fontWeight: 700,
+                letterSpacing: '-0.04em',
+                lineHeight: 1.02,
+              }}
+            >
+              Industries We Support
+            </h2>
 
-          <h2
-            className="font-poppins font-bold m-0"
-            style={{
-              fontSize: 40,
-              lineHeight: '1.2em',
-              color: '#ffffff',
-              fontStyle: 'italic',
-              textAlign: 'center',
-              position: 'relative',
-              zIndex: 1,
-            }}
-          >
-            Let&apos;s Collaborate
-          </h2>
-          <p
-            className="font-poppins m-0"
-            style={{
-              fontSize: 14,
-              lineHeight: '1.6em',
-              color: 'rgba(255,255,255,0.55)',
-              fontStyle: 'italic',
-              textAlign: 'center',
-              marginTop: 10,
-              maxWidth: 560,
-              position: 'relative',
-              zIndex: 1,
-            }}
-          >
-            Ready to solve your staffing shortages? Fill out the form below and our Corporate Partnerships team will be in touch within 24 hours.
-          </p>
-
-          <div style={{ marginTop: 40, width: '100%', position: 'relative', zIndex: 1 }}>
-            <CollaborationForm />
-          </div>
-        </section>
-
-        <section
-          className="flex flex-col items-center self-stretch w-full gap-[24px] bg-white px-6 py-[64px] md:px-[60px] lg:px-[100px]"
-          aria-labelledby="employers-faq-heading"
-        >
-          <h2
-            id="employers-faq-heading"
-            className="font-poppins font-bold text-center text-[#00352B] max-w-[900px]"
-            style={{ fontSize: 'clamp(24px, 4vw, 40px)', lineHeight: 1.35, letterSpacing: '-0.02em' }}
-          >
-            Frequently Asked Questions About Hiring Skilled Overseas Workers in Australia
-          </h2>
-
-          <div className="flex w-full max-w-[1064px] flex-col">
-            {EMPLOYERS_FAQ_ITEMS.map((item, index) => {
-              const isOpen = openFaqIndex === index;
-              return (
-                <div key={index} className="flex w-full flex-col items-center">
-                  {index > 0 && (
-                    <div className="h-[1px] w-full bg-[#00352B]/10" />
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => toggleFaq(index)}
-                    className="flex w-full items-start gap-[24px] py-[24px] text-left focus:outline-none"
-                    aria-expanded={isOpen}
-                    aria-controls={`employers-faq-answer-${index}`}
-                  >
-                    <div className="flex flex-1 flex-col gap-[8px]">
-                      <p
-                        className="text-[18px] font-medium leading-[1.556] text-[#00352B]"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                      >
-                        {item.question}
-                      </p>
-                      {isOpen && item.answer && (
-                        <p
-                          id={`employers-faq-answer-${index}`}
-                          className="whitespace-pre-line text-[16px] font-normal leading-[1.5] text-[#00352B]"
-                          style={{ fontFamily: 'Inter, sans-serif' }}
-                        >
-                          {item.answer}
-                        </p>
-                      )}
-                    </div>
-                    <div className="mt-[2px] flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full border-2 border-[#FF3300] text-[12px] text-[#FF3300]">
-                      {isOpen ? '−' : '+'}
-                    </div>
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-[8px] flex max-w-[640px] flex-col items-center gap-[20px] text-center">
-            <p className="font-poppins text-[18px] leading-[1.5] text-[#00352B]">
-              Still have questions? Speak with Esante’s employer recruitment team.
+            <p
+              className="mt-4 max-w-[900px] text-center font-poppins text-[#00352B]"
+              style={{
+                fontSize: 'clamp(18px, 1.55vw, 30px)',
+                fontWeight: 400,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.35,
+              }}
+            >
+              We work with employers across Australia in high-demand sectors, including:
             </p>
+
+            <div className="mt-[42px] grid w-full grid-cols-1 gap-[20px] md:grid-cols-2 xl:grid-cols-3">
+              {INDUSTRY_CARDS.map((card) => (
+                <article
+                  key={card.title}
+                  className="rounded-[12px] border border-black/10 bg-white px-[18px] py-[20px] shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
+                >
+                  <img src={card.image} alt="" className="h-[62px] w-[62px] object-contain" />
+                  <h3
+                    className="mt-[12px] font-poppins text-black"
+                    style={{
+                      fontSize: 'clamp(26px, 2vw, 30px)',
+                      fontWeight: 700,
+                      letterSpacing: '-0.03em',
+                      lineHeight: 1.18,
+                    }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p
+                    className="mt-[10px] font-poppins text-black/85"
+                    style={{
+                      fontSize: 'clamp(16px, 1.2vw, 18px)',
+                      fontWeight: 400,
+                      letterSpacing: '-0.015em',
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    {card.body}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+            <p
+              className="mt-[38px] max-w-[1000px] text-center font-poppins text-black"
+              style={{
+                fontSize: 'clamp(18px, 1.5vw, 22px)',
+                fontWeight: 400,
+                letterSpacing: '-0.02em',
+                lineHeight: 1.45,
+              }}
+            >
+              Our global talent pool spans{' '}
+              <span className="text-[#FF3300]">Asia, Africa, the Pacific Islands, and beyond</span>
+              {' '} - all candidates are screened for skills, experience, and visa readiness.
+            </p>
+
             <button
               type="button"
               onClick={openConsultation}
-              className="inline-flex items-center justify-center rounded-[16px] border-0 cursor-pointer"
-              style={{ background: '#FF3300', padding: '12px 28px' }}
+              className="mt-[34px] inline-flex items-center justify-center rounded-[10px] border border-[#FF3300] bg-[#FF3300] px-[24px] py-[14px] font-poppins text-white transition-transform duration-200 hover:-translate-y-[1px]"
+              style={{
+                fontSize: '18px',
+                fontWeight: 400,
+                letterSpacing: '-0.15px',
+                lineHeight: 1.5,
+              }}
             >
-              <span
-                className="font-poppins font-medium text-center"
-                style={{ color: '#FFFBE9', fontSize: 16, lineHeight: '1.43em' }}
-              >
-                Book Employer Consultation
-              </span>
+              Explore Partnership
             </button>
           </div>
         </section>
+
+        <section className="w-full bg-white px-5 py-[78px] sm:px-8 lg:px-[100px] lg:py-[92px]">
+          <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-10 md:flex-row md:items-start md:justify-between md:gap-[40px] lg:gap-[68px]">
+            <div className="flex w-full max-w-[560px] flex-col pt-[14px] md:pt-[50px]">
+              <h2
+                className="font-poppins text-[#00352B] md:whitespace-nowrap"
+                style={{
+                  fontSize: 'clamp(30px, 3vw, 46px)',
+                  fontWeight: 700,
+                  letterSpacing: '-0.04em',
+                  lineHeight: 1.04,
+                }}
+              >
+                We Handle the Red Tape.
+              </h2>
+              <p
+                className="font-poppins text-[#FF3300] md:whitespace-nowrap"
+                style={{
+                  fontSize: 'clamp(30px, 3vw, 46px)',
+                  fontWeight: 700,
+                  letterSpacing: '-0.04em',
+                  lineHeight: 1.04,
+                  marginTop: 2,
+                }}
+              >
+                You Get the Talent.
+              </p>
+
+              <div className="mt-[30px] flex flex-col gap-[30px]">
+                <p
+                  className="m-0 max-w-[448px] font-poppins text-black"
+                  style={{
+                    fontSize: 'clamp(16px, 1.38vw, 23px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.42,
+                  }}
+                >
+                  <span style={{ fontWeight: 700 }}>Sourcing &amp; Vetting:</span>{' '}
+                  Pre-qualified candidates meeting Australian standards
+                </p>
+
+                <p
+                  className="m-0 max-w-[388px] font-poppins text-black"
+                  style={{
+                    fontSize: 'clamp(16px, 1.38vw, 23px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.42,
+                  }}
+                >
+                  <span style={{ fontWeight: 700 }}>Visa &amp; Sponsorship:</span>{' '}
+                  End-to-end compliance and processing
+                </p>
+
+                <p
+                  className="m-0 max-w-[430px] font-poppins text-black"
+                  style={{
+                    fontSize: 'clamp(16px, 1.38vw, 23px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.42,
+                  }}
+                >
+                  <span style={{ fontWeight: 700 }}>Relocation &amp; Settlement:</span>{' '}
+                  Employees arrive ready to work from Day 1
+                </p>
+              </div>
+            </div>
+
+            <div className="w-full max-w-[610px] overflow-hidden rounded-[28px] md:ml-auto lg:rounded-[34px]">
+              <img
+                src={RED_TAPE_IMAGE}
+                alt="Skilled workers smiling together outdoors"
+                className="block h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="w-full bg-white px-5 pb-[56px] pt-[8px] sm:px-8 lg:px-[100px]">
+          <div className="mx-auto flex max-w-[1240px] flex-col items-center text-center">
+            <h2
+              className="font-poppins italic text-[#FF3300]"
+              style={{
+                fontSize: 'clamp(40px, 5vw, 64px)',
+                fontWeight: 500,
+                letterSpacing: '-0.03em',
+                lineHeight: 1.08,
+              }}
+            >
+              Visa Pathways We Support
+            </h2>
+
+            <p
+              className="mt-[26px] font-poppins text-black"
+              style={{
+                fontSize: 'clamp(18px, 1.9vw, 24px)',
+                fontWeight: 400,
+                letterSpacing: '-0.15px',
+                lineHeight: 1.2,
+              }}
+            >
+              482, 186, 494, 407 &amp; Skilled PR pathways.
+            </p>
+
+            <p
+              className="mt-[8px] font-poppins text-black"
+              style={{
+                fontSize: 'clamp(20px, 2vw, 26px)',
+                fontWeight: 700,
+                letterSpacing: '-0.15px',
+                lineHeight: 1.2,
+              }}
+            >
+              Strategic, compliant, and tailored to your workforce needs.
+            </p>
+
+            <button
+              type="button"
+              onClick={openConsultation}
+              className="mt-[26px] inline-flex items-center justify-center rounded-[10px] border border-[#FF3300] bg-[#FF3300] px-[24px] py-[14px] font-poppins text-white transition-transform duration-200 hover:-translate-y-[1px]"
+              style={{
+                fontSize: '16px',
+                fontWeight: 400,
+                letterSpacing: '-0.15px',
+                lineHeight: 1.35,
+              }}
+            >
+              Explore Partnership
+            </button>
+          </div>
+        </section>
+
+        <section className="w-full bg-white px-5 py-[54px] sm:px-8 lg:px-[100px] lg:py-[78px]">
+          <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-10 md:flex-row md:items-center md:justify-start md:gap-[100px]">
+            <div className="flex w-full max-w-[690px] flex-col">
+              <h2
+                className="font-poppins text-[#00352B]"
+                style={{
+                  fontSize: 'clamp(34px, 3.6vw, 42px)',
+                  fontWeight: 400,
+                  letterSpacing: '-0.15px',
+                  lineHeight: 1.06,
+                }}
+              >
+                How Our <span className="font-bold text-[#FF3300]">Employer</span>
+                <br />
+                <span className="font-bold text-[#FF3300]">Recruitment</span> Process Works
+              </h2>
+
+              <div className="mt-[34px] flex flex-col gap-[6px]">
+                <p
+                  className="m-0 font-poppins text-black"
+                  style={{
+                    fontSize: 'clamp(16px, 1.2vw, 18px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.15px',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  <span style={{ fontWeight: 700 }}>Workforce Assessment</span> - Understanding your hiring needs and timelines
+                </p>
+
+                <p
+                  className="m-0 font-poppins text-black"
+                  style={{
+                    fontSize: 'clamp(16px, 1.2vw, 18px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.15px',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  <span style={{ fontWeight: 700 }}>Global Talent Sourcing</span> - Accessing pre-screened international candidates
+                </p>
+
+                <p
+                  className="m-0 font-poppins text-black"
+                  style={{
+                    fontSize: 'clamp(16px, 1.2vw, 18px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.15px',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  <span style={{ fontWeight: 700 }}>Skills &amp; Visa Screening</span> - Ensuring eligibility and compliance
+                </p>
+
+                <p
+                  className="m-0 font-poppins text-black"
+                  style={{
+                    fontSize: 'clamp(16px, 1.2vw, 18px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.15px',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  <span style={{ fontWeight: 700 }}>Interview Coordination</span> - Managing candidate interviews
+                </p>
+
+                <p
+                  className="m-0 font-poppins text-black"
+                  style={{
+                    fontSize: 'clamp(16px, 1.2vw, 18px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.15px',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  <span style={{ fontWeight: 700 }}>Offer &amp; Processing</span> - Handling sponsorship and visa documentation
+                </p>
+
+                <p
+                  className="m-0 font-poppins text-black"
+                  style={{
+                    fontSize: 'clamp(16px, 1.2vw, 18px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.15px',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  <span style={{ fontWeight: 700 }}>Post-Arrival Support</span> - Supporting onboarding and settlement
+                </p>
+              </div>
+            </div>
+
+            <div className="w-full max-w-[322px] overflow-hidden rounded-[45px] border-[3px] border-[#1E90FF]">
+              <img
+                src={RECRUITMENT_IMAGE}
+                alt="Employer recruitment meeting around a table"
+                className="block h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        <div className="w-full bg-white px-5 pb-[84px] pt-[12px] sm:px-8 lg:px-[100px]">
+          <EsanteBanner
+            line1="Ready to"
+            line2="Build a Truly Global Team?"
+            line3=""
+            line4=""
+            subtext="Fill your vacancies with the world’s best talent."
+            buttonText="Book Free Call"
+            line1ClassName="font-poppins text-[54px] pb-[30px] font-semibold italic leading-[17px] text-white tracking-[-1.08px] text-center"
+            line2ClassName="font-poppins text-[54px] font-semibold italic leading-[58px] text-white tracking-[-1.08px] text-center"
+            subtextClassName="mt-8 w-full max-w-[800px] pb-[20px] font-poppins text-[34px] font-normal leading-[20px] text-white text-center tracking-[-0.68px]"
+          />
+        </div>
       </main>
+
       <Footer />
     </div>
   );
