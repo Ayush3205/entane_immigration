@@ -43,3 +43,14 @@ pnpm-debug.log*
 .eslintcache
 .parcel-cache
 .turbo
+
+# local analysis / scratch outputs
+/css_analysis.txt
+/css_files.txt
+/dupes.txt
+/dupes_utf8.txt
+/eslint_output.txt
+/jsx_files.txt
+/js_files.txt
+/src/log.txt
+/src/log_utf8.txt
