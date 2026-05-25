@@ -11,6 +11,7 @@ const FindYourPlace = () => {
         knownFor: 'Business, Engineering & Medicine',
         ranking: '#19 globally (QS 2024)',
         image: '/images/home-page/The University of Sydney.jpg',
+        leftImage: '/images/home-page/The university of Sydneyy.jpg',
         highlightTag: 'QS 2024 Ranking',
         stat: 'Brochure available',
       },
@@ -20,6 +21,7 @@ const FindYourPlace = () => {
         knownFor: 'Politics, Economics & Research',
         ranking: '#34 globally (QS 2024)',
         image: '/images/home-page/The Australian National University (ANU).jpg',
+        leftImage: '/images/home-page/ANU.jpg',
         highlightTag: 'QS 2024 Ranking',
         stat: 'Brochure available',
       },
@@ -29,6 +31,8 @@ const FindYourPlace = () => {
         knownFor: 'Engineering, Technology & Business',
         ranking: '#19 globally (QS 2024)',
         image: '/images/home-page/University of New South Wales (UNSW).jpg',
+        leftImage: '/images/home-page/University of New South Wales (UNSW)..jpg',
+        rightImagePosition: 'center 55%',
         highlightTag: 'QS 2024 Ranking',
         stat: 'Brochure available',
       },
@@ -38,6 +42,8 @@ const FindYourPlace = () => {
         knownFor: 'Life Sciences, Environmental Studies & Business',
         ranking: '#43 globally (QS 2024)',
         image: '/images/home-page/The University of Queensland (UQ).jpg',
+        leftImage: '/images/home-page/The University of Queensland (UQ)..jpg',
+        rightImagePosition: 'center 58%',
         highlightTag: 'QS 2024 Ranking',
         stat: 'Brochure available',
       },
@@ -47,6 +53,7 @@ const FindYourPlace = () => {
         knownFor: 'Mining, Engineering & Marine Science',
         ranking: 'Top 100 globally (QS 2024)',
         image: '/images/home-page/The University of Western Australia (UWA).jpg',
+        leftImage: '/images/home-page/The University of Western Australia (UWA)..jpg',
         highlightTag: 'QS 2024 Ranking',
         stat: 'Brochure available',
       },
@@ -83,7 +90,7 @@ const FindYourPlace = () => {
           <div className="fyp-grid">
             {/* Left: big image card */}
             <article className="fyp-left-card">
-              <img className="fyp-left-img" src={active.image} alt={active.name} loading="lazy" />
+              <img className="fyp-left-img" src={active.leftImage || active.image} alt={active.name} loading="lazy" />
               <div className="fyp-left-badge">
                 <span className="fyp-badge-ico" aria-hidden="true">🏆</span>
                 <span className="fyp-badge-text">{active.highlightTag}</span>
@@ -97,7 +104,13 @@ const FindYourPlace = () => {
             {/* Right: info card */}
             <article className="fyp-right-card">
               <div className="fyp-right-imgwrap">
-                <img className="fyp-right-img" src={active.image} alt={active.name} loading="lazy" />
+                <img
+                  className="fyp-right-img"
+                  src={active.image}
+                  alt={active.name}
+                  loading="lazy"
+                  style={active.rightImagePosition ? { objectPosition: active.rightImagePosition } : undefined}
+                />
               </div>
               <div className="fyp-right-panel">
                 <p className="fyp-location">{active.cityState}</p>

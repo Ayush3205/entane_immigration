@@ -133,19 +133,17 @@ function HomePage() {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
   };
 
-  const openConsultation = () =>
-    window.dispatchEvent(new CustomEvent('openConsultationPopup'));
-
   // Hero morph animation uses refs + direct DOM; FAQ uses React state above
   const headerWrapRef   = useRef(null);
   const morphBoxRef     = useRef(null);
   const morphVideoRef   = useRef(null);
-  const morphOverlayRef = useRef(null);
-  const morphContentRef = useRef(null);
   const dreamStickyRef  = useRef(null);
   const morphTargetRef  = useRef(null);
   const autoScrollTargetRef = useRef(null);
   const autoScrollState = useRef({ lastY: 0, active: false });
+  const heroAudioAllowedRef = useRef(true);
+  const heroScrollProgressRef = useRef(0);
+  const syncHeroVideoRef = useRef(() => {});
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -161,21 +159,86 @@ function HomePage() {
   useEffect(() => {
     const video = morphVideoRef.current;
     if (!video || !HERO_VIDEO_URL) return;
-    video.muted = true;
-    video.defaultMuted = true;
-    video.volume = 1;
-    const play = () => {
-      video.muted = true;
-      video.defaultMuted = true;
-      video.volume = 1;
-      video.play().catch(() => {});
+
+    const interactionEvents = ['pointerdown', 'touchstart', 'keydown'];
+    const setMutedState = (shouldMute) => {
+      video.muted = shouldMute;
+      video.defaultMuted = shouldMute;
+      video.volume = shouldMute ? 0 : 1;
     };
-    play();
-    video.addEventListener('loadeddata', play);
-    video.addEventListener('canplay', play);
+
+    const syncHeroVideoState = () => {
+      const raw = heroScrollProgressRef.current;
+      const isPageVisible = document.visibilityState === 'visible';
+      const shouldPauseHeroVideo = !isPageVisible || raw >= 1;
+      const shouldMuteHeroVideo =
+        shouldPauseHeroVideo ||
+        raw >= HERO_VIDEO_MUTE_PROGRESS ||
+        !heroAudioAllowedRef.current;
+
+      setMutedState(shouldMuteHeroVideo);
+
+      if (shouldPauseHeroVideo) {
+        if (!video.paused) video.pause();
+        return;
+      }
+
+      if (!video.paused) return;
+
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {
+          if (shouldMuteHeroVideo) return;
+          heroAudioAllowedRef.current = false;
+          setMutedState(true);
+          video.play().catch(() => {});
+        });
+      }
+    };
+
+    syncHeroVideoRef.current = syncHeroVideoState;
+
+    const unlockAudio = () => {
+      heroAudioAllowedRef.current = true;
+      syncHeroVideoState();
+      interactionEvents.forEach((eventName) => {
+        window.removeEventListener(eventName, unlockAudio);
+      });
+    };
+
+    const pauseHeroVideo = () => {
+      setMutedState(true);
+      if (!video.paused) video.pause();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState !== 'visible') {
+        pauseHeroVideo();
+        return;
+      }
+      syncHeroVideoState();
+    };
+
+    syncHeroVideoState();
+    video.addEventListener('loadeddata', syncHeroVideoState);
+    video.addEventListener('canplay', syncHeroVideoState);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', syncHeroVideoState);
+    window.addEventListener('pagehide', pauseHeroVideo);
+    interactionEvents.forEach((eventName) => {
+      window.addEventListener(eventName, unlockAudio, { once: true });
+    });
+
     return () => {
-      video.removeEventListener('loadeddata', play);
-      video.removeEventListener('canplay', play);
+      syncHeroVideoRef.current = () => {};
+      video.removeEventListener('loadeddata', syncHeroVideoState);
+      video.removeEventListener('canplay', syncHeroVideoState);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', syncHeroVideoState);
+      window.removeEventListener('pagehide', pauseHeroVideo);
+      interactionEvents.forEach((eventName) => {
+        window.removeEventListener(eventName, unlockAudio);
+      });
     };
   }, []);
 
@@ -209,14 +272,8 @@ function HomePage() {
       const pin = Math.min(y, MORPH_END);
       const vw  = window.innerWidth;
       const vh  = window.innerHeight;
-
-      if (morphVideoRef.current) {
-        const shouldMuteHeroVideo = raw >= HERO_VIDEO_MUTE_PROGRESS;
-        if (shouldMuteHeroVideo) {
-          morphVideoRef.current.muted = true;
-          morphVideoRef.current.defaultMuted = true;
-        }
-      }
+      heroScrollProgressRef.current = raw;
+      syncHeroVideoRef.current();
 
       // 0. Auto-Snap to Australia Section after Morph (Disabled to remove lag)
       autoScrollState.current.lastY = y;
@@ -301,20 +358,7 @@ function HomePage() {
         }
       }
 
-      // 5. Dark overlay: disappear by 50 % of scroll — with the slower
-      //    easeInOutCubic easing the box is still half-screen at that point,
-      //    so the dream section reveals while the video is visibly large
-      if (morphOverlayRef.current) {
-        morphOverlayRef.current.style.opacity =
-          Math.max(0, 1 - easeOutCubic(Math.min(1, raw * 2.0))).toFixed(4);
-      }
-
-      // 6. Hero title + CTA: exit fast (first 25 % of scroll)
-      if (morphContentRef.current) {
-        morphContentRef.current.style.opacity = Math.max(0, 1 - raw * 4).toFixed(4);
-      }
-
-      // 7. Dream cards: one CSS-var write per frame drives all cards atomically —
+      // 5. Dream cards: one CSS-var write per frame drives all cards atomically —
       //    eliminates per-card DOM mutations and scroll-jitter entirely.
       if (!dreamCardsCache && dreamStickyRef.current) {
         dreamCardsCache = dreamStickyRef.current.querySelector('.dream-section');
@@ -362,24 +406,13 @@ function HomePage() {
             ref={morphVideoRef}
             className="hero-morph-video"
             src={HERO_VIDEO_URL}
-            autoPlay muted loop playsInline preload="auto"
+            autoPlay
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
           />
         )}
-        <div ref={morphOverlayRef} className="hero-morph-dark-overlay" />
-        <div ref={morphContentRef} className="hero-morph-content">
-          <h1 className="hero-morph-title">
-            Migration simplified;<br />Dreams amplified.
-          </h1>
-          <div className="hero-cta-wrap">
-            <button
-              type="button"
-              className="hero-cta"
-              onClick={openConsultation}
-            >
-              Book Free Call
-            </button>
-          </div>
-        </div>
       </div>
 
       <main className="main-content" style={{ paddingTop: 0 }}>
