@@ -17,16 +17,21 @@ const FOUNDER_IMAGE_LAYOUT = {
   imageHeight: 650,
 };
 
-const TeamCard = ({ image, name, title, description }) => {
+const TeamCard = ({ image, name, title, description, contentScale = 1, contentHoverScale = 1.05 }) => {
   const overlayRef = useRef(null);
+  const contentRef = useRef(null);
 
   const handleMouseEnter = () => {
     gsap.killTweensOf(overlayRef.current);
+    gsap.killTweensOf(contentRef.current);
+    gsap.to(contentRef.current, { scale: contentHoverScale, duration: 0.45, ease: "power2.out" });
     gsap.to(overlayRef.current, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power2.out" });
   };
   
   const handleMouseLeave = () => {
     gsap.killTweensOf(overlayRef.current);
+    gsap.killTweensOf(contentRef.current);
+    gsap.to(contentRef.current, { scale: contentScale, duration: 0.35, ease: "power2.out" });
     gsap.to(overlayRef.current, { y: 20, autoAlpha: 0, duration: 0.3, ease: "power2.in" });
   };
 
@@ -36,37 +41,43 @@ const TeamCard = ({ image, name, title, description }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <img
-        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-        src={image}
-        alt={name}
-      />
-      
-      {/* Default Overlay */}
-      <div className="absolute left-[29px] right-[29px] bottom-[27px] bg-accent/[0.68] rounded-[25px] min-h-[107px] flex flex-col justify-center px-[37px] py-4 transition-opacity duration-300 group-hover:opacity-0">
-        <p className="text-[43px] font-medium leading-[1.325] tracking-[-0.15px] text-white">
-          {name}
-        </p>
-        <p className="text-[20px] font-normal leading-[57px] tracking-[-0.15px] text-white">
-          {title}
-        </p>
-      </div>
-
-      {/* Hover Overlay */}
-      <div 
-        ref={overlayRef}
-        className="absolute inset-0 bg-[#FF3300] z-20 flex flex-col justify-center px-[50px] opacity-0 invisible"
-        style={{ transform: 'translateY(20px)' }}
+      <div
+        ref={contentRef}
+        className="absolute inset-0 overflow-hidden rounded-[24px]"
+        style={{ transform: `scale(${contentScale})`, transformOrigin: 'center bottom' }}
       >
-        <p className="text-[45px] font-medium leading-[1.2] tracking-[-0.15px] text-white mb-2">
-          {name}
-        </p>
-        <p className="text-[20px] font-normal leading-[1.4] tracking-[-0.15px] text-white mb-8">
-          {title}
-        </p>
-        <p className="text-[18px] font-normal leading-[1.7] tracking-[-0.15px] text-white">
-          {description}
-        </p>
+        <img
+          className="w-full h-full object-cover object-top"
+          src={image}
+          alt={name}
+        />
+
+        {/* Default Overlay */}
+        <div className="absolute left-[29px] right-[29px] bottom-[27px] bg-accent/[0.68] rounded-[25px] min-h-[107px] flex flex-col justify-center px-[37px] py-4 transition-opacity duration-300 group-hover:opacity-0">
+          <p className="text-[43px] font-medium leading-[1.325] tracking-[-0.15px] text-white">
+            {name}
+          </p>
+          <p className="text-[20px] font-normal leading-[57px] tracking-[-0.15px] text-white">
+            {title}
+          </p>
+        </div>
+
+        {/* Hover Overlay */}
+        <div 
+          ref={overlayRef}
+          className="absolute inset-0 bg-[#FF3300] z-20 flex flex-col justify-center px-[50px] opacity-0 invisible"
+          style={{ transform: 'translateY(20px)' }}
+        >
+          <p className="text-[45px] font-medium leading-[1.2] tracking-[-0.15px] text-white mb-2">
+            {name}
+          </p>
+          <p className="text-[20px] font-normal leading-[1.4] tracking-[-0.15px] text-white mb-8">
+            {title}
+          </p>
+          <p className="text-[18px] font-normal leading-[1.7] tracking-[-0.15px] text-white">
+            {description}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -387,7 +398,7 @@ const AboutUs = () => {
       {/* ═══════════════ TEAM SECTION ═══════════════ */}
       <section className="pt-[80px] pb-[100px] bg-white">
         <div className="max-w-[1440px] mx-auto px-[100px]">
-          <div className="mb-[50px]">
+          <div>
             <h3 className="text-[53px] font-medium leading-[1.2] tracking-[-0.15px] text-primary mb-4">
               Meet Our <span className="font-semibold italic text-accent">Team</span>
             </h3>
@@ -402,6 +413,8 @@ const AboutUs = () => {
               name="Aashul Soni"
               title="Regional Director Of MP, India"
               description="QEAC-qualified counsellor specialising in Australian education and skilled migration. Aashul provides PIER-compliant, ethical guidance — from course selection and visa strategy to post-arrival support, helping students build career-ready pathways aligned with Australia's Skilled Occupation List."
+              contentScale={0.88}
+              contentHoverScale={0.92}
             />
             {/* Joshua Michael - RIGHT */}
             <TeamCard
@@ -409,6 +422,8 @@ const AboutUs = () => {
               name="Joshua Michael"
               title="Australian Communication & IELTS Coach"
               description="CELTA-certified and Australia-based, Josh helps students crack IELTS/PTE and communicate with clarity for SOPs, interviews, and visas. Beyond test prep, he trains students in Australian workplace communication — giving them a real edge in part-time jobs and post-arrival life."
+              contentScale={0.88}
+              contentHoverScale={0.92}
             />
           </div>
         </div>
