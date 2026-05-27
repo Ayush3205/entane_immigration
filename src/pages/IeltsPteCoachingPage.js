@@ -19,10 +19,10 @@ const COACH_W = 644;
 /* ── Testimonial data — local images from public/images ── */
 const CARDS = [
   {
-    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-1.mp4', quote: '"Changed how I study for IELTS entirely."',              uni: 'The University of Melbourne',
+    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-2.mp4', quote: '"My PTE score went from 58 to 79 in 6 weeks."',         uni: 'University of Sydney',
   },
   {
-    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-2.mp4', quote: '"My PTE score went from 58 to 79 in 6 weeks."',         uni: 'University of Sydney',
+    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-1.mp4', quote: '"Changed how I study for IELTS entirely."',              uni: 'The University of Melbourne',
   },
   {
     video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-3.mp4', quote: '"Genuine coaching, real confidence builder."',           uni: 'Queensland University of Technology',
