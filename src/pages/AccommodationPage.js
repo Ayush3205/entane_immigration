@@ -5,7 +5,10 @@ import EsanteBanner from '../components/Reusable/EsanteBanner';
 import ConsultationPopup from '../components/Reusable/ConsultationPopup';
 
 const HERO_BG_IMG = '/images/acc-hero-bg.png';
-const MELBOURNE_IMG = '/images/acc-room.png';
+const ACC_ROOM_1 = '/images/acc-room 1.png';
+const ACC_ROOM_2 = '/images/acc-room 2.webp';
+const ACC_ROOM_3 = '/images/acc-room 3.avif';
+const ACC_ROOM_4 = '/images/acc-room 4.avif';
 const WHY_IMG = '/images/acc-why.png';
 const STORY_IMG = '/images/acc-story.png';
 
@@ -55,6 +58,7 @@ const ACCOMMODATION_SLIDES = [
     intro: 'Dreaming for',
     city: 'Melbourne',
     price: 'AU$220/week',
+    img: ACC_ROOM_1,
     features: [
       'Fully-equipped gym',
       'Social lounges & study zones',
@@ -66,6 +70,7 @@ const ACCOMMODATION_SLIDES = [
     intro: 'Looking for',
     city: 'Sydney',
     price: 'AU$250/week',
+    img: ACC_ROOM_2,
     features: [
       'Ocean views & central location',
       'Modern shared kitchens',
@@ -77,6 +82,7 @@ const ACCOMMODATION_SLIDES = [
     intro: 'Hoping for',
     city: 'Brisbane',
     price: 'AU$190/week',
+    img: ACC_ROOM_3,
     features: [
       'Pool & outdoor BBQ area',
       'Quiet study rooms',
@@ -88,6 +94,7 @@ const ACCOMMODATION_SLIDES = [
     intro: 'Ready for',
     city: 'Perth',
     price: 'AU$200/week',
+    img: ACC_ROOM_4,
     features: [
       'Beach nearby',
       'Air-conditioned rooms',
@@ -312,23 +319,28 @@ export default function AccommodationPage() {
               </div>
             </div>
 
-            {/* Room photo */}
-            <img
-              src={MELBOURNE_IMG}
-              alt="Accommodation room"
-              className="absolute z-20 pointer-events-none hidden sm:block"
-              style={{
-                right: 'clamp(16px, 10vw, 198px)',
-                top: 'clamp(56px, 12vh, 92px)',
-                width: 'clamp(200px, 26vw, 400px)',
-                height: 'clamp(260px, 31vw, 500px)',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                borderRadius: 41,
-                background: 'lightgray 50% / cover no-repeat',
-                boxShadow: '10px 10px 5.7px 0px #000',
-              }}
-            />
+            {/* Room photo - match part-time-job-support slide image fade behavior */}
+            {ACCOMMODATION_SLIDES.map((slide, idx) => (
+              <img
+                key={idx}
+                src={slide.img}
+                alt={`${slide.city} accommodation room`}
+                className={`absolute z-20 pointer-events-none hidden sm:block transition-opacity duration-500 ${
+                  currentSlide === idx ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{
+                  right: 'clamp(16px, 10vw, 198px)',
+                  top: 'clamp(56px, 12vh, 92px)',
+                  width: 'clamp(200px, 26vw, 400px)',
+                  height: 'clamp(260px, 31vw, 500px)',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  borderRadius: 41,
+                  background: 'lightgray 50% / cover no-repeat',
+                  boxShadow: '10px 10px 5.7px 0px #000',
+                }}
+              />
+            ))}
 
 
           </section>
