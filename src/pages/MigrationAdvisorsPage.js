@@ -320,7 +320,7 @@ function MigrationAdvisorsPage() {
                     style={{
                       position: 'absolute',
                       fontFamily: 'Poppins, sans-serif',
-                      fontWeight: 600,
+                      fontWeight: 500,
                       fontSize: 'clamp(136px, 12vw, 176px)',
                       lineHeight: '0.82',
                       letterSpacing: '-0.06em',
@@ -339,11 +339,11 @@ function MigrationAdvisorsPage() {
                   <h3
                     style={{
                       margin: 0,
-                      color: '#FFFFFF',
+                      color: '#FFF',
                       fontFamily: 'Poppins, sans-serif',
-                      fontWeight: 600,
-                      fontSize: 'clamp(14px, 1.1vw, 18px)',
-                      lineHeight: '1.35',
+                      fontWeight: 700,
+                      fontSize: 'clamp(14px, 1.1vw, 20px)',
+                      lineHeight: '30px',
                       textAlign: service.titleAlign,
                     }}
                   >
@@ -400,7 +400,7 @@ function MigrationAdvisorsPage() {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'minmax(280px, 364px) minmax(320px, 1fr)',
+                gridTemplateColumns: 'minmax(280px, 392px) minmax(320px, 1fr)',
                 alignItems: 'center',
                 gap: '42px',
               }}
@@ -408,7 +408,7 @@ function MigrationAdvisorsPage() {
               <div
                 style={{
                   width: '100%',
-                  maxWidth: '364px',
+                  maxWidth: '392px',
                   borderRadius: '24px',
                   overflow: 'hidden',
                 }}
@@ -419,7 +419,7 @@ function MigrationAdvisorsPage() {
                   style={{
                     display: 'block',
                     width: '100%',
-                    height: '100%',
+                    height: 'auto',
                     objectFit: 'cover',
                   }}
                 />
