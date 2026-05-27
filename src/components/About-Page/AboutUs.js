@@ -4,6 +4,19 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const FOUNDER_IMAGE_LAYOUT = {
+  frameTopOffset: 66,
+  frameWidth: 472,
+  frameHeight: 700,
+  frameAspectRatio: '33 / 46',
+  backgroundTop: 171,
+  backgroundWidth: 472,
+  backgroundHeight: 489,
+  imageTop: 10,
+  imageWidth: 472,
+  imageHeight: 650,
+};
+
 const TeamCard = ({ image, name, title, description }) => {
   const overlayRef = useRef(null);
 
@@ -281,19 +294,36 @@ const AboutUs = () => {
       {/* ═══════════════ FOUNDER SECTION ═══════════════ */}
       <section className="bg-white py-[80px]">
         <div className="max-w-[1440px] mx-auto px-[100px]">
-          <div className="flex gap-[30px]">
+          <div className="flex gap-[50px]">
             {/* Left: Founder portrait with red background */}
-            <div className="relative flex-shrink-0" style={{ width: '556.551px', height: '810.018px' }}>
+            <div
+              className="relative flex-shrink-0"
+              style={{
+                marginTop: FOUNDER_IMAGE_LAYOUT.frameTopOffset,
+                width: FOUNDER_IMAGE_LAYOUT.frameWidth,
+                height: FOUNDER_IMAGE_LAYOUT.frameHeight,
+                aspectRatio: FOUNDER_IMAGE_LAYOUT.frameAspectRatio,
+              }}
+            >
               {/* Red rounded rectangle behind portrait */}
               <div
-                className="absolute left-0 bg-accent rounded-[24px]"
-                style={{ top: '200px', width: '513px', height: '609px' }}
+                className="absolute left-0 bg-accent rounded-[40px]"
+                style={{
+                  top: FOUNDER_IMAGE_LAYOUT.backgroundTop,
+                  width: FOUNDER_IMAGE_LAYOUT.backgroundWidth,
+                  height: FOUNDER_IMAGE_LAYOUT.backgroundHeight,
+                }}
               />
               {/* Founder portrait */}
               <img
                 src="/images/about-us/founder-image.png"
                 alt="Deepen Khagram"
-                className="relative z-10 w-full h-full object-cover object-top"
+                className="absolute left-1/2 z-10 rounded-b-[30px] object-cover object-top -translate-x-1/2"
+                style={{
+                  top: FOUNDER_IMAGE_LAYOUT.imageTop,
+                  width: FOUNDER_IMAGE_LAYOUT.imageWidth,
+                  height: FOUNDER_IMAGE_LAYOUT.imageHeight,
+                }}
               />
             </div>
 

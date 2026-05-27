@@ -27,9 +27,9 @@ const DreamSection = ({ morphTargetRef, heroVideoUrl = null }) => {
   return (
     <section className="dream-section dream-section--in-view dream-section--morph-active">
       <div className="dream-container">
-        {/* Row 1: 3 images — kangaroo silhouette + 2 photos */}
+        {/* Row 1: gallery-1 through gallery-4 */}
         <div className="dream-row">
-          {GALLERY_IMAGES.slice(0, 3).map((src, i) => (
+          {GALLERY_IMAGES.slice(0, 4).map((src, i) => (
             <div
               key={`r1-${i}`}
               className={`dream-image-wrap${i === 0 ? ' dream-image-wrap--kangaroo' : ''}`}
@@ -38,9 +38,9 @@ const DreamSection = ({ morphTargetRef, heroVideoUrl = null }) => {
             </div>
           ))}
         </div>
-        {/* Row 2: 5 images — center card is the morph target (larger) */}
+        {/* Row 2: gallery-5, gallery-6, center morph target, gallery-8, gallery-9 */}
         <div className="dream-row">
-          {GALLERY_IMAGES.slice(3, 8).map((src, i) => {
+          {GALLERY_IMAGES.slice(4, 9).map((src, i) => {
             const isMorphTarget = i === 2;
             return (
               <div
@@ -77,17 +77,17 @@ const DreamSection = ({ morphTargetRef, heroVideoUrl = null }) => {
             </p>
           </div>
         </div>
-        {/* Row 3: 5 images */}
+        {/* Row 3: students, professionals, migration, australia-map, placeholder-1 */}
         <div className="dream-row">
-          {GALLERY_IMAGES.slice(8, 13).map((src, i) => (
+          {GALLERY_IMAGES.slice(9, 14).map((src, i) => (
             <div key={`r3-${i}`} className="dream-image-wrap">
               <img src={src} alt="" className="dream-image" />
             </div>
           ))}
         </div>
-        {/* Row 4: 4 images */}
+        {/* Row 4: placeholder-2 through placeholder-5 */}
         <div className="dream-row">
-          {GALLERY_IMAGES.slice(13, 17).map((src, i) => (
+          {GALLERY_IMAGES.slice(14, 18).map((src, i) => (
             <div key={`r4-${i}`} className="dream-image-wrap">
               <img src={src} alt="" className="dream-image" />
             </div>
