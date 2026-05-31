@@ -309,7 +309,7 @@ function IeltsPteCoachingPage() {
           {/* Josh photo — 259:1501 504×570, rounded-20, crop h=207.24% l=-58.12% t=-5% w=219.29% */}
           <div
             className="relative shrink-0 overflow-hidden w-full max-w-[504px] border-0"
-            style={{ height: 570, aspectRatio: '84 / 95', borderRadius: 20, border: 'none', outline: 'none', boxShadow: 'none', backgroundColor: 'transparent' }}
+            style={{ height: 510, aspectRatio: '84 / 95', borderRadius: 20, border: 'none', outline: 'none', boxShadow: 'none', backgroundColor: 'transparent' }}
           >
             <div className="absolute inset-0 overflow-hidden">
               <video
