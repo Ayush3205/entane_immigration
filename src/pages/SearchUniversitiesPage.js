@@ -105,6 +105,18 @@ const UNIVERSITIES = [
   },
 ];
 
+/* ── Map known university names to course-card logos (same as SearchCoursesPage) ── */
+const UNIVERSITY_LOGOS = {
+  'University of Melbourne': '/images/course-card/The_University_of_Melbourne_Logo.svg.png',
+  'University of Queensland': '/images/course-card/University of Queensland logo.png',
+  'Monash University': '/images/course-card/Monash University logo.png',
+  'UNSW Sydney': '/images/course-card/UNSW Sydney logo.png',
+  'Australian National University': '/images/course-card/Australian National University logo.png',
+  'RMIT University': '/images/course-card/Rmit logo.png',
+  'Griffith University': '/images/course-card/griffith-university-vector-logo.png',
+  'Macquarie University': '/images/course-card/Macquarie University logo.png',
+};
+
 const CITIES = ['All Cities', 'Sydney', 'Melbourne', 'Brisbane', 'Perth', 'Adelaide', 'Canberra'];
 const UNI_TYPES = ['All Types', 'Research', 'Teaching'];
 
@@ -240,7 +252,7 @@ const UniversityCard = ({ university, onConsultation }) => {
         }}>
           {!logoErr ? (
             <img
-              src={university.logo}
+              src={UNIVERSITY_LOGOS[university.name] || university.logo || '/images/course-card-logo.png'}
               alt={university.name}
               style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 6 }}
               onError={() => setLogoErr(true)}
@@ -272,19 +284,27 @@ const UniversityCard = ({ university, onConsultation }) => {
         Name ≈ y:135  →  "View all courses" y:183  →  gap ≈ 4px after name
       */}
       <div style={{ padding: '4px 19px 0' }}>
-        {/* ── "View all courses" — Poppins 600 14px UPPER #FF3300 ── */}
-        <p style={{
-          fontFamily: 'Poppins',
-          fontWeight: 600,
-          fontSize: 14,
-          lineHeight: '1.43em',
-          textTransform: 'uppercase',
-          color: '#FF3300',
-          margin: 0,
-          letterSpacing: '0.04em',
-        }}>
+        {/* ── "View all courses" — clickable to open lead/consultation form ── */}
+        <button
+          type="button"
+          onClick={onConsultation}
+          style={{
+            fontFamily: 'Poppins',
+            fontWeight: 600,
+            fontSize: 14,
+            lineHeight: '1.43em',
+            textTransform: 'uppercase',
+            color: '#FF3300',
+            margin: 0,
+            letterSpacing: '0.04em',
+            background: 'transparent',
+            border: 'none',
+            padding: 0,
+            cursor: 'pointer',
+          }}
+        >
           View all courses
-        </p>
+        </button>
       </div>
 
       {/*

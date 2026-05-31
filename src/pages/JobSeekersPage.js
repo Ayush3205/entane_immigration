@@ -84,6 +84,14 @@ const VISA_POINTS = [
   'Citizenship-ready migration planning',
 ];
 
+const VISA_BODY_TEXT_STYLE = {
+  color: '#000',
+  fontSize: 18,
+  fontStyle: 'normal',
+  fontWeight: 400,
+  lineHeight: '28px',
+};
+
 const E2E_POINTS = [
   'Employer shortlisting & job matching',
   'Interview preparation aligned with Australian hiring standards',
@@ -98,10 +106,10 @@ const E2E_POINTS = [
 ];
 
 const FEES_POINTS = [
-  '✔ No upfront recruitment fees',
-  '✔ We charge only after you receive a guaranteed job offer',
-  '✔ Fees vary depending on occupation and visa type',
-  "✔ If we don't secure you a job — you pay nothing",
+  'No upfront recruitment fees',
+  'We charge only after you receive a guaranteed job offer',
+  'Fees vary depending on occupation and visa type',
+  "If we don't secure you a job — you pay nothing",
 ];
 
 const JOB_SEEKERS_FAQ_ITEMS = [
@@ -685,31 +693,49 @@ function JobSeekersPage() {
         <section className="flex flex-row items-start px-[100px] py-[80px] w-full bg-white" style={{ gap: 40 }}>
           <div className="flex flex-col" style={{ flex: '1 1 0', minWidth: 0 }}>
             <h2
-              className="font-poppins font-bold italic m-0"
-              style={{ fontSize: 28, lineHeight: '1.4em', color: '#FF3300' }}
+              className="m-0 font-poppins italic"
+              style={{
+                color: '#F30',
+                fontSize: 43,
+                fontStyle: 'italic',
+                fontWeight: 600,
+                lineHeight: '150.37%',
+                letterSpacing: '-0.15px',
+              }}
             >
               Skilled Visa &amp; PR Pathways
             </h2>
             <h3
-              className="font-poppins font-bold text-black m-0"
-              style={{ fontSize: 28, lineHeight: '1.4em', marginTop: 2, marginBottom: 14 }}
+              className="m-0 font-poppins text-black"
+              style={{
+                fontSize: 43,
+                fontStyle: 'normal',
+                fontWeight: 400,
+                lineHeight: 'normal',
+                letterSpacing: '-0.15px',
+                marginTop: 2,
+                marginBottom: 14,
+              }}
             >
               We Work With
             </h3>
-            <p className="font-poppins font-normal text-black m-0" style={{ fontSize: 16, lineHeight: '1.6em' }}>
+            <p className="m-0 font-poppins" style={VISA_BODY_TEXT_STYLE}>
               We assist job seekers across all major Australian skilled
+              <br />
               migration pathways, including:
             </p>
-            <ul className="m-0 pl-[20px] mt-[4px]" style={{ listStyleType: 'disc' }}>
+            <ul className="m-0 mt-[4px] pl-[20px]" style={{ listStyleType: 'disc' }}>
               {VISA_POINTS.map((pt) => (
-                <li key={pt} className="font-poppins font-normal text-black" style={{ fontSize: 16, lineHeight: '1.7em' }}>
+                <li key={pt} className="font-poppins" style={VISA_BODY_TEXT_STYLE}>
                   {pt}
                 </li>
               ))}
             </ul>
-            <p className="font-poppins font-normal text-black m-0" style={{ fontSize: 16, lineHeight: '1.6em', marginTop: 14 }}>
+            <p className="m-0 mt-[28px] font-poppins" style={VISA_BODY_TEXT_STYLE}>
               Our team evaluates your skills, experience, occupation
+              <br />
               demand and employer sponsorship potential before
+              <br />
               recommending the most suitable visa strategy.
             </p>
           </div>
@@ -726,14 +752,29 @@ function JobSeekersPage() {
           />
           <div className="flex flex-col" style={{ flex: '1 1 0', minWidth: 0 }}>
             <h2
-              className="font-poppins font-bold text-black m-0"
-              style={{ fontSize: 28, lineHeight: '1.4em' }}
+              className="m-0 font-poppins text-black"
+              style={{
+                fontSize: 43,
+                fontStyle: 'normal',
+                fontWeight: 400,
+                lineHeight: '150.09%',
+                letterSpacing: '-0.15px',
+              }}
             >
               End-to-End Recruitment Support
             </h2>
             <h3
-              className="font-poppins font-bold italic m-0"
-              style={{ fontSize: 28, lineHeight: '1.4em', color: '#FF3300', marginTop: 2, marginBottom: 14 }}
+              className="m-0 font-poppins italic"
+              style={{
+                color: '#F30',
+                fontSize: 43,
+                fontStyle: 'italic',
+                fontWeight: 600,
+                lineHeight: '150.09%',
+                letterSpacing: '-0.15px',
+                marginTop: 2,
+                marginBottom: 14,
+              }}
             >
               (Beyond Just a Job)
             </h3>
@@ -755,36 +796,87 @@ function JobSeekersPage() {
         </section>
 
         {/* ═══ 6. OUR PROFESSIONAL FEES — text LEFT, image RIGHT ═══════════ */}
-        <section className="flex flex-row items-start px-[100px] py-[80px] w-full bg-white" style={{ gap: 40 }}>
-          <div className="flex flex-col" style={{ flex: '1 1 0', minWidth: 0 }}>
+        <section
+          className="flex w-full flex-col items-center bg-white px-6 py-[80px] md:px-[60px] lg:flex-row lg:items-center lg:gap-[40px] lg:px-[100px]"
+        >
+          <div className="flex min-w-0 w-full flex-1 flex-col">
             <h2
-              className="font-poppins font-bold text-black m-0"
-              style={{ fontSize: 28, lineHeight: '1.4em' }}
+              className="m-0 font-poppins text-black"
+              style={{
+                fontSize: 43,
+                fontStyle: 'normal',
+                fontWeight: 400,
+                lineHeight: 'normal',
+                letterSpacing: '-0.15px',
+              }}
             >
               Our Professional Fees
             </h2>
             <h3
-              className="font-poppins font-bold italic m-0"
-              style={{ fontSize: 28, lineHeight: '1.4em', color: '#FF3300', marginTop: 2, marginBottom: 14 }}
+              className="m-0 font-poppins italic"
+              style={{
+                color: '#FF3300',
+                fontSize: 43,
+                fontWeight: 600,
+                lineHeight: 'normal',
+                letterSpacing: '-0.15px',
+              }}
             >
               Transparent &amp; Risk-Free
             </h3>
-            <p className="font-poppins font-normal text-black m-0" style={{ fontSize: 16, lineHeight: '1.6em' }}>
+            <p
+              className="m-0 mt-4 font-poppins text-black"
+              style={{
+                fontSize: 18,
+                fontWeight: 400,
+                lineHeight: '28px',
+                letterSpacing: '-0.15px',
+              }}
+            >
               We believe in performance-based recruitment, not false promises.
             </p>
-            {FEES_POINTS.map((pt) => (
-              <p key={pt} className="font-poppins font-normal text-black m-0" style={{ fontSize: 16, lineHeight: '1.7em' }}>
-                {pt}
-              </p>
-            ))}
-            <p className="font-poppins font-normal text-black m-0" style={{ fontSize: 16, lineHeight: '1.6em', marginTop: 14 }}>
-              This ensures our success is directly linked to yours.
+            <ul className="m-0 mt-1 p-0 list-none">
+              {FEES_POINTS.map((pt) => (
+                <li
+                  key={pt}
+                  className="flex gap-[6px] font-poppins text-black"
+                  style={{
+                    fontSize: 18,
+                    fontWeight: 400,
+                    lineHeight: '28px',
+                    letterSpacing: '-0.15px',
+                  }}
+                >
+                  <span className="shrink-0" aria-hidden="true">
+                    ✓
+                  </span>
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
+            <p
+              className="m-0 mt-4 font-poppins text-black"
+              style={{
+                fontSize: 18,
+                fontWeight: 400,
+                lineHeight: '28px',
+                letterSpacing: '-0.15px',
+              }}
+            >
+              This ensures our success is directly linked to yours
             </p>
           </div>
           <div
-            className="flex-shrink-0 rounded-[31px]"
-            style={{ width: 460, height: 420, backgroundImage: `url('${IMG_60}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
-          />
+            className="mt-10 aspect-[3/2] w-full max-w-[564px] shrink-0 overflow-hidden rounded-[31px] lg:mt-0 lg:h-[376px] lg:w-[564px]"
+          >
+            <img
+              src={IMG_60}
+              alt="Career consultation with a recruitment advisor"
+              className="h-full w-full object-cover"
+              width={564}
+              height={376}
+            />
+          </div>
         </section>
 
         {/* ═══ 7. STOP SEARCHING — START WORKING ═════════════════════════════ */}

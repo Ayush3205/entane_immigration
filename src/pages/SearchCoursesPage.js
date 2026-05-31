@@ -141,6 +141,19 @@ const COURSES = [
   },
 ];
 
+/* ── Map known university names to files added under public/images/course-card/ ── */
+const UNIVERSITY_LOGOS = {
+  'University of Melbourne': '/images/course-card/The_University_of_Melbourne_Logo.svg.png',
+  'University of Queensland': '/images/course-card/University of Queensland logo.png',
+  'Monash University': '/images/course-card/Monash University logo.png',
+  'UNSW Sydney': '/images/course-card/UNSW Sydney logo.png',
+  'Australian National University': '/images/course-card/Australian National University logo.png',
+  'RMIT University': '/images/course-card/Rmit logo.png',
+  'Griffith University': '/images/course-card/griffith-university-vector-logo.png',
+  'Macquarie University': '/images/course-card/Macquarie University logo.png',
+  // Leave The University of Sydney without a file here if not provided; fallback will be used.
+};
+
 const SUBJECT_AREAS = [
   'All Areas', 'Business & Management', 'Engineering & IT',
   'Medical & Health', 'Law', 'Arts & Design', 'Sciences',
@@ -359,6 +372,7 @@ const LogoFallback = ({ name }) => (
    ══════════════════════════════════════════════════════ */
 const CourseCard = ({ course, onConsultation }) => {
   const [logoErr, setLogoErr] = useState(false);
+  const logoSrc = UNIVERSITY_LOGOS[course.university] || course.logo || '/images/course-card-logo.png';
 
   return (
     <div style={{
@@ -393,7 +407,7 @@ const CourseCard = ({ course, onConsultation }) => {
         }}>
           {!logoErr ? (
             <img
-              src={course.logo}
+              src={logoSrc}
               alt={course.university}
               style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 6 }}
               onError={() => setLogoErr(true)}
@@ -774,7 +788,7 @@ export default function SearchCoursesPage() {
                   fontSize: 'clamp(26px, 2.4vw, 36px)', lineHeight: '1.2em',
                   color: '#fff', margin: '0 0 4px 0',
                 }}>
-                  Study in <br />AUSTRALIA.
+                  Study in <br /><span style={{ color: '#FF3300' }}>AUSTRALIA.</span>
                 </h2>
                 <h2 style={{
                   fontFamily: 'Poppins', fontWeight: 700,

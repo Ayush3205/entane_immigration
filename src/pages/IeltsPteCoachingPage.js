@@ -45,10 +45,18 @@ const CARDS = [
   },
 ];
 
-const CARD_W   = 290;
-const CARD_H   = 460;
+const CARD_W   = 284;
+const CARD_H   = 452;
 const CARD_GAP = 26;
 const VISIBLE  = 4;
+const CAROUSEL_WIDTH = CARD_W * VISIBLE + CARD_GAP * (VISIBLE - 1);
+
+const enableVideoAudio = (video) => {
+  if (!video) return;
+  video.muted = false;
+  video.defaultMuted = false;
+  video.volume = 1;
+};
 
 const IELTS_PTE_FAQ_ITEMS = [
   {
@@ -169,6 +177,7 @@ function IeltsPteCoachingPage() {
     if (!video) return;
 
     if (video.paused) {
+      enableVideoAudio(video);
       pauseAllExcept('josh');
       video.play().then(() => setJoshIsPlaying(true)).catch(() => {});
       return;
@@ -183,6 +192,7 @@ function IeltsPteCoachingPage() {
     if (!video) return;
 
     if (video.paused) {
+      enableVideoAudio(video);
       pauseAllExcept('testimonial', index);
       video.play().then(() => {
         setPlayingTestimonials((prev) => prev.map((value, idx) => (idx === index ? true : value)));
@@ -306,10 +316,14 @@ function IeltsPteCoachingPage() {
                 ref={joshVideoRef}
                 src={joshVideoUrl}
                 className="h-full w-full object-cover"
-                muted
+                style={{
+                  transform: 'scale(0.95)',
+                  transformOrigin: 'center center',
+                }}
                 loop
                 playsInline
                 preload="metadata"
+                onLoadedMetadata={(event) => enableVideoAudio(event.currentTarget)}
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
@@ -405,7 +419,7 @@ function IeltsPteCoachingPage() {
           </button>
 
           {/* Sliding track — exactly 4 cards wide */}
-          <div className="max-w-full overflow-hidden" style={{ width: 'min(1238px, 100%)' }}>
+          <div className="max-w-full overflow-hidden" style={{ width: `min(${CAROUSEL_WIDTH}px, 100%)` }}>
             <div
               className="flex"
               style={{
@@ -426,11 +440,11 @@ function IeltsPteCoachingPage() {
                       <video
                         ref={(element) => { testimonialVideoRefs.current[i] = element; }}
                         src={c.video}
-                        className="absolute inset-0 w-full h-full object-contain rounded-[15px] bg-black"
-                        muted
+                        className="absolute inset-0 w-full h-full object-cover object-center bg-black"
                         loop
                         playsInline
                         preload="metadata"
+                        onLoadedMetadata={(event) => enableVideoAudio(event.currentTarget)}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10 pointer-events-none" />
                       <button

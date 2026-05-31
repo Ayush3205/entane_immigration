@@ -406,6 +406,23 @@ img {
   display: block;
 }
 
+/* Full-width sections without transform blur on child content */
+.section-full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* Recruitment role icons: 82px display (SVG with embedded 512px artwork) */
+img.recruitment-role-icon {
+  width: 82px;
+  height: 82px;
+  max-width: 82px;
+  max-height: 82px;
+  object-fit: contain;
+  object-position: left center;
+}
+
 
 /* ================================================
    Source: Header
@@ -5810,6 +5827,12 @@ img {
   min-height: 387px;
   display: flex;
   flex-direction: column;
+}
+
+/* Tighter spacing when footer follows the Esante CTA banner */
+.esante-banner + .footer .footer-main,
+main:has(.esante-banner) + .footer .footer-main {
+  padding-top: 24px;
 }
 
 .footer-grid {

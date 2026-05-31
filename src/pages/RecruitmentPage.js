@@ -9,32 +9,34 @@ const SKILLED_PROFESSIONALS_IMAGE =
   "/images/recruitment/Skilled_Professionals.png";
 const PATHWAY_IMAGE = "/images/recruitment/Pathway_PR.png";
 
+const ROLE_ICON_SIZE = 82;
+
 const ROLE_ROWS = [
   [
     {
-      icon: "/images/recruitment/medical_team.png",
+      icon: "/images/recruitment/medical-team.svg",
       title: "Healthcare",
       body: "Registered Nurses, Aged Care, GPs.",
     },
     {
-      icon: "/images/recruitment/hard_hat.png",
+      icon: "/images/recruitment/hard-hat.svg",
       title: "Mining & Resources",
       body: "Boilermakers, Drillers, Fitters.",
     },
     {
-      icon: "/images/recruitment/crane.png",
+      icon: "/images/recruitment/crane.svg",
       title: "Trades & Construction",
       body: "Carpenters, Electricians, Diesel Motor Mechanics, Welders.",
     },
   ],
   [
     {
-      icon: "/images/recruitment/team.png",
+      icon: "/images/recruitment/team.svg",
       title: "Professional Services",
       body: "CPAs, Accountants, Engineers.",
     },
     {
-      icon: "/images/recruitment/hospitality.png",
+      icon: "/images/recruitment/hospitality.svg",
       title: "Hospitality",
       body: "Chefs, Cooks, Restaurant Managers.",
     },
@@ -151,7 +153,9 @@ function RoleCard({ item, onConsultation }) {
       <img
         src={item.icon}
         alt=""
-        className="mb-4 h-[82px] w-[82px] object-contain"
+        width={ROLE_ICON_SIZE}
+        height={ROLE_ICON_SIZE}
+        className="recruitment-role-icon mb-4 shrink-0"
       />
       <h3
         className="font-poppins text-black"
@@ -318,21 +322,20 @@ export default function RecruitmentPage() {
           />
 
           <div
-            className="absolute z-[2] overflow-hidden pointer-events-none"
+            className="absolute z-[2] overflow-hidden pointer-events-none rounded-[50px]"
             style={{
               right: "80px",
               top: "50%",
               transform: "translateY(-50%)",
               width: "636px",
               height: "477px",
-              borderRadius: "50px",
-              aspectRatio: "4 / 3",
             }}
           >
             <img
               alt=""
               src={HERO_OVERLAY}
-              className="h-full w-full object-cover object-center"
+              className="block h-full w-full object-cover object-center"
+              style={{ border: "none", outline: "none", transform: "scale(1.02)" }}
             />
           </div>
 
@@ -657,7 +660,7 @@ export default function RecruitmentPage() {
             </div>
           </section>
 
-          <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-[#FFFBE9] px-6 py-[80px] md:px-[60px] lg:px-[100px]">
+          <section className="section-full-bleed bg-[#FFFBE9] px-6 py-[80px] md:px-[60px] lg:px-[100px]">
             <div className="mx-auto max-w-[1240px] text-center">
               <h2
                 className="font-poppins text-[#00352B]"
@@ -778,7 +781,7 @@ export default function RecruitmentPage() {
             </div>
           </section>
 
-          <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-[#FFFBE9] px-6 py-[90px] md:px-[60px] lg:px-[100px]">
+          <section className="section-full-bleed bg-[#FFFBE9] px-6 py-[90px] md:px-[60px] lg:px-[100px]">
             <div className="mx-auto max-w-[1240px] text-center">
               <h2
                 className="font-poppins italic text-accent"

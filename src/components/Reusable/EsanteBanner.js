@@ -36,8 +36,8 @@ const EsanteBanner = ({
   const regularLines = [line3, line4].filter(Boolean);
 
   return (
-    <div className="w-full">
-      <div className="relative w-full max-w-[1259px] mx-auto h-[367px] mb-[84px]">
+    <div className="esante-banner w-full">
+      <div className="relative w-full max-w-[1259px] mx-auto h-[367px] mb-[32px]">
         <div className="absolute top-0 left-[106px] w-[1047px] max-w-[calc(100%-212px)] h-[367px] rounded-[37px] overflow-hidden bg-[#E65100]">
           <img
             src={CTA_BG}

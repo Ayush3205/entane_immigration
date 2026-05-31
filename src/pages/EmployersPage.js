@@ -51,22 +51,18 @@ function EmployersPage() {
 
       <main className="service-page__main" style={{ paddingTop: 0, paddingBottom: 0 }}>
         <section
-          className="relative w-full overflow-hidden bg-[#f7f2e8]"
-          style={{
-            minHeight: 'clamp(620px, 78vw, 724px)',
-            backgroundImage: `url('${HERO_IMAGE}')`,
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-          }}
+          className="relative w-full overflow-hidden"
+          style={{ minHeight: 'clamp(620px, 78vw, 724px)' }}
         >
+          <img
+            src={HERO_IMAGE}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            style={{ border: 'none', outline: 'none' }}
+          />
           <div
             className="relative z-[1] flex h-full w-full px-5 py-[128px] sm:px-8 lg:px-[100px]"
-            style={{
-              minHeight: 'clamp(620px, 78vw, 724px)',
-              background:
-                'linear-gradient(90deg, rgba(255,251,233,0.96) 0%, rgba(255,251,233,0.93) 21%, rgba(255,251,233,0.78) 35%, rgba(255,251,233,0.16) 53%, rgba(255,251,233,0) 66%)',
-            }}
+            style={{ minHeight: 'clamp(620px, 78vw, 724px)' }}
           >
             <div className="flex w-full items-center">
               <div className="flex w-full max-w-[560px] flex-col gap-5 lg:gap-7">
@@ -561,7 +557,7 @@ function EmployersPage() {
               </div>
             </div>
 
-            <div className="w-full max-w-[322px] overflow-hidden rounded-[45px] border-[3px] border-[#1E90FF]">
+            <div className="w-full max-w-[322px] overflow-hidden rounded-[45px]">
               <img
                 src={RECRUITMENT_IMAGE}
                 alt="Employer recruitment meeting around a table"
@@ -571,7 +567,7 @@ function EmployersPage() {
           </div>
         </section>
 
-        <div className="w-full bg-white px-5 pb-[84px] pt-[12px] sm:px-8 lg:px-[100px]">
+        <div className="w-full bg-white px-5 pt-[12px] sm:px-8 lg:px-[100px]">
           <EsanteBanner
             line1="Ready to"
             line2="Build a Truly Global Team?"

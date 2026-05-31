@@ -317,7 +317,7 @@ function PartTimeJobSupportPage() {
             <div className="hidden xl:block">
               <p className="m-0">
                 For international students, finding a part-time job in Australia is not optional — it&apos;s essential. Rent,<br />
-                groceries, transport, and daily expenses depend on it. At Esante``, we understand this reality because<br />
+                groceries, transport, and daily expenses depend on it. At Esante, we understand this reality because<br />
                 we are on the ground in Australia.
               </p>
               <p className="m-0 mt-[10px]">
