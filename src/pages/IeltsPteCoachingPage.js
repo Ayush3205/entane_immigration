@@ -308,18 +308,15 @@ function IeltsPteCoachingPage() {
         >
           {/* Josh photo — 259:1501 504×570, rounded-20, crop h=207.24% l=-58.12% t=-5% w=219.29% */}
           <div
-            className="relative shrink-0 overflow-hidden w-full max-w-[504px]"
-            style={{ height: 570, borderRadius: 20 }}
+            className="relative shrink-0 overflow-hidden w-full max-w-[438px] border-0"
+            style={{ height: 510, borderRadius: 20, border: 'none', outline: 'none', boxShadow: 'none', backgroundColor: 'transparent' }}
           >
             <div className="absolute inset-0 overflow-hidden">
               <video
                 ref={joshVideoRef}
                 src={joshVideoUrl}
-                className="h-full w-full object-cover"
-                style={{
-                  transform: 'scale(0.95)',
-                  transformOrigin: 'center center',
-                }}
+                className="h-full w-full object-cover border-0"
+                style={{ objectPosition: 'center center' }}
                 loop
                 playsInline
                 preload="metadata"
