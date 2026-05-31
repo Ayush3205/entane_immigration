@@ -308,8 +308,8 @@ function IeltsPteCoachingPage() {
         >
           {/* Josh photo — 259:1501 504×570, rounded-20, crop h=207.24% l=-58.12% t=-5% w=219.29% */}
           <div
-            className="relative shrink-0 overflow-hidden w-full max-w-[438px] border-0"
-            style={{ height: 510, borderRadius: 20, border: 'none', outline: 'none', boxShadow: 'none', backgroundColor: 'transparent' }}
+            className="relative shrink-0 overflow-hidden w-full max-w-[504px] border-0"
+            style={{ height: 570, aspectRatio: '84 / 95', borderRadius: 20, border: 'none', outline: 'none', boxShadow: 'none', backgroundColor: 'transparent' }}
           >
             <div className="absolute inset-0 overflow-hidden">
               <video
@@ -355,7 +355,7 @@ function IeltsPteCoachingPage() {
               className="font-poppins font-normal text-black mb-[20px]"
               style={{ fontSize: 29, lineHeight: '1.62' }}
             >
-              Your Communication &amp; IELTS Coach 🇦🇺
+              Your Communication &amp; IELTS Coach
             </p>
 
             {/* Bio — 259:1504: 23px / leading-[32px] / tracking-[-0.15px] */}
@@ -626,10 +626,8 @@ function IeltsPteCoachingPage() {
 
         {/* ── CTA BANNER (reusable) ── */}
         <EsanteBanner />
-
         </div>
       </div>
-
       <Footer />
     </div>
   );
