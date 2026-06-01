@@ -19,16 +19,16 @@ const imgC1c91 = `${ASSET_BASE}/images/post-arrival/c1c91.png`;
 const imgArrivalIcon = `${ASSET_BASE}/images/post-arrival/arrival-icon.png`;
 const imgOnboardIcon = `${ASSET_BASE}/images/post-arrival/University Onboarding.png`;
 const imgOnboardSupportIcon = `${ASSET_BASE}/images/post-arrival/onboard-icon.png`;
-const imgHostelIcon = `${ASSET_BASE}/images/post-arrival/Local Living Support.png`;
-const imgAccommodationIcon = `${ASSET_BASE}/images/post-arrival/accommodation-icon.png`;
+const imgLocalLivingIcon = `${ASSET_BASE}/images/post-arrival/Local Living Support.png`;
+const imgHostelIcon = `${ASSET_BASE}/images/post-arrival/hostel-icon.png`;
 const imgJobIcon = `${ASSET_BASE}/images/post-arrival/job-icon.png`;
 
 const SUPPORT_CARDS = [
   { img: imgArrivalIcon, imgScale: 1.3, title: 'Arrival Essentials', subtitle: 'SIM • TFN • Bank • Super • OSHC • USI', text: 'Get set up from day one. We help you activate your SIM, open a bank account, apply for TFN, set up superannuation, USI, and health cover — without confusion or delays.' },
   { img: imgOnboardIcon, imgScale: 0.92, title: 'University Onboarding', subtitle: 'Orientation • Check-in • Timetable • Student Portal', text: 'From university check-in to learning portals like Canvas, Moodle, or Blackboard — we help you understand how everything works so you can focus on your studies.' },
-  { img: imgHostelIcon, imgScale: 1.18, title: 'Local Living Support', subtitle: 'Metro Card • Groceries • City Navigation', text: 'Public transport cards, best grocery stores, apps you actually need, and how to move around your city like a local — we make daily life easy and affordable.' },
+  { img: imgLocalLivingIcon, imgScale: 1.18, title: 'Local Living Support', subtitle: 'Metro Card • Groceries • City Navigation', text: 'Public transport cards, best grocery stores, apps you actually need, and how to move around your city like a local — we make daily life easy and affordable.' },
   { img: imgJobIcon, imgScale: 1.3, title: 'Job-Ready Program', subtitle: 'CV • Cover Letter • Job Portals • Interviews', text: 'We prepare you for the Australian job market — CVs, cover letters, SEEK/Indeed profiles, mock interviews, and workplace communication support.' },
-  { img: imgAccommodationIcon, imgScale: 1.3, title: 'Accommodation Assistance', subtitle: 'Temporary • Long-Term • Lease Support', text: 'From your first week\'s stay to long-term housing, lease agreements, bond rules, and neighbourhood safety — we’ve got your housing covered.' },
+  { img: imgHostelIcon, imgScale: 1.3, title: 'Accommodation Assistance', subtitle: 'Temporary • Long-Term • Lease Support', text: 'From your first week\'s stay to long-term housing, lease agreements, bond rules, and neighbourhood safety — we’ve got your housing covered.' },
   { img: imgOnboardSupportIcon, imgScale: 1.3, title: 'Student Lifestyle Benefits', subtitle: 'Cafes • Trips • Meetups • Discounts', text: 'Discover the best cafes, budget food spots, weekend trips, student discounts, and Esanté community meetups — because student life is more than classes.' },
 ];
 
