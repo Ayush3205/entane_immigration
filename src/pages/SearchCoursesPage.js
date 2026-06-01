@@ -7,7 +7,7 @@ const COURSES = [
   {
     id: 1,
     title: 'Master of Professional Accounting',
-    university: 'The University of Sydney',
+    university: 'THE UNIVERSITY OF SYDNEY',
     level: 'Postgraduate',
     area: 'Business & Management',
     degreeType: 'Masters Degree (Coursework)',
@@ -17,7 +17,7 @@ const COURSES = [
     entryScore: 'IELTS 7.0',
     fees: 'AUD58800',
     feesYear: '2026',
-    logo: '/images/course-card-logo.png',
+    logo: '/images/course-card/THE UNIVERSITY OF SYDNEY.jpeg',
   },
   {
     id: 2,
@@ -143,6 +143,7 @@ const COURSES = [
 
 /* ── Map known university names to files added under public/images/course-card/ ── */
 const UNIVERSITY_LOGOS = {
+  'THE UNIVERSITY OF SYDNEY': '/images/course-card/THE UNIVERSITY OF SYDNEY.jpeg',
   'University of Melbourne': '/images/course-card/The_University_of_Melbourne_Logo.svg.png',
   'University of Queensland': '/images/course-card/University of Queensland logo.png',
   'Monash University': '/images/course-card/Monash University logo.png',
@@ -151,7 +152,6 @@ const UNIVERSITY_LOGOS = {
   'RMIT University': '/images/course-card/Rmit logo.png',
   'Griffith University': '/images/course-card/griffith-university-vector-logo.png',
   'Macquarie University': '/images/course-card/Macquarie University logo.png',
-  // Leave The University of Sydney without a file here if not provided; fallback will be used.
 };
 
 const SUBJECT_AREAS = [

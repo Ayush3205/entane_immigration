@@ -94,13 +94,13 @@ const UNIVERSITIES = [
   },
   {
     id: 9,
-    name: 'Canterbury Institute of Management',
-    city: 'Sydney',
-    state: 'NSW',
+    name: 'Charles Darwin University',
+    city: 'Darwin',
+    state: 'Northern Territory',
     ranking: '—',
     totalCourses: '80+',
     type: 'Teaching',
-    logo: '/images/course-card-logo.png',
+    logo: '/images/course-card/Charles Darwin University.png',
     image: '/images/course-card-main.png',
   },
 ];
@@ -115,9 +115,10 @@ const UNIVERSITY_LOGOS = {
   'RMIT University': '/images/course-card/Rmit logo.png',
   'Griffith University': '/images/course-card/griffith-university-vector-logo.png',
   'Macquarie University': '/images/course-card/Macquarie University logo.png',
+  'Charles Darwin University': '/images/course-card/Charles Darwin University.png',
 };
 
-const CITIES = ['All Cities', 'Sydney', 'Melbourne', 'Brisbane', 'Perth', 'Adelaide', 'Canberra'];
+const CITIES = ['All Cities', 'Sydney', 'Melbourne', 'Brisbane', 'Perth', 'Adelaide', 'Canberra', 'Darwin'];
 const UNI_TYPES = ['All Types', 'Research', 'Teaching'];
 
 const UNIVERSITIES_FAQ_ITEMS = [

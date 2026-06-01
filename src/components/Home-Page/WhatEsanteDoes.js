@@ -121,7 +121,7 @@ const WhatEsanteDoes = () => {
           <div 
             className="what-esante-card-image"
             style={{
-              background: "url('/images/home-page/Frame 106.png') lightgray 50% / cover no-repeat"
+              background: "url('/images/home-page/Frame 106(2).jpeg') lightgray 50% / cover no-repeat"
             }}
           ></div>
         </div>
