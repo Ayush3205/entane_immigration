@@ -48,33 +48,49 @@ function CaseStudyDetailPage() {
       <main style={{ paddingTop: 120 }}>
         <section style={{ padding: '72px 24px 48px', background: '#fff' }}>
           <div style={{ maxWidth: 1120, margin: '0 auto' }}>
-            <Link
-              to="/case-studies"
-              style={{
-                color: '#FF3300',
-                fontSize: 15,
-                fontWeight: 600,
-                marginBottom: 28,
-                display: 'inline-flex',
-              }}
-            >
-              Back to Case Studies
-            </Link>
             <div
               style={{
-                display: 'inline-flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                padding: '4px 12px',
-                background: '#FF3300',
-                borderRadius: 16,
-                color: '#FFFBE9',
-                fontSize: 14,
-                fontWeight: 500,
-                marginBottom: 18,
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 12,
+                marginBottom: 28,
               }}
             >
-              {caseStudy.category}
+              <Link
+                to="/case-studies"
+                style={{
+                  alignItems: 'center',
+                  background: 'rgba(255, 51, 0, 0.08)',
+                  border: '1px solid rgba(255, 51, 0, 0.28)',
+                  borderRadius: 16,
+                  color: '#FF3300',
+                  display: 'inline-flex',
+                  fontSize: 15,
+                  fontWeight: 600,
+                  justifyContent: 'center',
+                  lineHeight: '22px',
+                  padding: '8px 14px',
+                }}
+              >
+                Back to Case Studies
+              </Link>
+              <div
+                style={{
+                  alignItems: 'center',
+                  background: '#FF3300',
+                  borderRadius: 16,
+                  color: '#FFFBE9',
+                  display: 'inline-flex',
+                  fontSize: 14,
+                  fontWeight: 500,
+                  justifyContent: 'center',
+                  lineHeight: '20px',
+                  padding: '8px 14px',
+                }}
+              >
+                {caseStudy.category}
+              </div>
             </div>
             <h1
               style={{

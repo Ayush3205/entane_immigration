@@ -7,9 +7,6 @@ import { CASE_STUDIES } from '../data/caseStudies';
 
 const imgHeroFeatured = '/images/Case Studies/Case Study HERO.png';
 
-// Card assets (Figma design system – arrow + card images)
-const imgArrowUpRight = 'https://www.figma.com/api/mcp/asset/f4c02ea5-df2d-47d2-a2ef-b2ea3df966c3';
-
 const CASE_STUDY_INITIAL = 6;
 const CASE_STUDY_LOAD_MORE = 6;
 
@@ -103,9 +100,9 @@ function CaseStudyCard({ card }) {
           {card.category}
         </span>
         <div className="flex flex-col items-start self-stretch gap-3 flex-1">
-          <div className="flex gap-4 items-start self-stretch">
+          <div className="flex items-start self-stretch">
             <span
-              className="flex-1 text-[#00352B] text-2xl min-w-0"
+              className="text-[#00352B] text-2xl min-w-0 w-full"
               style={{
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 600,
@@ -118,9 +115,6 @@ function CaseStudyCard({ card }) {
             >
               {card.title}
             </span>
-            <div className="shrink-0 w-6 h-6 flex items-center justify-center pt-1">
-              <img src={imgArrowUpRight} alt="" className="w-full h-full" />
-            </div>
           </div>
           <span
             className="text-[#667085] text-base self-stretch"
@@ -183,13 +177,13 @@ function CaseStudiesPage() {
   return (
     <div className="case-studies-page">
       <Header />
-      <main style={{ paddingTop: '120px' }}>
+      <main>
         <div className="bg-white flex flex-col">
 
           {/* ── Hero + Tabs + Cards in one flow (no extra gaps between sections) ── */}
           <div
             className="flex flex-col items-center w-full bg-white"
-            style={{ paddingTop: '96px' }}
+            style={{ paddingTop: '32px' }}
           >
             <div className="flex flex-col items-center w-full px-8" style={{ maxWidth: '1280px', width: '100%' }}>
               {/* Heading and supporting text */}

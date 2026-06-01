@@ -7,7 +7,7 @@ export const CASE_STUDIES = [
     subtitle: 'How Esante Helped Priya Achieve Her Australian Dream',
     excerpt:
       'Priya, a registered nurse from Kerala, wanted to move to Australia but felt overwhelmed by visa requirements, AHPRA processes, and settlement concerns.',
-    image: '/images/Case Studies/Case Study HERO.png',
+    image: '/images/Case Studies/1.png',
     intro:
       'Priya, a registered nurse from Kerala, wanted to move to Australia but felt overwhelmed by visa requirements, AHPRA processes, and settlement concerns.',
     supportIntro: 'Esante supported her with:',
@@ -30,7 +30,7 @@ export const CASE_STUDIES = [
     subtitle: 'Securing Admission with Scholarship Support',
     excerpt:
       'Rihaan dreamed of studying Business Analytics in Australia but was worried about tuition costs. Esante helped him build a stronger admission and scholarship profile.',
-    image: '/images/Case Studies/Case Study HERO.png',
+    image: '/images/Case Studies/2.png',
     intro:
       'Rihaan dreamed of studying Business Analytics in Australia but was worried about tuition costs.',
     supportIntro: 'Esante helped him:',
@@ -52,7 +52,7 @@ export const CASE_STUDIES = [
     subtitle: 'End-to-End Student Support with Esante',
     excerpt:
       'Khushi needed support after landing in Australia. Esante helped her arrive in Brisbane with accommodation, setup guidance, and confidence from Day 1.',
-    image: '/images/Case Studies/Case Study HERO.png',
+    image: '/images/Case Studies/3.png',
     intro:
       'Many students struggle after arriving in Australia. Esante focuses on supporting students even after visa approval.',
     supportIntro: 'For Khushi, we arranged:',
@@ -74,7 +74,7 @@ export const CASE_STUDIES = [
     subtitle: 'Skilled Migration Success with Employer Sponsorship',
     excerpt:
       'A skilled boilermaker from Zimbabwe wanted better opportunities in Australia\'s mining industry and needed a clear employer-sponsored pathway.',
-    image: '/images/Case Studies/Case Study HERO.png',
+    image: '/images/Case Studies/4.png',
     intro:
       'A skilled boilermaker from Zimbabwe wanted better opportunities in Australia\'s mining industry.',
     supportIntro: 'Esante assisted with:',
@@ -96,7 +96,7 @@ export const CASE_STUDIES = [
     subtitle: 'Helping Students Improve Their Visa Chances',
     excerpt:
       'Sneha improved her IELTS score with Esante\'s preparation support, strengthening her profile and improving her visa chances.',
-    image: '/images/Case Studies/Case Study HERO.png',
+    image: '/images/Case Studies/5.jpeg',
     intro:
       'Many students fear high visa rejection rates due to weak English scores and poor guidance.',
     supportIntro: 'Esante provided:',
@@ -117,7 +117,7 @@ export const CASE_STUDIES = [
     subtitle: 'Personalized Education Pathway Planning',
     excerpt:
       'Shahid was unsure whether to pursue IT or Business studies in Australia. Esante helped him compare options and plan around long-term outcomes.',
-    image: '/images/Case Studies/Case Study HERO.png',
+    image: '/images/Case Studies/6.png',
     intro:
       'Shahid was unsure whether to pursue IT or Business studies in Australia.',
     supportIntro: 'Esante helped him:',
@@ -138,7 +138,7 @@ export const CASE_STUDIES = [
     subtitle: 'Hospitality Career Pathway to Australia',
     excerpt:
       'A professional chef from Nepal wanted international exposure and long-term PR opportunities through Australia\'s hospitality sector.',
-    image: '/images/Case Studies/Case Study HERO.png',
+    image: '/images/Case Studies/7.png',
     intro:
       'A professional chef from Nepal wanted international exposure and long-term PR opportunities.',
     supportIntro: 'Esante supported him with:',
@@ -159,7 +159,7 @@ export const CASE_STUDIES = [
     subtitle: 'Building an International Career with Esante',
     excerpt:
       'An accountant from India wanted better career opportunities in Australia. Esante helped her plan education, visa, settlement, and CPA goals.',
-    image: '/images/Case Studies/Case Study HERO.png',
+    image: '/images/Case Studies/8.png',
     intro:
       'An accountant from India approached Esante seeking better career opportunities in Australia.',
     supportIntro: 'We helped with:',
@@ -181,7 +181,7 @@ export const CASE_STUDIES = [
     subtitle: 'Support That Continues After Visa Approval',
     excerpt:
       'At Esante, support does not stop after visa approval. Students receive practical help with accommodation, airport pickup, jobs, setup, and settlement.',
-    image: '/images/Case Studies/Case Study HERO.png',
+    image: '/images/Case Studies/9.png',
     intro:
       'At Esante, support does not stop after visa approval.',
     supportIntro: 'Our Australia support ecosystem includes:',

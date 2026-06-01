@@ -6,6 +6,7 @@ import EsanteBanner from '../components/Reusable/EsanteBanner';
 import { NEWS_BLOGS_TEXT_URL, parseNewsBlogs } from '../data/newsBlogs';
 
 const isHeadingLine = (line) => (
+  line === line.toUpperCase() &&
   line.length <= 105 &&
   !line.startsWith('-') &&
   !/[.!?]$/.test(line)
@@ -29,7 +30,17 @@ function BlogBody({ lines }) {
 
     flushBullets();
 
-    if (/^\d+\.\s+/.test(line)) {
+    if (line.startsWith('## ')) {
+      blocks.push({ type: 'heading', text: line.replace(/^##\s+/, '') });
+      return;
+    }
+
+    if (line.startsWith('### ')) {
+      blocks.push({ type: 'subheading', text: line.replace(/^###\s+/, '') });
+      return;
+    }
+
+    if (/^\d+\.\s+/.test(line) || /:$/.test(line)) {
       blocks.push({ type: 'subheading', text: line });
       return;
     }
@@ -79,7 +90,7 @@ function BlogBody({ lines }) {
                 color: '#00352B',
                 fontSize: 'clamp(24px, 3vw, 34px)',
                 lineHeight: 1.2,
-                margin: '42px 0 16px',
+                margin: '44px 0 18px',
               }}
             >
               {block.text}
@@ -93,9 +104,9 @@ function BlogBody({ lines }) {
               key={`subheading-${index}`}
               style={{
                 color: '#00352B',
-                fontSize: 'clamp(20px, 2.4vw, 28px)',
+                fontSize: 'clamp(19px, 2.2vw, 24px)',
                 lineHeight: 1.25,
-                margin: '34px 0 12px',
+                margin: '30px 0 10px',
               }}
             >
               {block.text}
