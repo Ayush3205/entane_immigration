@@ -1,28 +1,17 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Reusable/Header';
 import Footer from '../components/Reusable/Footer';
 import EsanteBanner from '../components/Reusable/EsanteBanner';
+import { CASE_STUDIES } from '../data/caseStudies';
 
-// Hero featured image (Figma fill_REYQ1Z) – use placeholder; replace with Figma asset if available
-const imgHeroFeatured =
-  'https://storage.googleapis.com/tagjs-prod.appspot.com/v1/vFwliBRFnJ/8sadqtxv_expires_30_days.png';
+const imgHeroFeatured = '/images/Case Studies/Case Study HERO.png';
 
 // Card assets (Figma design system – arrow + card images)
 const imgArrowUpRight = 'https://www.figma.com/api/mcp/asset/f4c02ea5-df2d-47d2-a2ef-b2ea3df966c3';
-const imgArrowDown = 'https://www.figma.com/api/mcp/asset/4cdf5a8a-e438-4f4b-a0d2-389a09c12223';
-
-const CASE_STUDY_CARDS = [
-  { image: 'https://www.figma.com/api/mcp/asset/fa41ab00-f056-49c8-a521-b82edf4c937a', category: 'Design', title: 'UX review presentations', description: 'How do you create compelling presentations that wow your colleagues and impress your managers?' },
-  { image: 'https://www.figma.com/api/mcp/asset/5f309bdf-72f7-4ef7-8241-61d1fe2e4ced', category: 'Design', title: 'UX review presentations', description: 'How do you create compelling presentations that wow your colleagues and impress your managers?' },
-  { image: 'https://www.figma.com/api/mcp/asset/f2758485-85c6-43e6-bde4-8b10bc399e58', category: 'Design', title: 'UX review presentations', description: 'How do you create compelling presentations that wow your colleagues and impress your managers?' },
-  { image: 'https://www.figma.com/api/mcp/asset/09d50615-bfa8-434b-8b69-f773faed2b53', category: 'Design', title: 'UX review presentations', description: 'How do you create compelling presentations that wow your colleagues and impress your managers?' },
-  { image: 'https://www.figma.com/api/mcp/asset/11ed5df5-0d49-4758-8040-af838aecea84', category: 'Design', title: 'UX review presentations', description: 'How do you create compelling presentations that wow your colleagues and impress your managers?' },
-  { image: 'https://www.figma.com/api/mcp/asset/4d0c1347-fc24-45b9-95c8-27ca4f441b09', category: 'Design', title: 'UX review presentations', description: 'How do you create compelling presentations that wow your colleagues and impress your managers?' },
-];
 
 const CASE_STUDY_INITIAL = 6;
 const CASE_STUDY_LOAD_MORE = 6;
-const allCaseStudyCards = [...CASE_STUDY_CARDS, ...CASE_STUDY_CARDS];
 
 const CASE_STUDIES_FAQ_ITEMS = [
   {
@@ -100,23 +89,32 @@ const CASE_STUDIES_FAQ_ITEMS = [
 function CaseStudyCard({ card }) {
   return (
     <div
-      className="bg-white flex flex-1 flex-col items-start min-w-0 pb-8 pt-6 px-6"
+      className="bg-white flex h-full flex-col items-start min-w-0 pb-8 pt-6 px-6"
       style={{
+        height: '620px',
         boxShadow: '0px 12px 16px 0px rgba(16,24,40,0.08), 0px 4px 6px 0px rgba(16,24,40,0.03)',
       }}
     >
       <div className="relative w-full shrink-0" style={{ height: '240px' }}>
         <img src={card.image} alt={card.title} className="absolute inset-0 w-full h-full object-cover" />
       </div>
-      <div className="flex flex-col items-start self-stretch gap-3 mt-6">
+      <div className="flex flex-col items-start self-stretch gap-3 mt-6 flex-1">
         <span className="text-[#FF3300] text-sm" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600 }}>
           {card.category}
         </span>
-        <div className="flex flex-col items-start self-stretch gap-3">
+        <div className="flex flex-col items-start self-stretch gap-3 flex-1">
           <div className="flex gap-4 items-start self-stretch">
             <span
               className="flex-1 text-[#00352B] text-2xl min-w-0"
-              style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600, lineHeight: '32px' }}
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                fontWeight: 600,
+                lineHeight: '32px',
+                display: '-webkit-box',
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              }}
             >
               {card.title}
             </span>
@@ -126,10 +124,32 @@ function CaseStudyCard({ card }) {
           </div>
           <span
             className="text-[#667085] text-base self-stretch"
-            style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 400, lineHeight: '24px' }}
+            style={{
+              fontFamily: "'Poppins', sans-serif",
+              fontWeight: 400,
+              lineHeight: '24px',
+              display: '-webkit-box',
+              WebkitLineClamp: 5,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+            }}
           >
-            {card.description}
+            {card.excerpt}
           </span>
+          <Link
+            to={`/case-studies/${card.slug}`}
+            className="inline-flex items-center justify-center rounded-[9px] text-white mt-auto"
+            style={{
+              fontFamily: "'Poppins', sans-serif",
+              fontWeight: 500,
+              fontSize: '16px',
+              lineHeight: '24px',
+              padding: '10px 18px',
+              backgroundColor: '#FF3300',
+            }}
+          >
+            Read More
+          </Link>
         </div>
       </div>
     </div>
@@ -154,12 +174,11 @@ function CaseStudiesPage() {
     { id: 'Skilled Workers', label: 'Skilled Workers' },
   ];
 
-  const visibleCards = allCaseStudyCards.slice(0, visibleCount);
-  const rows = [];
-  for (let i = 0; i < visibleCards.length; i += 3) {
-    rows.push(visibleCards.slice(i, i + 3));
-  }
-  const hasMoreCaseStudies = visibleCount < allCaseStudyCards.length;
+  const filteredCaseStudies = CASE_STUDIES.filter((caseStudy) => (
+    activeTab === 'All' || caseStudy.audience === activeTab
+  ));
+  const visibleCards = filteredCaseStudies.slice(0, visibleCount);
+  const hasMoreCaseStudies = visibleCount < filteredCaseStudies.length;
 
   return (
     <div className="case-studies-page">
@@ -206,7 +225,7 @@ function CaseStudiesPage() {
                       letterSpacing: '-0.96px',
                     }}
                   >
-                    Real Stories, Real Success in Australia
+                    Real Success Stories from Real Students
                   </h1>
                 </div>
                 <p
@@ -218,7 +237,7 @@ function CaseStudiesPage() {
                     lineHeight: '30px',
                   }}
                 >
-                  Discover how students and working professionals successfully migrated to australia, and read their success stories.
+                  See how Esante helped students from around the world turn their Australian dreams into reality. From nursing professionals to skilled workers, each journey is unique—but they all share one thing: complete support from start to finish.
                 </p>
               </div>
 
@@ -252,10 +271,10 @@ function CaseStudiesPage() {
                     lineHeight: '1.5em',
                   }}
                 >
-                  How do you create compelling presentations that wow your colleagues and impress your managers?How do you create compelling presentations that wow your colleagues and impress your managers?How do you create compelling presentations that wow your colleagues and impress your managers?
+                  {CASE_STUDIES[0].excerpt}
                 </p>
-                <button
-                  type="button"
+                <Link
+                  to={`/case-studies/${CASE_STUDIES[0].slug}`}
                   className="shrink-0 cursor-pointer border-0 rounded-[9px] text-white"
                   style={{
                     fontFamily: "'Poppins', sans-serif",
@@ -267,7 +286,7 @@ function CaseStudiesPage() {
                   }}
                 >
                   Read Full Case Study
-                </button>
+                </Link>
               </div>
 
               {/* Tabs: same container, no gap, aligned with content */}
@@ -279,7 +298,10 @@ function CaseStudiesPage() {
                   <button
                     key={tab.id}
                     type="button"
-                    onClick={() => setActiveTab(tab.id)}
+                    onClick={() => {
+                      setActiveTab(tab.id);
+                      setVisibleCount(CASE_STUDY_INITIAL);
+                    }}
                     className="pb-3 px-4 relative bg-transparent border-0 cursor-pointer"
                   >
                     <span
@@ -308,13 +330,19 @@ function CaseStudiesPage() {
               className="flex flex-col gap-12 items-start w-full px-8 pb-16"
               style={{ maxWidth: '1280px', width: '100%', marginTop: '0', paddingTop: '32px' }}
             >
-            {rows.map((row, rowIdx) => (
-              <div key={rowIdx} className="flex gap-8 items-start justify-center w-full">
-                {row.map((card, idx) => (
-                  <CaseStudyCard key={`${rowIdx}-${idx}`} card={card} />
-                ))}
-              </div>
-            ))}
+            <div
+              className="w-full"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+                gap: '32px',
+                alignItems: 'stretch',
+              }}
+            >
+              {visibleCards.map((card) => (
+                <CaseStudyCard key={card.slug} card={card} />
+              ))}
+            </div>
             {hasMoreCaseStudies && (
               <div className="flex items-center justify-center w-full">
                 <button
@@ -323,14 +351,16 @@ function CaseStudiesPage() {
                   className="flex items-center justify-center gap-2 rounded-lg border cursor-pointer"
                   style={{
                     padding: '12px 20px',
-                    backgroundColor: '#F9F5FF',
-                    border: '1px solid #F9F5FF',
-                    boxShadow: '0px 1px 2px 0px rgba(16,24,40,0.05)',
+                    backgroundColor: '#FF3300',
+                    border: '1px solid #FF3300',
+                    boxShadow: '0px 8px 18px 0px rgba(255,51,0,0.22)',
                   }}
                 >
-                  <img src={imgArrowDown} alt="" className="w-5 h-5" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+                    <path d="M12 5v14M6 13l6 6 6-6" stroke="#FFFBE9" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                   <span
-                    className="text-[#FF3300]"
+                    className="text-[#FFFBE9]"
                     style={{
                       fontFamily: "'Poppins', sans-serif",
                       fontWeight: 500,

@@ -6,7 +6,9 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import WhyAustraliaPage from './pages/WhyAustraliaPage';
 import NewsBlogsPage from './pages/NewsBlogsPage';
+import NewsBlogDetailPage from './pages/NewsBlogDetailPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
+import CaseStudyDetailPage from './pages/CaseStudyDetailPage';
 import EligibilityCalculatorPage from './pages/EligibilityCalculatorPage';
 import CostOfLivingCalculatorPage from './pages/CostOfLivingCalculatorPage';
 import VisaPathwaysPage from './pages/VisaPathwaysPage';
@@ -69,7 +71,9 @@ function App() {
         <Route path="/about-us" element={<AboutPage />} />
         <Route path="/why-australia" element={<WhyAustraliaPage />} />
         <Route path="/news-blogs" element={<NewsBlogsPage />} />
+        <Route path="/news-blogs/:slug" element={<NewsBlogDetailPage />} />
         <Route path="/case-studies" element={<CaseStudiesPage />} />
+        <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
         <Route path="/eligibility-calculator" element={<EligibilityCalculatorPage />} />
         <Route path="/cost-of-living-calculator" element={<CostOfLivingCalculatorPage />} />
         {/* Our Services */}
