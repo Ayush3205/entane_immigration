@@ -5961,12 +5961,12 @@ main:has(.esante-banner) + .footer .footer-main {
   color: transparent;
 }
 
-.footer-social-icon--twitter {
-  color: #1DA1F2;
+.footer-social-icon--linkedin {
+  color: #0A66C2;
 }
 
-.footer-social-icon--twitter svg {
-  fill: #1DA1F2;
+.footer-social-icon--linkedin svg {
+  fill: #0A66C2;
 }
 
 .footer-social-icon--whatsapp {

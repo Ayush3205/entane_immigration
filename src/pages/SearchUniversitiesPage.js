@@ -6,13 +6,13 @@ import Footer from '../components/Reusable/Footer';
 const UNIVERSITIES = [
   {
     id: 1,
-    name: 'University of Sydney',
+    name: 'Macquarie University',
     city: 'Sydney',
     state: 'NSW',
-    ranking: '19',
+    ranking: '195',
     totalCourses: '320+',
     type: 'Research',
-    logo: '/images/course-card-logo.png',
+    logo: '/images/course-card/Macquarie University logo.png',
     image: '/images/course-card-main.png',
   },
   {

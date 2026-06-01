@@ -279,13 +279,6 @@ const IconGradCap = () => (
   </svg>
 );
 
-const IconCalendar = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#444" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="4" width="18" height="18" rx="2" />
-    <path d="M16 2v4M8 2v4M3 10h18" />
-  </svg>
-);
-
 const IconCheckCircle = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#444" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10" />
@@ -464,10 +457,6 @@ const CourseCard = ({ course, onConsultation }) => {
         <DetailRow
           icon={<IconAustraliaFlag />}
           text={course.location}
-        />
-        <DetailRow
-          icon={<IconCalendar />}
-          text={`Next intake: ${course.intake}`}
         />
         <DetailRow
           icon={<IconCheckCircle />}
