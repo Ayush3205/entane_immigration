@@ -9,7 +9,6 @@ const imgHeroFeatured = '/images/Case Studies/Case Study HERO.png';
 
 const CASE_STUDY_INITIAL = 6;
 const CASE_STUDY_LOAD_MORE = 6;
-
 const CASE_STUDIES_FAQ_ITEMS = [
   {
     question: 'What are student success stories for studying in Australia?',
