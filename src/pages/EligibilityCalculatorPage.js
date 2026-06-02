@@ -5,6 +5,7 @@ import Footer from '../components/Reusable/Footer';
 function EligibilityCalculatorPage() {
   const [activeTab, setActiveTab] = useState('PROFILE');
   const [selectedAge, setSelectedAge] = useState('25-32');
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -24,6 +25,7 @@ function EligibilityCalculatorPage() {
 
   const tabs = ['PROFILE', 'EDUCATION', 'EXPERIENCE', 'ENGLISH'];
   const ageGroups = ['18-24', '25-32', '33-39', '40-44', '45+'];
+  const isFinalStep = activeTab === tabs[tabs.length - 1];
 
   const handleInputChange = (e) => {
     setFormData({
@@ -302,6 +304,10 @@ function EligibilityCalculatorPage() {
     }
   };
 
+  const handleSubmit = () => {
+    setShowSuccessPopup(true);
+  };
+
   return (
     <div className="eligibility-calculator-page min-h-screen bg-gray-50">
       <Header />
@@ -382,23 +388,25 @@ function EligibilityCalculatorPage() {
                 <div className="flex justify-end" style={{ marginTop: '64px', paddingTop: '8px' }}>
                   <button
                     type="button"
-                    onClick={handleNextStep}
+                    onClick={isFinalStep ? handleSubmit : handleNextStep}
                     className="bg-[#00352B] text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
                   >
-                    Next Step
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+                    {isFinalStep ? 'Submit' : 'Next Step'}
+                    {!isFinalStep && (
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    )}
                   </button>
                 </div>
               </div>
@@ -406,6 +414,50 @@ function EligibilityCalculatorPage() {
           </div>
         </div>
       </main>
+      {showSuccessPopup && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          style={{ backgroundColor: 'rgba(0, 53, 43, 0.56)' }}
+        >
+          <div
+            className="bg-white rounded-xl shadow-2xl text-center"
+            style={{ maxWidth: 420, width: '100%', padding: '36px 28px' }}
+          >
+            <div
+              className="mx-auto flex items-center justify-center rounded-full"
+              style={{
+                width: 56,
+                height: 56,
+                backgroundColor: 'rgba(0, 53, 43, 0.08)',
+                color: '#00352B',
+                marginBottom: 20,
+              }}
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.4}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold text-[#00352B]" style={{ marginBottom: 12 }}>
+              Thank You
+            </h3>
+            <p className="text-gray-600" style={{ lineHeight: 1.6, marginBottom: 28 }}>
+              Our Counsellor will contact you.
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowSuccessPopup(false)}
+              className="bg-[#00352B] text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
       <Footer />
     </div>
   );

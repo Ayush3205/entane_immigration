@@ -378,7 +378,7 @@ const AboutUs = () => {
                 className="absolute text-[18px] font-normal tracking-[-0.15px] text-[#000]"
                 style={{ top: '545px', width: '539px', fontFamily: 'Poppins', lineHeight: '31px' }}
               >
-                His lived experience as a migrant informs Esanté's people‑first approach — ensuring every decision balances opportunity with responsibility, ambition with ethics.
+                His lived experience as a migrant informs Esante's people‑first approach — ensuring every decision balances opportunity with responsibility, ambition with ethics.
               </p>
 
               {/* 6) Pastel purple line — Australia gave me opportunity */}

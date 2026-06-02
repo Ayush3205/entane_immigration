@@ -201,33 +201,51 @@ function NewsBlogDetailPage() {
       <main style={{ paddingTop: 120 }}>
         <section style={{ padding: '72px 24px 56px', background: '#fff' }}>
           <div style={{ maxWidth: 960, margin: '0 auto' }}>
-            <Link
-              to="/news-blogs"
-              style={{
-                color: '#FF3300',
-                fontSize: 15,
-                fontWeight: 600,
-                marginBottom: 28,
-                display: 'inline-flex',
-              }}
-            >
-              Back to Blogs
-            </Link>
             <div
               style={{
-                display: 'inline-flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                padding: '4px 12px',
-                background: '#FF3300',
-                borderRadius: 16,
-                color: '#FFFBE9',
-                fontSize: 14,
-                fontWeight: 500,
-                marginBottom: 18,
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 14,
+                marginBottom: 24,
               }}
             >
-              {post.category}
+              <Link
+                to="/news-blogs"
+                style={{
+                  alignItems: 'center',
+                  background: '#fff',
+                  border: '1px solid rgba(255, 51, 0, 0.28)',
+                  borderRadius: 999,
+                  boxShadow: '0 8px 18px rgba(255, 51, 0, 0.1)',
+                  color: '#FF3300',
+                  display: 'inline-flex',
+                  fontSize: 15,
+                  fontWeight: 600,
+                  justifyContent: 'center',
+                  minHeight: 40,
+                  padding: '9px 18px',
+                  textDecoration: 'none',
+                }}
+              >
+                Back to Blogs
+              </Link>
+              <div
+                style={{
+                  alignItems: 'center',
+                  background: '#FF3300',
+                  borderRadius: 999,
+                  color: '#FFFBE9',
+                  display: 'inline-flex',
+                  fontSize: 14,
+                  fontWeight: 500,
+                  justifyContent: 'center',
+                  minHeight: 40,
+                  padding: '9px 16px',
+                }}
+              >
+                {post.category}
+              </div>
             </div>
             <h1
               style={{
