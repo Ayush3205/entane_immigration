@@ -74,7 +74,7 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
             {/* Logo */}
             <div className="logo">
               <Link to="/">
-                <img src="/logo.png" alt="Esante Logo" />
+                <img src="/Logo Navbar.png" alt="Esante Logo" />
               </Link>
             </div>
 

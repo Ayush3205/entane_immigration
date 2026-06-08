@@ -107,6 +107,93 @@ const ABOUT_US_FAQ_ITEMS = [
   },
 ];
 
+const OFFICE_MAP_URL =
+  'https://www.google.com/maps?q=2%2F40%20Brookes%20Street%2C%20Bowen%20Hills%20QLD%204006%2C%20Australia&z=16&output=embed';
+
+const OfficeContactSection = () => {
+  const [mapFrameKey, setMapFrameKey] = useState(0);
+
+  return (
+    <section className="w-full bg-white px-6 py-[56px] md:px-[60px] lg:px-[100px]">
+      <div className="mx-auto grid w-full max-w-[1440px] overflow-hidden bg-[#003f34] lg:grid-cols-[0.86fr_1.14fr]">
+        <div className="flex min-h-[360px] flex-col justify-center px-8 py-12 sm:px-12 lg:min-h-[430px] lg:px-[60px]">
+          <h2 className="font-poppins text-[34px] font-normal leading-tight text-white sm:text-[42px]">
+            Head <span className="font-medium italic text-[#FF3300]">Office</span>
+          </h2>
+
+        <div className="mt-12 flex flex-col gap-6 text-[16px] leading-[1.45] text-white sm:text-[18px]">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=2%2F40%20Brookes%20Street%2C%20Bowen%20Hills%20QLD%204006%2C%20Australia"
+            className="flex items-start gap-4 transition-colors hover:text-[#FFB09A]"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="mt-1 shrink-0 text-[#FF3300]" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z" />
+              </svg>
+            </span>
+            <span>
+              2/40 Brookes Street, Bowen Hills 4006
+              <br />
+              Queensland, Australia
+            </span>
+          </a>
+
+          <a
+            href="tel:+61409557421"
+            className="flex items-center gap-4 transition-colors hover:text-[#FFB09A]"
+          >
+            <span className="shrink-0 text-[#FFB800]" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.56 3.57.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.19 2.45.56 3.57a1 1 0 0 1-.24 1.02l-2.2 2.2Z" />
+              </svg>
+            </span>
+            <span>(+61) 409 557 421</span>
+          </a>
+
+          <a
+            href="mailto:admin@esante.com.au"
+            className="flex items-center gap-4 break-all transition-colors hover:text-[#FFB09A]"
+          >
+            <span className="shrink-0 text-[#FF6A00]" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 4.25-7.05 5.29a.92.92 0 0 1-1.1 0L4.4 8.25A1 1 0 0 1 5.6 6.65L12 11.45l6.4-4.8a1 1 0 1 1 1.2 1.6Z" />
+              </svg>
+            </span>
+            <span>admin@esante.com.au</span>
+          </a>
+        </div>
+      </div>
+
+      <div className="relative min-h-[320px] bg-[#e7eef6] sm:min-h-[380px] lg:min-h-[430px]">
+        <button
+          type="button"
+          onClick={() => setMapFrameKey((key) => key + 1)}
+          className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 bg-white px-3 py-2 text-[13px] font-medium text-[#00352B] shadow-md transition-colors hover:bg-[#FFFBE9] focus:outline-none focus:ring-2 focus:ring-[#FF3300] focus:ring-offset-2"
+          aria-label="Reset map to Head Office location"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M3 12a9 9 0 1 0 3-6.7" />
+            <path d="M3 3v6h6" />
+          </svg>
+          Reset map
+        </button>
+        <iframe
+          key={mapFrameKey}
+          title="Esante Head Office location map"
+          src={OFFICE_MAP_URL}
+          className="h-[320px] w-full border-0 sm:h-[380px] lg:h-full"
+          loading="lazy"
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+      </div>
+    </section>
+  );
+};
+
 function AboutPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
@@ -121,6 +208,7 @@ function AboutPage() {
     <div className="about-page">
       <Header />
       <AboutUs />
+      <OfficeContactSection />
 
       {/* FAQ — Esante & studying/migrating to Australia */}
       <section
