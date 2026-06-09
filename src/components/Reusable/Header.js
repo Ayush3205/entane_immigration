@@ -69,10 +69,8 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
   const toggleMobileMenu = () => {
     const willOpen = !mobileOpen;
     setMobileOpen(willOpen);
-    setMobileServicesOpen(willOpen);
-    if (!willOpen) {
-      setMobileResourcesOpen(false);
-    }
+    setMobileServicesOpen(false);
+    setMobileResourcesOpen(false);
   };
 
   // navPhase: 'transparent' | 'hidden' | 'solid'
