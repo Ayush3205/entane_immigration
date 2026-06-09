@@ -1,6 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+const mobileServiceGroups = [
+  {
+    title: 'Migration',
+    links: [
+      { label: 'Migration Advisors', to: '/migration-advisors' },
+    ],
+  },
+  {
+    title: 'Education & Training',
+    links: [
+      { label: 'Search by Courses', to: '/search-courses' },
+      { label: 'Search by University', to: '/search-universities' },
+      { label: 'Expense Planning & Scholarships', to: '/expense-planning-scholarships' },
+      { label: 'Book 1:1 Consultation', to: '/book-consultation', isAction: true },
+    ],
+  },
+  {
+    title: 'Ancillary Services',
+    links: [
+      { label: 'Ancillary Services Overview', to: '/ancillary-services' },
+      { label: 'SOP & Other Documents', to: '/sop-documents' },
+      { label: 'Accommodation', to: '/accommodation' },
+      { label: 'Part time job support', to: '/part-time-job-support' },
+      { label: 'IELTS/PTE Coaching', to: '/ielts-pte-coaching' },
+      { label: 'Airport Services', to: '/airport-services' },
+      { label: 'Post-Arrival Support', to: '/post-arrival-support' },
+    ],
+  },
+  {
+    title: 'Recruitment',
+    links: [
+      { label: 'Recruitment', to: '/recruitment' },
+      { label: 'For Job Seekers', to: '/job-seekers' },
+      { label: 'Top In-Demand Jobs', to: { pathname: '/job-seekers', hash: '#top-in-demand' } },
+      { label: 'For Employers', to: '/employers' },
+    ],
+  },
+];
+
+const mobileResourceLinks = [
+  { label: 'News & Blogs', to: '/news-blogs' },
+  { label: 'Case Studies', to: '/case-studies' },
+  { label: 'Eligibility Calculator', to: '/eligibility-calculator' },
+];
+
 // ── Scroll thresholds (must match HomePage.js constants) ──────────────────
 // const MORPH_END = 800;   // same as HomePage — when the video morph finishes
 const HEADER_HIDE = 60;    // px before navbar slides away
@@ -9,8 +54,25 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const openConsultation = () => {
     window.dispatchEvent(new CustomEvent('openConsultationPopup'));
+  };
+
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setMobileServicesOpen(false);
+    setMobileResourcesOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    const willOpen = !mobileOpen;
+    setMobileOpen(willOpen);
+    setMobileServicesOpen(willOpen);
+    if (!willOpen) {
+      setMobileResourcesOpen(false);
+    }
   };
 
   // navPhase: 'transparent' | 'hidden' | 'solid'
@@ -41,6 +103,8 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
   // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
+    setMobileServicesOpen(false);
+    setMobileResourcesOpen(false);
   }, [location.pathname]);
 
   return (
@@ -161,7 +225,9 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
                 type="button"
                 className={`hamburger ${mobileOpen ? 'hamburger--open' : ''}`}
                 aria-label="Toggle menu"
-                onClick={() => setMobileOpen(prev => !prev)}
+                aria-expanded={mobileOpen}
+                aria-controls="mobile-navigation-menu"
+                onClick={toggleMobileMenu}
               >
                 <span className="hamburger__bar" />
                 <span className="hamburger__bar" />
@@ -171,18 +237,99 @@ const Header = ({ hideNavbar = false, headerRef = null }) => {
           </div>
 
           {/* Mobile drawer */}
-          <div className={`mobile-menu ${mobileOpen ? 'mobile-menu--open' : ''}`}>
+          <div
+            id="mobile-navigation-menu"
+            className={`mobile-menu ${mobileOpen ? 'mobile-menu--open' : ''}`}
+          >
             <ul className="mobile-menu__list">
-              <li><Link to="/about-us">About Us</Link></li>
-              <li><Link to="/search-courses">Our Services</Link></li>
-              <li><Link to="/why-australia">Why Australia</Link></li>
-              <li><Link to="/news-blogs">Tools &amp; Resources</Link></li>
+              <li className="mobile-menu__item">
+                <Link className="mobile-menu__link" to="/about-us" onClick={closeMobileMenu}>
+                  About Us
+                </Link>
+              </li>
+
+              <li className="mobile-menu__item mobile-menu__item--accordion">
+                <button
+                  type="button"
+                  className="mobile-menu__trigger"
+                  aria-expanded={mobileServicesOpen}
+                  aria-controls="mobile-services-panel"
+                  onClick={() => setMobileServicesOpen(prev => !prev)}
+                >
+                  <span>Our Services</span>
+                  <span className="mobile-menu__chevron" aria-hidden="true" />
+                </button>
+
+                <div
+                  id="mobile-services-panel"
+                  className={`mobile-menu__panel ${mobileServicesOpen ? 'mobile-menu__panel--open' : ''}`}
+                >
+                  {mobileServiceGroups.map(group => (
+                    <div className="mobile-menu__group" key={group.title}>
+                      <span className="mobile-menu__group-title">{group.title}</span>
+                      <ul className="mobile-menu__sublist">
+                        {group.links.map(link => (
+                          <li key={link.label}>
+                            <Link
+                              to={link.to}
+                              className={`mobile-menu__sub-link ${link.isAction ? 'mobile-menu__sub-link--action' : ''}`}
+                              onClick={closeMobileMenu}
+                            >
+                              {link.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </li>
+
+              <li className="mobile-menu__item">
+                <Link className="mobile-menu__link" to="/why-australia" onClick={closeMobileMenu}>
+                  Why Australia
+                </Link>
+              </li>
+
+              <li className="mobile-menu__item mobile-menu__item--accordion">
+                <button
+                  type="button"
+                  className="mobile-menu__trigger"
+                  aria-expanded={mobileResourcesOpen}
+                  aria-controls="mobile-resources-panel"
+                  onClick={() => setMobileResourcesOpen(prev => !prev)}
+                >
+                  <span>Tools &amp; Resources</span>
+                  <span className="mobile-menu__chevron" aria-hidden="true" />
+                </button>
+
+                <div
+                  id="mobile-resources-panel"
+                  className={`mobile-menu__panel ${mobileResourcesOpen ? 'mobile-menu__panel--open' : ''}`}
+                >
+                  <div className="mobile-menu__group mobile-menu__group--compact">
+                    <ul className="mobile-menu__sublist">
+                      {mobileResourceLinks.map(link => (
+                        <li key={link.label}>
+                          <Link
+                            to={link.to}
+                            className="mobile-menu__sub-link"
+                            onClick={closeMobileMenu}
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </li>
             </ul>
             <button
               type="button"
               className="cta-button cta-button--mobile"
               onClick={() => {
-                setMobileOpen(false);
+                closeMobileMenu();
                 openConsultation();
               }}
             >
