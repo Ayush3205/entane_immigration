@@ -145,17 +145,19 @@ const CHECK_BADGE_STYLE = {
 
 function MigrationAdvisorsPage() {
   return (
-    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
+    <div className="migration-advisors-page" style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <Header />
 
       <main>
         <section
+          className="migration-advisors-hero"
           style={{
             overflow: 'hidden',
             backgroundColor: '#062C24',
           }}
         >
           <div
+            className="migration-advisors-hero-frame"
             style={{
               position: 'relative',
               width: '100%',
@@ -183,6 +185,7 @@ function MigrationAdvisorsPage() {
               }}
             />
             <div
+              className="migration-advisors-hero-content"
               style={{
                 position: 'relative',
                 zIndex: 1,
@@ -277,6 +280,7 @@ function MigrationAdvisorsPage() {
         </section>
 
         <section
+          className="migration-services-section"
           style={{
             backgroundColor: '#FFFFFF',
             padding: '72px 24px 84px',
@@ -284,6 +288,7 @@ function MigrationAdvisorsPage() {
         >
           <div style={MIGRATION_SERVICES_SECTION_STYLES.container}>
             <h2
+              className="migration-services-title"
               style={{
                 margin: '0 0 48px',
                 color: '#00352B',
@@ -298,6 +303,7 @@ function MigrationAdvisorsPage() {
             >
               Migration Services by{' '}
               <span
+                className="migration-services-title-accent"
                 style={{
                   color: '#F30',
                   fontFamily: 'Poppins, sans-serif',
@@ -312,9 +318,13 @@ function MigrationAdvisorsPage() {
               </span>
             </h2>
 
-            <div style={MIGRATION_SERVICES_SECTION_STYLES.grid}>
+            <div className="migration-services-grid" style={MIGRATION_SERVICES_SECTION_STYLES.grid}>
               {MIGRATION_SERVICES.map((service) => (
-                <article key={service.number} style={MIGRATION_SERVICES_SECTION_STYLES.card}>
+                <article
+                  key={service.number}
+                  className="migration-service-card"
+                  style={MIGRATION_SERVICES_SECTION_STYLES.card}
+                >
                   <div
                     aria-hidden="true"
                     style={{
@@ -382,12 +392,14 @@ function MigrationAdvisorsPage() {
         </section>
 
         <section
+          className="migration-pathways-section"
           style={{
             backgroundColor: '#FFFBE9',
             padding: '84px 24px 88px',
           }}
         >
           <div
+            className="migration-pathways-inner"
             style={{
               width: '100%',
               maxWidth: '1260px',
@@ -398,6 +410,7 @@ function MigrationAdvisorsPage() {
             }}
           >
             <div
+              className="migration-feature-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'minmax(280px, 392px) minmax(320px, 1fr)',
@@ -406,6 +419,7 @@ function MigrationAdvisorsPage() {
               }}
             >
               <div
+                className="migration-feature-image"
                 style={{
                   width: '100%',
                   maxWidth: '392px',
@@ -427,6 +441,7 @@ function MigrationAdvisorsPage() {
 
               <div style={{ maxWidth: '640px' }}>
                 <h2
+                  className="migration-feature-title"
                   style={{
                     margin: '0 0 18px',
                     color: '#00352B',
@@ -451,6 +466,7 @@ function MigrationAdvisorsPage() {
                 </h2>
 
                 <p
+                  className="migration-feature-copy"
                   style={{
                     margin: '0 0 10px',
                     color: '#1B1B1B',
@@ -504,6 +520,7 @@ function MigrationAdvisorsPage() {
             </div>
 
             <div
+              className="migration-feature-grid migration-feature-grid--reverse"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'minmax(320px, 1fr) minmax(260px, 364px)',
@@ -513,6 +530,7 @@ function MigrationAdvisorsPage() {
             >
               <div style={{ maxWidth: '640px' }}>
                 <h2
+                  className="migration-feature-title"
                   style={{
                     margin: '0 0 18px',
                     color: '#00352B',
@@ -537,6 +555,7 @@ function MigrationAdvisorsPage() {
                 </h2>
 
                 <p
+                  className="migration-feature-copy"
                   style={{
                     margin: '0 0 18px',
                     color: '#1B1B1B',
@@ -588,6 +607,7 @@ function MigrationAdvisorsPage() {
                 </ul>
 
                 <p
+                  className="migration-feature-copy"
                   style={{
                     margin: 0,
                     color: '#1B1B1B',
@@ -603,6 +623,7 @@ function MigrationAdvisorsPage() {
               </div>
 
               <div
+                className="migration-feature-image migration-feature-image--right"
                 style={{
                   width: '100%',
                   maxWidth: '364px',
@@ -627,6 +648,7 @@ function MigrationAdvisorsPage() {
         </section>
 
         <section
+          className="migration-support-section"
           style={{
             backgroundColor: '#FFFFFF',
             padding: '76px 24px 92px',
@@ -640,6 +662,7 @@ function MigrationAdvisorsPage() {
             }}
           >
             <div
+              className="migration-support-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 560px), 1fr))',
@@ -648,6 +671,7 @@ function MigrationAdvisorsPage() {
               }}
             >
               <article
+                className="migration-support-card"
                 style={{
                   border: '1.5px solid #FF5A2A',
                   borderRadius: '28px',
@@ -659,6 +683,7 @@ function MigrationAdvisorsPage() {
                 }}
               >
                 <h2
+                  className="migration-support-card-title"
                   style={{
                     margin: '0 0 20px',
                     fontFamily: 'Poppins, sans-serif',
@@ -725,6 +750,7 @@ function MigrationAdvisorsPage() {
               </article>
 
               <article
+                className="migration-support-card"
                 style={{
                   border: '1.5px solid #FF5A2A',
                   borderRadius: '28px',
@@ -736,6 +762,7 @@ function MigrationAdvisorsPage() {
                 }}
               >
                 <h2
+                  className="migration-support-card-title"
                   style={{
                     margin: '0 0 20px',
                     fontFamily: 'Poppins, sans-serif',
@@ -803,6 +830,7 @@ function MigrationAdvisorsPage() {
             </div>
 
             <div
+              className="migration-success-block"
               style={{
                 maxWidth: '860px',
                 margin: '0 auto',
@@ -810,6 +838,7 @@ function MigrationAdvisorsPage() {
               }}
             >
               <h2
+                className="migration-success-title"
                 style={{
                   margin: '0 0 20px',
                   color: '#FF3300',
@@ -825,6 +854,7 @@ function MigrationAdvisorsPage() {
               </h2>
 
               <p
+                className="migration-success-copy"
                 style={{
                   margin: '0 auto',
                   color: '#1D1D1D',
@@ -840,6 +870,7 @@ function MigrationAdvisorsPage() {
                   Esante supports your career, lifestyle, and settlement journey
                 </span>
                 <span
+                  className="migration-success-emphasis"
                   style={{
                     display: 'block',
                     color: '#00352B',

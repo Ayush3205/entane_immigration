@@ -5824,6 +5824,210 @@ img.recruitment-role-icon {
   text-align: center;
 }
 
+/* ================================================
+   Source: MigrationAdvisorsPage mobile optimization
+   ================================================ */
+.migration-advisors-page {
+  overflow-x: hidden;
+}
+
+.migration-advisors-page img {
+  max-width: 100%;
+}
+
+.migration-feature-grid > *,
+.migration-support-grid > * {
+  min-width: 0;
+}
+
+@media (max-width: 1024px) {
+  .migration-advisors-hero-frame {
+    height: 660px !important;
+    aspect-ratio: auto !important;
+  }
+
+  .migration-feature-grid,
+  .migration-feature-grid--reverse,
+  .migration-support-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .migration-feature-grid--reverse .migration-feature-image {
+    order: -1;
+  }
+
+  .migration-feature-image,
+  .migration-feature-image--right {
+    justify-self: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .migration-advisors-hero-frame {
+    height: 560px !important;
+  }
+
+  .migration-advisors-hero-content {
+    padding: 24px 18px 48px !important;
+  }
+
+  .migration-advisors-hero h1 {
+    font-size: 34px !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .migration-advisors-hero p {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  .migration-services-section,
+  .migration-pathways-section,
+  .migration-support-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .migration-services-section {
+    padding-top: 52px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .migration-pathways-section {
+    padding-top: 58px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .migration-support-section {
+    padding-top: 56px !important;
+    padding-bottom: 68px !important;
+  }
+
+  .migration-services-title,
+  .migration-services-title-accent,
+  .migration-success-title {
+    font-size: 34px !important;
+    line-height: 1.18 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .migration-services-title {
+    margin-bottom: 28px !important;
+  }
+
+  .migration-services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .migration-service-card {
+    min-height: 238px !important;
+    border-radius: 28px !important;
+    padding: 24px 20px !important;
+  }
+
+  .migration-service-card > div[aria-hidden="true"] {
+    left: auto !important;
+    right: 12px !important;
+    bottom: -28px !important;
+    font-size: 112px !important;
+  }
+
+  .migration-service-card h3 {
+    text-align: left !important;
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+  }
+
+  .migration-service-card p {
+    max-width: none !important;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+  .migration-pathways-inner {
+    gap: 48px !important;
+  }
+
+  .migration-feature-grid,
+  .migration-feature-grid--reverse {
+    gap: 28px !important;
+  }
+
+  .migration-feature-image,
+  .migration-feature-image--right {
+    max-width: 330px !important;
+    width: 100% !important;
+  }
+
+  .migration-feature-title {
+    font-size: 34px !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .migration-feature-copy,
+  .migration-success-copy {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  .migration-pathways-section li,
+  .migration-support-section li {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+  }
+
+  .migration-support-grid {
+    gap: 18px !important;
+    margin-bottom: 50px !important;
+  }
+
+  .migration-support-card {
+    min-height: 0 !important;
+    border-radius: 22px !important;
+    padding: 28px 20px !important;
+  }
+
+  .migration-support-card-title {
+    font-size: 34px !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .migration-support-card p {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+  }
+
+  .migration-success-block {
+    text-align: left !important;
+  }
+
+  .migration-success-copy,
+  .migration-success-copy span,
+  .migration-success-emphasis {
+    display: inline !important;
+  }
+
+  .migration-success-emphasis {
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .migration-advisors-hero h1,
+  .migration-services-title,
+  .migration-services-title-accent,
+  .migration-feature-title,
+  .migration-support-card-title,
+  .migration-success-title {
+    font-size: 30px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .consultation-page__main {
     padding-bottom: 56px;
