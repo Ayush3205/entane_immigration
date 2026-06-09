@@ -205,7 +205,7 @@ function AboutPage() {
     window.dispatchEvent(new CustomEvent('openConsultationPopup'));
 
   return (
-    <div className="about-page">
+    <div className="about-page overflow-x-hidden">
       <Header />
       <AboutUs />
       <OfficeContactSection />

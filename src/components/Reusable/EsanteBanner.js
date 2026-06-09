@@ -21,6 +21,17 @@ const renderMultilineText = (text = '') =>
     </React.Fragment>
   ));
 
+const joinClasses = (...classes) => classes.filter(Boolean).join(' ');
+
+const MOBILE_HEADLINE_CLASSES =
+  'max-[767px]:text-[28px] max-[767px]:leading-[1.18] max-[767px]:tracking-[0] max-[767px]:pb-0 max-[380px]:text-[24px]';
+
+const MOBILE_ACCENT_HEADLINE_CLASSES =
+  'max-[767px]:text-[30px] max-[767px]:leading-[1.16] max-[767px]:tracking-[0] max-[767px]:pb-0 max-[380px]:text-[25px]';
+
+const MOBILE_SUBTEXT_CLASSES =
+  'max-[767px]:mt-5 max-[767px]:pb-0 max-[767px]:text-[16px] max-[767px]:leading-[1.45] max-[767px]:tracking-[0]';
+
 const EsanteBanner = ({
   line1 = DEFAULT_CONTENT.line1,
   line2 = DEFAULT_CONTENT.line2,
@@ -28,65 +39,65 @@ const EsanteBanner = ({
   line4 = DEFAULT_CONTENT.line4,
   subtext = DEFAULT_CONTENT.subtext,
   buttonText = DEFAULT_CONTENT.buttonText,
-  line1ClassName = "font-poppins text-[42px] font-normal leading-[1.15] text-white tracking-[-0.96px]",
-  line2ClassName = "font-poppins text-[48px] font-semibold italic leading-[1.15] text-white tracking-[-0.96px]",
-  regularLineClassName = "font-poppins text-[42px] font-normal leading-[1.15] text-white tracking-[-0.96px]",
-  subtextClassName = "mt-8 w-full max-w-[708px] font-poppins text-[23px] font-normal leading-normal text-[rgba(255,255,255,0.9)] text-center tracking-[-0.15px]",
+  line1ClassName = "font-poppins text-[30px] font-normal leading-[1.18] text-white tracking-[0] sm:text-[36px] md:text-[42px] md:leading-[1.15]",
+  line2ClassName = "font-poppins text-[32px] font-semibold italic leading-[1.16] text-white tracking-[0] sm:text-[40px] md:text-[48px] md:leading-[1.15]",
+  regularLineClassName = "font-poppins text-[30px] font-normal leading-[1.18] text-white tracking-[0] sm:text-[36px] md:text-[42px] md:leading-[1.15]",
+  subtextClassName = "mt-5 w-full max-w-[708px] font-poppins text-[16px] font-normal leading-[1.45] text-[rgba(255,255,255,0.9)] text-center tracking-[0] sm:mt-6 sm:text-[19px] md:mt-8 md:text-[23px] md:leading-normal",
 }) => {
   const regularLines = [line3, line4].filter(Boolean);
 
   return (
     <div className="esante-banner w-full">
-      <div className="relative w-full max-w-[1259px] mx-auto h-[367px] mb-[32px]">
-        <div className="absolute top-0 left-[106px] w-[1047px] max-w-[calc(100%-212px)] h-[367px] rounded-[37px] overflow-hidden bg-[#E65100]">
+      <div className="relative mx-auto mb-8 w-full max-w-[1259px] px-4 sm:px-6 lg:px-0">
+        <div className="relative mx-auto min-h-[332px] w-full max-w-[1047px] overflow-hidden rounded-[24px] bg-[#E65100] px-5 py-10 sm:min-h-[350px] sm:rounded-[30px] sm:px-8 md:min-h-[367px] md:rounded-[37px] md:px-10">
           <img
             src={CTA_BG}
             alt=""
             className="absolute inset-0 w-full h-full object-cover"
           />
-        </div>
 
-        <div className="absolute inset-0 flex flex-col items-center text-center px-4 pt-[59px]">
-          <div className="flex flex-col items-center">
-            {line1 ? (
-              <p className={line1ClassName}>
-                {renderMultilineText(line1)}
+          <div className="relative z-10 flex min-h-[252px] flex-col items-center justify-center text-center sm:min-h-[270px] md:min-h-[287px]">
+            <div className="flex flex-col items-center">
+              {line1 ? (
+                <p className={joinClasses(line1ClassName, MOBILE_HEADLINE_CLASSES)}>
+                  {renderMultilineText(line1)}
+                </p>
+              ) : null}
+
+              {line2 ? (
+                <p className={joinClasses(line2ClassName, MOBILE_ACCENT_HEADLINE_CLASSES)}>
+                  {renderMultilineText(line2)}
+                </p>
+              ) : null}
+
+              {regularLines.map((line, index) => (
+                <p
+                  key={`${line}-${index}`}
+                  className={joinClasses(regularLineClassName, MOBILE_HEADLINE_CLASSES)}
+                >
+                  {renderMultilineText(line)}
+                </p>
+              ))}
+            </div>
+
+            {subtext ? (
+              <p className={joinClasses(subtextClassName, MOBILE_SUBTEXT_CLASSES)}>
+                {renderMultilineText(subtext)}
               </p>
             ) : null}
 
-            {line2 ? (
-              <p className={line2ClassName}>
-                {renderMultilineText(line2)}
-              </p>
-            ) : null}
-
-            {regularLines.map((line, index) => (
-              <p
-                key={`${line}-${index}`}
-                className={regularLineClassName}
-              >
-                {renderMultilineText(line)}
-              </p>
-            ))}
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new CustomEvent('openConsultationPopup'))
+              }
+              className="mt-6 flex min-h-[44px] min-w-[172px] items-center justify-center overflow-hidden rounded-[14px] bg-white px-6 transition-colors hover:bg-[#FFFBE9] focus:outline-none focus:ring-2 focus:ring-white/80 focus:ring-offset-2 focus:ring-offset-[#E65100] md:mt-8 md:h-[36px] md:min-h-0 md:w-[181px] md:px-0 md:rounded-[16px]"
+            >
+              <span className="font-['Inter',sans-serif] text-[16px] font-normal leading-normal text-primary tracking-[0] md:text-[19px]">
+                {buttonText}
+              </span>
+            </button>
           </div>
-
-          {subtext ? (
-            <p className={subtextClassName}>
-              {renderMultilineText(subtext)}
-            </p>
-          ) : null}
-
-          <button
-            type="button"
-            onClick={() =>
-              window.dispatchEvent(new CustomEvent('openConsultationPopup'))
-            }
-            className="mt-8 flex items-center justify-center bg-white rounded-[16px] h-[36px] w-[181px] overflow-hidden"
-          >
-            <span className="font-['Inter',sans-serif] text-[19px] font-normal leading-normal text-primary tracking-[-0.15px]">
-              {buttonText}
-            </span>
-          </button>
         </div>
       </div>
     </div>

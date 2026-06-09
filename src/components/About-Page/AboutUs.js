@@ -37,7 +37,7 @@ const TeamCard = ({ image, name, title, description, contentScale = 1, contentHo
 
   return (
     <div 
-      className="relative w-[562px] h-[641px] rounded-[24px] overflow-hidden flex-shrink-0 cursor-pointer group"
+      className="relative h-[460px] w-full max-w-[562px] flex-shrink-0 cursor-pointer overflow-hidden rounded-[20px] group sm:h-[560px] sm:rounded-[24px] lg:h-[641px]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -53,11 +53,11 @@ const TeamCard = ({ image, name, title, description, contentScale = 1, contentHo
         />
 
         {/* Default Overlay */}
-        <div className="absolute left-[29px] right-[29px] bottom-[27px] bg-accent/[0.68] rounded-[25px] min-h-[107px] flex flex-col justify-center px-[37px] py-4 transition-opacity duration-300 group-hover:opacity-0">
-          <p className="text-[43px] font-medium leading-[1.325] tracking-[-0.15px] text-white">
+        <div className="absolute bottom-5 left-5 right-5 flex min-h-[92px] flex-col justify-center rounded-[18px] bg-accent/[0.68] px-6 py-4 transition-opacity duration-300 group-hover:opacity-0 sm:bottom-[27px] sm:left-[29px] sm:right-[29px] sm:min-h-[107px] sm:rounded-[25px] sm:px-[37px]">
+          <p className="text-[30px] font-medium leading-[1.2] tracking-[0] text-white sm:text-[38px] lg:text-[43px] lg:leading-[1.325]">
             {name}
           </p>
-          <p className="text-[20px] font-normal leading-[57px] tracking-[-0.15px] text-white">
+          <p className="text-[15px] font-normal leading-[1.4] tracking-[0] text-white sm:text-[18px] lg:text-[20px] lg:leading-[57px]">
             {title}
           </p>
         </div>
@@ -65,16 +65,16 @@ const TeamCard = ({ image, name, title, description, contentScale = 1, contentHo
         {/* Hover Overlay */}
         <div 
           ref={overlayRef}
-          className="absolute inset-0 bg-[#FF3300] z-20 flex flex-col justify-center px-[50px] opacity-0 invisible"
+          className="invisible absolute inset-0 z-20 flex flex-col justify-center bg-[#FF3300] px-7 opacity-0 sm:px-[50px]"
           style={{ transform: 'translateY(20px)' }}
         >
-          <p className="text-[45px] font-medium leading-[1.2] tracking-[-0.15px] text-white mb-2">
+          <p className="mb-2 text-[30px] font-medium leading-[1.2] tracking-[0] text-white sm:text-[40px] lg:text-[45px]">
             {name}
           </p>
-          <p className="text-[20px] font-normal leading-[1.4] tracking-[-0.15px] text-white mb-8">
+          <p className="mb-5 text-[16px] font-normal leading-[1.4] tracking-[0] text-white sm:mb-8 sm:text-[20px]">
             {title}
           </p>
-          <p className="text-[18px] font-normal leading-[1.7] tracking-[-0.15px] text-white">
+          <p className="text-[15px] font-normal leading-[1.55] tracking-[0] text-white sm:text-[18px] sm:leading-[1.7]">
             {description}
           </p>
         </div>
@@ -118,36 +118,36 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="font-poppins bg-white">
+    <div className="overflow-x-hidden bg-white font-poppins">
 
       {/* ═══════════════ HERO SECTION ═══════════════ */}
       <section
-        className="relative min-h-[900px] bg-cover bg-center bg-no-repeat flex items-start justify-center"
+        className="relative flex min-h-[560px] items-start justify-center bg-cover bg-center bg-no-repeat sm:min-h-[720px] lg:min-h-[900px]"
         style={{ backgroundImage: `url(${process.env.PUBLIC_URL || ''}/images/about-us/hero-bg.png)` }}
       >
         {/* Keep hero image colors true-to-source (no white wash overlay) */}
-        <div className="relative z-10 text-center max-w-[960px] pt-[30px] px-5 pb-[60px]">
-          <p className="text-[28px] font-medium leading-[1.5] tracking-[-0.15px] text-primary underline underline-offset-4 mb-6">
+        <div className="relative z-10 max-w-[960px] px-5 pb-[60px] pt-[30px] text-center">
+          <p className="mb-4 text-[20px] font-medium leading-[1.5] tracking-[0] text-primary underline underline-offset-4 sm:mb-6 sm:text-[28px]">
             About Us
           </p>
-          <h2 className="text-[52px] font-light leading-[0.98] text-primary mb-7">
+          <h2 className="mb-5 text-[34px] font-light leading-[1.05] text-primary sm:mb-7 sm:text-[44px] lg:text-[52px] lg:leading-[0.98]">
             <span className="italic">More Than Migration</span>
             <br />
             <span className="not-italic font-bold text-accent">A Life Philosophy</span>
           </h2>
-          <p className="text-[22px] font-normal leading-[1.62] tracking-[-0.15px] text-black/75 max-w-[803px] mx-auto">
+          <p className="mx-auto max-w-[803px] text-[16px] font-normal leading-[1.55] tracking-[0] text-black/75 sm:text-[20px] lg:text-[22px] lg:leading-[1.62]">
             Esante was founded on a simple belief — migration is not a transaction, it's a transformation.
           </p>
         </div>
       </section>
 
       {/* ═══════════════ MISSION SECTION ═══════════════ */}
-      <section className="bg-primary py-[89px]">
-        <div className="max-w-[1440px] mx-auto px-[100px]">
+      <section className="bg-primary py-14 sm:py-[72px] lg:py-[89px]">
+        <div className="mx-auto max-w-[1440px] px-6 sm:px-[60px] lg:px-[100px]">
           <div className="flex justify-center items-center">
-            <p className="text-[37px] font-normal leading-[50px] tracking-[-0.15px] text-white text-center max-w-[900px]">
+            <p className="max-w-[900px] text-center text-[24px] font-normal leading-[1.35] tracking-[0] text-white sm:text-[32px] lg:text-[37px] lg:leading-[50px]">
               If you're dreaming of a new life in Australia but don't know where to start, we have good news:
-              <span className="block text-[47px] font-semibold italic text-accent mt-1">
+              <span className="mt-2 block text-[30px] font-semibold italic text-accent sm:text-[40px] lg:mt-1 lg:text-[47px]">
                 it's called Esante
               </span>
             </p>
@@ -156,17 +156,17 @@ const AboutUs = () => {
       </section>
 
       {/* ═══════════════ DESCRIPTION SECTION ═══════════════ */}
-      <section className="py-[100px] bg-white">
-        <div className="max-w-[1440px] mx-auto px-[100px]">
-          <div className="grid grid-cols-[461px_1fr] gap-[74px] items-start">
+      <section className="bg-white py-14 sm:py-20 lg:py-[100px]">
+        <div className="mx-auto max-w-[1440px] px-6 sm:px-[60px] lg:px-[100px]">
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[461px_1fr] lg:gap-[74px]">
             <div>
               <img
                 src="/images/about-us/team-image.png"
                 alt="About Esante"
-                className="w-full h-[380px] object-cover rounded-[34px]"
+                className="h-[260px] w-full rounded-[24px] object-cover sm:h-[320px] lg:h-[380px] lg:rounded-[34px]"
               />
             </div>
-            <div className="text-[18px] font-normal leading-[31px] tracking-[-0.15px] text-black">
+            <div className="text-[16px] font-normal leading-[1.65] tracking-[0] text-black sm:text-[18px] lg:leading-[31px]">
               <p className="mb-6">
                 We exist to connect people with opportunity, purpose, and possibility in Australia through education,
                 skilled migration, and employment pathways that are ethical, transparent, and future‑focused.
@@ -189,14 +189,14 @@ const AboutUs = () => {
       </section>
 
       {/* ═══════════════ PARTNERS SECTION ═══════════════ */}
-      <section className="py-[80px] bg-white">
-        <div className="max-w-[1440px] mx-auto px-[100px]">
-          <h3 className="text-[45px] font-medium italic leading-[1.2] tracking-[-0.33%] text-primary text-left mb-[50px]">
+      <section className="bg-white py-14 sm:py-[80px]">
+        <div className="mx-auto max-w-[1440px] px-6 sm:px-[60px] lg:px-[100px]">
+          <h3 className="mb-8 text-left text-[30px] font-medium italic leading-[1.2] tracking-[0] text-primary sm:text-[40px] lg:mb-[50px] lg:text-[45px]">
             We <span className="not-italic text-[#FF3300]">work closely</span> with:
           </h3>
-          <div className="flex items-stretch gap-[20px]">
+          <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap lg:gap-[20px]">
             {/* Card 1: Universities — 315 x 103 */}
-            <div className="relative rounded-[17px] overflow-hidden flex-shrink-0" style={{ width: '315px', height: '103px' }}>
+            <div className="relative min-h-[103px] w-full overflow-hidden rounded-[17px] sm:w-[315px] sm:flex-shrink-0">
               <img
                 src="/images/about-us/partner-card-1.png"
                 alt=""
@@ -204,13 +204,13 @@ const AboutUs = () => {
               />
               <div className="relative z-10 flex items-center gap-3 h-full px-5">
                 <img src="/images/about-us/partner-icon.png" alt="" className="w-[22px] h-[22px] flex-shrink-0" />
-                <p className="text-[18px] font-normal leading-[1.12] tracking-[-0.15px] text-black">
+                <p className="text-[16px] font-normal leading-[1.18] tracking-[0] text-black sm:text-[18px] sm:leading-[1.12]">
                   Australian universities<br />&amp; institutions
                 </p>
               </div>
             </div>
             {/* Card 2: Migration Partners — 342 x 103 */}
-            <div className="relative rounded-[17px] overflow-hidden flex-shrink-0" style={{ width: '342px', height: '103px' }}>
+            <div className="relative min-h-[103px] w-full overflow-hidden rounded-[17px] sm:w-[342px] sm:flex-shrink-0">
               <img
                 src="/images/about-us/partner-card-2.png"
                 alt=""
@@ -218,13 +218,13 @@ const AboutUs = () => {
               />
               <div className="relative z-10 flex items-center gap-3 h-full px-5">
                 <img src="/images/about-us/partner-icon.png" alt="" className="w-[22px] h-[22px] flex-shrink-0" />
-                <p className="text-[18px] font-normal leading-[1.12] tracking-[-0.15px] text-black">
+                <p className="text-[16px] font-normal leading-[1.18] tracking-[0] text-black sm:text-[18px] sm:leading-[1.12]">
                   Registered migration<br />and recruitment partners
                 </p>
               </div>
             </div>
             {/* Card 3: Employers — 542 x 104 */}
-            <div className="relative rounded-[17px] overflow-hidden flex-shrink-0" style={{ width: '542px', height: '104px' }}>
+            <div className="relative min-h-[104px] w-full overflow-hidden rounded-[17px] lg:w-[542px] lg:flex-shrink-0">
               <img
                 src="/images/about-us/partner-card-3.png"
                 alt=""
@@ -232,7 +232,7 @@ const AboutUs = () => {
               />
               <div className="relative z-10 flex items-center gap-3 h-full px-5">
                 <img src="/images/about-us/partner-icon.png" alt="" className="w-[22px] h-[22px] flex-shrink-0" />
-                <p className="text-[18px] font-normal leading-[1.12] tracking-[-0.15px] text-black">
+                <p className="text-[16px] font-normal leading-[1.18] tracking-[0] text-black sm:text-[18px] sm:leading-[1.12]">
                   Employers across healthcare, hospitality,<br />trades &amp; professional services
                 </p>
               </div>
@@ -242,56 +242,56 @@ const AboutUs = () => {
       </section>
 
       {/* ═══════════════ PHILOSOPHY SECTION ═══════════════ */}
-      <section className="bg-white overflow-visible">
-        <div className="max-w-[1440px] mx-auto px-[54px]">
-          <div className="relative mt-[110px] mb-[60px] overflow-visible">
+      <section className="overflow-hidden bg-white">
+        <div className="mx-auto max-w-[1440px] px-6 sm:px-[54px]">
+          <div className="relative mb-[60px] mt-12 overflow-visible lg:mt-[110px]">
 
             {/* Student image: 473x598, bottom-aligned with card, overflows 110px above */}
             <img
               src="/images/about-us/philosophy-image.png"
               alt="Esante Philosophy Student"
-              className="absolute z-20 right-[30px] bottom-0 w-[473px] h-[598px] object-contain object-bottom pointer-events-none"
+              className="pointer-events-none relative z-20 mx-auto mb-[-28px] h-auto w-[220px] max-w-[70vw] object-contain object-bottom lg:absolute lg:bottom-0 lg:right-[30px] lg:mb-0 lg:h-[598px] lg:w-[473px] lg:max-w-none"
             />
 
             {/* Cream card: 1332 x 488, #FFFBE9 bg, #FF3300 border, 48px radius */}
-            <div className="relative bg-[#FFFBE9] border border-[#FF3300] rounded-[48px] h-[488px] px-[29px] py-[35px] overflow-hidden">
+            <div className="relative h-auto overflow-hidden rounded-[28px] border border-[#FF3300] bg-[#FFFBE9] px-5 py-8 lg:h-[488px] lg:rounded-[48px] lg:px-[29px] lg:py-[35px]">
               <div className="max-w-[843px]">
-                <h3 className="text-[53px] font-medium leading-[1.2] tracking-[-0.15px] text-primary mb-5">
+                <h3 className="mb-5 text-[32px] font-medium leading-[1.2] tracking-[0] text-primary sm:text-[42px] lg:text-[53px] lg:tracking-[-0.15px]">
                   Esante <span className="font-semibold italic text-accent">Philosophy</span>
                 </h3>
                 <ul className="list-disc pl-5 space-y-0">
                   <li>
-                    <span className="text-[20px] font-semibold leading-[1.79] text-[#FF3300]">Expertise</span>
+                    <span className="text-[18px] font-semibold leading-[1.5] text-[#FF3300] lg:text-[20px] lg:leading-[1.79]">Expertise</span>
                     <br />
-                    <span className="text-[18px] font-normal leading-[1.79] tracking-[-0.15px] text-black">
+                    <span className="text-[16px] font-normal leading-[1.5] tracking-[0] text-black lg:text-[18px] lg:leading-[1.79] lg:tracking-[-0.15px]">
                       Migration, education, and recruitment — viewed through one integrated lens.
                     </span>
                   </li>
                   <li>
-                    <span className="text-[20px] font-semibold leading-[1.79] text-[#FF3300]">Integrity</span>
+                    <span className="text-[18px] font-semibold leading-[1.5] text-[#FF3300] lg:text-[20px] lg:leading-[1.79]">Integrity</span>
                     <br />
-                    <span className="text-[18px] font-normal leading-[1.79] tracking-[-0.15px] text-black">
+                    <span className="text-[16px] font-normal leading-[1.5] tracking-[0] text-black lg:text-[18px] lg:leading-[1.79] lg:tracking-[-0.15px]">
                       No shortcuts. No false promises. Only compliant, transparent pathways.
                     </span>
                   </li>
                   <li>
-                    <span className="text-[20px] font-semibold leading-[1.79] text-[#FF3300]">Community</span>
+                    <span className="text-[18px] font-semibold leading-[1.5] text-[#FF3300] lg:text-[20px] lg:leading-[1.79]">Community</span>
                     <br />
-                    <span className="text-[18px] font-normal leading-[1.79] tracking-[-0.15px] text-black">
+                    <span className="text-[16px] font-normal leading-[1.5] tracking-[0] text-black lg:text-[18px] lg:leading-[1.79] lg:tracking-[-0.15px]">
                       We don't disappear after visa grant. We stay until you settle.
                     </span>
                   </li>
                   <li>
-                    <span className="text-[20px] font-semibold leading-[1.79] text-[#FF3300]">Collaboration</span>
+                    <span className="text-[18px] font-semibold leading-[1.5] text-[#FF3300] lg:text-[20px] lg:leading-[1.79]">Collaboration</span>
                     <br />
-                    <span className="text-[18px] font-normal leading-[1.79] tracking-[-0.15px] text-black">
+                    <span className="text-[16px] font-normal leading-[1.5] tracking-[0] text-black lg:text-[18px] lg:leading-[1.79] lg:tracking-[-0.15px]">
                       Strong partnerships with universities, employers, and service providers across Australia.
                     </span>
                   </li>
                   <li>
-                    <span className="text-[20px] font-semibold leading-[1.79] text-[#FF3300]">Adventure</span>
+                    <span className="text-[18px] font-semibold leading-[1.5] text-[#FF3300] lg:text-[20px] lg:leading-[1.79]">Adventure</span>
                     <br />
-                    <span className="text-[18px] font-normal leading-[1.79] tracking-[-0.15px] text-black">
+                    <span className="text-[16px] font-normal leading-[1.5] tracking-[0] text-black lg:text-[18px] lg:leading-[1.79] lg:tracking-[-0.15px]">
                       Migration is a leap — we make sure you land safely.
                     </span>
                   </li>
@@ -303,12 +303,20 @@ const AboutUs = () => {
       </section>
 
       {/* ═══════════════ FOUNDER SECTION ═══════════════ */}
-      <section className="bg-white py-[80px]">
-        <div className="max-w-[1440px] mx-auto px-[100px]">
-          <div className="flex gap-[50px]">
+      <section className="bg-white py-14 lg:py-[80px]">
+        <div className="mx-auto max-w-[1440px] px-6 sm:px-[60px] lg:px-[100px]">
+          <div className="flex flex-col gap-8 lg:flex-row lg:gap-[50px]">
+            <div className="mx-auto w-full max-w-[320px] overflow-hidden rounded-[28px] bg-accent pt-6 lg:hidden">
+              <img
+                src="/images/about-us/founder-image.png"
+                alt="Deepen Khagram"
+                className="h-[360px] w-full object-cover object-top"
+              />
+            </div>
+
             {/* Left: Founder portrait with red background */}
             <div
-              className="relative flex-shrink-0"
+              className="relative hidden flex-shrink-0 lg:block"
               style={{
                 marginTop: FOUNDER_IMAGE_LAYOUT.frameTopOffset,
                 width: FOUNDER_IMAGE_LAYOUT.frameWidth,
@@ -339,11 +347,11 @@ const AboutUs = () => {
             </div>
 
             {/* Right: Text content — positioned relative to match coloured line markers */}
-            <div className="relative flex-1" style={{ height: '810.018px' }}>
+            <div className="relative flex-1 space-y-5 lg:h-[810.018px] lg:space-y-0">
 
               {/* 1) Black line — Our Founder */}
               <h3
-                className="absolute text-[38px] font-normal leading-[1.2] tracking-[-0.15px] text-primary"
+                className="text-[30px] font-normal leading-[1.2] tracking-[0] text-primary lg:absolute lg:text-[38px] lg:tracking-[-0.15px]"
                 style={{ top: '115px' }}
               >
                 Our <span className="font-semibold italic text-accent">Founder</span>
@@ -351,7 +359,7 @@ const AboutUs = () => {
 
               {/* 2) Red line — Deepen Khagram */}
               <h4
-                className="absolute text-[60px] font-medium leading-[57px] tracking-[-0.15px] text-black"
+                className="text-[42px] font-medium leading-[1.05] tracking-[0] text-black lg:absolute lg:text-[60px] lg:leading-[57px] lg:tracking-[-0.15px]"
                 style={{ top: '180px' }}
               >
                 Deepen<br />Khagram
@@ -359,7 +367,7 @@ const AboutUs = () => {
 
               {/* 3) Dark green line — Founder & Managing Director */}
               <p
-                className="absolute text-[25px] font-normal leading-[57px] tracking-[-0.15px] text-accent"
+                className="text-[18px] font-normal leading-[1.45] tracking-[0] text-accent lg:absolute lg:text-[25px] lg:leading-[57px] lg:tracking-[-0.15px]"
                 style={{ top: '310px' }}
               >
                 Founder &amp; Managing Director
@@ -367,7 +375,7 @@ const AboutUs = () => {
 
               {/* 4) Light brown line — Born in Nairobi paragraph */}
               <p
-                className="absolute text-[18px] font-normal tracking-[-0.15px] text-[#000]"
+                className="max-w-full text-[16px] font-normal leading-[1.65] tracking-[0] text-[#000] lg:absolute lg:text-[18px] lg:tracking-[-0.15px]"
                 style={{ top: '370px', width: '539px', fontFamily: 'Poppins', lineHeight: '31px' }}
               >
                 Born in Nairobi, Kenya, Deepen's own migration journey to Australia began in 1985 — shaping the values that Esante stands on today. With a background in accounting, business, and entrepreneurship, Deepen has built and led ventures across services, property, and international trade.
@@ -375,7 +383,7 @@ const AboutUs = () => {
 
               {/* 5) Pastel blue line — His lived experience paragraph */}
               <p
-                className="absolute text-[18px] font-normal tracking-[-0.15px] text-[#000]"
+                className="max-w-full text-[16px] font-normal leading-[1.65] tracking-[0] text-[#000] lg:absolute lg:text-[18px] lg:tracking-[-0.15px]"
                 style={{ top: '545px', width: '539px', fontFamily: 'Poppins', lineHeight: '31px' }}
               >
                 His lived experience as a migrant informs Esante's people‑first approach — ensuring every decision balances opportunity with responsibility, ambition with ethics.
@@ -383,7 +391,7 @@ const AboutUs = () => {
 
               {/* 6) Pastel purple line — Australia gave me opportunity */}
               <p
-                className="absolute text-[18px] italic font-semibold tracking-[-0.15px] text-[#000] mb-0"
+                className="mb-0 max-w-full text-[16px] font-semibold italic leading-[1.65] tracking-[0] text-[#000] lg:absolute lg:text-[18px] lg:tracking-[-0.15px]"
                 style={{ top: '670px', width: '539px', fontFamily: 'Poppins', lineHeight: '31px' }}
               >
                 "Australia gave me opportunity. Esante exists to help others earn it the right way."{' '}
@@ -396,17 +404,17 @@ const AboutUs = () => {
       </section>
 
       {/* ═══════════════ TEAM SECTION ═══════════════ */}
-      <section className="pt-[80px] pb-[100px] bg-white">
-        <div className="max-w-[1440px] mx-auto px-[100px]">
+      <section className="bg-white pb-16 pt-14 lg:pb-[100px] lg:pt-[80px]">
+        <div className="mx-auto max-w-[1440px] px-6 sm:px-[60px] lg:px-[100px]">
           <div>
-            <h3 className="text-[53px] font-medium leading-[1.2] tracking-[-0.15px] text-primary mb-4">
+            <h3 className="mb-4 text-[34px] font-medium leading-[1.2] tracking-[0] text-primary sm:text-[44px] lg:text-[53px] lg:tracking-[-0.15px]">
               Meet Our <span className="font-semibold italic text-accent">Team</span>
             </h3>
-            <p className="text-[18px] font-normal leading-[31px] tracking-[-0.15px] text-black max-w-[1034px]">
+            <p className="max-w-[1034px] text-[16px] font-normal leading-[1.6] tracking-[0] text-black sm:text-[18px] lg:leading-[31px] lg:tracking-[-0.15px]">
               The team that supports you beyond admissions — all the way to life in Australia.
             </p>
           </div>
-          <div className="flex gap-10">
+          <div className="mt-8 flex flex-col items-center gap-8 lg:flex-row lg:items-stretch lg:gap-10">
             {/* Aashul Soni - LEFT */}
             <TeamCard
               image="/images/about-us/soni-image.png"
@@ -430,7 +438,7 @@ const AboutUs = () => {
       </section>
 
       {/* ═══════════════ DREAM & ACTION SECTION ═══════════════ */}
-      <section className="relative w-full h-[626px] bg-primary overflow-hidden flex flex-col justify-center">
+      <section className="relative flex min-h-[626px] w-full flex-col justify-center overflow-hidden bg-primary py-16 lg:h-[626px] lg:py-0">
         {/* Background image with opacity */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.22]"
@@ -438,35 +446,35 @@ const AboutUs = () => {
         ></div>
         
         {/* Content container */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-[100px] flex flex-col gap-[90px]">
+        <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-6 sm:px-[60px] lg:gap-[90px] lg:px-[100px]">
           
           {/* Dream block */}
           <div className="w-full" ref={dreamRef}>
-            <div className="pl-[25px] relative max-w-[700px]">
+            <div className="relative max-w-[700px] pl-[25px]">
               {/* Absolute dot and line */}
               <div className="absolute left-0 top-[10px] w-[10px] h-[10px] bg-[#FF3300] rounded-full"></div>
               <div className="absolute right-[calc(100%-5px)] top-[14px] w-[100vw] h-[2px] bg-[#FF3300]"></div>
               
-              <h4 className="text-[#FFF] font-poppins text-[25px] font-semibold leading-[31px] tracking-[-0.15px] mb-[15px]">
+              <h4 className="mb-[15px] font-poppins text-[22px] font-semibold leading-[1.3] tracking-[0] text-[#FFF] lg:text-[25px] lg:leading-[31px] lg:tracking-[-0.15px]">
                 The Dream
               </h4>
-              <p className="text-[#FFF] font-poppins text-[18px] font-normal leading-[31px] tracking-[-0.15px] max-w-[650px]">
+              <p className="max-w-[650px] font-poppins text-[16px] font-normal leading-[1.65] tracking-[0] text-[#FFF] lg:text-[18px] lg:leading-[31px] lg:tracking-[-0.15px]">
                 To be the first-choice partner for global talent, empowering individuals and families to not just migrate, but to forge successful, fulfilling new lives within the Australian landscape.
               </p>
             </div>
           </div>
 
           {/* Action block */}
-          <div className="w-full flex justify-end" ref={actionRef}>
-            <div className="pr-[25px] relative max-w-[840px] text-right">
+          <div className="flex w-full justify-end" ref={actionRef}>
+            <div className="relative max-w-[840px] pr-[25px] text-right">
               {/* Absolute dot and line */}
               <div className="absolute right-0 top-[10px] w-[10px] h-[10px] bg-[#FF3300] rounded-full"></div>
               <div className="absolute left-[calc(100%-5px)] top-[14px] w-[100vw] h-[2px] bg-[#FF3300]"></div>
               
-              <h4 className="text-[#FFF] font-poppins text-[25px] font-semibold leading-[31px] tracking-[-0.15px] mb-[15px]">
+              <h4 className="mb-[15px] font-poppins text-[22px] font-semibold leading-[1.3] tracking-[0] text-[#FFF] lg:text-[25px] lg:leading-[31px] lg:tracking-[-0.15px]">
                 The Action
               </h4>
-              <p className="inline-block text-[#FFF] font-poppins text-[18px] font-normal leading-[31px] tracking-[-0.15px] max-w-[800px] text-right">
+              <p className="inline-block max-w-[800px] text-right font-poppins text-[16px] font-normal leading-[1.65] tracking-[0] text-[#FFF] lg:text-[18px] lg:leading-[31px] lg:tracking-[-0.15px]">
                 To pioneer a vertically integrated, end-to-end migration pathway. We don't just process visas; we guide the entire journey—from the first consultation to permanent settlement—providing the expert strategy and local network needed to navigate complex transitions.
               </p>
             </div>
@@ -476,7 +484,7 @@ const AboutUs = () => {
       </section>
 
       {/* Spacer before CTA banner */}
-      <div className="h-[80px] bg-white" />
+      <div className="h-12 bg-white lg:h-[80px]" />
 
     </div>
   );
