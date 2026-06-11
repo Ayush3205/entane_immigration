@@ -266,8 +266,8 @@ function PostArrivalSupportPage() {
             <div className="relative w-full h-full rounded-[15px] overflow-hidden cursor-pointer transition-all duration-[400ms] group-hover:scale-[1.15] group-hover:-rotate-2 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)]">
               <img
                 alt=""
-                className="absolute max-w-none"
-                style={{ height: '133.15%', left: '-42.58%', top: '-33.12%', width: '179.35%' }}
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ objectPosition: 'center' }}
                 src={imgImage47}
               />
             </div>
