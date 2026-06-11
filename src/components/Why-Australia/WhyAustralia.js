@@ -124,7 +124,7 @@ export default function WhyAustralia() {
   }, []);
 
   return (
-    <main className="w-full bg-white">
+    <main className="why-australia-page w-full bg-white">
       <section
         className="relative w-full overflow-hidden bg-[#cc6040]"
         aria-label="Why Australia hero"
@@ -336,7 +336,7 @@ export default function WhyAustralia() {
 
       <section
         ref={fourthSectionRef}
-        className="w-full bg-white px-5 pt-[88px] pb-[56px] md:px-10 md:pt-[104px] md:pb-[72px] lg:px-[56px] lg:pt-[120px] lg:pb-[84px]"
+        className="why-australia-lifestyle-section w-full bg-white px-5 pt-[88px] pb-[56px] md:px-10 md:pt-[104px] md:pb-[72px] lg:px-[56px] lg:pt-[120px] lg:pb-[84px]"
       >
         <div
           className={`mx-auto flex w-full max-w-[1032px] flex-col items-center text-center transition-all duration-[800ms] ease-out ${
@@ -346,7 +346,7 @@ export default function WhyAustralia() {
           }`}
         >
           <h2
-            className="m-0 font-poppins text-[32px] font-medium italic tracking-[-0.15px] text-accent sm:text-[42px] lg:text-[56px]"
+            className="why-australia-lifestyle-title m-0 font-poppins text-[32px] font-medium italic tracking-[-0.15px] text-accent sm:text-[42px] lg:text-[56px]"
             style={{ lineHeight: "150.37%" }}
           >
             <span className="whitespace-nowrap">

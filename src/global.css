@@ -6555,6 +6555,43 @@ main:has(.esante-banner) + .footer .footer-main {
   overflow-x: hidden;
 }
 
+@media (max-width: 768px) {
+  .why-australia-page .whitespace-nowrap {
+    white-space: normal !important;
+  }
+
+  .why-australia-page h2,
+  .why-australia-page p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .why-australia-lifestyle-section {
+    padding: 56px 16px 44px !important;
+  }
+
+  .why-australia-lifestyle-title {
+    font-size: 28px !important;
+    line-height: 1.22 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .why-australia-lifestyle-section p {
+    font-size: 17px !important;
+    line-height: 1.75 !important;
+  }
+
+  .why-australia-lifestyle-section p span {
+    display: inline !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .why-australia-lifestyle-title {
+    font-size: 25px !important;
+  }
+}
+
 /* Active tab with smooth flared slopes */
 .career-tab-active {
   background-color: #3D9E56;
@@ -6601,4 +6638,1023 @@ main:has(.esante-banner) + .footer .footer-main {
 
 .header-nav.header-nav--solid{
   background-color: #00352B;
+}
+
+/* ================================================
+   Source: Ancillary navbar sub-pages mobile optimization
+   ================================================ */
+.ancillary-subpage {
+  overflow-x: hidden;
+}
+
+.ancillary-subpage *,
+.ancillary-subpage *::before,
+.ancillary-subpage *::after {
+  box-sizing: border-box;
+}
+
+.ancillary-subpage img,
+.ancillary-subpage video {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .ancillary-subpage .whitespace-nowrap {
+    white-space: normal !important;
+  }
+
+  .ancillary-subpage section[aria-labelledby$="faq-heading"] {
+    padding: 44px 16px !important;
+    gap: 18px !important;
+  }
+
+  .ancillary-subpage section[aria-labelledby$="faq-heading"] button {
+    gap: 16px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .ancillary-subpage section[aria-labelledby$="faq-heading"] p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+  .sop-documents-content {
+    padding: 36px 16px 48px !important;
+  }
+
+  .sop-documents-hero {
+    margin-bottom: 28px !important;
+    gap: 14px !important;
+  }
+
+  .sop-documents-hero h1 {
+    font-size: 21px !important;
+    line-height: 1.25 !important;
+  }
+
+  .sop-documents-hero p {
+    font-size: 30px !important;
+    line-height: 1.16 !important;
+    white-space: normal !important;
+  }
+
+  .sop-documents-hero button span,
+  .sop-documents-free-section button span,
+  .sop-documents-why-section button span {
+    font-size: 15px !important;
+    line-height: 1.25 !important;
+  }
+
+  .sop-documents-visual {
+    width: 100% !important;
+    height: 470px !important;
+    margin-bottom: 52px !important;
+    border-radius: 28px;
+    overflow: hidden;
+    background-size: cover !important;
+    background-position: 42% center !important;
+  }
+
+  .sop-documents-visual-inner {
+    justify-content: flex-end !important;
+    padding: 0 14px 18px !important;
+  }
+
+  .sop-documents-visual-cta {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 82px;
+    border-radius: 20px !important;
+    padding: 12px 14px !important;
+    background: rgba(0, 53, 43, 0.9) !important;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+  .sop-documents-visual-cta span span:first-child {
+    font-size: 19px !important;
+    line-height: 1.18 !important;
+  }
+
+  .sop-documents-visual-cta span span:last-child {
+    font-size: 25px !important;
+    line-height: 1.08 !important;
+  }
+
+  .sop-documents-copy-grid,
+  .sop-documents-free-section,
+  .sop-documents-why-section,
+  .sop-documents-list-section {
+    margin-bottom: 60px !important;
+  }
+
+  .sop-documents-copy-grid {
+    gap: 32px !important;
+  }
+
+  .sop-documents-copy-grid p,
+  .sop-documents-free-section p,
+  .sop-documents-why-section p,
+  .sop-documents-why-section li,
+  .sop-documents-list-section li {
+    font-size: 16.5px !important;
+    line-height: 1.55 !important;
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  .sop-documents-copy-grid img,
+  .sop-documents-list-section img {
+    border-radius: 24px !important;
+  }
+
+  .sop-documents-why-section > div {
+    border-radius: 24px !important;
+    padding: 24px 18px !important;
+  }
+
+  .sop-documents-why-section h2,
+  .sop-documents-list-section h2 {
+    font-size: 30px !important;
+    line-height: 1.18 !important;
+  }
+
+  .accommodation-content {
+    padding: 36px 16px 48px !important;
+  }
+
+  .accommodation-hero {
+    margin-bottom: 32px !important;
+  }
+
+  .accommodation-hero h1 {
+    font-size: 32px !important;
+    line-height: 1.18 !important;
+    white-space: normal !important;
+  }
+
+  .accommodation-hero p {
+    font-size: 29px !important;
+    line-height: 1.2 !important;
+  }
+
+  .accommodation-slider-wrap {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .accommodation-slider {
+    height: 560px !important;
+    margin-bottom: 56px !important;
+    border-radius: 28px !important;
+  }
+
+  .accommodation-slider-card {
+    width: calc(100% - 32px) !important;
+    height: calc(100% - 88px) !important;
+    max-height: none !important;
+    border-radius: 28px !important;
+  }
+
+  .accommodation-slider-panel {
+    padding: 28px 18px !important;
+    border-radius: 28px !important;
+  }
+
+  .accommodation-slider-panel p {
+    font-size: 19px !important;
+    line-height: 1.38 !important;
+  }
+
+  .accommodation-slider-panel h2 {
+    font-size: 38px !important;
+    line-height: 1.12 !important;
+  }
+
+  .accommodation-intro {
+    margin-bottom: 56px !important;
+  }
+
+  .accommodation-intro p {
+    font-size: 17px !important;
+    line-height: 1.58 !important;
+    white-space: normal !important;
+  }
+
+  .accommodation-why {
+    margin-bottom: 58px !important;
+  }
+
+  .accommodation-why-grid,
+  .accommodation-story-grid {
+    flex-direction: column !important;
+    gap: 24px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .accommodation-why-grid img {
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+    align-self: center;
+    border-radius: 28px !important;
+  }
+
+  .accommodation-why h2,
+  .accommodation-story h2 {
+    font-size: 30px !important;
+    line-height: 1.2 !important;
+  }
+
+  .accommodation-why li {
+    font-size: 16.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  .accommodation-story-card {
+    height: auto !important;
+    padding: 24px 18px !important;
+    border-radius: 28px !important;
+    overflow: hidden;
+  }
+
+  .accommodation-story-copy {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+    align-items: flex-start !important;
+  }
+
+  .accommodation-story-copy h3 {
+    width: 100%;
+    max-width: 100%;
+    font-size: 32px !important;
+    line-height: 1.12 !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .accommodation-story-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-wrap: anywhere;
+  }
+
+  .accommodation-story-card p {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .accommodation-story img {
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    aspect-ratio: 418 / 502;
+    border-radius: 28px !important;
+  }
+
+  .ielts-pte-hero-frame {
+    aspect-ratio: auto !important;
+    min-height: 560px;
+  }
+
+  .ielts-pte-hero-frame > img {
+    object-position: center top;
+  }
+
+  .ielts-pte-hero-coach {
+    left: auto !important;
+    right: -15% !important;
+    top: 38% !important;
+    width: 72% !important;
+    opacity: 0.88;
+  }
+
+  .ielts-pte-hero-copy {
+    left: 16px !important;
+    right: 16px !important;
+    top: 42px !important;
+    max-width: none !important;
+  }
+
+  .ielts-pte-hero-copy p:first-child {
+    font-size: 20px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .ielts-pte-hero-copy p:nth-of-type(2),
+  .ielts-pte-hero-copy p:nth-of-type(3) {
+    font-size: 42px !important;
+    line-height: 0.98 !important;
+  }
+
+  .ielts-pte-hero-copy p:nth-of-type(4) {
+    font-size: 24px !important;
+    line-height: 1.18 !important;
+  }
+
+  .ielts-coach-section {
+    margin-top: 56px !important;
+    margin-bottom: 64px !important;
+    align-items: center !important;
+  }
+
+  .ielts-coach-video {
+    height: 380px !important;
+    max-width: 360px !important;
+    align-self: center;
+  }
+
+  .ielts-coach-copy p {
+    font-size: 17px !important;
+    line-height: 1.58 !important;
+  }
+
+  .ielts-coach-copy > p:first-child {
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+  }
+
+  .ielts-coach-copy ul {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  .ielts-testimonials {
+    overflow: visible !important;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .ielts-testimonials > button {
+    display: none !important;
+  }
+
+  .ielts-testimonials-scroll {
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    touch-action: pan-x;
+    padding-bottom: 10px;
+  }
+
+  .ielts-testimonials-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ielts-testimonials-track {
+    transform: none !important;
+    transition: none !important;
+    gap: 16px !important;
+    width: max-content;
+  }
+
+  .ielts-testimonial-card {
+    width: min(76vw, 290px) !important;
+    height: min(105vw, 400px) !important;
+    scroll-snap-align: start;
+  }
+
+  .ielts-why-section {
+    margin-bottom: 56px !important;
+  }
+
+  .ielts-why-section > div:first-child {
+    width: 100% !important;
+    font-size: 32px !important;
+  }
+
+  .ielts-why-section p {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  .airport-services-hero {
+    margin-bottom: 56px !important;
+  }
+
+  .airport-services-hero-frame {
+    height: 620px !important;
+  }
+
+  .airport-services-hero-frame > img {
+    object-position: 74% center !important;
+  }
+
+  .airport-services-hero-copy {
+    left: 16px !important;
+    right: 16px !important;
+    top: 28px !important;
+    transform: none !important;
+    max-width: none !important;
+    gap: 7px !important;
+  }
+
+  .airport-services-hero-copy p:first-child {
+    font-size: 16px !important;
+  }
+
+  .airport-services-hero-copy p:nth-of-type(2) {
+    font-size: 33px !important;
+    line-height: 1.05 !important;
+  }
+
+  .airport-services-hero-copy p:nth-of-type(3) {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+  }
+
+  .post-arrival-hero {
+    padding: 44px 16px 56px !important;
+  }
+
+  .post-arrival-hero > span {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 28px !important;
+  }
+
+  .post-arrival-hero p {
+    font-size: 34px !important;
+    line-height: 1.08 !important;
+  }
+
+  .post-arrival-hero button span {
+    font-size: 15px !important;
+    line-height: 1.25 !important;
+  }
+
+  .post-arrival-collage {
+    height: auto !important;
+    padding: 0 16px !important;
+    display: block !important;
+  }
+
+  .post-arrival-collage .floating-img-container {
+    display: none !important;
+  }
+
+  .post-arrival-collage-copy {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 28px !important;
+    padding: 28px 18px !important;
+  }
+
+  .post-arrival-collage-text {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+  }
+
+  .post-arrival-collage-text p {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  .post-arrival-collage-text p:first-child {
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+  }
+
+  .post-arrival-support-heading {
+    padding: 0 16px !important;
+    margin-top: 56px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .post-arrival-support-heading p:first-child {
+    font-size: 31px !important;
+    line-height: 1.2 !important;
+  }
+
+  .post-arrival-support-heading p:last-child {
+    font-size: 19px !important;
+    line-height: 1.45 !important;
+  }
+
+  .post-arrival-support-carousel {
+    padding: 40px 16px !important;
+  }
+
+  .post-arrival-support-carousel > div:first-child > button {
+    display: none !important;
+  }
+
+  .post-arrival-support-track {
+    width: 100% !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+  }
+
+  .post-arrival-support-track > div {
+    transform: none !important;
+    gap: 16px !important;
+    padding-bottom: 4px;
+  }
+
+  .post-arrival-support-card {
+    width: min(82vw, 308px) !important;
+    scroll-snap-align: start;
+  }
+
+  .post-arrival-support-carousel > button span {
+    font-size: 15px !important;
+    line-height: 1.25 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .sop-documents-hero p,
+  .accommodation-hero h1,
+  .post-arrival-hero p {
+    font-size: 29px !important;
+  }
+
+  .ielts-pte-hero-copy p:nth-of-type(2),
+  .ielts-pte-hero-copy p:nth-of-type(3) {
+    font-size: 36px !important;
+  }
+
+  .accommodation-slider {
+    height: 520px !important;
+  }
+}
+
+/* ================================================
+   Source: AncillaryServicesPage mobile optimization
+   ================================================ */
+.ancillary-services-page {
+  overflow-x: hidden;
+}
+
+.ancillary-services-page img {
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .ancillary-services-main,
+  .ancillary-services-content {
+    overflow-x: hidden !important;
+  }
+
+  .ancillary-services-content {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .ancillary-services-hero,
+  .ancillary-services-intro,
+  .ancillary-services-statement {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .ancillary-services-title span {
+    font-size: 40px !important;
+    line-height: 46px !important;
+    letter-spacing: 0 !important;
+  }
+
+  .ancillary-services-intro p {
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+  }
+
+  .ancillary-fan-section {
+    display: block !important;
+    position: relative;
+    width: 100%;
+    height: 330px !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin-top: 12px;
+    --fan-card-w: clamp(154px, 20vw, 190px);
+    --fan-card-h: clamp(203px, 26.4vw, 251px);
+    --fan-x-inner: clamp(106px, 14vw, 145px);
+    --fan-x-outer: clamp(210px, 27vw, 280px);
+    --fan-top-center: 0px;
+    --fan-top-inner: 22px;
+    --fan-top-outer: 76px;
+  }
+
+  .ancillary-fan-card {
+    position: absolute !important;
+    width: var(--fan-card-w) !important;
+    height: var(--fan-card-h) !important;
+    transform: translateX(-50%);
+    overflow: visible !important;
+    border-radius: 20px !important;
+  }
+
+  .ancillary-fan-card:nth-child(1) {
+    left: calc(50% - var(--fan-x-outer)) !important;
+    top: var(--fan-top-outer) !important;
+  }
+
+  .ancillary-fan-card:nth-child(2) {
+    left: calc(50% - var(--fan-x-inner)) !important;
+    top: var(--fan-top-inner) !important;
+  }
+
+  .ancillary-fan-card:nth-child(3) {
+    left: 50% !important;
+    top: var(--fan-top-center) !important;
+  }
+
+  .ancillary-fan-card:nth-child(4) {
+    left: calc(50% + var(--fan-x-inner)) !important;
+    top: var(--fan-top-inner) !important;
+  }
+
+  .ancillary-fan-card:nth-child(5) {
+    left: calc(50% + var(--fan-x-outer)) !important;
+    top: var(--fan-top-outer) !important;
+  }
+
+  .ancillary-card-layer,
+  .ancillary-card-visual {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .ancillary-card-visual img {
+    border-radius: 20px !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  .ancillary-card-caption {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    top: calc(var(--fan-card-h) + 8px) !important;
+    width: max-content !important;
+    max-width: none !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .ancillary-fan-section .ancillary-card-caption {
+    display: none !important;
+  }
+
+  .ancillary-card-caption span {
+    color: #00352B !important;
+    font-size: 14px !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0 !important;
+    text-shadow: none !important;
+    white-space: nowrap;
+  }
+
+  .ancillary-fan-card:nth-child(1) .ancillary-card-caption {
+    transform: translateX(-50%) rotate(-36deg) !important;
+  }
+
+  .ancillary-fan-card:nth-child(2) .ancillary-card-caption {
+    transform: translateX(-50%) rotate(-18deg) !important;
+  }
+
+  .ancillary-fan-card:nth-child(3) .ancillary-card-caption {
+    transform: translateX(-50%) rotate(0deg) !important;
+  }
+
+  .ancillary-fan-card:nth-child(4) .ancillary-card-caption {
+    transform: translateX(-50%) rotate(18deg) !important;
+  }
+
+  .ancillary-fan-card:nth-child(5) .ancillary-card-caption {
+    transform: translateX(-50%) rotate(36deg) !important;
+  }
+
+  .ancillary-services-statement {
+    margin-top: 56px !important;
+    margin-bottom: 28px !important;
+  }
+
+  .ancillary-services-statement--highlight {
+    margin-top: 64px !important;
+  }
+
+  .ancillary-services-statement-text {
+    max-width: 760px !important;
+    font-size: 22px !important;
+    line-height: 1.48 !important;
+    letter-spacing: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .ancillary-services-content {
+    padding-top: 34px !important;
+    padding-bottom: 36px !important;
+  }
+
+  .ancillary-services-hero {
+    margin-bottom: 20px !important;
+  }
+
+  .ancillary-services-title span {
+    font-size: 32px !important;
+    line-height: 38px !important;
+  }
+
+  .ancillary-services-intro {
+    margin-bottom: 22px !important;
+  }
+
+  .ancillary-services-intro p {
+    font-size: 16px !important;
+    line-height: 1.62 !important;
+  }
+
+  .ancillary-services-cta {
+    margin-bottom: 28px !important;
+    min-height: 38px;
+    padding: 8px 16px !important;
+  }
+
+  .ancillary-fan-section {
+    width: 100%;
+    height: 238px !important;
+    padding: 0 !important;
+    margin-top: 4px;
+    --fan-card-w: clamp(104px, 32vw, 132px);
+    --fan-card-h: clamp(137px, 42vw, 174px);
+    --fan-x-inner: clamp(58px, 17vw, 72px);
+    --fan-x-outer: clamp(112px, 33vw, 134px);
+    --fan-top-center: 0px;
+    --fan-top-inner: 16px;
+    --fan-top-outer: 52px;
+  }
+
+  .ancillary-fan-card {
+    border-radius: 16px !important;
+  }
+
+  .ancillary-card-visual img {
+    border-radius: 16px !important;
+  }
+
+  .ancillary-card-caption {
+    top: calc(var(--fan-card-h) + 6px) !important;
+  }
+
+  .ancillary-card-caption span {
+    font-size: 12.5px !important;
+  }
+
+  .ancillary-services-statement,
+  .ancillary-services-statement--highlight {
+    margin-top: 36px !important;
+    margin-bottom: 22px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .ancillary-services-statement-text {
+    font-size: 18px !important;
+    line-height: 1.55 !important;
+  }
+
+  .ancillary-services-faq {
+    padding: 46px 16px !important;
+    gap: 18px !important;
+  }
+
+  .ancillary-services-faq button {
+    gap: 16px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .ancillary-services-faq p {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ancillary-fan-section {
+    height: 224px !important;
+    --fan-card-w: clamp(104px, 29vw, 124px);
+    --fan-card-h: clamp(137px, 38vw, 164px);
+    --fan-x-inner: clamp(54px, 15.5vw, 66px);
+    --fan-x-outer: clamp(100px, 29vw, 118px);
+    --fan-top-center: 0px;
+    --fan-top-inner: 15px;
+    --fan-top-outer: 50px;
+  }
+}
+
+@media (max-width: 380px) {
+  .ancillary-services-title span {
+    font-size: 29px !important;
+    line-height: 34px !important;
+  }
+
+  .ancillary-fan-section {
+    height: 216px !important;
+    --fan-card-w: clamp(96px, 31vw, 116px);
+    --fan-card-h: clamp(127px, 41vw, 153px);
+    --fan-x-inner: clamp(52px, 16vw, 62px);
+    --fan-x-outer: clamp(104px, 32vw, 120px);
+    --fan-top-center: 0px;
+    --fan-top-inner: 14px;
+    --fan-top-outer: 48px;
+  }
+
+  .ancillary-card-caption span {
+    font-size: 11.5px !important;
+  }
+}
+
+/* ================================================
+   Source: Search courses/universities mobile optimization
+   ================================================ */
+.search-directory-page {
+  overflow-x: hidden;
+}
+
+.search-directory-page *,
+.search-directory-page *::before,
+.search-directory-page *::after {
+  box-sizing: border-box;
+}
+
+.search-directory-page img {
+  max-width: 100%;
+}
+
+.search-directory-page input,
+.search-directory-page select {
+  min-width: 0;
+}
+
+.search-directory-card-grid > *,
+.search-directory-booking-card > *,
+.search-directory-form-grid > * {
+  min-width: 0;
+}
+
+@media (max-width: 1200px) {
+  .search-directory-cards-section {
+    padding: 0 48px 72px !important;
+  }
+
+  .search-directory-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .search-directory-booking-section {
+    padding: 64px 48px 80px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-directory-hero {
+    padding: 36px 16px 22px !important;
+    gap: 14px !important;
+  }
+
+  .search-directory-hero h1 {
+    font-size: 31px !important;
+    line-height: 1.18 !important;
+    letter-spacing: 0 !important;
+    padding: 0 4px;
+  }
+
+  .search-directory-hero p {
+    width: 100% !important;
+    max-width: 540px !important;
+    font-size: 15.5px !important;
+    line-height: 1.55 !important;
+    padding: 0 4px;
+  }
+
+  .search-directory-search {
+    width: 100% !important;
+    max-width: 520px !important;
+    min-height: 44px;
+    padding: 9px 12px !important;
+  }
+
+  .search-directory-search input {
+    font-size: 16px !important;
+  }
+
+  .search-directory-filterbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    padding: 18px 16px 28px !important;
+  }
+
+  .search-directory-filter-select,
+  .search-directory-filter-control,
+  .search-directory-filterbar > button {
+    width: 100% !important;
+  }
+
+  .search-directory-filter-control {
+    min-width: 0 !important;
+    height: 44px;
+  }
+
+  .search-directory-filterbar > button {
+    min-height: 44px;
+  }
+
+  .search-directory-cards-section {
+    padding: 0 16px 52px !important;
+    margin-top: 0 !important;
+  }
+
+  .search-directory-card-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .search-directory-card {
+    border-radius: 12px !important;
+  }
+
+  .search-directory-university-card {
+    min-height: auto !important;
+  }
+
+  .search-directory-booking-section {
+    padding: 44px 16px 56px !important;
+  }
+
+  .search-directory-booking-card {
+    grid-template-columns: minmax(0, 1fr) !important;
+    max-width: 520px !important;
+    border-radius: 16px !important;
+  }
+
+  .search-directory-booking-info {
+    min-height: 300px !important;
+    padding: 28px 20px !important;
+  }
+
+  .search-directory-booking-info h2 {
+    font-size: 28px !important;
+    line-height: 1.18 !important;
+  }
+
+  .search-directory-booking-info p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  .search-directory-booking-form {
+    padding: 24px 18px !important;
+    gap: 14px !important;
+  }
+
+  .search-directory-form-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .search-directory-booking-form input,
+  .search-directory-booking-form select {
+    width: 100%;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .search-directory-hero h1 {
+    font-size: 28px !important;
+  }
+
+  .search-directory-cards-section,
+  .search-directory-filterbar,
+  .search-directory-booking-section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
 }

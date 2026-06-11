@@ -99,12 +99,12 @@ function AirportServicesPage() {
   };
 
   return (
-    <div className="flex flex-col w-full bg-white overflow-x-hidden">
+    <div className="ancillary-subpage airport-services-page flex flex-col w-full bg-white overflow-x-hidden">
       <Header />
 
-      <div className="relative w-full mb-[120px]">
+      <div className="airport-services-hero relative w-full mb-[120px]">
         {/* Hero image container */}
-        <div className="relative overflow-hidden w-full h-[90vh]">
+        <div className="airport-services-hero-frame relative overflow-hidden w-full h-[90vh]">
           <img
             alt=""
             src={HERO_BG}
@@ -128,7 +128,7 @@ function AirportServicesPage() {
 
           {/* Text overlay */}
           <div
-            className="absolute flex flex-col items-start"
+            className="airport-services-hero-copy absolute flex flex-col items-start"
             style={{
               left: "clamp(24px, 5vw, 80px)",
               top: "50%",

@@ -31,18 +31,6 @@ const CARDS = [
     /* Card 4 — plain image, no overlay (play button) */
     video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-4.mp4',city: '', quote: '', uni: '',                                                                                                                    hasOverlay: false,
   },
-  {
-    img:  '/images/ielts-testi-5.png',
-    city: 'Adelaide (South Australia)',    quote: '"From Band 6 to Band 8 \u2014 Josh\'s methods work."',  uni: 'University of Adelaide',              hasOverlay: true,
-  },
-  {
-    img:  '/images/ielts-testi-1.png',
-    city: 'Melbourne (State of Victoria)', quote: '"Incredible support throughout my IELTS journey."',     uni: 'The University of Melbourne',         hasOverlay: true,
-  },
-  {
-    img:  '/images/ielts-testi-2.png',
-    city: 'Melbourne (State of Victoria)', quote: '"Best decision I made before coming to Australia."',    uni: 'The University of Melbourne',         hasOverlay: true,
-  },
 ];
 
 const CARD_W   = 284;
@@ -205,17 +193,17 @@ function IeltsPteCoachingPage() {
   };
 
   return (
-    <div className="flex flex-col w-full overflow-x-hidden bg-white">
+    <div className="ancillary-subpage ielts-pte-page flex flex-col w-full overflow-x-hidden bg-white">
       <Header />
 
-      <div className="w-full overflow-x-hidden">
+      <div className="ielts-pte-shell w-full overflow-x-hidden">
 
         {/* ══════════════════════════════════════════════════════════
             HERO — Figma: bg 1440×982 (aspect-ratio 349/238), coach 644×882 (46/63)
         ══════════════════════════════════════════════════════════ */}
-        <section className="relative w-full overflow-hidden bg-white">
+        <section className="ielts-pte-hero relative w-full overflow-hidden bg-white">
           <div
-            className="relative w-full overflow-hidden"
+            className="ielts-pte-hero-frame relative w-full overflow-hidden"
             style={{
               aspectRatio: '349 / 238',
             }}
@@ -229,7 +217,7 @@ function IeltsPteCoachingPage() {
 
             {/* Coach — 644×882 @ left 796 top 100; % so layout scales with frame */}
             <div
-              className="absolute z-[2] overflow-hidden pointer-events-none"
+              className="ielts-pte-hero-coach absolute z-[2] overflow-hidden pointer-events-none"
               style={{
                 left: `${(796 / HERO_W) * 100}%`,
                 top: `${(100 / HERO_H) * 100}%`,
@@ -245,7 +233,7 @@ function IeltsPteCoachingPage() {
             </div>
 
             <div
-              className="absolute z-[5] flex max-w-[min(640px,48vw)] flex-col items-start"
+              className="ielts-pte-hero-copy absolute z-[5] flex max-w-[min(640px,48vw)] flex-col items-start"
               style={{
                 left: `${(298 / HERO_W) * 100}%`,
                 top: `${(150 / HERO_H) * 100}%`,
@@ -304,11 +292,11 @@ function IeltsPteCoachingPage() {
             mt = 1118 − 968 = 150px (968 = hero bottom from white-rect top)
         ══════════════════════════════════════════════════════════ */}
         <section
-          className="flex w-full flex-col items-start gap-10 mt-[150px] mb-[200px] lg:flex-row lg:gap-[39px]"
+          className="ielts-coach-section flex w-full flex-col items-start gap-10 mt-[150px] mb-[200px] lg:flex-row lg:gap-[39px]"
         >
           {/* Josh photo — 259:1501 504×570, rounded-20, crop h=207.24% l=-58.12% t=-5% w=219.29% */}
           <div
-            className="relative shrink-0 overflow-hidden w-full max-w-[504px] border-0"
+            className="ielts-coach-video relative shrink-0 overflow-hidden w-full max-w-[504px] border-0"
             style={{ height: 510, aspectRatio: '84 / 95', borderRadius: 20, border: 'none', outline: 'none', boxShadow: 'none', backgroundColor: 'transparent' }}
           >
             <div className="absolute inset-0 overflow-hidden">
@@ -341,7 +329,7 @@ function IeltsPteCoachingPage() {
           </div>
 
           {/* Text column */}
-          <div className="flex min-w-0 flex-1 flex-col items-start">
+          <div className="ielts-coach-copy flex min-w-0 flex-1 flex-col items-start">
 
             {/* Title — 258:1521: "Meet <bold-italic-red>Joshua...</red>" 43px / "Your..." 29px */}
             <p
@@ -400,7 +388,7 @@ function IeltsPteCoachingPage() {
             Figma: 259:1529  1240×400  left=84  4 visible cards 290×400 gap=26
             Card: bg image | top row (play 35×35 + city label) | gradient bottom 130px
         ══════════════════════════════════════════════════════════ */}
-        <section className="relative mb-[40px] w-full overflow-hidden">
+        <section className="ielts-testimonials relative mb-[40px] w-full overflow-hidden">
 
           {/* Left nav arrow */}
           <button
@@ -416,9 +404,9 @@ function IeltsPteCoachingPage() {
           </button>
 
           {/* Sliding track — exactly 4 cards wide */}
-          <div className="max-w-full overflow-hidden" style={{ width: `min(${CAROUSEL_WIDTH}px, 100%)` }}>
+          <div className="ielts-testimonials-scroll max-w-full overflow-hidden" style={{ width: `min(${CAROUSEL_WIDTH}px, 100%)` }}>
             <div
-              className="flex"
+              className="ielts-testimonials-track flex"
               style={{
                 gap: CARD_GAP,
                 transform: `translateX(-${tIdx * (CARD_W + CARD_GAP)}px)`,
@@ -428,7 +416,7 @@ function IeltsPteCoachingPage() {
               {CARDS.map((c, i) => (
                 <div
                   key={i}
-                  className="relative shrink-0 overflow-hidden bg-black"
+                  className="ielts-testimonial-card relative shrink-0 overflow-hidden bg-black"
                   style={{ width: CARD_W, height: CARD_H, borderRadius: 15 }}
                 >
                   {/* Card background */}
@@ -516,7 +504,7 @@ function IeltsPteCoachingPage() {
             Bullets: 22px Regular leading-[1.2 / 1.36 / 1.35]
         ══════════════════════════════════════════════════════════ */}
         <section
-          className="flex w-full flex-col items-start gap-8 mb-[100px] lg:flex-row"
+          className="ielts-why-section flex w-full flex-col items-start gap-8 mb-[100px] lg:flex-row"
         >
           {/* Heading column */}
           <div

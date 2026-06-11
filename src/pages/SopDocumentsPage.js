@@ -18,15 +18,15 @@ export default function SopDocumentsPage() {
   const openConsultation = () => setConsultationOpen(true);
 
   return (
-    <div className="flex flex-col w-full bg-white">
+    <div className="ancillary-subpage sop-documents-page flex flex-col w-full bg-white">
       <Header />
 
-      <div className="flex flex-col w-full overflow-x-hidden">
-        <div className="flex flex-col items-center w-full bg-white pb-[67px] pt-[82px] px-6 sm:px-10 lg:px-[100px]">
+      <div className="sop-documents-shell flex flex-col w-full overflow-x-hidden">
+        <div className="sop-documents-content flex flex-col items-center w-full bg-white pb-[67px] pt-[82px] px-6 sm:px-10 lg:px-[100px]">
 
           {/* ── Hero Text Section — Figma: centered 1192 max ── */}
           <section
-            className="flex flex-col items-center justify-center mb-[41px] gap-[20px] w-full max-w-[1192px] mx-auto"
+            className="sop-documents-hero flex flex-col items-center justify-center mb-[41px] gap-[20px] w-full max-w-[1192px] mx-auto"
           >
             <h1
               className="font-poppins text-center font-medium text-[28px] underline decoration-[#00352B] underline-offset-[6px]"
@@ -77,18 +77,18 @@ export default function SopDocumentsPage() {
 
           {/* ── Hero Background Image – layout_B2E8YL: 1440×747 ── */}
           <section
-            className="flex flex-col items-center h-[747px] mb-[100px] bg-cover bg-center bg-no-repeat"
+            className="sop-documents-visual flex flex-col items-center h-[747px] mb-[100px] bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: `url('${IMG_HERO_BG}')`,
               width: '100vw',
               marginLeft: 'calc(-50vw + 58%)',
             }}
           >
-            <div className="flex flex-col items-center justify-end w-full h-full pb-[50px]">
+            <div className="sop-documents-visual-inner flex flex-col items-center justify-end w-full h-full pb-[50px]">
               {/* layout_WUCKEB: 730×123 / borderRadius 48px / fill_TY0IEG rgba(0,53,43,0.94) */}
               <button
                 type="button"
-                className="flex flex-col items-center justify-center w-[730px] h-[123px] rounded-[48px] border-0 cursor-pointer"
+                className="sop-documents-visual-cta flex flex-col items-center justify-center w-[730px] h-[123px] rounded-[48px] border-0 cursor-pointer"
                 style={{ background: 'rgba(0, 53, 43, 0.94)' }}
                 onClick={openConsultation}
               >
@@ -118,7 +118,7 @@ export default function SopDocumentsPage() {
 
           {/* ── Two-row alternating text / image layout (Figma zig-zag)
               Fixed widths (658+535+gap) exceeded max-w-[1192px] and overflowed — use flex-1 + min-w-0. ── */}
-          <section className="flex flex-col w-full max-w-[1192px] mx-auto mb-[166px] box-border gap-[56px] lg:gap-[48px] px-0 min-w-0">
+          <section className="sop-documents-copy-grid flex flex-col w-full max-w-[1192px] mx-auto mb-[166px] box-border gap-[56px] lg:gap-[48px] px-0 min-w-0">
 
             {/* Row 1: Left text, Right image */}
             <div className="flex flex-col lg:flex-row lg:items-start items-stretch gap-10 lg:gap-8 xl:gap-10 w-full min-w-0">
@@ -172,7 +172,7 @@ export default function SopDocumentsPage() {
           </section>
 
           {/* ── Value proposition — Figma: italic comparison + 100% FREE headline ── */}
-          <section className="flex flex-col items-center w-full max-w-[1065px] mx-auto mb-[106px] box-border px-2">
+          <section className="sop-documents-free-section flex flex-col items-center w-full max-w-[1065px] mx-auto mb-[106px] box-border px-2">
             <div className="flex flex-col items-center w-full gap-[28px]">
               <div
                 className="font-poppins text-center text-[#000000] text-[23px] font-normal"
@@ -215,7 +215,7 @@ export default function SopDocumentsPage() {
           </section>
 
           {/* ── "Why SOP Matters" — Figma: grey panel, orange border, two columns ── */}
-          <section className="flex flex-col items-center w-full max-w-[1158px] mx-auto mb-[118px] px-4 sm:px-0">
+          <section className="sop-documents-why-section flex flex-col items-center w-full max-w-[1158px] mx-auto mb-[118px] px-4 sm:px-0">
             <div className="flex flex-col w-full bg-[#F7F7F7] rounded-[39px] border border-solid border-[#FF3300] py-[30px] px-[clamp(20px,4vw,40px)] box-border">
               <h2
                 className="font-poppins font-normal text-[clamp(28px,4vw,45px)] text-left text-[#00352B] mb-[24px]"
@@ -348,7 +348,7 @@ export default function SopDocumentsPage() {
           </section>
 
           {/* ── "Documents We Help You With" — Figma: image left, heading + list right ── */}
-          <section className="flex flex-col lg:flex-row items-stretch justify-between w-full max-w-[1158px] mx-auto mb-[118px] gap-10 lg:gap-[35px] box-border px-4 sm:px-6 lg:px-0">
+          <section className="sop-documents-list-section flex flex-col lg:flex-row items-stretch justify-between w-full max-w-[1158px] mx-auto mb-[118px] gap-10 lg:gap-[35px] box-border px-4 sm:px-6 lg:px-0">
             <img
               src={IMG_77}
               alt="Passport and travel documents for Australia"

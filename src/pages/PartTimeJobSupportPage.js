@@ -152,7 +152,7 @@ function PartTimeJobSupportPage() {
   const goToNextSlide = () => setCurrentSlide((p) => (p === JOB_SLIDES.length - 1 ? 0 : p + 1));
 
   return (
-    <div className="flex flex-col w-full bg-white items-start">
+    <div className="ancillary-subpage part-time-job-page flex flex-col w-full bg-white items-start">
       <Header />
 
       <div className="flex flex-col w-full max-w-[1440px] mx-auto px-6 lg:px-[100px]">

@@ -368,7 +368,7 @@ const CourseCard = ({ course, onConsultation }) => {
   const logoSrc = UNIVERSITY_LOGOS[course.university] || course.logo || '/images/course-card-logo.png';
 
   return (
-    <div style={{
+    <div className="search-directory-card search-directory-course-card" style={{
       width: '100%',
       border: '1px solid #BABABA',
       borderRadius: 13,
@@ -510,8 +510,9 @@ const CourseCard = ({ course, onConsultation }) => {
 
 /* ── Filter dropdown ── */
 const FilterSelect = ({ options, value, onChange }) => (
-  <div style={{ position: 'relative' }}>
+  <div className="search-directory-filter-select" style={{ position: 'relative' }}>
     <select
+      className="search-directory-filter-control"
       value={value}
       onChange={e => onChange(e.target.value)}
       style={{
@@ -578,7 +579,7 @@ export default function SearchCoursesPage() {
   const filtersActive = area !== 'All Areas' || level !== 'All Levels' || destination !== 'All Destinations' || search !== '';
 
   return (
-    <div style={{ fontFamily: 'Poppins', background: '#fff', minHeight: '100vh' }}>
+    <div className="search-directory-page search-courses-page" style={{ fontFamily: 'Poppins', background: '#fff', minHeight: '100vh' }}>
       <Header />
 
       <main>
@@ -586,7 +587,7 @@ export default function SearchCoursesPage() {
         {/* ══════════════════════════════════════
             HERO SECTION
             ══════════════════════════════════════ */}
-        <section style={{
+        <section className="search-directory-hero" style={{
           background: '#fff',
           paddingTop: 60,
           paddingBottom: 32,
@@ -597,7 +598,7 @@ export default function SearchCoursesPage() {
           textAlign: 'center',
         }}>
           {/* Badge — #FF3300 bg, #FFFBE9 text, radius 16 */}
-          <div style={{
+          <div className="search-directory-search" style={{
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -678,7 +679,7 @@ export default function SearchCoursesPage() {
         {/* ══════════════════
             FILTER BAR
             ══════════════════ */}
-        <section style={{
+        <section className="search-directory-filterbar" style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -706,7 +707,7 @@ export default function SearchCoursesPage() {
         {/* ══════════════════════════════════
             CARDS GRID — 3 per row, gap 24px
             ══════════════════════════════════ */}
-        <section style={{ padding: '0 100px 80px', background: '#fff', marginTop: 8 }}>
+        <section className="search-directory-cards-section" style={{ padding: '0 100px 80px', background: '#fff', marginTop: 8 }}>
           {filtered.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '60px 0' }}>
               <p style={{ fontFamily: 'Poppins', fontSize: 18, color: '#888' }}>
@@ -714,7 +715,7 @@ export default function SearchCoursesPage() {
               </p>
             </div>
           ) : (
-            <div style={{
+            <div className="search-directory-card-grid" style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
               gap: 24,
@@ -730,9 +731,9 @@ export default function SearchCoursesPage() {
             BOOKING FORM SECTION  — matches Figma exactly
             Left: dark-green card  |  Right: booking form
             ══════════════════════════════════════════════════ */}
-        <section style={{ background: '#f5f5f5', padding: '75px 100px 100px' }}>
+        <section className="search-directory-booking-section" style={{ background: '#f5f5f5', padding: '75px 100px 100px' }}>
           {/* Outer white card — border-radius here clips both panels (matches Figma) */}
-          <div style={{
+          <div className="search-directory-booking-card" style={{
             maxWidth: 1040, margin: '0 auto',
             display: 'grid', gridTemplateColumns: '1fr 1.45fr',
             borderRadius: 20,
@@ -741,7 +742,7 @@ export default function SearchCoursesPage() {
           }}>
 
             {/* ── Left green panel (no own border-radius — parent clips it) ── */}
-            <div style={{
+            <div className="search-directory-booking-info" style={{
               backgroundImage: 'url(/images/airport-hero-bg.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center center',
@@ -805,7 +806,7 @@ export default function SearchCoursesPage() {
             </div>
 
             {/* ── Right form — white panel inside the outer card ── */}
-            <form onSubmit={handleEnquiry} style={{ background: '#fff', padding: '40px 36px', display: 'flex', flexDirection: 'column', gap: 18, justifyContent: 'center' }}>
+            <form className="search-directory-booking-form" onSubmit={handleEnquiry} style={{ background: '#fff', padding: '40px 36px', display: 'flex', flexDirection: 'column', gap: 18, justifyContent: 'center' }}>
 
               {/* Full Name */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -819,7 +820,7 @@ export default function SearchCoursesPage() {
               </div>
 
               {/* Phone + Email */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+              <div className="search-directory-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <label style={{ fontFamily: 'Poppins', fontSize: 13, fontWeight: 500, color: '#333' }}>Phone</label>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', border: '1px solid #e0e0e0', borderRadius: 8, background: '#fafafa' }}>
@@ -859,7 +860,7 @@ export default function SearchCoursesPage() {
               </div>
 
               {/* Date + Time */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+              <div className="search-directory-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <label style={{ fontFamily: 'Poppins', fontSize: 13, fontWeight: 500, color: '#333' }}>Date</label>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', border: '1px solid #e0e0e0', borderRadius: 8, background: '#fafafa' }}>

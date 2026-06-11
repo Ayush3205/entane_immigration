@@ -184,16 +184,16 @@ function PostArrivalSupportPage() {
   };
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-white">
+    <div className="ancillary-subpage post-arrival-page flex flex-col w-full min-h-screen bg-white">
       <Header />
 
-      <main className="flex flex-col w-full max-w-[1440px] mx-auto bg-white">
+      <main className="post-arrival-main flex flex-col w-full max-w-[1440px] mx-auto bg-white">
 
         {/* ══════════════════════════════════════════════════
             HERO SECTION
             Figma: label y=174 from white-rect top, centered
         ══════════════════════════════════════════════════ */}
-        <section className="flex flex-col items-center w-full pt-[84px] pb-[96px]">
+        <section className="post-arrival-hero flex flex-col items-center w-full pt-[84px] pb-[96px]">
 
           {/* Label */}
           <p
@@ -254,7 +254,7 @@ function PostArrivalSupportPage() {
             Gray box:  l=102  t=156  w=1208  h=549
             Text in box: l_offset=83  t_offset=167
         ══════════════════════════════════════════════════ */}
-        <section ref={containerRef} className="relative w-full" style={{ height: 808 }}>
+        <section ref={containerRef} className="post-arrival-collage relative w-full" style={{ height: 808 }}>
 
           {/* ── TOP ROW IMAGES ── */}
 
@@ -320,11 +320,11 @@ function PostArrivalSupportPage() {
 
           {/* ── GRAY ROUNDED TEXT BOX ── */}
           <div
-            className="absolute bg-[#f6f4f4] rounded-[67px]"
+            className="post-arrival-collage-copy absolute bg-[#f6f4f4] rounded-[67px]"
             style={{ left: 102, top: 156, width: 1208, height: 549 }}
           >
             <div
-              className="absolute text-center"
+              className="post-arrival-collage-text absolute text-center"
               style={{ left: 83, top: 167, width: 1085 }}
             >
               {/* Bold italic red intro text */}
@@ -414,7 +414,7 @@ function PostArrivalSupportPage() {
             Figma: y=1497 from white-rect top, left=92 px
             Gap from intro section bottom (y=1299): 198 px
         ══════════════════════════════════════════════════ */}
-        <section className="w-full px-[92px] mt-[198px] mb-0">
+        <section className="post-arrival-support-heading w-full px-[92px] mt-[198px] mb-0">
           <p
             className="font-poppins text-[45px] text-primary tracking-[-0.15px] leading-[1.2] mb-[15px]"
           >
@@ -436,7 +436,7 @@ function PostArrivalSupportPage() {
             Icons protrude above card top edge
             CTA badge: h=49, rounded-[21px], text 26px
         ══════════════════════════════════════════════════ */}
-        <section className="relative w-full bg-[#eee] pt-[63px] pb-[55px] flex flex-col items-center">
+        <section className="post-arrival-support-carousel relative w-full bg-[#eee] pt-[63px] pb-[55px] flex flex-col items-center">
           
           <div className="relative flex items-center justify-center w-full max-w-[1440px]">
             {/* Left Chevron */}
@@ -451,13 +451,13 @@ function PostArrivalSupportPage() {
             </button>
 
             {/* Carousel Track */}
-            <div className="overflow-hidden w-[1316px] flex-shrink-0">
+            <div className="post-arrival-support-track overflow-hidden w-[1316px] flex-shrink-0">
               <div 
                 className="flex items-stretch gap-[28px] transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 336}px)` }}
               >
                 {SUPPORT_CARDS.map((card, idx) => (
-                  <div key={idx} className="flex flex-col bg-primary rounded-[28px] w-[308px] shrink-0 pt-[32px] px-[24px] pb-[32px]">
+                  <div key={idx} className="post-arrival-support-card flex flex-col bg-primary rounded-[28px] w-[308px] shrink-0 pt-[32px] px-[24px] pb-[32px]">
                     <img
                       src={card.img}
                       alt=""

@@ -195,13 +195,13 @@ export default function AccommodationPage() {
   };
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-white">
+    <div className="ancillary-subpage accommodation-page flex flex-col w-full min-h-screen bg-white">
       <Header />
 
-      <main className="flex flex-col w-full max-w-[1440px] mx-auto bg-[#FFFFFF]">
-        <div className="flex flex-col items-center w-full pt-[40px] pb-16 px-[100px]">
+      <main className="accommodation-main flex flex-col w-full max-w-[1440px] mx-auto bg-[#FFFFFF]">
+        <div className="accommodation-content flex flex-col items-center w-full pt-[40px] pb-16 px-[100px]">
           {/* Hero: text block — matches reference design */}
-          <section className="flex flex-col items-center w-full max-w-[1192px] mb-[64px] gap-0">
+          <section className="accommodation-hero flex flex-col items-center w-full max-w-[1192px] mb-[64px] gap-0">
             {/* Page label — underlined, dark green */}
             <span className="font-poppins font-medium text-[28px] leading-[1.4] tracking-[-0.02em] text-[#00352B] mb-[16px] underline decoration-[#00352B] underline-offset-2">
               Accommodation
@@ -237,8 +237,8 @@ export default function AccommodationPage() {
           </section>
 
           {/* Section: Hero carousel */}
-          <div className="w-full -mx-[72px] min-w-0">
-            <section className="relative w-[1383px] max-w-[100%] h-[672px] mx-auto mb-[105px] rounded-[49px] overflow-hidden">
+          <div className="accommodation-slider-wrap w-full -mx-[72px] min-w-0">
+            <section className="accommodation-slider relative w-[1383px] max-w-[100%] h-[672px] mx-auto mb-[105px] rounded-[49px] overflow-hidden">
             {/* Background */}
             <div
               className="absolute inset-0 rounded-[49px] bg-[#00352B]"
@@ -273,7 +273,7 @@ export default function AccommodationPage() {
 
             {/* Centered group: orange card + room image - sliding carousel */}
             {/* Sliding carousel — orange card; slide width = 100% of viewport for smooth responsive transform */}
-            <div className="absolute left-1/2 top-1/2 z-[5] w-[812px] max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] -translate-x-1/2 -translate-y-1/2 h-[557px] max-h-[calc(100%-120px)] sm:max-h-[calc(100%-96px)] overflow-hidden" style={{ borderRadius: 41, background: '#FF3300' }}>
+            <div className="accommodation-slider-card absolute left-1/2 top-1/2 z-[5] w-[812px] max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] -translate-x-1/2 -translate-y-1/2 h-[557px] max-h-[calc(100%-120px)] sm:max-h-[calc(100%-96px)] overflow-hidden" style={{ borderRadius: 41, background: '#FF3300' }}>
               <div
                 className="flex h-full transition-transform duration-500 ease-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -281,7 +281,7 @@ export default function AccommodationPage() {
                 {ACCOMMODATION_SLIDES.map((slide, index) => (
                   <div key={index} className="relative h-full w-full min-w-full flex-shrink-0">
                     <div
-                      className="h-full pt-6 pb-6 pl-25 pr-5 sm:pt-7 sm:pb-7 sm:pl-12 sm:pr-[min(28px,4vw)] box-border flex flex-col justify-center text-left"
+                      className="accommodation-slider-panel h-full pt-6 pb-6 pl-25 pr-5 sm:pt-7 sm:pb-7 sm:pl-12 sm:pr-[min(28px,4vw)] box-border flex flex-col justify-center text-left"
                       style={{ borderRadius: 41, background: '#FF3300' }}
                     >
                       <div className="relative z-[2] w-full max-w-[420px] pr-0 md:pr-2"
@@ -347,7 +347,7 @@ export default function AccommodationPage() {
           </div>
 
           {/* Section: Long copy — Figma typography (Accent / At Esante / Partner / B2B body) */}
-          <section className="flex flex-col items-center w-full max-w-[1300px] mx-auto mb-[100px] px-4">
+          <section className="accommodation-intro flex flex-col items-center w-full max-w-[1300px] mx-auto mb-[100px] px-4">
             <p
               className="font-poppins text-[#F30] mb-8 w-full max-w-full whitespace-nowrap"
               style={{
@@ -401,8 +401,8 @@ export default function AccommodationPage() {
           </section>
 
           {/* Section: Why Esante */}
-          <section className="flex flex-col w-full max-w-[1087px] mx-auto mb-[98px]">
-            <div className="flex flex-row items-start w-full gap-[50px]">
+          <section className="accommodation-why flex flex-col w-full max-w-[1087px] mx-auto mb-[98px]">
+            <div className="accommodation-why-grid flex flex-row items-start w-full gap-[50px]">
               <img
                 src={WHY_IMG}
                 alt="Why Esante accommodation"
@@ -434,10 +434,10 @@ export default function AccommodationPage() {
           </section>
 
           {/* Section: Real Student Story */}
-          <section className="relative w-full max-w-[1230px] mx-auto mb-[65px]">
-            <div className="relative w-full h-[600px] py-8 px-12 bg-[#00352B] rounded-[51px] border-2 border-[#FF3300]">
-              <div className="flex flex-row items-center justify-center w-full h-full gap-10 px-14">
-                <div className="flex flex-col items-start text-left shrink-0">
+          <section className="accommodation-story relative w-full max-w-[1230px] mx-auto mb-[65px]">
+            <div className="accommodation-story-card relative w-full h-[600px] py-8 px-12 bg-[#00352B] rounded-[51px] border-2 border-[#FF3300]">
+              <div className="accommodation-story-grid flex flex-row items-center justify-center w-full h-full gap-10 px-14">
+                <div className="accommodation-story-copy flex flex-col items-start text-left shrink-0">
                   <p
                     className="font-poppins font-medium italic text-[#FF3300] m-0 mb-2"
                     style={{ fontSize: 28, lineHeight: '34px', letterSpacing: '-0.15px' }}
@@ -454,7 +454,7 @@ export default function AccommodationPage() {
                   >
                     {KHUSHI_STORY.headlineCity}
                   </h3>
-                  <div className="w-[465px] max-w-full min-w-0 box-border">
+                  <div className="accommodation-story-body w-[465px] max-w-full min-w-0 box-border">
                     <KhushiStoryBody />
                   </div>
                 </div>

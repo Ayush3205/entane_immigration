@@ -220,6 +220,7 @@ const UniversityCard = ({ university, onConsultation }) => {
 
   return (
     <div
+      className="search-directory-card search-directory-university-card"
       style={{
         width: '100%',
         border: '1px solid #BABABA',
@@ -399,8 +400,9 @@ const UniversityCard = ({ university, onConsultation }) => {
 
 /* ── Filter dropdown ── */
 const FilterSelect = ({ options, value, onChange }) => (
-  <div style={{ position: 'relative' }}>
+  <div className="search-directory-filter-select" style={{ position: 'relative' }}>
     <select
+      className="search-directory-filter-control"
       value={value}
       onChange={e => onChange(e.target.value)}
       style={{
@@ -466,7 +468,7 @@ export default function SearchUniversitiesPage() {
   const filtersActive = city !== 'All Cities' || type !== 'All Types' || search !== '';
 
   return (
-    <div style={{ fontFamily: 'Poppins', background: '#fff', minHeight: '100vh' }}>
+    <div className="search-directory-page search-universities-page" style={{ fontFamily: 'Poppins', background: '#fff', minHeight: '100vh' }}>
       <Header />
 
       <main>
@@ -474,7 +476,7 @@ export default function SearchUniversitiesPage() {
         {/* ══════════════════════════════════════
             HERO SECTION
             ══════════════════════════════════════ */}
-        <section style={{
+        <section className="search-directory-hero" style={{
           background: '#fff',
           paddingTop: 60,
           paddingBottom: 32,
@@ -485,7 +487,7 @@ export default function SearchUniversitiesPage() {
           textAlign: 'center',
         }}>
           {/* Badge — #FF3300 bg, #FFFBE9 text, radius 16 */}
-          <div style={{
+          <div className="search-directory-search" style={{
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -566,7 +568,7 @@ export default function SearchUniversitiesPage() {
         {/* ══════════════════
             FILTER BAR
             ══════════════════ */}
-        <section style={{
+        <section className="search-directory-filterbar" style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -593,7 +595,7 @@ export default function SearchUniversitiesPage() {
         {/* ══════════════════════════════════════════
             CARDS GRID — 3 per row matching Figma grid
             ══════════════════════════════════════════ */}
-        <section style={{ padding: '0 100px 80px', background: '#fff', marginTop: 8 }}>
+        <section className="search-directory-cards-section" style={{ padding: '0 100px 80px', background: '#fff', marginTop: 8 }}>
           {filtered.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '60px 0' }}>
               <p style={{ fontFamily: 'Poppins', fontSize: 18, color: '#888' }}>
@@ -601,7 +603,7 @@ export default function SearchUniversitiesPage() {
               </p>
             </div>
           ) : (
-            <div style={{
+            <div className="search-directory-card-grid" style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
               gap: 24,
@@ -617,8 +619,8 @@ export default function SearchUniversitiesPage() {
             BOOKING FORM SECTION
             Left: dark-green card  |  Right: booking form
             ══════════════════════════════════════════════════ */}
-        <section style={{ background: '#f5f5f5', padding: '75px 100px 100px' }}>
-          <div style={{
+        <section className="search-directory-booking-section" style={{ background: '#f5f5f5', padding: '75px 100px 100px' }}>
+          <div className="search-directory-booking-card" style={{
             maxWidth: 1040, margin: '0 auto',
             display: 'grid', gridTemplateColumns: '1fr 1.45fr',
             borderRadius: 20,
@@ -627,7 +629,7 @@ export default function SearchUniversitiesPage() {
           }}>
 
             {/* ── Left green panel ── */}
-            <div style={{
+            <div className="search-directory-booking-info" style={{
               backgroundImage: 'url(/images/migration-advisors-hero.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center center',
@@ -688,7 +690,7 @@ export default function SearchUniversitiesPage() {
             </div>
 
             {/* ── Right form panel ── */}
-            <form onSubmit={handleEnquiry} style={{ background: '#fff', padding: '40px 36px', display: 'flex', flexDirection: 'column', gap: 18, justifyContent: 'center' }}>
+            <form className="search-directory-booking-form" onSubmit={handleEnquiry} style={{ background: '#fff', padding: '40px 36px', display: 'flex', flexDirection: 'column', gap: 18, justifyContent: 'center' }}>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 <label style={{ fontFamily: 'Poppins', fontSize: 13, fontWeight: 500, color: '#333' }}>Full Name</label>
@@ -700,7 +702,7 @@ export default function SearchUniversitiesPage() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+              <div className="search-directory-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <label style={{ fontFamily: 'Poppins', fontSize: 13, fontWeight: 500, color: '#333' }}>Phone</label>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', border: '1px solid #e0e0e0', borderRadius: 8, background: '#fafafa' }}>
@@ -738,7 +740,7 @@ export default function SearchUniversitiesPage() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+              <div className="search-directory-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <label style={{ fontFamily: 'Poppins', fontSize: 13, fontWeight: 500, color: '#333' }}>Date</label>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', border: '1px solid #e0e0e0', borderRadius: 8, background: '#fafafa' }}>

@@ -180,20 +180,20 @@ export default function AncillaryServicesPage() {
   };
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-white">
+    <div className="ancillary-services-page flex flex-col w-full min-h-screen bg-white">
       <Header />
 
-      <main className="flex flex-col w-full bg-white" style={{ overflow: 'visible' }}>
-        <div className="flex flex-col items-center w-full pt-[60px] pb-16" style={{ overflow: 'visible' }}>
+      <main className="ancillary-services-main flex flex-col w-full bg-white" style={{ overflow: 'visible' }}>
+        <div className="ancillary-services-content flex flex-col items-center w-full pt-[60px] pb-16" style={{ overflow: 'visible' }}>
 
           {/* ── Heading and Badge ── layout_NN129N: column/center/gap-16/1240×108 ── */}
           <section
-            className="flex flex-col items-center gap-[16px] mb-[32px]"
+            className="ancillary-services-hero flex flex-col items-center gap-[16px] mb-[32px]"
             style={{ width: 1240, maxWidth: '100%' }}
           >
             {/* style_8GUZMK: Poppins 600 / 48px / letterSpacing -2% / CENTER */}
             {/* fills: Primary Color (#00352B) — mixed text runs give line 2 its red/italic */}
-            <h1 className="font-poppins text-center" style={{ lineHeight: 1 }}>
+            <h1 className="ancillary-services-title font-poppins text-center" style={{ lineHeight: 1 }}>
               <span
                 className="block text-[48px] text-[#00352B]"
                 style={{ letterSpacing: '-0.96px', lineHeight: '54px' }}
@@ -213,7 +213,7 @@ export default function AncillaryServicesPage() {
               style_29U0JM: Poppins 400 / 20px / 1.5em / CENTER
               fills: fill_6ECEP5 #000000 ── */}
           <section
-            className="flex flex-col items-center w-full mb-[30px]"
+            className="ancillary-services-intro flex flex-col items-center w-full mb-[30px]"
             style={{ maxWidth: 867 }}
           >
             <p
@@ -233,7 +233,7 @@ export default function AncillaryServicesPage() {
             <button
               type="button"
               onClick={openConsultation}
-              className="inline-flex justify-center items-center rounded-[16px] border-0 cursor-pointer mb-[40px]"
+              className="ancillary-services-cta inline-flex justify-center items-center rounded-[16px] border-0 cursor-pointer mb-[40px]"
               style={{ background: '#FF3300', padding: '4px 12px' }}
             >
               <span
@@ -246,7 +246,7 @@ export default function AncillaryServicesPage() {
           {/* ── Fan Cards ── layout_678G42 center: 310×407 / layout_GY3D9A: 309×407 ── */}
           <section
             ref={fanSectionRef}
-            className="relative w-full flex justify-center"
+            className="ancillary-fan-section relative w-full flex justify-center"
             style={{ height: CARD_H + FAN_SECTION_BOTTOM, overflow: 'visible' }}
           >
             {CARDS.map((card, i) => {
@@ -267,7 +267,7 @@ export default function AncillaryServicesPage() {
                   onMouseLeave={() => setHoveredCardIndex(null)}
                   onFocus={() => setHoveredCardIndex(i)}
                   onBlur={() => setHoveredCardIndex(null)}
-                  className="cursor-pointer"
+                  className="ancillary-fan-card cursor-pointer"
                   style={{
                     position: 'absolute',
                     width: CARD_W,
@@ -284,6 +284,7 @@ export default function AncillaryServicesPage() {
                   {/* GSAP animates this layer only; keeps transforms stable on React updates */}
                   <div
                     ref={(el) => setCardAnimateRef(el, i)}
+                    className="ancillary-card-layer"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -291,6 +292,7 @@ export default function AncillaryServicesPage() {
                     }}
                   >
                     <div
+                      className="ancillary-card-visual"
                       style={{
                         position: 'relative',
                         width: '100%',
@@ -333,6 +335,7 @@ export default function AncillaryServicesPage() {
                   </div>
 
                   <div
+                    className="ancillary-card-caption"
                     aria-hidden={!isHovered}
                     style={{
                       position: 'absolute',
@@ -364,10 +367,10 @@ export default function AncillaryServicesPage() {
               style_WDUKGC: Poppins 500 / 26px / 1.577em / CENTER / -2% letterSpacing
               fills: fill_6ECEP5 #000000
               Two paragraphs in one TEXT node (separated by \L\L in Figma) ── */}
-          <section className="flex flex-col items-center w-full mt-[130px] mb-[40px]">
+          <section className="ancillary-services-statement ancillary-services-statement--highlight flex flex-col items-center w-full mt-[130px] mb-[40px]">
             {/* First paragraph — italic red (text-run override in Figma) */}
             <p
-              className="font-poppins font-semibold italic text-[26px] text-[#FF3300] text-center"
+              className="ancillary-services-statement-text font-poppins font-semibold italic text-[26px] text-[#FF3300] text-center"
               style={{ maxWidth: 850, lineHeight: '1.577em', letterSpacing: '-0.52px' }}
             >
               From SOP &amp; GS-compliant documentation, scholarship optimisation, free IELTS &amp;
@@ -377,10 +380,10 @@ export default function AncillaryServicesPage() {
             </p>
           </section>
 
-          <section className="flex flex-col items-center w-full mb-[32px]">
+          <section className="ancillary-services-statement flex flex-col items-center w-full mb-[32px]">
             {/* Second paragraph — normal black */}
             <p
-              className="font-poppins font-medium text-[26px] text-[#000000] text-center"
+              className="ancillary-services-statement-text font-poppins font-medium text-[26px] text-[#000000] text-center"
               style={{ maxWidth: 850, lineHeight: '1.577em', letterSpacing: '-0.52px' }}
             >
               Unlike traditional consultancies that stop at visa filing, Esante works as your
@@ -392,7 +395,7 @@ export default function AncillaryServicesPage() {
 
           {/* FAQ — studying in Australia & student support */}
           <section
-            className="flex flex-col items-center self-stretch w-full bg-white py-[64px] px-[24px] md:px-[60px] lg:px-[100px] gap-[24px]"
+            className="ancillary-services-faq flex flex-col items-center self-stretch w-full bg-white py-[64px] px-[24px] md:px-[60px] lg:px-[100px] gap-[24px]"
             aria-labelledby="ancillary-faq-heading"
           >
             <h2
