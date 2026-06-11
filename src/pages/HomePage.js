@@ -15,7 +15,9 @@ import Footer from '../components/Reusable/Footer';
 const MORPH_END    = 800;  // scroll px that span the full morph animation
 // Navbar slides up + fades out over first HEADER_FADE px of scroll
 // const HEADER_FADE  = 120;
-const HERO_VIDEO_URL = 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/hero.mp4';
+const HERO_DESKTOP_VIDEO_URL = 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/hero.mp4';
+const HERO_MOBILE_VIDEO_URL = 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/Hero-Mobile.mp4';
+const HERO_MOBILE_VIDEO_QUERY = '(max-width: 767px)';
 const HERO_VIDEO_MUTE_PROGRESS = 0.85;
 
 const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -128,6 +130,12 @@ const HOME_FAQ_ITEMS = [
 
 function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const [heroVideoUrl, setHeroVideoUrl] = useState(() => {
+    if (typeof window === 'undefined') return HERO_DESKTOP_VIDEO_URL;
+    return window.matchMedia(HERO_MOBILE_VIDEO_QUERY).matches
+      ? HERO_MOBILE_VIDEO_URL
+      : HERO_DESKTOP_VIDEO_URL;
+  });
 
   const toggleHomeFaq = (index) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
@@ -155,10 +163,28 @@ function HomePage() {
     }
   }, []);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(HERO_MOBILE_VIDEO_QUERY);
+
+    const syncHeroVideoSource = () => {
+      setHeroVideoUrl(mediaQuery.matches ? HERO_MOBILE_VIDEO_URL : HERO_DESKTOP_VIDEO_URL);
+    };
+
+    syncHeroVideoSource();
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', syncHeroVideoSource);
+      return () => mediaQuery.removeEventListener('change', syncHeroVideoSource);
+    }
+
+    mediaQuery.addListener(syncHeroVideoSource);
+    return () => mediaQuery.removeListener(syncHeroVideoSource);
+  }, []);
+
   // Autoplay hero morph video
   useEffect(() => {
     const video = morphVideoRef.current;
-    if (!video || !HERO_VIDEO_URL) return;
+    if (!video || !heroVideoUrl) return;
 
     const interactionEvents = ['pointerdown', 'touchstart', 'keydown'];
     const setMutedState = (shouldMute) => {
@@ -240,7 +266,7 @@ function HomePage() {
         window.removeEventListener(eventName, unlockAudio);
       });
     };
-  }, []);
+  }, [heroVideoUrl]);
 
   // Single RAF loop — all DOM mutations in one tick, zero React re-renders
   useEffect(() => {
@@ -396,16 +422,17 @@ function HomePage() {
           left: 0, top: 0,
           width: '100vw', height: '100vh',
           borderRadius: 0, opacity: 1, visibility: 'visible',
-          backgroundImage: HERO_VIDEO_URL
+          backgroundImage: heroVideoUrl
             ? 'none'
             : `url(${process.env.PUBLIC_URL || ''}/images/home-page/hero.jpg)`,
         }}
       >
-        {HERO_VIDEO_URL && (
+        {heroVideoUrl && (
           <video
+            key={heroVideoUrl}
             ref={morphVideoRef}
             className="hero-morph-video"
-            src={HERO_VIDEO_URL}
+            src={heroVideoUrl}
             autoPlay
             loop
             playsInline
@@ -420,7 +447,7 @@ function HomePage() {
           <div ref={dreamStickyRef} className="dream-sticky-wrap">
             <DreamSection
               morphTargetRef={morphTargetRef}
-              heroVideoUrl={HERO_VIDEO_URL}
+              heroVideoUrl={heroVideoUrl}
             />
           </div>
         </div>
