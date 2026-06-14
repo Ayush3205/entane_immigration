@@ -442,6 +442,7 @@ export default function SearchUniversitiesPage() {
   const [enquiry, setEnquiry] = useState({
     fullName: '', email: '', phone: '', courseInterest: '', message: '', date: '', time: '',
   });
+  const [enquiryErrors, setEnquiryErrors] = useState({});
 
   const toggleFaq = (index) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
@@ -461,8 +462,62 @@ export default function SearchUniversitiesPage() {
 
   const handleEnquiry = e => {
     e.preventDefault();
+    const errors = {};
+
+    if (!enquiry.fullName.trim()) {
+      errors.fullName = 'Full Name is required';
+    }
+
+    const emailTrimmed = enquiry.email.trim();
+    if (!emailTrimmed) {
+      errors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(emailTrimmed)) {
+        errors.email = 'Please enter a valid email address';
+      }
+    }
+
+    const phoneTrimmed = enquiry.phone.trim();
+    if (phoneTrimmed) {
+      const phoneRegex = /^\+?[0-9\s\-()]+$/;
+      const digitsOnly = phoneTrimmed.replace(/\D/g, '');
+
+      if (!phoneRegex.test(phoneTrimmed)) {
+        errors.phone = 'Phone number can only contain digits, spaces, dashes, parentheses, or +';
+      } else if (phoneTrimmed.startsWith('+')) {
+        if (phoneTrimmed.startsWith('+91')) {
+          if (digitsOnly.substring(2).length !== 10) {
+            errors.phone = 'Indian phone number must be exactly 10 digits after +91';
+          }
+        } else if (phoneTrimmed.startsWith('+61')) {
+          if (![9, 10].includes(digitsOnly.substring(2).length)) {
+            errors.phone = 'Australian phone number must be 9 or 10 digits after +61';
+          }
+        } else if (phoneTrimmed.startsWith('+1')) {
+          if (digitsOnly.substring(1).length !== 10) {
+            errors.phone = 'US/Canada phone number must be exactly 10 digits after +1';
+          }
+        } else {
+          if (digitsOnly.length < 11 || digitsOnly.length > 14) {
+            errors.phone = 'International phone number has an invalid length';
+          }
+        }
+      } else {
+        if (digitsOnly.length !== 10) {
+          errors.phone = 'Local phone number must be exactly 10 digits';
+        }
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setEnquiryErrors(errors);
+      return;
+    }
+
     alert('Thank you! Your enquiry has been submitted. Our team will contact you shortly.');
     setEnquiry({ fullName: '', email: '', phone: '', courseInterest: '', message: '', date: '', time: '' });
+    setEnquiryErrors({});
   };
 
   const filtersActive = city !== 'All Cities' || type !== 'All Types' || search !== '';
@@ -697,9 +752,15 @@ export default function SearchUniversitiesPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', border: '1px solid #e0e0e0', borderRadius: 8, background: '#fafafa' }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" strokeWidth="1.8" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
                   <input type="text" placeholder="John Doe" required value={enquiry.fullName}
-                    onChange={e => setEnquiry(p => ({ ...p, fullName: e.target.value }))}
+                    onChange={e => {
+                      setEnquiry(p => ({ ...p, fullName: e.target.value }));
+                      setEnquiryErrors(p => ({ ...p, fullName: '' }));
+                    }}
                     style={{ border: 'none', background: 'transparent', outline: 'none', flex: 1, fontFamily: 'Poppins', fontSize: 14, color: '#333' }} />
                 </div>
+                {enquiryErrors.fullName && (
+                  <span style={{ color: '#b42318', fontSize: '11px', paddingLeft: '4px' }}>{enquiryErrors.fullName}</span>
+                )}
               </div>
 
               <div className="search-directory-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
@@ -708,18 +769,30 @@ export default function SearchUniversitiesPage() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', border: '1px solid #e0e0e0', borderRadius: 8, background: '#fafafa' }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" strokeWidth="1.8" strokeLinecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.08 4.18 2 2 0 0 1 5.09 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                     <input type="tel" placeholder="+1 (555) 000-0000" value={enquiry.phone}
-                      onChange={e => setEnquiry(p => ({ ...p, phone: e.target.value }))}
+                      onChange={e => {
+                        setEnquiry(p => ({ ...p, phone: e.target.value }));
+                        setEnquiryErrors(p => ({ ...p, phone: '' }));
+                      }}
                       style={{ border: 'none', background: 'transparent', outline: 'none', flex: 1, fontFamily: 'Poppins', fontSize: 13, color: '#333', minWidth: 0 }} />
                   </div>
+                  {enquiryErrors.phone && (
+                    <span style={{ color: '#b42318', fontSize: '11px', paddingLeft: '4px' }}>{enquiryErrors.phone}</span>
+                  )}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <label style={{ fontFamily: 'Poppins', fontSize: 13, fontWeight: 500, color: '#333' }}>Email</label>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', border: '1px solid #e0e0e0', borderRadius: 8, background: '#fafafa' }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" strokeWidth="1.8" strokeLinecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                     <input type="email" placeholder="john@example.com" required value={enquiry.email}
-                      onChange={e => setEnquiry(p => ({ ...p, email: e.target.value }))}
+                      onChange={e => {
+                        setEnquiry(p => ({ ...p, email: e.target.value }));
+                        setEnquiryErrors(p => ({ ...p, email: '' }));
+                      }}
                       style={{ border: 'none', background: 'transparent', outline: 'none', flex: 1, fontFamily: 'Poppins', fontSize: 13, color: '#333', minWidth: 0 }} />
                   </div>
+                  {enquiryErrors.email && (
+                    <span style={{ color: '#b42318', fontSize: '11px', paddingLeft: '4px' }}>{enquiryErrors.email}</span>
+                  )}
                 </div>
               </div>
 

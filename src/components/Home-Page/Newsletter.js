@@ -5,8 +5,14 @@ const Newsletter = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const emailTrimmed = email.trim();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(emailTrimmed)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
     // Handle newsletter subscription
-    console.log('Subscribing email:', email);
+    console.log('Subscribing email:', emailTrimmed);
     setEmail('');
   };
 

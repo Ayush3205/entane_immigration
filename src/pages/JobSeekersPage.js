@@ -205,19 +205,19 @@ function JobIconBox({ icon, title }) {
 function JobCard({ title, desc, icon }) {
   return (
     <div
-      className="flex flex-col gap-[10px] px-[20px] py-[10px] bg-white rounded-[11px] flex-1"
+      className="flex flex-col gap-[10px] px-[20px] py-[20px] bg-white rounded-[11px] flex-1 min-w-[280px]"
       style={{ border: '1px solid rgba(0,0,0,0.09)' }}
     >
       <JobIconBox icon={icon} title={title} />
       <p
         className="font-poppins font-semibold text-black m-0"
-        style={{ fontSize: 30, lineHeight: '1.5em', letterSpacing: '-0.005em' }}
+        style={{ fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: '1.3em', letterSpacing: '-0.005em' }}
       >
         {title}
       </p>
       <p
-        className="font-poppins font-normal text-black m-0 whitespace-pre-line"
-        style={{ fontSize: 20, lineHeight: '1.5em', letterSpacing: '-0.0075em' }}
+        className="font-poppins font-normal text-black m-0 whitespace-pre-line text-sm sm:text-base md:text-lg lg:text-xl"
+        style={{ lineHeight: '1.5em', letterSpacing: '-0.0075em' }}
       >
         {desc}
       </p>
@@ -228,27 +228,27 @@ function JobCard({ title, desc, icon }) {
 function SeeFullListCard({ onConsultation }) {
   return (
     <div
-      className="flex flex-col items-center justify-center gap-[17px] px-[20px] py-[10px]
-                 rounded-[11px] flex-1"
+      className="flex flex-col items-center justify-center gap-[17px] px-[20px] py-[30px]
+                 rounded-[11px] flex-1 min-w-[280px]"
       style={{ border: '1px solid rgba(0,0,0,0.09)', background: '#00352B' }}
     >
       <p
-        className="font-poppins font-semibold text-white m-0 self-start"
-        style={{ fontSize: 40, lineHeight: '1.5em', letterSpacing: '-0.00375em' }}
+        className="font-poppins font-semibold text-white m-0 self-start text-left"
+        style={{ fontSize: "clamp(30px, 3.8vw, 40px)", lineHeight: '1.2em', letterSpacing: '-0.00375em' }}
       >
         See full list
       </p>
       <p
-        className="font-poppins font-normal text-white text-center m-0 w-full"
-        style={{ fontSize: 16, lineHeight: '1.5em', letterSpacing: '-0.009375em' }}
+        className="font-poppins font-normal text-white text-center m-0 w-full text-sm sm:text-base"
+        style={{ lineHeight: '1.5em', letterSpacing: '-0.009375em' }}
       >
         View the complete Top in demand jobs list
       </p>
       <button
         type="button"
         onClick={onConsultation}
-        className="font-poppins font-medium text-white rounded-[9px] px-[10px] py-[10px] border-0 cursor-pointer"
-        style={{ background: '#FF3300', fontSize: 20, lineHeight: '1.5em', letterSpacing: '-0.0075em' }}
+        className="font-poppins font-medium text-white rounded-[9px] px-[16px] py-[10px] border-0 cursor-pointer w-full max-w-[200px]"
+        style={{ background: '#FF3300', fontSize: 18, lineHeight: '1.3em', letterSpacing: '-0.0075em' }}
       >
         Download PDF
       </button>
@@ -274,13 +274,13 @@ function SkilledOccupationList({ onConsultation }) {
   }, [search, activeFilter]);
 
   return (
-    <section id="skilled-occupation-list" className="w-full bg-white" style={{ padding: '80px 100px' }}>
-      <div className="flex gap-[60px] items-start w-full">
+    <section id="skilled-occupation-list" className="w-full bg-white px-6 py-16 md:px-[60px] lg:px-[100px] lg:py-[80px]">
+      <div className="flex flex-col lg:flex-row gap-10 lg:gap-[60px] items-start w-full">
         {/* LEFT PANEL */}
-        <div className="flex flex-col gap-[20px]" style={{ width: 420, flexShrink: 0 }}>
+        <div className="flex flex-col gap-[20px] w-full lg:w-[420px] lg:shrink-0">
           <div
-            className="rounded-[12px] overflow-hidden"
-            style={{ width: '100%', height: 280, backgroundImage: `url('${SOL_IMG}')`, backgroundSize: 'cover', backgroundPosition: 'top left' }}
+            className="rounded-[12px] overflow-hidden w-full h-[200px] sm:h-[280px]"
+            style={{ backgroundImage: `url('${SOL_IMG}')`, backgroundSize: 'cover', backgroundPosition: 'top left' }}
           />
           <h2
             className="font-poppins font-bold text-black m-0"
@@ -470,11 +470,11 @@ function PRPointsCalculator({ onConsultation }) {
   };
 
   return (
-    <section id="pr-points-calculator" style={{ background: '#00291F', padding: '80px 100px' }} className="w-full">
+    <section id="pr-points-calculator" className="w-full bg-[#00291F] px-6 py-16 md:px-[60px] lg:px-[100px] lg:py-[80px]">
       {/* heading */}
       <h2
         className="font-poppins font-bold text-white text-center m-0"
-        style={{ fontSize: 36, lineHeight: '1.4em', marginBottom: 10 }}
+        style={{ fontSize: "clamp(28px, 3.5vw, 36px)", lineHeight: '1.4em', marginBottom: 10 }}
       >
         Calculate Your PR Points
       </h2>
@@ -487,13 +487,13 @@ function PRPointsCalculator({ onConsultation }) {
       </p>
 
       {/* Calculator body */}
-      <div className="flex gap-[40px] items-start" style={{ maxWidth: 1000, margin: '0 auto' }}>
+      <div className="flex flex-col lg:flex-row gap-[40px] items-center lg:items-start w-full" style={{ maxWidth: 1000, margin: '0 auto' }}>
         {/* Form card */}
         <div
-          className="flex-1 rounded-[16px]"
+          className="flex-1 w-full rounded-[16px]"
           style={{ background: '#FFFFFF', padding: '36px 32px' }}
         >
-          <div className="grid grid-cols-2 gap-x-[24px] gap-y-[24px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[24px] gap-y-[24px]">
             <div>
               <label style={labelStyle}>Age Group</label>
               <select value={age} onChange={(e) => { setAge(Number(e.target.value)); setCalculated(false); }} style={selectStyle}>
@@ -531,8 +531,8 @@ function PRPointsCalculator({ onConsultation }) {
 
         {/* Score display */}
         <div
-          className="flex flex-col items-center justify-center rounded-[16px]"
-          style={{ width: 320, flexShrink: 0, padding: '40px 30px', background: 'rgba(0,53,43,0.35)', border: '1px solid rgba(255,255,255,0.08)' }}
+          className="flex flex-col items-center justify-center rounded-[16px] w-full max-w-[320px] lg:w-[320px] lg:shrink-0"
+          style={{ padding: '40px 30px', background: 'rgba(0,53,43,0.35)', border: '1px solid rgba(255,255,255,0.08)' }}
         >
           <p
             className="font-poppins font-bold text-white m-0"
@@ -597,9 +597,8 @@ function JobSeekersPage() {
 
         {/* ═══ 1. HERO ═══════════════════════════════════════════════════════ */}
         <section
-          className="relative flex flex-col justify-center gap-[33px] px-[100px] py-[80px] w-full"
+          className="relative flex flex-col justify-center gap-[33px] px-6 py-16 md:px-[60px] lg:px-[100px] lg:py-[80px] w-full min-h-[500px] md:min-h-[600px] lg:min-h-[800px]"
           style={{
-            minHeight: 800,
             background: `linear-gradient(rgba(0,53,43,0.57),rgba(0,53,43,0.57)),
                          url('${HERO_BG}') center/cover no-repeat`,
           }}
@@ -607,21 +606,21 @@ function JobSeekersPage() {
           <div className="flex flex-col w-full" style={{ maxWidth: 840 }}>
             <h1
               className="font-poppins font-bold font-weight-700 m-0 text-[#fff]"
-              style={{ fontSize: 80, lineHeight: '1.5em', letterSpacing: '-0.001875em' }}
+              style={{ fontSize: "clamp(38px, 6vw, 80px)", lineHeight: '1.2em', letterSpacing: '-0.001875em' }}
             >
               For Job Seekers
             </h1>
             <p
-              className="font-poppins font-bold m-0"
-              style={{ fontSize: 30, lineHeight: '1.5em', letterSpacing: '-0.005em', color: '#FF3300' }}
+              className="font-poppins font-bold m-0 mt-2"
+              style={{ fontSize: "clamp(20px, 2.5vw, 30px)", lineHeight: '1.3em', letterSpacing: '-0.005em', color: '#FF3300' }}
             >
               Pay professional fees <span className="text-[#fff]">ONLY</span> after getting an Offer Letter.
             </p>
           </div>
 
           <p
-            className="font-poppins text-white m-0"
-            style={{ fontSize: 16, fontWeight: 400, lineHeight: 'normal', letterSpacing: '-0.15px', width: '100%', maxWidth: 704 }}
+            className="font-poppins text-white m-0 text-sm sm:text-base md:text-lg"
+            style={{ fontWeight: 400, lineHeight: '1.6em', letterSpacing: '-0.15px', width: '100%', maxWidth: 704 }}
           >
             Secure a sponsored job in Australia with <span style={{ fontWeight: 700 }}>Esante</span>.<br />
             <span style={{ fontWeight: 800 }}>We specialize in 482, 186, and PR visa pathways for skilled professionals.</span>
@@ -634,9 +633,8 @@ function JobSeekersPage() {
           <button
             type="button"
             onClick={openConsultation}
-            className="font-poppins font-normal text-white rounded-[12px] border-0 cursor-pointer"
+            className="font-poppins font-normal text-white rounded-[12px] border-0 cursor-pointer lg:absolute lg:left-[100px] lg:bottom-[80px] mt-4 lg:mt-0 self-start"
             style={{
-              position: 'absolute', left: 100, bottom: 80,
               fontSize: 18, lineHeight: '1.5em', letterSpacing: '-0.008333em',
               background: '#FF3300', border: '1px solid #FF3300',
               padding: '15px 25px',
@@ -647,13 +645,13 @@ function JobSeekersPage() {
         </section>
 
         {/* ═══ 2. STATS BAR ══════════════════════════════════════════════════ */}
-        <section className="flex flex-row items-stretch gap-[10px] px-[100px] py-[40px] w-full">
+        <section className="flex flex-col sm:flex-row items-center sm:items-stretch gap-6 px-6 py-8 md:px-[60px] lg:px-[100px] lg:py-[40px] w-full border-b border-black/5">
           {STATS.map((s) => (
-            <div key={s.label} className="flex flex-col items-center justify-center gap-[10px] p-[10px] flex-1">
-              <p className="font-poppins font-bold m-0" style={{ fontSize: 40, lineHeight: '1.5em', letterSpacing: '-0.00375em', color: '#00352B' }}>
+            <div key={s.label} className="flex flex-col items-center justify-center gap-[10px] p-[10px] flex-1 text-center">
+              <p className="font-poppins font-bold m-0" style={{ fontSize: "clamp(30px, 3.5vw, 40px)", lineHeight: '1.2em', letterSpacing: '-0.00375em', color: '#00352B' }}>
                 {s.value}
               </p>
-              <p className="font-poppins font-normal m-0" style={{ fontSize: 20, lineHeight: '1.5em', letterSpacing: '-0.0075em', color: '#00352B' }}>
+              <p className="font-poppins font-normal m-0 text-sm sm:text-base md:text-lg lg:text-xl" style={{ lineHeight: '1.3em', letterSpacing: '-0.0075em', color: '#00352B' }}>
                 {s.label}
               </p>
             </div>
@@ -663,26 +661,26 @@ function JobSeekersPage() {
         {/* ═══ 3. TOP IN-DEMAND JOBS ═════════════════════════════════════════ */}
         <section
           id="top-in-demand"
-          className="flex flex-col items-center py-[80px] w-full"
+          className="flex flex-col items-center px-6 py-16 md:px-[60px] lg:px-[100px] lg:py-[80px] w-full"
           style={{ background: '#FFFBE9' }}
         >
-          <div className="flex flex-col items-center gap-[25px] px-[100px] w-full max-w-[1440px]">
+          <div className="flex flex-col items-center gap-[25px] w-full max-w-[1440px]">
             <div className="flex flex-col items-center w-full">
-              <h2 className="font-poppins font-bold m-0 text-center" style={{ fontSize: 74, lineHeight: '1.5em', letterSpacing: '-0.002027em', color: '#00352B' }}>
+              <h2 className="font-poppins font-bold m-0 text-center" style={{ fontSize: "clamp(36px, 5.2vw, 74px)", lineHeight: '1.2em', letterSpacing: '-0.002027em', color: '#00352B' }}>
                 Top In-Demand Jobs
               </h2>
               <p
-                className="font-poppins font-normal m-0 text-center"
-                style={{ fontSize: 16, lineHeight: '1.5em', letterSpacing: '-0.009375em', width: '100%', maxWidth: 724, color: '#00352B' }}
+                className="font-poppins font-normal m-0 mt-3 text-center text-sm sm:text-base md:text-lg"
+                style={{ lineHeight: '1.5em', letterSpacing: '-0.009375em', width: '100%', maxWidth: 724, color: '#00352B' }}
               >
                 Legal pathways to employment abroad, including skilled migration, corporate,
                 and talent programs. Legal pathways to employment abroad, including
               </p>
             </div>
-            <div className="flex flex-row items-stretch gap-[30px] py-[10px] w-full">
+            <div className="flex flex-col lg:flex-row items-stretch gap-[30px] py-[10px] w-full">
               {JOB_CARDS_ROW1.map((c) => <JobCard key={c.title} {...c} />)}
             </div>
-            <div className="flex flex-row items-stretch gap-[30px] py-[10px] w-full">
+            <div className="flex flex-col lg:flex-row items-stretch gap-[30px] py-[10px] w-full">
               {JOB_CARDS_ROW2.map((c) => <JobCard key={c.title} {...c} />)}
               <SeeFullListCard onConsultation={openConsultation} />
             </div>
@@ -690,16 +688,16 @@ function JobSeekersPage() {
         </section>
 
         {/* ═══ 4. SKILLED VISA & PR PATHWAYS — text LEFT, image RIGHT ════════ */}
-        <section className="flex flex-row items-start px-[100px] py-[80px] w-full bg-white" style={{ gap: 40 }}>
-          <div className="flex flex-col" style={{ flex: '1 1 0', minWidth: 0 }}>
+        <section className="flex flex-col lg:flex-row items-center lg:items-start px-6 py-16 md:px-[60px] lg:px-[100px] lg:py-[80px] w-full bg-white gap-10 lg:gap-20">
+          <div className="flex flex-col w-full" style={{ flex: '1 1 0', minWidth: 0 }}>
             <h2
               className="m-0 font-poppins italic"
               style={{
                 color: '#F30',
-                fontSize: 43,
+                fontSize: "clamp(28px, 4vw, 43px)",
                 fontStyle: 'italic',
                 fontWeight: 600,
-                lineHeight: '150.37%',
+                lineHeight: '1.25em',
                 letterSpacing: '-0.15px',
               }}
             >
@@ -708,7 +706,7 @@ function JobSeekersPage() {
             <h3
               className="m-0 font-poppins text-black"
               style={{
-                fontSize: 43,
+                fontSize: "clamp(28px, 4vw, 43px)",
                 fontStyle: 'normal',
                 fontWeight: 400,
                 lineHeight: 'normal',
@@ -720,9 +718,7 @@ function JobSeekersPage() {
               We Work With
             </h3>
             <p className="m-0 font-poppins" style={VISA_BODY_TEXT_STYLE}>
-              We assist job seekers across all major Australian skilled
-              <br />
-              migration pathways, including:
+              We assist job seekers across all major Australian skilled migration pathways, including:
             </p>
             <ul className="m-0 mt-[4px] pl-[20px]" style={{ listStyleType: 'disc' }}>
               {VISA_POINTS.map((pt) => (
@@ -732,32 +728,28 @@ function JobSeekersPage() {
               ))}
             </ul>
             <p className="m-0 mt-[28px] font-poppins" style={VISA_BODY_TEXT_STYLE}>
-              Our team evaluates your skills, experience, occupation
-              <br />
-              demand and employer sponsorship potential before
-              <br />
-              recommending the most suitable visa strategy.
+              Our team evaluates your skills, experience, occupation demand and employer sponsorship potential before recommending the most suitable visa strategy.
             </p>
           </div>
-          <div className="flex-shrink-0 relative rounded-[31px] overflow-hidden" style={{ width: 460, height: 420 }}>
+          <div className="w-full max-w-[460px] aspect-[4/3] flex-shrink-0 relative rounded-[31px] overflow-hidden">
             <div className="absolute inset-0" style={{ backgroundImage: `url('${RECT_19}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
           </div>
         </section>
 
         {/* ═══ 5. END-TO-END RECRUITMENT — image LEFT, text RIGHT ═══════════ */}
-        <section className="flex flex-row items-start px-[100px] py-[80px] w-full bg-white" style={{ gap: 40 }}>
+        <section className="flex flex-col lg:flex-row items-center lg:items-start px-6 py-16 md:px-[60px] lg:px-[100px] lg:py-[80px] w-full bg-white gap-10 lg:gap-20">
           <div
-            className="flex-shrink-0 rounded-[31px]"
-            style={{ width: 460, height: 420, backgroundImage: `url('${IMG_59}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
+            className="w-full max-w-[460px] aspect-[4/3] flex-shrink-0 rounded-[31px]"
+            style={{ backgroundImage: `url('${IMG_59}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
           />
-          <div className="flex flex-col" style={{ flex: '1 1 0', minWidth: 0 }}>
+          <div className="flex flex-col w-full" style={{ flex: '1 1 0', minWidth: 0 }}>
             <h2
               className="m-0 font-poppins text-black"
               style={{
-                fontSize: 43,
+                fontSize: "clamp(28px, 4vw, 43px)",
                 fontStyle: 'normal',
                 fontWeight: 400,
-                lineHeight: '150.09%',
+                lineHeight: '1.2em',
                 letterSpacing: '-0.15px',
               }}
             >
@@ -767,10 +759,10 @@ function JobSeekersPage() {
               className="m-0 font-poppins italic"
               style={{
                 color: '#F30',
-                fontSize: 43,
+                fontSize: "clamp(28px, 4vw, 43px)",
                 fontStyle: 'italic',
                 fontWeight: 600,
-                lineHeight: '150.09%',
+                lineHeight: '1.2em',
                 letterSpacing: '-0.15px',
                 marginTop: 2,
                 marginBottom: 14,
@@ -797,13 +789,13 @@ function JobSeekersPage() {
 
         {/* ═══ 6. OUR PROFESSIONAL FEES — text LEFT, image RIGHT ═══════════ */}
         <section
-          className="flex w-full flex-col items-center bg-white px-6 py-[80px] md:px-[60px] lg:flex-row lg:items-center lg:gap-[40px] lg:px-[100px]"
+          className="flex w-full flex-col items-center bg-white px-6 py-16 md:px-[60px] lg:flex-row lg:items-center lg:gap-[40px] lg:px-[100px] lg:py-[80px]"
         >
           <div className="flex min-w-0 w-full flex-1 flex-col">
             <h2
               className="m-0 font-poppins text-black"
               style={{
-                fontSize: 43,
+                fontSize: "clamp(28px, 4vw, 43px)",
                 fontStyle: 'normal',
                 fontWeight: 400,
                 lineHeight: 'normal',
@@ -816,7 +808,7 @@ function JobSeekersPage() {
               className="m-0 font-poppins italic"
               style={{
                 color: '#FF3300',
-                fontSize: 43,
+                fontSize: "clamp(28px, 4vw, 43px)",
                 fontWeight: 600,
                 lineHeight: 'normal',
                 letterSpacing: '-0.15px',
@@ -825,9 +817,8 @@ function JobSeekersPage() {
               Transparent &amp; Risk-Free
             </h3>
             <p
-              className="m-0 mt-4 font-poppins text-black"
+              className="m-0 mt-4 font-poppins text-black text-sm sm:text-base md:text-lg"
               style={{
-                fontSize: 18,
                 fontWeight: 400,
                 lineHeight: '28px',
                 letterSpacing: '-0.15px',
@@ -839,9 +830,8 @@ function JobSeekersPage() {
               {FEES_POINTS.map((pt) => (
                 <li
                   key={pt}
-                  className="flex gap-[6px] font-poppins text-black"
+                  className="flex gap-[6px] font-poppins text-black text-sm sm:text-base md:text-lg"
                   style={{
-                    fontSize: 18,
                     fontWeight: 400,
                     lineHeight: '28px',
                     letterSpacing: '-0.15px',
@@ -855,9 +845,8 @@ function JobSeekersPage() {
               ))}
             </ul>
             <p
-              className="m-0 mt-4 font-poppins text-black"
+              className="m-0 mt-4 font-poppins text-black text-sm sm:text-base md:text-lg"
               style={{
-                fontSize: 18,
                 fontWeight: 400,
                 lineHeight: '28px',
                 letterSpacing: '-0.15px',
@@ -881,12 +870,12 @@ function JobSeekersPage() {
 
         {/* ═══ 7. STOP SEARCHING — START WORKING ═════════════════════════════ */}
         <section
-          className="flex flex-col items-center justify-center gap-[20px] px-[100px] py-[80px] w-full text-center bg-white"
+          className="flex flex-col items-center justify-center gap-[20px] px-6 py-16 md:px-[60px] lg:px-[100px] lg:py-[80px] w-full text-center bg-white"
         >
           <h2
             className="font-poppins m-0"
             style={{
-              fontSize: 'clamp(44px, 5vw, 64px)',
+              fontSize: 'clamp(36px, 5vw, 64px)',
               lineHeight: 1.08,
               fontWeight: 300,
               letterSpacing: '-0.03em',
@@ -900,7 +889,7 @@ function JobSeekersPage() {
           <p
             className="font-poppins m-0"
             style={{
-              fontSize: 'clamp(22px, 2.3vw, 30px)',
+              fontSize: 'clamp(18px, 2.3vw, 30px)',
               lineHeight: 1.2,
               letterSpacing: '-0.02em',
               color: '#111111',

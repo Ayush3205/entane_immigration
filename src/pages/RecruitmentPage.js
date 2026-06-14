@@ -307,12 +307,12 @@ export default function RecruitmentPage() {
     <div className="flex flex-col w-full bg-white overflow-x-hidden">
       <Header />
 
-      <div className="relative w-full mb-[120px]">
-        <div className="relative overflow-hidden w-full h-[90vh]">
+      <div className="relative w-full mb-[60px] lg:mb-[120px]">
+        <div className="relative w-full overflow-hidden flex flex-col lg:block pt-32 pb-12 px-6 lg:pt-0 lg:pb-0 lg:px-0 lg:h-[90vh] lg:min-h-[600px]">
           <img
             alt=""
             src={HERO_BG}
-            className="absolute inset-0 pointer-events-none"
+            className="absolute inset-0 pointer-events-none z-[1]"
             style={{
               width: "100%",
               height: "100%",
@@ -322,57 +322,42 @@ export default function RecruitmentPage() {
           />
 
           <div
-            className="absolute z-[2] overflow-hidden pointer-events-none rounded-[50px]"
-            style={{
-              right: "80px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: "636px",
-              height: "477px",
-            }}
+            className="relative lg:absolute z-[2] overflow-hidden pointer-events-none rounded-[30px] lg:rounded-[50px] w-full max-w-[450px] mx-auto lg:w-[636px] lg:h-[477px] order-2 lg:order-none lg:right-[80px] lg:top-1/2 lg:-translate-y-1/2"
           >
             <img
               alt=""
               src={HERO_OVERLAY}
-              className="block h-full w-full object-cover object-center"
+              className="block w-full h-auto lg:h-full lg:object-cover object-center"
               style={{ border: "none", outline: "none", transform: "scale(1.02)" }}
             />
           </div>
 
           <div
-            className="absolute z-[3] flex flex-col items-start"
+            className="relative lg:absolute z-[3] flex flex-col items-start w-full lg:max-w-[45%] mb-8 lg:mb-0 order-1 lg:order-none lg:left-[clamp(24px,5vw,80px)] lg:top-1/2 lg:-translate-y-1/2"
             style={{
-              left: "clamp(24px, 5vw, 80px)",
-              top: "50%",
-              transform: "translateY(-50%)",
               gap: "8px",
-              maxWidth: "45%",
             }}
           >
             <p
-              className="font-poppins font-medium tracking-[-0.56px] text-[#00352B] underline decoration-solid mb-7"
+              className="font-poppins font-medium tracking-[-0.56px] text-[#00352B] underline decoration-solid mb-4 lg:mb-7 text-xl md:text-2xl lg:text-3xl"
               style={{
-                fontSize: "28px",
-                lineHeight: "28px",
-                height: "21px",
+                lineHeight: "1.1",
               }}
             >
               Recruitment
             </p>
 
             <p
-              className="font-poppins font-semibold italic text-accent m-0"
+              className="font-poppins font-semibold italic text-accent m-0 text-3xl md:text-4xl lg:text-5xl"
               style={{
-                fontSize: "clamp(28px, 3.6vw, 52px)",
                 lineHeight: "1.1",
               }}
             >
               Your Skills. Our Network
             </p>
             <p
-              className="font-poppins font-semibold italic text-accent mb-7"
+              className="font-poppins font-semibold italic text-accent mb-4 lg:mb-7 text-3xl md:text-4xl lg:text-5xl"
               style={{
-                fontSize: "clamp(28px, 3.6vw, 52px)",
                 lineHeight: "1.1",
               }}
             >
@@ -380,19 +365,12 @@ export default function RecruitmentPage() {
             </p>
 
             <p
-              className="font-poppins font-normal text-primary mb-7"
+              className="font-poppins font-normal text-primary mb-4 lg:mb-7 text-base md:text-lg lg:text-xl"
               style={{
-                fontSize: "clamp(20px, 2.8vw, 21px)",
                 lineHeight: "normal",
               }}
             >
-              Australia is calling for skilled professionals. We connect 
-              <br />
-              you with top employers in Healthcare, Mining, and Trades
-              <br />
-              -and you don&apos;t pay our professional fee until you have 
-              <br />
-              the Offer Letter in your hand.
+              Australia is calling for skilled professionals. We connect you with top employers in Healthcare, Mining, and Trades - and you don't pay our professional fee until you have the Offer Letter in your hand.
             </p>
 
             <button
@@ -400,14 +378,13 @@ export default function RecruitmentPage() {
               onClick={openConsultation}
               className="inline-flex items-center justify-center bg-accent cursor-pointer border-0 mt-1"
               style={{
-                padding: "7px 16px",
+                padding: "8px 18px",
                 borderRadius: "20px",
               }}
             >
               <span
-                className="font-poppins font-medium text-cream text-center"
+                className="font-poppins font-medium text-cream text-center text-xs sm:text-sm"
                 style={{
-                  fontSize: "clamp(11px, 1vw, 14px)",
                   lineHeight: "1.4",
                 }}
               >
@@ -591,11 +568,11 @@ export default function RecruitmentPage() {
           </section>
 
           <section className="grid items-center gap-10 px-6 py-[70px] md:px-[60px] lg:grid-cols-[454px_minmax(0,632px)] lg:px-[100px]">
-            <div className="overflow-hidden rounded-[27px]">
+            <div className="w-full max-w-[450px] mx-auto overflow-hidden rounded-[27px]">
               <img
                 src={SKILLED_PROFESSIONALS_IMAGE}
                 alt="Skilled professionals in Australia"
-                className="h-full w-full object-cover"
+                className="block w-full h-auto lg:h-full lg:object-cover"
               />
             </div>
 
@@ -772,11 +749,11 @@ export default function RecruitmentPage() {
               </ul>
             </div>
 
-            <div className="justify-self-end overflow-hidden rounded-[39px] lg:mr-[-130px]">
+            <div className="w-full max-w-[450px] mx-auto lg:mx-0 lg:justify-self-end overflow-hidden rounded-[39px] lg:mr-[-130px]">
               <img
                 src={PATHWAY_IMAGE}
                 alt="Permanent residency pathway support"
-                className="h-full w-full object-cover"
+                className="block w-full h-auto lg:h-full lg:object-cover"
               />
             </div>
           </section>
@@ -860,10 +837,7 @@ export default function RecruitmentPage() {
                 {SUCCESS_STORIES.map((story) => (
                   <article
                     key={story.title}
-                    className="flex min-h-[404px] flex-col items-center rounded-[59px] bg-white px-8 py-10 text-center shrink-0"
-                    style={{
-                      width: "calc((100% - 56px) / 3)",
-                    }}
+                    className="flex min-h-[404px] flex-col items-center rounded-[59px] bg-white px-8 py-10 text-center shrink-0 w-[290px] sm:w-[340px] lg:w-[calc((100%-56px)/3)]"
                   >
                     <h3
                       className="flex min-h-[90px] items-center justify-center font-poppins text-[#00373E]"
@@ -904,7 +878,7 @@ export default function RecruitmentPage() {
                     </h3>
 
                     <p
-                      className="mx-auto mt-6 flex min-h-[130px] max-w-[307px] items-center font-poppins text-[#00373E]"
+                      className="mx-auto mt-6 flex min-h-[130px] max-w-[220px] sm:max-w-[280px] lg:max-w-[307px] items-center font-poppins text-[#00373E]"
                       style={{
                         fontSize: "18px",
                         fontWeight: 400,

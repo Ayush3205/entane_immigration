@@ -52,7 +52,7 @@ function EmployersPage() {
       <main className="service-page__main" style={{ paddingTop: 0, paddingBottom: 0 }}>
         <section
           className="relative w-full overflow-hidden"
-          style={{ minHeight: 'clamp(620px, 78vw, 724px)' }}
+          style={{ minHeight: 'clamp(500px, 70vw, 724px)' }}
         >
           <img
             src={HERO_IMAGE}
@@ -61,18 +61,18 @@ function EmployersPage() {
             style={{ border: 'none', outline: 'none' }}
           />
           <div
-            className="relative z-[1] flex h-full w-full px-5 py-[128px] sm:px-8 lg:px-[100px]"
-            style={{ minHeight: 'clamp(620px, 78vw, 724px)' }}
+            className="relative z-[1] flex h-full w-full px-6 py-16 sm:px-8 lg:px-[100px] lg:py-[128px]"
+            style={{ minHeight: 'clamp(500px, 70vw, 724px)' }}
           >
             <div className="flex w-full items-center">
               <div className="flex w-full max-w-[560px] flex-col gap-5 lg:gap-7">
                 <h1
                   className="font-poppins text-[#00352B]"
                   style={{
-                    fontSize: '72px',
+                    fontSize: 'clamp(38px, 6vw, 72px)',
                     fontWeight: 700,
                     letterSpacing: '-0.15px',
-                    lineHeight: 'normal',
+                    lineHeight: '1.15em',
                   }}
                 >
                   For Employers
@@ -81,51 +81,43 @@ function EmployersPage() {
                 <p
                   className="max-w-[520px] font-poppins text-[#FF3300]"
                   style={{
-                    fontSize: '30px',
+                    fontSize: 'clamp(20px, 2.8vw, 30px)',
                     fontWeight: 700,
                     letterSpacing: '-0.15px',
-                    lineHeight: '131.8%',
+                    lineHeight: '1.3em',
                     marginTop: -2,
                   }}
                 >
-                  Hire Skilled Overseas Talent —
-                  <br />
-                  Without the Complexity
+                  Hire Skilled Overseas Talent — Without the Complexity
                 </p>
 
                 <div
                   className="max-w-[520px] font-poppins text-black"
                   style={{
-                    fontSize: '21px',
+                    fontSize: 'clamp(16px, 1.8vw, 21px)',
                     fontWeight: 400,
                     letterSpacing: '-0.15px',
-                    lineHeight: 'normal',
+                    lineHeight: '1.45em',
                   }}
                 >
                   <p className="m-0">
-                    Australia faces critical skill shortages
-                    <br />
-                    across key industries.
+                    Australia faces critical skill shortages across key industries.
                   </p>
-                  <p className="m-0 mt-[8px]">
-                    Esante helps you source, sponsor, and
-                    <br />
-                    onboard skilled overseas talent — end-to-end.
+                  <p className="m-0 mt-[12px]">
+                    Esante helps you source, sponsor, and onboard skilled overseas talent — end-to-end.
                   </p>
                 </div>
 
                 <p
                   className="max-w-[520px] font-poppins text-black"
                   style={{
-                    fontSize: '21px',
+                    fontSize: 'clamp(16px, 1.8vw, 21px)',
                     fontWeight: 700,
                     letterSpacing: '-0.15px',
-                    lineHeight: 'normal',
+                    lineHeight: '1.45em',
                   }}
                 >
-                  We’re your recruitment + migration partner
-                  <br />
-                  — not just a sourcing agency.
+                  We’re your recruitment + migration partner — not just a sourcing agency.
                 </p>
 
                 <div className="pt-1">
@@ -148,13 +140,13 @@ function EmployersPage() {
           </div>
         </section>
 
-        <section className="w-full bg-white px-5 py-[72px] sm:px-8 lg:px-[100px] lg:py-[88px]">
+        <section className="w-full bg-white px-6 py-16 md:px-[60px] lg:px-[100px] lg:py-[88px]">
           <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-[52px]">
             <div className="w-full max-w-[473px] flex-shrink-0 overflow-hidden rounded-[34px] lg:rounded-[40px]">
               <img
                 src={EMPLOYERS_CHOOSE_IMAGE}
                 alt="Smiling professionals giving thumbs up"
-                className="block h-full w-full object-cover"
+                className="block w-full h-auto lg:h-full lg:object-cover"
               />
             </div>
 
@@ -332,7 +324,7 @@ function EmployersPage() {
           </div>
         </section>
 
-        <section className="w-full bg-white px-5 py-[78px] sm:px-8 lg:px-[100px] lg:py-[92px]">
+        <section className="w-full bg-white px-6 py-16 md:px-[60px] lg:px-[100px] lg:py-[92px]">
           <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-10 md:flex-row md:items-start md:justify-between md:gap-[40px] lg:gap-[68px]">
             <div className="flex w-full max-w-[560px] flex-col pt-[14px] md:pt-[50px]">
               <h2
@@ -405,13 +397,13 @@ function EmployersPage() {
               <img
                 src={RED_TAPE_IMAGE}
                 alt="Skilled workers smiling together outdoors"
-                className="block h-full w-full object-cover"
+                className="block w-full h-auto md:h-full md:object-cover"
               />
             </div>
           </div>
         </section>
 
-        <section className="w-full bg-white px-5 pb-[56px] pt-[8px] sm:px-8 lg:px-[100px]">
+        <section className="w-full bg-white px-6 py-16 md:px-[60px] lg:px-[100px]">
           <div className="mx-auto flex max-w-[1240px] flex-col items-center text-center">
             <h2
               className="font-poppins italic text-[#FF3300]"
@@ -465,7 +457,7 @@ function EmployersPage() {
           </div>
         </section>
 
-        <section className="w-full bg-white px-5 py-[54px] sm:px-8 lg:px-[100px] lg:py-[78px]">
+        <section className="w-full bg-white px-6 py-16 md:px-[60px] lg:px-[100px] lg:py-[78px]">
           <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-10 md:flex-row md:items-center md:justify-start md:gap-[100px]">
             <div className="flex w-full max-w-[690px] flex-col">
               <h2
@@ -484,72 +476,66 @@ function EmployersPage() {
 
               <div className="mt-[34px] flex flex-col gap-[6px]">
                 <p
-                  className="m-0 font-poppins text-black"
+                  className="m-0 font-poppins text-black text-sm sm:text-base md:text-lg"
                   style={{
-                    fontSize: 'clamp(16px, 1.2vw, 18px)',
                     fontWeight: 400,
                     letterSpacing: '-0.15px',
-                    lineHeight: 1.2,
+                    lineHeight: '1.4em',
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>Workforce Assessment</span> - Understanding your hiring needs and timelines
                 </p>
 
                 <p
-                  className="m-0 font-poppins text-black"
+                  className="m-0 font-poppins text-black text-sm sm:text-base md:text-lg"
                   style={{
-                    fontSize: 'clamp(16px, 1.2vw, 18px)',
                     fontWeight: 400,
                     letterSpacing: '-0.15px',
-                    lineHeight: 1.2,
+                    lineHeight: '1.4em',
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>Global Talent Sourcing</span> - Accessing pre-screened international candidates
                 </p>
 
                 <p
-                  className="m-0 font-poppins text-black"
+                  className="m-0 font-poppins text-black text-sm sm:text-base md:text-lg"
                   style={{
-                    fontSize: 'clamp(16px, 1.2vw, 18px)',
                     fontWeight: 400,
                     letterSpacing: '-0.15px',
-                    lineHeight: 1.2,
+                    lineHeight: '1.4em',
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>Skills &amp; Visa Screening</span> - Ensuring eligibility and compliance
                 </p>
 
                 <p
-                  className="m-0 font-poppins text-black"
+                  className="m-0 font-poppins text-black text-sm sm:text-base md:text-lg"
                   style={{
-                    fontSize: 'clamp(16px, 1.2vw, 18px)',
                     fontWeight: 400,
                     letterSpacing: '-0.15px',
-                    lineHeight: 1.2,
+                    lineHeight: '1.4em',
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>Interview Coordination</span> - Managing candidate interviews
                 </p>
 
                 <p
-                  className="m-0 font-poppins text-black"
+                  className="m-0 font-poppins text-black text-sm sm:text-base md:text-lg"
                   style={{
-                    fontSize: 'clamp(16px, 1.2vw, 18px)',
                     fontWeight: 400,
                     letterSpacing: '-0.15px',
-                    lineHeight: 1.2,
+                    lineHeight: '1.4em',
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>Offer &amp; Processing</span> - Handling sponsorship and visa documentation
                 </p>
 
                 <p
-                  className="m-0 font-poppins text-black"
+                  className="m-0 font-poppins text-black text-sm sm:text-base md:text-lg"
                   style={{
-                    fontSize: 'clamp(16px, 1.2vw, 18px)',
                     fontWeight: 400,
                     letterSpacing: '-0.15px',
-                    lineHeight: 1.2,
+                    lineHeight: '1.4em',
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>Post-Arrival Support</span> - Supporting onboarding and settlement
@@ -561,13 +547,13 @@ function EmployersPage() {
               <img
                 src={RECRUITMENT_IMAGE}
                 alt="Employer recruitment meeting around a table"
-                className="block h-full w-full object-cover"
+                className="block w-full h-auto object-cover"
               />
             </div>
           </div>
         </section>
 
-        <div className="w-full bg-white px-5 pt-[12px] sm:px-8 lg:px-[100px]">
+        <div className="w-full bg-white px-6 py-6 sm:px-8 lg:px-[100px]">
           <EsanteBanner
             line1="Ready to"
             line2="Build a Truly Global Team?"
@@ -575,9 +561,9 @@ function EmployersPage() {
             line4=""
             subtext="Fill your vacancies with the world’s best talent."
             buttonText="Book Free Call"
-            line1ClassName="font-poppins text-[54px] pb-[30px] font-semibold italic leading-[17px] text-white tracking-[-1.08px] text-center"
-            line2ClassName="font-poppins text-[54px] font-semibold italic leading-[58px] text-white tracking-[-1.08px] text-center"
-            subtextClassName="mt-8 w-full max-w-[800px] pb-[20px] font-poppins text-[34px] font-normal leading-[20px] text-white text-center tracking-[-0.68px]"
+            line1ClassName="font-poppins text-3xl sm:text-5xl lg:text-[54px] pb-4 sm:pb-[30px] font-semibold italic leading-tight text-white tracking-[-1.08px] text-center"
+            line2ClassName="font-poppins text-3xl sm:text-5xl lg:text-[54px] font-semibold italic leading-tight text-white tracking-[-1.08px] text-center"
+            subtextClassName="mt-6 sm:mt-8 w-full max-w-[800px] pb-4 sm:pb-[20px] font-poppins text-lg sm:text-3xl lg:text-[34px] font-normal leading-relaxed text-white text-center tracking-[-0.68px]"
           />
         </div>
       </main>

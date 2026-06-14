@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Reusable/Header';
 import Footer from '../components/Reusable/Footer';
+import { sendLeadEmail } from '../services/emailjsService';
 
 function EligibilityCalculatorPage() {
   const [activeTab, setActiveTab] = useState('PROFILE');
@@ -23,15 +24,24 @@ function EligibilityCalculatorPage() {
     testDate: '',
   });
 
+  const [profileErrors, setProfileErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
   const tabs = ['PROFILE', 'EDUCATION', 'EXPERIENCE', 'ENGLISH'];
   const ageGroups = ['18-24', '25-32', '33-39', '40-44', '45+'];
   const isFinalStep = activeTab === tabs[tabs.length - 1];
 
   const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+    setProfileErrors((p) => ({
+      ...p,
+      [name]: '',
+    }));
   };
 
   const sectionConfig = {
@@ -70,6 +80,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. Sarah"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.firstName && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.firstName}</span>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#00352B] mb-2">Last Name</label>
@@ -81,6 +94,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. Jenkins"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.lastName && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.lastName}</span>
+                )}
               </div>
             </div>
 
@@ -98,6 +114,9 @@ function EligibilityCalculatorPage() {
                   placeholder="name@example.com"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.email && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.email}</span>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#00352B] mb-2">
@@ -111,6 +130,9 @@ function EligibilityCalculatorPage() {
                   placeholder="+61 ..."
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.phone && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.phone}</span>
+                )}
               </div>
             </div>
 
@@ -152,6 +174,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. Bachelor’s Degree"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.highestQualification && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.highestQualification}</span>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#00352B] mb-2">
@@ -165,6 +190,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. Computer Science"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.fieldOfStudy && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.fieldOfStudy}</span>
+                )}
               </div>
             </div>
 
@@ -181,6 +209,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. 2022"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.graduationYear && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.graduationYear}</span>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#00352B] mb-2">
@@ -194,6 +225,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. Feb 2026"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.preferredIntake && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.preferredIntake}</span>
+                )}
               </div>
             </div>
           </>
@@ -214,6 +248,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. 3 years"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.yearsExperience && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.yearsExperience}</span>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#00352B] mb-2">
@@ -227,6 +264,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. Software Engineer"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.currentRole && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.currentRole}</span>
+                )}
               </div>
             </div>
 
@@ -241,6 +281,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. IT, Healthcare"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.industry && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.industry}</span>
+                )}
               </div>
             </div>
           </>
@@ -261,6 +304,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. IELTS, PTE"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.englishTest && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.englishTest}</span>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#00352B] mb-2">
@@ -274,6 +320,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. 7.5"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.englishScore && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.englishScore}</span>
+                )}
               </div>
             </div>
 
@@ -288,6 +337,9 @@ function EligibilityCalculatorPage() {
                   placeholder="e.g. Jan 2025"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-all"
                 />
+                {profileErrors.testDate && (
+                  <span style={{ color: '#b42318', fontSize: '12px', display: 'block', marginTop: '4px' }}>{profileErrors.testDate}</span>
+                )}
               </div>
             </div>
           </>
@@ -297,15 +349,266 @@ function EligibilityCalculatorPage() {
     }
   };
 
+  const validateProfile = () => {
+    const errors = {};
+    if (!formData.firstName.trim()) {
+      errors.firstName = 'First Name is required';
+    }
+    if (!formData.lastName.trim()) {
+      errors.lastName = 'Last Name is required';
+    }
+    const emailTrimmed = formData.email.trim();
+    if (!emailTrimmed) {
+      errors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(emailTrimmed)) {
+        errors.email = 'Please enter a valid email address';
+      }
+    }
+    const phoneTrimmed = formData.phone.trim();
+    if (phoneTrimmed) {
+      const phoneRegex = /^\+?[0-9\s\-()]+$/;
+      const digitsOnly = phoneTrimmed.replace(/\D/g, '');
+
+      if (!phoneRegex.test(phoneTrimmed)) {
+        errors.phone = 'Phone number can only contain digits, spaces, dashes, parentheses, or +';
+      } else if (phoneTrimmed.startsWith('+')) {
+        if (phoneTrimmed.startsWith('+91')) {
+          if (digitsOnly.substring(2).length !== 10) {
+            errors.phone = 'Indian phone number must be exactly 10 digits after +91';
+          }
+        } else if (phoneTrimmed.startsWith('+61')) {
+          if (![9, 10].includes(digitsOnly.substring(2).length)) {
+            errors.phone = 'Australian phone number must be 9 or 10 digits after +61';
+          }
+        } else if (phoneTrimmed.startsWith('+1')) {
+          if (digitsOnly.substring(1).length !== 10) {
+            errors.phone = 'US/Canada phone number must be exactly 10 digits after +1';
+          }
+        } else {
+          if (digitsOnly.length < 11 || digitsOnly.length > 14) {
+            errors.phone = 'International phone number has an invalid length';
+          }
+        }
+      } else {
+        if (digitsOnly.length !== 10) {
+          errors.phone = 'Local phone number must be exactly 10 digits';
+        }
+      }
+    }
+    setProfileErrors((p) => {
+      const cleaned = { ...p };
+      delete cleaned.firstName;
+      delete cleaned.lastName;
+      delete cleaned.email;
+      delete cleaned.phone;
+      return { ...cleaned, ...errors };
+    });
+    return Object.keys(errors).length === 0;
+  };
+
+  const validateEducation = () => {
+    const errors = {};
+    if (!formData.highestQualification.trim()) {
+      errors.highestQualification = 'Highest Qualification is required';
+    }
+    if (!formData.fieldOfStudy.trim()) {
+      errors.fieldOfStudy = 'Field of Study is required';
+    }
+    if (!formData.graduationYear.trim()) {
+      errors.graduationYear = 'Graduation Year is required';
+    }
+    if (!formData.preferredIntake.trim()) {
+      errors.preferredIntake = 'Preferred Intake is required';
+    }
+    setProfileErrors((p) => {
+      const cleaned = { ...p };
+      delete cleaned.highestQualification;
+      delete cleaned.fieldOfStudy;
+      delete cleaned.graduationYear;
+      delete cleaned.preferredIntake;
+      return { ...cleaned, ...errors };
+    });
+    return Object.keys(errors).length === 0;
+  };
+
+  const validateExperience = () => {
+    const errors = {};
+    if (!formData.yearsExperience.trim()) {
+      errors.yearsExperience = 'Years of Experience is required';
+    }
+    if (!formData.currentRole.trim()) {
+      errors.currentRole = 'Current Role is required';
+    }
+    if (!formData.industry.trim()) {
+      errors.industry = 'Industry is required';
+    }
+    setProfileErrors((p) => {
+      const cleaned = { ...p };
+      delete cleaned.yearsExperience;
+      delete cleaned.currentRole;
+      delete cleaned.industry;
+      return { ...cleaned, ...errors };
+    });
+    return Object.keys(errors).length === 0;
+  };
+
+  const validateEnglish = () => {
+    const errors = {};
+    if (!formData.englishTest.trim()) {
+      errors.englishTest = 'English Test is required';
+    }
+    if (!formData.englishScore.trim()) {
+      errors.englishScore = 'Overall Score is required';
+    }
+    if (!formData.testDate.trim()) {
+      errors.testDate = 'Test Date is required';
+    }
+    setProfileErrors((p) => {
+      const cleaned = { ...p };
+      delete cleaned.englishTest;
+      delete cleaned.englishScore;
+      delete cleaned.testDate;
+      return { ...cleaned, ...errors };
+    });
+    return Object.keys(errors).length === 0;
+  };
+
+  const validateActiveStep = () => {
+    if (activeTab === 'PROFILE') {
+      return validateProfile();
+    }
+    if (activeTab === 'EDUCATION') {
+      return validateEducation();
+    }
+    if (activeTab === 'EXPERIENCE') {
+      return validateExperience();
+    }
+    if (activeTab === 'ENGLISH') {
+      return validateEnglish();
+    }
+    return true;
+  };
+
+  const isTabAccessible = (tab) => {
+    const targetIndex = tabs.indexOf(tab);
+    const currentIndex = tabs.indexOf(activeTab);
+    
+    if (targetIndex <= currentIndex) {
+      return true;
+    }
+    
+    if (targetIndex > 0) {
+      if (!validateProfile()) return false;
+    }
+    if (targetIndex > 1) {
+      if (!validateEducation()) return false;
+    }
+    if (targetIndex > 2) {
+      if (!validateExperience()) return false;
+    }
+    return true;
+  };
+
+  const handleTabClick = (tab) => {
+    if (isTabAccessible(tab)) {
+      setActiveTab(tab);
+    } else {
+      validateActiveStep();
+    }
+  };
+
   const handleNextStep = () => {
+    if (!validateActiveStep()) {
+      return;
+    }
     const currentIndex = tabs.indexOf(activeTab);
     if (currentIndex < tabs.length - 1) {
       setActiveTab(tabs[currentIndex + 1]);
     }
   };
 
-  const handleSubmit = () => {
-    setShowSuccessPopup(true);
+  const handleSubmit = async () => {
+    const isProfileValid = validateProfile();
+    const isEducationValid = validateEducation();
+    const isExperienceValid = validateExperience();
+    const isEnglishValid = validateEnglish();
+
+    if (!isProfileValid) {
+      setActiveTab('PROFILE');
+      return;
+    }
+    if (!isEducationValid) {
+      setActiveTab('EDUCATION');
+      return;
+    }
+    if (!isExperienceValid) {
+      setActiveTab('EXPERIENCE');
+      return;
+    }
+    if (!isEnglishValid) {
+      setActiveTab('ENGLISH');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const detailMessage = `
+Age Group: ${selectedAge}
+
+Education Details:
+- Highest Qualification: ${formData.highestQualification}
+- Field of Study: ${formData.fieldOfStudy}
+- Graduation Year: ${formData.graduationYear}
+- Preferred Intake: ${formData.preferredIntake}
+
+Work Experience:
+- Years of Experience: ${formData.yearsExperience}
+- Current Role: ${formData.currentRole}
+- Industry: ${formData.industry}
+
+English Proficiency:
+- Test: ${formData.englishTest}
+- Overall Score: ${formData.englishScore}
+- Test Date: ${formData.testDate}
+`.trim();
+
+      const leadData = {
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
+        phone: formData.phone || 'Not provided',
+        message: detailMessage,
+      };
+
+      await sendLeadEmail(leadData, 'Eligibility Calculator');
+      setShowSuccessPopup(true);
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        highestQualification: '',
+        fieldOfStudy: '',
+        graduationYear: '',
+        preferredIntake: '',
+        yearsExperience: '',
+        currentRole: '',
+        industry: '',
+        englishTest: '',
+        englishScore: '',
+        testDate: '',
+      });
+      setSelectedAge('25-32');
+      setProfileErrors({});
+    } catch (err) {
+      console.error('Submission failed:', err);
+      setSubmitError('Failed to submit eligibility assessment. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -358,7 +661,7 @@ function EligibilityCalculatorPage() {
               {tabs.map((tab) => (
                 <button
                   key={tab}
-                  onClick={() => setActiveTab(tab)}
+                  onClick={() => handleTabClick(tab)}
                   className={`flex-1 py-4 px-6 text-sm font-medium transition-all ${
                     activeTab === tab
                       ? 'text-[#00352B] border-b-2 border-[#00352B]'
@@ -385,14 +688,18 @@ function EligibilityCalculatorPage() {
                 {renderTabFields()}
 
                 {/* Next Step – Figma: substantial gap (60–70px) above button */}
-                <div className="flex justify-end" style={{ marginTop: '64px', paddingTop: '8px' }}>
+                <div className="flex flex-col items-end gap-2" style={{ marginTop: '64px', paddingTop: '8px', width: '100%' }}>
+                  {submitError && (
+                    <span style={{ color: '#b42318', fontSize: '14px', marginBottom: '8px' }}>{submitError}</span>
+                  )}
                   <button
                     type="button"
                     onClick={isFinalStep ? handleSubmit : handleNextStep}
+                    disabled={isSubmitting}
                     className="bg-[#00352B] text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
                   >
-                    {isFinalStep ? 'Submit' : 'Next Step'}
-                    {!isFinalStep && (
+                    {isSubmitting ? 'Sending...' : (isFinalStep ? 'Submit' : 'Next Step')}
+                    {!isFinalStep && !isSubmitting && (
                       <svg
                         className="w-4 h-4"
                         fill="none"

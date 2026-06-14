@@ -208,6 +208,8 @@ const EXPENSE_SCHOLARSHIP_FAQ_ITEMS = [
 export default function ExpensePlanningScholarshipsPage() {
   const [eForm, setEForm] = useState({ fullName: '', email: '', phone: '', degreeLevel: '', intake: '' });
   const [qForm, setQForm] = useState({ firstName: '', lastName: '', email: '', scholarship: '', query: '' });
+  const [eErrors, setEErrors] = useState({});
+  const [qErrors, setQErrors] = useState({});
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
   const toggleFaq = (index) => {
@@ -217,8 +219,102 @@ export default function ExpensePlanningScholarshipsPage() {
   const openConsultation = () =>
     window.dispatchEvent(new CustomEvent('openConsultationPopup'));
 
-  const onE = (e) => setEForm((p) => ({ ...p, [e.target.name]: e.target.value }));
-  const onQ = (e) => setQForm((p) => ({ ...p, [e.target.name]: e.target.value }));
+  const onE = (e) => {
+    const { name, value } = e.target;
+    setEForm((p) => ({ ...p, [name]: value }));
+    setEErrors((p) => ({ ...p, [name]: '' }));
+  };
+
+  const onQ = (e) => {
+    const { name, value } = e.target;
+    setQForm((p) => ({ ...p, [name]: value }));
+    setQErrors((p) => ({ ...p, [name]: '' }));
+  };
+
+  const handleEligibilitySubmit = () => {
+    const errors = {};
+    if (!eForm.fullName.trim()) {
+      errors.fullName = 'Full Name is required';
+    }
+    const emailTrimmed = eForm.email.trim();
+    if (!emailTrimmed) {
+      errors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(emailTrimmed)) {
+        errors.email = 'Please enter a valid email address';
+      }
+    }
+    const phoneTrimmed = eForm.phone.trim();
+    if (phoneTrimmed) {
+      const phoneRegex = /^\+?[0-9\s\-()]+$/;
+      const digitsOnly = phoneTrimmed.replace(/\D/g, '');
+
+      if (!phoneRegex.test(phoneTrimmed)) {
+        errors.phone = 'Phone number can only contain digits, spaces, dashes, parentheses, or +';
+      } else if (phoneTrimmed.startsWith('+')) {
+        if (phoneTrimmed.startsWith('+91')) {
+          if (digitsOnly.substring(2).length !== 10) {
+            errors.phone = 'Indian phone number must be exactly 10 digits after +91';
+          }
+        } else if (phoneTrimmed.startsWith('+61')) {
+          if (![9, 10].includes(digitsOnly.substring(2).length)) {
+            errors.phone = 'Australian phone number must be 9 or 10 digits after +61';
+          }
+        } else if (phoneTrimmed.startsWith('+1')) {
+          if (digitsOnly.substring(1).length !== 10) {
+            errors.phone = 'US/Canada phone number must be exactly 10 digits after +1';
+          }
+        } else {
+          if (digitsOnly.length < 11 || digitsOnly.length > 14) {
+            errors.phone = 'International phone number has an invalid length';
+          }
+        }
+      } else {
+        if (digitsOnly.length !== 10) {
+          errors.phone = 'Local phone number must be exactly 10 digits';
+        }
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setEErrors(errors);
+      return;
+    }
+
+    alert('Our scholarship advisor will contact you soon!');
+    setEForm({ fullName: '', email: '', phone: '', degreeLevel: '', intake: '' });
+    setEErrors({});
+  };
+
+  const handleQuerySubmit = (e) => {
+    e.preventDefault();
+    const errors = {};
+    if (!qForm.firstName.trim()) {
+      errors.firstName = 'First Name is required';
+    }
+    if (!qForm.lastName.trim()) {
+      errors.lastName = 'Last Name is required';
+    }
+    const emailTrimmed = qForm.email.trim();
+    if (!emailTrimmed) {
+      errors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(emailTrimmed)) {
+        errors.email = 'Please enter a valid email address';
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setQErrors(errors);
+      return;
+    }
+
+    alert('Your enquiry has been submitted! Our scholarship advisor will reach out shortly.');
+    setQForm({ firstName: '', lastName: '', email: '', scholarship: '', query: '' });
+    setQErrors({});
+  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', width: '100%', background: '#fff' }}>
@@ -357,18 +453,31 @@ export default function ExpensePlanningScholarshipsPage() {
                 <HeroField label="Full Name">
                   <input type="text" name="fullName" placeholder="e.g. John Doe"
                     value={eForm.fullName} onChange={onE} style={heroInput} />
+                  {eErrors.fullName && (
+                    <span style={{ color: '#b42318', fontSize: '11px', display: 'block', marginTop: '3px' }}>{eErrors.fullName}</span>
+                  )}
                 </HeroField>
 
                 {/* Email + Phone */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <HeroField label="Email Address">
-                    <input type="email" name="email" placeholder="john@email.com"
-                      value={eForm.email} onChange={onE} style={heroInput} />
-                  </HeroField>
-                  <HeroField label="Phone Number">
-                    <input type="tel" name="phone" placeholder="+91 ..."
-                      value={eForm.phone} onChange={onE} style={heroInput} />
-                  </HeroField>
+                  <div>
+                    <HeroField label="Email Address">
+                      <input type="email" name="email" placeholder="john@email.com"
+                        value={eForm.email} onChange={onE} style={heroInput} />
+                    </HeroField>
+                    {eErrors.email && (
+                      <span style={{ color: '#b42318', fontSize: '11px', display: 'block', marginTop: '3px' }}>{eErrors.email}</span>
+                    )}
+                  </div>
+                  <div>
+                    <HeroField label="Phone Number">
+                      <input type="tel" name="phone" placeholder="+91 ..."
+                        value={eForm.phone} onChange={onE} style={heroInput} />
+                    </HeroField>
+                    {eErrors.phone && (
+                      <span style={{ color: '#b42318', fontSize: '11px', display: 'block', marginTop: '3px' }}>{eErrors.phone}</span>
+                    )}
+                  </div>
                 </div>
 
                 {/* Degree + Intake */}
@@ -407,7 +516,7 @@ export default function ExpensePlanningScholarshipsPage() {
               {/* CTA button */}
               <button
                 type="button"
-                onClick={() => alert('Our scholarship advisor will contact you soon!')}
+                onClick={handleEligibilitySubmit}
                 style={{
                   display: 'block',
                   width: '100%',
@@ -695,11 +804,7 @@ export default function ExpensePlanningScholarshipsPage() {
 
               {/* ─── Right form panel ─── */}
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  alert('Your enquiry has been submitted! Our scholarship advisor will reach out shortly.');
-                  setQForm({ firstName: '', lastName: '', email: '', scholarship: '', query: '' });
-                }}
+                onSubmit={handleQuerySubmit}
                 style={{
                   backgroundColor: '#fff',
                   padding: '28px 30px',
@@ -710,22 +815,37 @@ export default function ExpensePlanningScholarshipsPage() {
               >
                 {/* First + Last name */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
-                  <EnquiryField label="First Name">
-                    <input type="text" name="firstName" placeholder="First Name"
-                      value={qForm.firstName} onChange={onQ} style={enquiryInput} />
-                  </EnquiryField>
-                  <EnquiryField label="Last Name">
-                    <input type="text" name="lastName" placeholder="Last Name"
-                      value={qForm.lastName} onChange={onQ} style={enquiryInput} />
-                  </EnquiryField>
+                  <div>
+                    <EnquiryField label="First Name">
+                      <input type="text" name="firstName" placeholder="First Name"
+                        value={qForm.firstName} onChange={onQ} style={enquiryInput} />
+                    </EnquiryField>
+                    {qErrors.firstName && (
+                      <span style={{ color: '#b42318', fontSize: '11px', display: 'block', marginTop: '3px' }}>{qErrors.firstName}</span>
+                    )}
+                  </div>
+                  <div>
+                    <EnquiryField label="Last Name">
+                      <input type="text" name="lastName" placeholder="Last Name"
+                        value={qForm.lastName} onChange={onQ} style={enquiryInput} />
+                    </EnquiryField>
+                    {qErrors.lastName && (
+                      <span style={{ color: '#b42318', fontSize: '11px', display: 'block', marginTop: '3px' }}>{qErrors.lastName}</span>
+                    )}
+                  </div>
                 </div>
 
                 {/* Email + Scholarship */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
-                  <EnquiryField label="Email Address">
-                    <input type="email" name="email" placeholder="name@email.com"
-                      value={qForm.email} onChange={onQ} style={enquiryInput} />
-                  </EnquiryField>
+                  <div>
+                    <EnquiryField label="Email Address">
+                      <input type="email" name="email" placeholder="name@email.com"
+                        value={qForm.email} onChange={onQ} style={enquiryInput} />
+                    </EnquiryField>
+                    {qErrors.email && (
+                      <span style={{ color: '#b42318', fontSize: '11px', display: 'block', marginTop: '3px' }}>{qErrors.email}</span>
+                    )}
+                  </div>
                   <EnquiryField label="Scholarship of Interest">
                     <div style={{ position: 'relative' }}>
                       <select name="scholarship" value={qForm.scholarship} onChange={onQ}
