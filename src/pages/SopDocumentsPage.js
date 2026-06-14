@@ -348,13 +348,15 @@ export default function SopDocumentsPage() {
           </section>
 
           {/* ── "Documents We Help You With" — Figma: image left, heading + list right ── */}
-          <section className="sop-documents-list-section flex flex-col lg:flex-row items-stretch justify-between w-full max-w-[1158px] mx-auto mb-[118px] gap-10 lg:gap-[35px] box-border px-4 sm:px-6 lg:px-0">
-            <img
-              src={IMG_77}
-              alt="Passport and travel documents for Australia"
-              className="w-full max-w-[443px] aspect-[443/433] object-cover shrink-0 rounded-[43px] mx-auto lg:mx-0"
-            />
-            <div className="flex flex-col items-start gap-[26px] pt-[11px] w-full lg:flex-1">
+          <section className="sop-documents-list-section flex flex-col lg:flex-row justify-between w-full max-w-[1158px] mx-auto mb-[118px] gap-8 lg:gap-[35px] box-border px-4 sm:px-6 lg:px-0">
+            <div className="sop-documents-list-media flex justify-center lg:justify-start">
+              <img
+                src={IMG_77}
+                alt="Passport and travel documents for Australia"
+                className="sop-documents-list-image"
+              />
+            </div>
+            <div className="sop-documents-list-copy flex flex-col items-start gap-[26px] pt-[11px] w-full lg:flex-1">
               <h2
                 className="font-poppins font-medium text-[clamp(28px,4vw,45px)] text-left leading-[1.2em] tracking-[-0.15px]"
               >

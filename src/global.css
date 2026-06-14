@@ -6658,6 +6658,46 @@ main:has(.esante-banner) + .footer .footer-main {
   max-width: 100%;
 }
 
+.sop-documents-list-section {
+  align-items: center;
+}
+
+.sop-documents-list-media {
+  width: min(100%, 443px);
+  max-width: 443px;
+  flex: 0 0 auto;
+  align-self: stretch;
+}
+
+.sop-documents-list-image {
+  width: 100%;
+  max-width: 443px;
+  height: auto;
+  aspect-ratio: 443 / 433;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 43px;
+}
+
+.sop-documents-list-copy {
+  min-width: 0;
+  max-width: 680px;
+}
+
+@media (min-width: 1024px) {
+  .sop-documents-list-section {
+    align-items: stretch;
+  }
+
+  .sop-documents-list-media {
+    width: clamp(360px, 36vw, 443px);
+  }
+
+  .sop-documents-list-image {
+    height: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .ancillary-subpage .whitespace-nowrap {
     white-space: normal !important;
@@ -6751,6 +6791,35 @@ main:has(.esante-banner) + .footer .footer-main {
 
   .sop-documents-copy-grid {
     gap: 32px !important;
+  }
+
+  .sop-documents-list-section {
+    align-items: center !important;
+    gap: 24px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .sop-documents-list-media {
+    width: min(100%, 340px) !important;
+    max-width: 340px !important;
+    align-self: center !important;
+  }
+
+  .sop-documents-list-image {
+    height: auto !important;
+    max-width: 340px !important;
+    border-radius: 24px !important;
+  }
+
+  .sop-documents-list-copy {
+    gap: 16px !important;
+    padding-top: 0 !important;
+  }
+
+  .sop-documents-list-section ul {
+    padding-left: 20px !important;
+    max-width: 100%;
   }
 
   .sop-documents-copy-grid p,
