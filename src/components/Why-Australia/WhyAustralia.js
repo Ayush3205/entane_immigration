@@ -139,10 +139,10 @@ export default function WhyAustralia() {
 
           <div className="pointer-events-none absolute inset-0">
             <div
-              className="absolute left-[10%] top-[25%] font-poppins font-semibold uppercase text-[#f6b0a0]"
+              className="absolute left-[10%] top-[18%] md:top-[21%] font-poppins font-semibold uppercase text-[#f6b0a0]"
               style={{
-                fontSize: "clamp(28px, 4vw, 81px)",
-                lineHeight: "29px",
+                fontSize: "clamp(16px, 5.625vw, 81px)",
+                lineHeight: "1.1",
                 letterSpacing: "-0.03em",
               }}
             >
@@ -152,8 +152,8 @@ export default function WhyAustralia() {
             <div
               className="absolute left-[49.8%] top-[57%] max-w-[45%] font-poppins font-semibold text-white"
               style={{
-                fontSize: "clamp(12px, 1.75vw, 26px)",
-                lineHeight: "29px",
+                fontSize: "clamp(8px, 1.8vw, 26px)",
+                lineHeight: "1.2",
               }}
             >
               Invest in Yourself in a Country that Invests in You

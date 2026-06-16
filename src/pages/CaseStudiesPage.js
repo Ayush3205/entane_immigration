@@ -87,7 +87,8 @@ function CaseStudyCard({ card }) {
     <div
       className="bg-white flex h-full flex-col items-start min-w-0 pb-8 pt-6 px-6"
       style={{
-        height: '620px',
+        minHeight: '620px',
+        height: 'auto',
         boxShadow: '0px 12px 16px 0px rgba(16,24,40,0.08), 0px 4px 6px 0px rgba(16,24,40,0.03)',
       }}
     >
@@ -213,8 +214,8 @@ function CaseStudiesPage() {
                     style={{
                       fontFamily: "'Poppins', sans-serif",
                       fontWeight: 600,
-                      fontSize: '48px',
-                      lineHeight: '60px',
+                      fontSize: 'clamp(32px, 5vw, 48px)',
+                      lineHeight: '1.2',
                       letterSpacing: '-0.96px',
                     }}
                   >
@@ -238,7 +239,7 @@ function CaseStudiesPage() {
               <div
                 className="relative w-full overflow-hidden"
                 style={{
-                  height: '450px',
+                  height: 'clamp(240px, 40vw, 450px)',
                   borderRadius: '21px',
                   marginTop: '32px',
                 }}
@@ -252,7 +253,7 @@ function CaseStudiesPage() {
 
               {/* Row: paragraph + Read Full Case Study button (gap from image per Figma) */}
               <div
-                className="flex flex-row justify-between items-end gap-2 w-full"
+                className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-2 w-full"
                 style={{ padding: '10px 0', marginTop: '32px' }}
               >
                 <p
@@ -324,10 +325,8 @@ function CaseStudiesPage() {
               style={{ maxWidth: '1280px', width: '100%', marginTop: '0', paddingTop: '32px' }}
             >
             <div
-              className="w-full"
+              className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
                 gap: '32px',
                 alignItems: 'stretch',
               }}

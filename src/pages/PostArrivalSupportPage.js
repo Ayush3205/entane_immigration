@@ -4,7 +4,6 @@ import Header from '../components/Reusable/Header';
 import Footer from '../components/Reusable/Footer';
 import EsanteBanner from '../components/Reusable/EsanteBanner';
 
-
 const ASSET_BASE = process.env.PUBLIC_URL || '';
 
 /* Local assets (avoid expiring Figma URLs) */
@@ -193,12 +192,12 @@ function PostArrivalSupportPage() {
             HERO SECTION
             Figma: label y=174 from white-rect top, centered
         ══════════════════════════════════════════════════ */}
-        <section className="post-arrival-hero flex flex-col items-center w-full pt-[84px] pb-[96px]">
+        <section className="post-arrival-hero flex flex-col items-center w-full pt-[40px] md:pt-[84px] pb-[40px] md:pb-[96px] px-6">
 
           {/* Label */}
           <p
-            className="font-poppins font-medium text-[28px] text-primary underline decoration-solid tracking-[-0.56px] text-center mb-[60px]"
-            style={{ lineHeight: '21px' }}
+            className="font-poppins font-medium text-[20px] md:text-[28px] text-primary underline decoration-solid tracking-[-0.56px] text-center mb-[30px] md:mb-[60px]"
+            style={{ lineHeight: '1.2' }}
           >
             Post-Arrival Support
           </p>
@@ -206,14 +205,14 @@ function PostArrivalSupportPage() {
           {/* Heading block — two lines then badge */}
           <div className="text-center font-poppins mb-[26px]">
             <p
-              className="font-normal text-[48px] text-primary mb-[8px]"
-              style={{ lineHeight: '1.0', margin: '0 0 8px 0' }}
+              className="font-normal text-[28px] md:text-[48px] text-primary mb-[8px]"
+              style={{ lineHeight: '1.1', margin: '0 0 8px 0' }}
             >
               Because getting admitted is just the beginning
             </p>
             <p
-              className="font-semibold italic text-[56px] text-accent"
-              style={{ lineHeight: '1.0', margin: 0 }}
+              className="font-semibold italic text-[32px] md:text-[56px] text-accent"
+              style={{ lineHeight: '1.1', margin: 0 }}
             >
               living well is what matters.
             </p>
@@ -223,9 +222,9 @@ function PostArrivalSupportPage() {
           <button
             type="button"
             onClick={openConsultation}
-            className="inline-flex items-center justify-center px-[12px] py-[4px] bg-accent rounded-[16px] border-0 cursor-pointer"
+            className="inline-flex items-center justify-center px-[20px] py-[10px] bg-accent rounded-[16px] border-0 cursor-pointer"
           >
-            <span className="font-poppins font-medium text-[22px] leading-[20px] text-cream text-center">
+            <span className="font-poppins font-medium text-[18px] md:text-[22px] leading-[1.2] text-cream text-center">
               Get Post Arrival Support
             </span>
           </button>
@@ -254,7 +253,7 @@ function PostArrivalSupportPage() {
             Gray box:  l=102  t=156  w=1208  h=549
             Text in box: l_offset=83  t_offset=167
         ══════════════════════════════════════════════════ */}
-        <section ref={containerRef} className="post-arrival-collage relative w-full" style={{ height: 808 }}>
+        <section ref={containerRef} className="post-arrival-collage relative w-full hidden lg:block" style={{ height: 808 }}>
 
           {/* ── TOP ROW IMAGES ── */}
 
@@ -409,21 +408,38 @@ function PostArrivalSupportPage() {
           </div>
         </section>
 
+        {/* Mobile Collage Version */}
+        <section className="post-arrival-collage-mobile w-full px-6 flex flex-col items-center lg:hidden mt-8">
+          <div className="bg-[#f6f4f4] rounded-[30px] p-8 flex flex-col items-center text-center">
+            <p className="font-poppins font-semibold italic text-[24px] md:text-[30px] text-accent leading-[1.2] mb-6">
+              Arriving in Australia is exciting, but it can also be confusing.<br />
+              New systems, new rules, new responsibilities — all at once
+            </p>
+            <p className="font-poppins font-normal text-[16px] md:text-[20px] text-primary leading-[1.4] mb-0">
+              At Esante, we don't disappear after your visa is approved.<br />
+              We stay with you after you land, helping you settle, work, study, and live confidently in Australia.
+            </p>
+          </div>
+          <div className="mt-8 w-full max-w-[300px] rounded-[15px] overflow-hidden shadow-lg">
+             <img src={imgImage47} alt="" className="w-full h-auto object-cover" />
+          </div>
+        </section>
+
         {/* ══════════════════════════════════════════════════
             COMPREHENSIVE SUPPORT HEADING
             Figma: y=1497 from white-rect top, left=92 px
             Gap from intro section bottom (y=1299): 198 px
         ══════════════════════════════════════════════════ */}
-        <section className="post-arrival-support-heading w-full px-[92px] mt-[198px] mb-0">
+        <section className="post-arrival-support-heading w-full px-[24px] md:px-[92px] mt-[60px] lg:mt-[198px] mb-0 text-center lg:text-left">
           <p
-            className="font-poppins text-[45px] text-primary tracking-[-0.15px] leading-[1.2] mb-[15px]"
+            className="font-poppins text-[28px] md:text-[45px] text-primary tracking-[-0.15px] leading-[1.2] mb-[15px]"
           >
             {'Comprehensive '}
             <span className="font-semibold italic text-accent">Support,</span>
             {' Right Where You Need It'}
           </p>
           <p
-            className="font-poppins font-normal text-[31px] text-black tracking-[-0.15px] leading-[1.2] mb-[37px]"
+            className="font-poppins font-normal text-[18px] md:text-[31px] text-black tracking-[-0.15px] leading-[1.2] mb-[37px]"
           >
             Everything you need after landing - sorted, step by step.
           </p>
@@ -438,12 +454,12 @@ function PostArrivalSupportPage() {
         ══════════════════════════════════════════════════ */}
         <section className="post-arrival-support-carousel relative w-full bg-[#eee] pt-[63px] pb-[55px] flex flex-col items-center">
           
-          <div className="relative flex items-center justify-center w-full max-w-[1440px]">
+          <div className="relative flex items-center justify-center w-full max-w-[1440px] px-2 md:px-0">
             {/* Left Chevron */}
             <button 
               onClick={prevSlide}
               disabled={currentSlide === 0}
-              className="p-4 mr-2 disabled:opacity-20 cursor-pointer border-0 bg-transparent flex items-center justify-center transition-opacity"
+              className="p-2 md:p-4 mr-1 md:mr-2 disabled:opacity-20 cursor-pointer border-0 bg-transparent flex items-center justify-center transition-opacity"
             >
               <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 2L4 20L22 38" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -451,7 +467,7 @@ function PostArrivalSupportPage() {
             </button>
 
             {/* Carousel Track */}
-            <div className="post-arrival-support-track overflow-hidden w-[1316px] flex-shrink-0">
+            <div className="post-arrival-support-track overflow-hidden w-full max-w-[1316px] flex-shrink-0 px-4 md:px-0">
               <div 
                 className="flex items-stretch gap-[28px] transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 336}px)` }}
@@ -484,7 +500,7 @@ function PostArrivalSupportPage() {
             <button 
               onClick={nextSlide}
               disabled={currentSlide === maxSlide}
-              className="p-4 ml-2 disabled:opacity-20 cursor-pointer border-0 bg-transparent flex items-center justify-center transition-opacity"
+              className="p-2 md:p-4 ml-1 md:ml-2 disabled:opacity-20 cursor-pointer border-0 bg-transparent flex items-center justify-center transition-opacity"
             >
               <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2L20 20L2 38" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -496,10 +512,9 @@ function PostArrivalSupportPage() {
           <button
             type="button"
             onClick={openConsultation}
-            className="inline-flex items-center justify-center px-[12px] py-[4px] bg-accent rounded-[21px] border-0 cursor-pointer mt-[49px]"
-            style={{ height: 49 }}
+            className="inline-flex items-center justify-center px-[20px] py-[10px] bg-accent rounded-[21px] border-0 cursor-pointer mt-[30px] md:mt-[49px]"
           >
-            <span className="font-poppins font-medium text-[26px] leading-[20px] text-cream text-center">
+            <span className="font-poppins font-medium text-[18px] md:text-[26px] leading-[1.2] text-cream text-center">
               Get Post Arrival Support
             </span>
           </button>
