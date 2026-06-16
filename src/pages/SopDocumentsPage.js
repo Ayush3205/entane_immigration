@@ -148,7 +148,7 @@ export default function SopDocumentsPage() {
             </div>
 
             {/* Row 2: Left image, Right text */}
-            <div className="flex flex-col-reverse lg:flex-row lg:items-center items-stretch gap-10 lg:gap-8 xl:gap-10 w-full min-w-0 mb-[-70px]">
+            <div className="flex flex-col-reverse lg:flex-row lg:items-center items-stretch gap-10 lg:gap-8 xl:gap-10 w-full min-w-0 mb-0 lg:mb-[-70px]">
               <div className="w-full min-w-0 lg:flex-1 lg:basis-0 flex justify-center lg:justify-start">
                 <img
                   src={IMG_79}
