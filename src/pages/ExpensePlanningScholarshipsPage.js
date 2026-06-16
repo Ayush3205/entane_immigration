@@ -342,24 +342,10 @@ export default function ExpensePlanningScholarshipsPage() {
           }} />
 
           {/* Content row */}
-          <div style={{
-            position: 'relative', zIndex: 1,
-            maxWidth: '1280px', margin: '0 auto',
-            padding: '36px 80px 48px',
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'flex-start',
-            gap: '60px',
-          }}>
+          <div className="relative z-[1] max-w-[1280px] mx-auto px-6 md:px-[80px] pt-8 md:pt-[36px] pb-12 md:pb-[48px] flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-[60px]">
 
             {/* ─── Left text block — vertically centered ─── */}
-            <div style={{
-              flex: '1 1 0',
-              minWidth: 0,
-              alignSelf: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-            }}>
+            <div className="flex-1 min-w-0 self-center flex flex-col w-full">
               {/* FUNDING YOUR FUTURE badge */}
               <div style={{
                 display: 'inline-flex',
@@ -424,14 +410,7 @@ export default function ExpensePlanningScholarshipsPage() {
             </div>
 
             {/* ─── Right card — anchored to top ─── */}
-            <div style={{
-              flex: '0 0 400px',
-              backgroundColor: '#fff',
-              borderRadius: '12px',
-              padding: '26px 28px 22px',
-              boxShadow: '0 8px 40px rgba(0,0,0,0.20)',
-              alignSelf: 'flex-start',
-            }}>
+            <div className="w-full max-w-[400px] shrink-0 bg-white rounded-[12px] p-6 md:p-[26px_28px_22px] shadow-[0_8px_40px_rgba(0,0,0,0.20)] self-center md:self-start">
               <h2 style={{
                 fontFamily: 'Poppins, sans-serif',
                 fontWeight: 700,
@@ -459,7 +438,7 @@ export default function ExpensePlanningScholarshipsPage() {
                 </HeroField>
 
                 {/* Email + Phone */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
                   <div>
                     <HeroField label="Email Address">
                       <input type="email" name="email" placeholder="john@email.com"
@@ -481,7 +460,7 @@ export default function ExpensePlanningScholarshipsPage() {
                 </div>
 
                 {/* Degree + Intake */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px]">
                   <HeroField label="Degree Level">
                     <div style={{ position: 'relative' }}>
                       <select name="degreeLevel" value={eForm.degreeLevel} onChange={onE}
@@ -555,8 +534,8 @@ export default function ExpensePlanningScholarshipsPage() {
         {/* ══════════════════════════════════════════
             SECTION 2 — AVAILABLE SCHOLARSHIPS
         ══════════════════════════════════════════ */}
-        <section style={{ backgroundColor: '#F8F7F2', padding: '72px 80px' }}>
-          <div style={{ maxWidth: '1120px', margin: '0 auto' }}>
+        <section className="bg-[#F8F7F2] py-12 md:py-[72px] px-6 md:px-[80px]">
+          <div className="max-w-[1120px] mx-auto">
 
             <p style={{
               fontFamily: 'Poppins, sans-serif',
@@ -591,11 +570,7 @@ export default function ExpensePlanningScholarshipsPage() {
             </p>
 
             {/* Cards */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '18px',
-            }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px]">
               {SCHOLARSHIPS.map((s) => (
                 <div key={s.id} style={{
                   backgroundColor: '#fff',
@@ -709,8 +684,8 @@ export default function ExpensePlanningScholarshipsPage() {
         {/* ══════════════════════════════════════════
             SECTION 3 — SCHOLARSHIP ENQUIRY
         ══════════════════════════════════════════ */}
-        <section style={{ backgroundColor: '#fff', padding: '72px 80px' }}>
-          <div style={{ maxWidth: '1120px', margin: '0 auto' }}>
+        <section className="bg-white py-12 md:py-[72px] px-6 md:px-[80px]">
+          <div className="max-w-[1120px] mx-auto">
 
             <p style={{
               fontFamily: 'Poppins, sans-serif',
@@ -744,15 +719,7 @@ export default function ExpensePlanningScholarshipsPage() {
             </p>
 
             {/* Two-column card */}
-            <div style={{
-              maxWidth: '860px',
-              margin: '0 auto',
-              display: 'grid',
-              gridTemplateColumns: '280px 1fr',
-              borderRadius: '14px',
-              overflow: 'hidden',
-              boxShadow: '0 4px 30px rgba(0,0,0,0.10)',
-            }}>
+            <div className="max-w-[860px] mx-auto flex flex-col md:grid md:grid-cols-[280px_1fr] rounded-[14px] overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.10)]">
 
               {/* ─── Left dark panel: content at BOTTOM ─── */}
               <div style={{
@@ -814,7 +781,7 @@ export default function ExpensePlanningScholarshipsPage() {
                 }}
               >
                 {/* First + Last name */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-[14px]">
                   <div>
                     <EnquiryField label="First Name">
                       <input type="text" name="firstName" placeholder="First Name"
@@ -836,7 +803,7 @@ export default function ExpensePlanningScholarshipsPage() {
                 </div>
 
                 {/* Email + Scholarship */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-[14px]">
                   <div>
                     <EnquiryField label="Email Address">
                       <input type="email" name="email" placeholder="name@email.com"
