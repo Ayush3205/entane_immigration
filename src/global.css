@@ -6881,14 +6881,14 @@ main:has(.esante-banner) + .footer .footer-main {
   }
 
   .accommodation-slider {
-    height: 560px !important;
+    height: auto !important;
     margin-bottom: 56px !important;
     border-radius: 28px !important;
   }
 
   .accommodation-slider-card {
     width: calc(100% - 32px) !important;
-    height: calc(100% - 88px) !important;
+    height: auto !important;
     max-height: none !important;
     border-radius: 28px !important;
   }

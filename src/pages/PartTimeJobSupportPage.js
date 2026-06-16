@@ -182,8 +182,8 @@ function PartTimeJobSupportPage() {
         </div>
 
         {/* ── Hero carousel — responsive width, Figma gradient + green card + photo ── */}
-        <div className="w-full flex justify-center mb-16 md:mb-[102px] -mx-6 lg:mx-0 px-0 lg:px-0">
-          <section className="relative w-full max-w-[1383px] min-h-[520px] sm:min-h-[600px] md:h-[672px] md:min-h-0 rounded-[32px] md:rounded-[49px] overflow-hidden">
+        <div className="w-full flex justify-center mb-16 md:mb-[102px] min-w-0">
+          <section className="relative flex flex-col items-center justify-center w-full max-w-[1383px] h-auto sm:h-[672px] sm:min-h-[600px] py-8 sm:py-0 rounded-[32px] md:rounded-[49px] overflow-hidden">
             {/* Red background */}
             <div className="absolute inset-0 bg-[#FF3300]" aria-hidden />
             {/* Background image overlay */}
@@ -217,18 +217,20 @@ function PartTimeJobSupportPage() {
             </button>
 
             {/* Sliding carousel — dark green card; slide width = 100% of viewport for smooth responsive transform */}
-            <div className="absolute left-1/2 top-1/2 z-[5] w-[812px] max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] -translate-x-1/2 -translate-y-1/2 h-[557px] max-h-[calc(100%-120px)] sm:max-h-[calc(100%-96px)] overflow-hidden" style={{ borderRadius: 41, background: '#00352B' }}>
+            <div className="relative sm:absolute sm:left-1/2 sm:top-1/2 z-[5] w-[812px] max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] sm:-translate-x-1/2 sm:-translate-y-1/2 h-auto sm:h-[557px] overflow-hidden" style={{ borderRadius: 41, background: '#00352B' }}>
               <div
                 className="flex h-full transition-transform duration-500 ease-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {JOB_SLIDES.map((slide, index) => (
-                  <div key={index} className="relative h-full w-full min-w-full flex-shrink-0">
+                  <div key={index} className="relative h-auto sm:h-full w-full min-w-full flex-shrink-0">
                     <div
-                      className="h-full pt-6 pb-6 pl-25 pr-5 sm:pt-7 sm:pb-7 sm:pl-12 sm:pr-[min(28px,4vw)] box-border flex flex-col justify-center text-left"
+                      className="h-full pt-6 pb-6 px-6 sm:pt-7 sm:pb-7 sm:pl-12 sm:pr-[min(28px,4vw)] box-border flex flex-col justify-center text-left"
                       style={{ borderRadius: 41, background: '#00352B' }}
                     >
                       <div className="relative z-[2] w-full max-w-[420px] pr-0 md:pr-2">
+                        {/* Mobile Image */}
+                        <img src={slide.img} className="block sm:hidden w-full aspect-[4/3] h-auto object-cover rounded-[16px] mb-4 shadow-sm" alt="" />
                         <span className="font-poppins font-normal text-[clamp(16px,2.2vw,22px)] leading-[1.5] tracking-[-0.00682em] text-[#FF3300] mb-0 block">
                           {slide.category}
                         </span>

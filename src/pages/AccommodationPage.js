@@ -238,7 +238,7 @@ export default function AccommodationPage() {
 
           {/* Section: Hero carousel */}
           <div className="accommodation-slider-wrap w-full -mx-[72px] min-w-0">
-            <section className="accommodation-slider relative w-[1383px] max-w-[100%] h-[672px] mx-auto mb-[105px] rounded-[49px] overflow-hidden">
+            <section className="accommodation-slider relative flex flex-col items-center justify-center w-[1383px] max-w-[100%] h-auto sm:h-[672px] sm:min-h-[600px] py-8 sm:py-0 mx-auto mb-[105px] rounded-[49px] overflow-hidden">
             {/* Background */}
             <div
               className="absolute inset-0 rounded-[49px] bg-[#00352B]"
@@ -273,23 +273,25 @@ export default function AccommodationPage() {
 
             {/* Centered group: orange card + room image - sliding carousel */}
             {/* Sliding carousel — orange card; slide width = 100% of viewport for smooth responsive transform */}
-            <div className="accommodation-slider-card absolute left-1/2 top-1/2 z-[5] w-[812px] max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] -translate-x-1/2 -translate-y-1/2 h-[557px] max-h-[calc(100%-120px)] sm:max-h-[calc(100%-96px)] overflow-hidden" style={{ borderRadius: 41, background: '#FF3300' }}>
+            <div className="accommodation-slider-card relative sm:absolute sm:left-1/2 sm:top-1/2 z-[5] w-[812px] max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] sm:-translate-x-1/2 sm:-translate-y-1/2 h-auto sm:h-[557px] overflow-hidden" style={{ borderRadius: 41, background: '#FF3300' }}>
               <div
                 className="flex h-full transition-transform duration-500 ease-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {ACCOMMODATION_SLIDES.map((slide, index) => (
-                  <div key={index} className="relative h-full w-full min-w-full flex-shrink-0">
+                  <div key={index} className="relative h-auto sm:h-full w-full min-w-full flex-shrink-0">
                     <div
-                      className="accommodation-slider-panel h-full pt-6 pb-6 pl-25 pr-5 sm:pt-7 sm:pb-7 sm:pl-12 sm:pr-[min(28px,4vw)] box-border flex flex-col justify-center text-left"
+                      className="accommodation-slider-panel h-full pt-6 pb-6 px-6 sm:pt-7 sm:pb-7 sm:pl-12 sm:pr-[min(28px,4vw)] box-border flex flex-col justify-center text-left"
                       style={{ borderRadius: 41, background: '#FF3300' }}
                     >
                       <div className="relative z-[2] w-full max-w-[420px] pr-0 md:pr-2"
                         style={{ opacity: index === currentSlide ? 1 : 0, transition: 'opacity 300ms ease-out' }}>
-                        <p className="font-poppins font-normal text-[40px] leading-[1.35] tracking-[-0.00375em] text-white mb-0">
+                        {/* Mobile Image */}
+                        <img src={slide.img} className="block sm:hidden w-full aspect-[4/3] h-auto object-cover rounded-[16px] mb-4 shadow-sm" alt="" />
+                        <p className="font-poppins font-normal text-[clamp(24px,5vw,40px)] leading-[1.35] tracking-[-0.00375em] text-white mb-0">
                           {slide.intro}
                         </p>
-                        <h2 className="font-poppins font-bold text-[64px] leading-[1.2] tracking-[-0.00234em] text-white mb-[10px]">
+                        <h2 className="font-poppins font-bold text-[clamp(36px,8vw,64px)] leading-[1.2] tracking-[-0.00234em] text-white mb-[10px]">
                           {slide.city}
                         </h2>
                         <p className="font-poppins font-normal text-[28px] leading-[1.35] tracking-[-0.00536em] text-white mb-[8px]">
