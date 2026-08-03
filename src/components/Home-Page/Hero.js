@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import ResponsiveHeroVideo from './ResponsiveHeroVideo';
 
 const Hero = ({ morphProgress = 0, heroVideoUrl = null }) => {
   const videoRef = useRef(null);
@@ -32,16 +33,9 @@ const Hero = ({ morphProgress = 0, heroVideoUrl = null }) => {
     <section className="hero">
       <div className="hero-background" style={{ opacity: bgOpacity }}>
         {showHeroVideo && (
-          <video
+          <ResponsiveHeroVideo
             ref={videoRef}
             className="hero-bg-video"
-            src={heroVideoUrl}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
           />
         )}
         {showHeroImage && (

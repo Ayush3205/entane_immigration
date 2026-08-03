@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import ResponsiveHeroVideo from './ResponsiveHeroVideo';
 
 const GALLERY_IMAGES = [
   '/images/home-page/gallery-1.png',
@@ -52,15 +53,9 @@ const DreamSection = ({ morphTargetRef, heroVideoUrl = null }) => {
                 style={isMorphTarget ? { opacity: 0 } : undefined}
               >
                 {isMorphTarget && heroVideoUrl ? (
-                  <video
+                  <ResponsiveHeroVideo
                     ref={dreamCardVideoRef}
-                    src={heroVideoUrl}
                     className="dream-image dream-card-video"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    aria-hidden="true"
                   />
                 ) : (
                   <img src={src} alt="" className="dream-image" />

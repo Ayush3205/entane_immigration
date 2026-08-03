@@ -11,13 +11,12 @@ import RealStories from '../components/Home-Page/RealStories';
 import LatestNews from '../components/Home-Page/LatestNews';
 import EsanteBanner from '../components/Reusable/EsanteBanner';
 import Footer from '../components/Reusable/Footer';
+import ResponsiveHeroVideo from '../components/Home-Page/ResponsiveHeroVideo';
+import { HERO_DESKTOP_VIDEO_URL } from '../components/Home-Page/heroVideoAssets';
 
 const MORPH_END    = 800;  // scroll px that span the full morph animation
 // Navbar slides up + fades out over first HEADER_FADE px of scroll
 // const HEADER_FADE  = 120;
-const HERO_DESKTOP_VIDEO_URL = 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/hero.mp4';
-const HERO_MOBILE_VIDEO_URL = 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/Hero-Mobile.mp4';
-const HERO_MOBILE_VIDEO_QUERY = '(max-width: 767px)';
 const HERO_VIDEO_MUTE_PROGRESS = 0.85;
 
 const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -130,12 +129,7 @@ const HOME_FAQ_ITEMS = [
 
 function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
-  const [heroVideoUrl, setHeroVideoUrl] = useState(() => {
-    if (typeof window === 'undefined') return HERO_DESKTOP_VIDEO_URL;
-    return window.matchMedia(HERO_MOBILE_VIDEO_QUERY).matches
-      ? HERO_MOBILE_VIDEO_URL
-      : HERO_DESKTOP_VIDEO_URL;
-  });
+  const heroVideoUrl = HERO_DESKTOP_VIDEO_URL;
 
   const toggleHomeFaq = (index) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
@@ -161,24 +155,6 @@ function HomePage() {
     if (headerWrapRef.current) {
       headerWrapRef.current.setAttribute('data-nav-phase', 'transparent');
     }
-  }, []);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(HERO_MOBILE_VIDEO_QUERY);
-
-    const syncHeroVideoSource = () => {
-      setHeroVideoUrl(mediaQuery.matches ? HERO_MOBILE_VIDEO_URL : HERO_DESKTOP_VIDEO_URL);
-    };
-
-    syncHeroVideoSource();
-
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', syncHeroVideoSource);
-      return () => mediaQuery.removeEventListener('change', syncHeroVideoSource);
-    }
-
-    mediaQuery.addListener(syncHeroVideoSource);
-    return () => mediaQuery.removeListener(syncHeroVideoSource);
   }, []);
 
   // Autoplay hero morph video
@@ -422,22 +398,14 @@ function HomePage() {
           left: 0, top: 0,
           width: '100vw', height: '100vh',
           borderRadius: 0, opacity: 1, visibility: 'visible',
-          backgroundImage: heroVideoUrl
-            ? 'none'
-            : `url(${process.env.PUBLIC_URL || ''}/images/home-page/hero.jpg)`,
+          backgroundImage: 'none',
         }}
       >
         {heroVideoUrl && (
-          <video
+          <ResponsiveHeroVideo
             key={heroVideoUrl}
             ref={morphVideoRef}
             className="hero-morph-video"
-            src={heroVideoUrl}
-            autoPlay
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
           />
         )}
       </div>
