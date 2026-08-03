@@ -1,33 +1,23 @@
 import React, { forwardRef } from 'react';
-import {
-  HERO_DESKTOP_VIDEO_URL,
-  HERO_MOBILE_VIDEO_QUERY,
-  HERO_MOBILE_VIDEO_URL,
-} from './heroVideoAssets';
 
 const ResponsiveHeroVideo = forwardRef(function ResponsiveHeroVideo(
-  { className, ...videoProps },
+  { className, src, ...videoProps },
   ref
 ) {
   return (
     <video
       ref={ref}
       className={className}
+      src={src}
       autoPlay
       muted
       loop
       playsInline
+      webkit-playsinline="true"
       preload="auto"
       aria-hidden="true"
       {...videoProps}
-    >
-      <source
-        src={HERO_MOBILE_VIDEO_URL}
-        type="video/mp4"
-        media={HERO_MOBILE_VIDEO_QUERY}
-      />
-      <source src={HERO_DESKTOP_VIDEO_URL} type="video/mp4" />
-    </video>
+    />
   );
 });
 

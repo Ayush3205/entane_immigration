@@ -36,6 +36,7 @@ const Hero = ({ morphProgress = 0, heroVideoUrl = null }) => {
           <ResponsiveHeroVideo
             ref={videoRef}
             className="hero-bg-video"
+            src={heroVideoUrl}
           />
         )}
         {showHeroImage && (

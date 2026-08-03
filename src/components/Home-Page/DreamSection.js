@@ -56,6 +56,7 @@ const DreamSection = ({ morphTargetRef, heroVideoUrl = null }) => {
                   <ResponsiveHeroVideo
                     ref={dreamCardVideoRef}
                     className="dream-image dream-card-video"
+                    src={heroVideoUrl}
                   />
                 ) : (
                   <img src={src} alt="" className="dream-image" />
