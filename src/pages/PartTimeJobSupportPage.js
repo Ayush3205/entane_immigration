@@ -5,9 +5,9 @@ import EsanteBanner from '../components/Reusable/EsanteBanner';
 
 const HERO_BG = '/images/ptj-hero-bg.png';
 const IMG_JOB_CAFE = '/images/ptj-job-cafe.png';
-const IMG_JOB_RETAIL = '/images/ptj-job-retail.png';
-const IMG_JOB_HOSPITALITY = '/images/ptj-job-hospitality.png';
-const IMG_JOB_PETROL = '/images/ptj-job-petrol.png';
+const IMG_JOB_RETAIL = '/images/ptj-job-retail.webp';
+const IMG_JOB_HOSPITALITY = '/images/ptj-job-hospitality.webp';
+const IMG_JOB_PETROL = '/images/ptj-job-petrol.webp';
 const IMG_STORY_1 = '/images/ptj-story1.png';
 const IMG_STORY_2 = '/images/ptj-story2.png';
 

@@ -798,7 +798,7 @@ export default function SearchCoursesPage() {
 
             {/* ── Left green panel (no own border-radius — parent clips it) ── */}
             <div className="search-directory-booking-info" style={{
-              backgroundImage: 'url(/images/airport-hero-bg.png)',
+              backgroundImage: 'url(/images/airport-hero-bg.webp)',
               backgroundSize: 'cover',
               backgroundPosition: 'center center',
               backgroundColor: '#00352B',

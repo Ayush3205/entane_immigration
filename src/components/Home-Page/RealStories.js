@@ -1,35 +1,78 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const STORY_VIDEOS = [
   {
     src: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/testimonial-1.mp4',
-    // fitFullVideo: true,
     fillVideo: true,
     videoScale: 1,
     videoPosition: 'center 18%',
   },
   {
     src: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/testimonial-2.mp4',
-    // fitFullVideo: true,
     fillVideo: true,
     videoScale: 1,
     videoPosition: 'center 18%',
   },
   {
     src: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/testimonial-3.mp4',
-    // fitFullVideo: true,
     fillVideo: true,
     videoScale: 1,
     videoPosition: 'center 18%',
   },
   {
     src: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/testimonial-4.mp4',
-    // fitFullVideo: true,
     fillVideo: true,
     videoScale: 1,
     videoPosition: 'center 18%',
   },
 ];
+
+// Lazily assigns video src only when the card scrolls into view
+function LazyVideo({ src, videoRef, index, onPlay, fitFullVideo, videoScale, videoPosition }) {
+  const containerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || !('IntersectionObserver' in window)) {
+      // Fallback for old browsers: load immediately
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' } // Start loading 200px before entering viewport
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} className={`real-story-card-image${fitFullVideo ? ' real-story-card-image--fit' : ''}`}>
+      <video
+        ref={videoRef}
+        className={`real-story-video${fitFullVideo ? ' real-story-video--fit' : ''}`}
+        src={isVisible ? src : undefined}
+        style={{
+          ...(videoScale ? { '--story-video-scale': videoScale } : {}),
+          ...(videoPosition ? { '--story-video-position': videoPosition } : {}),
+        }}
+        controls
+        muted
+        playsInline
+        preload="metadata"
+        onPlay={() => onPlay(index)}
+      />
+    </div>
+  );
+}
 
 const RealStories = () => {
   const scrollRef = useRef(null);
@@ -58,24 +101,17 @@ const RealStories = () => {
 
         <div className="real-stories-carousel-wrap">
           <div className="real-stories-scroll" ref={scrollRef}>
-            {STORY_VIDEOS.map(({ src, fitFullVideo, fillVideo, videoScale, videoPosition }, index) => (
+            {STORY_VIDEOS.map(({ src, fitFullVideo, videoScale, videoPosition }, index) => (
               <div key={src} className="real-story-card">
-                <div className={`real-story-card-image${fitFullVideo ? ' real-story-card-image--fit' : ''}`}>
-                  <video
-                    ref={(element) => setVideoRef(element, index)}
-                    className={`real-story-video${fitFullVideo ? ' real-story-video--fit' : ''}`}
-                    src={src}
-                    style={{
-                      ...(videoScale ? { '--story-video-scale': videoScale } : {}),
-                      ...(videoPosition ? { '--story-video-position': videoPosition } : {}),
-                    }}
-                    controls
-                    muted
-                    playsInline
-                    preload="metadata"
-                    onPlay={() => handleVideoPlay(index)}
-                  />
-                </div>
+                <LazyVideo
+                  src={src}
+                  videoRef={(el) => setVideoRef(el, index)}
+                  index={index}
+                  onPlay={handleVideoPlay}
+                  fitFullVideo={fitFullVideo}
+                  videoScale={videoScale}
+                  videoPosition={videoPosition}
+                />
               </div>
             ))}
           </div>

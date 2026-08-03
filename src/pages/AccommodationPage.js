@@ -5,7 +5,7 @@ import EsanteBanner from '../components/Reusable/EsanteBanner';
 import ConsultationPopup from '../components/Reusable/ConsultationPopup';
 
 const HERO_BG_IMG = '/images/acc-hero-bg.png';
-const ACC_ROOM_1 = '/images/acc-room 1.png';
+const ACC_ROOM_1 = '/images/acc-room 1.webp';
 const ACC_ROOM_2 = '/images/acc-room 2.webp';
 const ACC_ROOM_3 = '/images/acc-room 3.avif';
 const ACC_ROOM_4 = '/images/acc-room 4.avif';

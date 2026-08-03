@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
 const ResponsiveHeroVideo = forwardRef(function ResponsiveHeroVideo(
-  { className, src, ...videoProps },
+  { className, src, poster, ...videoProps },
   ref
 ) {
   return (
@@ -14,7 +14,8 @@ const ResponsiveHeroVideo = forwardRef(function ResponsiveHeroVideo(
       loop
       playsInline
       webkit-playsinline="true"
-      preload="auto"
+      preload="none"
+      poster={poster || '/images/home-page/hero-poster.jpg'}
       aria-hidden="true"
       {...videoProps}
     />

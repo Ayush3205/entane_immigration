@@ -3,7 +3,7 @@ import Header from "../components/Reusable/Header";
 import Footer from "../components/Reusable/Footer";
 import EsanteBanner from "../components/Reusable/EsanteBanner";
 
-const HERO_BG = "/images/airport-hero-bg.png";
+const HERO_BG = "/images/airport-hero-bg.webp";
 const AIRPLANE = "/images/passenger-jet.png";
 const WHAT_WE_DO_IMG = "/images/airport-we_do-bg.png";
 
