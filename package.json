@@ -18,6 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "publish-routes": "node scripts/upload-static-route-entrypoints.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

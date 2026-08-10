@@ -84,6 +84,11 @@ jobs:
             --include "robots.txt" \
             --include "asset-manifest.json"
 
+      - name: Publish route entrypoints
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        run: npm run publish-routes
+
       - name: Invalidate CloudFront cache
         env:
           DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
