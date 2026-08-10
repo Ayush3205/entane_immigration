@@ -34,6 +34,7 @@ const Hero = ({ morphProgress = 0, heroVideoUrl = null }) => {
       <div className="hero-background" style={{ opacity: bgOpacity }}>
         {showHeroVideo && (
           <ResponsiveHeroVideo
+            key={heroVideoUrl}
             ref={videoRef}
             className="hero-bg-video"
             src={heroVideoUrl}

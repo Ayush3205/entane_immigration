@@ -12,14 +12,12 @@ import LatestNews from '../components/Home-Page/LatestNews';
 import EsanteBanner from '../components/Reusable/EsanteBanner';
 import Footer from '../components/Reusable/Footer';
 import ResponsiveHeroVideo from '../components/Home-Page/ResponsiveHeroVideo';
-import { HERO_DESKTOP_VIDEO_URL } from '../components/Home-Page/heroVideoAssets';
+import { getHeroVideoUrl } from '../components/Home-Page/heroVideoAssets';
 
 const MORPH_END    = 800;  // scroll px that span the full morph animation
 // Navbar slides up + fades out over first HEADER_FADE px of scroll
 // const HEADER_FADE  = 120;
 const HERO_VIDEO_MUTE_PROGRESS = 0.85;
-const HERO_MOBILE_VIDEO_URL = 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/Hero-Mobile.mp4';
-const HERO_MOBILE_MAX_WIDTH = 767;
 
 const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 const easeOutCubic   = (t) => 1 - Math.pow(1 - t, 3);
@@ -131,7 +129,7 @@ const HOME_FAQ_ITEMS = [
 
 function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
-  const [heroVideoUrl, setHeroVideoUrl] = useState(HERO_DESKTOP_VIDEO_URL);
+  const [heroVideoUrl, setHeroVideoUrl] = useState(() => getHeroVideoUrl());
 
   const toggleHomeFaq = (index) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
@@ -162,22 +160,8 @@ function HomePage() {
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
 
-    const getViewportWidth = () => {
-      const candidates = [
-        window.visualViewport?.width,
-        window.innerWidth,
-        document.documentElement?.clientWidth,
-        window.screen?.width,
-      ].filter((value) => Number.isFinite(value) && value > 0);
-
-      return candidates.length ? Math.min(...candidates) : window.innerWidth;
-    };
-
     const syncHeroVideoSource = () => {
-      const viewportWidth = getViewportWidth();
-      const nextSrc = viewportWidth <= HERO_MOBILE_MAX_WIDTH
-        ? HERO_MOBILE_VIDEO_URL
-        : HERO_DESKTOP_VIDEO_URL;
+      const nextSrc = getHeroVideoUrl();
       setHeroVideoUrl((current) => (current === nextSrc ? current : nextSrc));
     };
 

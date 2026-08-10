@@ -54,6 +54,7 @@ const DreamSection = ({ morphTargetRef, heroVideoUrl = null }) => {
               >
                 {isMorphTarget && heroVideoUrl ? (
                   <ResponsiveHeroVideo
+                    key={heroVideoUrl}
                     ref={dreamCardVideoRef}
                     className="dream-image dream-card-video"
                     src={heroVideoUrl}
