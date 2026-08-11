@@ -188,10 +188,50 @@ function HomePage() {
     if (!video || !heroVideoUrl) return;
 
     const interactionEvents = ['pointerdown', 'touchstart', 'keydown'];
+    const retryTimers = [];
+
+    /**
+     * forceMuted: always set muted via both DOM attribute AND JS property.
+     * Required because:
+     *   - iOS Safari checks the HTML 'muted' attribute, not the JS property.
+     *   - React's `muted` JSX prop only sets the property, not the attribute.
+     */
+    const forceMuted = () => {
+      video.setAttribute('muted', '');
+      video.muted = true;
+      video.defaultMuted = true;
+      video.volume = 0;
+    };
+
     const setMutedState = (shouldMute) => {
-      video.muted = shouldMute;
-      video.defaultMuted = shouldMute;
-      video.volume = shouldMute ? 0 : 1;
+      if (shouldMute) {
+        forceMuted();
+      } else {
+        // Only un-mute if browser allows it (after explicit user gesture)
+        video.muted = false;
+        video.defaultMuted = false;
+        video.volume = 1;
+      }
+    };
+
+    /**
+     * forcePlayMuted: the nuclear option — force mute via attribute + property,
+     * then call play(). Used as the fallback when normal play() is rejected.
+     * Retries up to 3 times with increasing delay.
+     */
+    const forcePlayMuted = (attempt = 0) => {
+      if (video.paused === false) return; // already playing, nothing to do
+      forceMuted();
+      const promise = video.play();
+      if (promise && typeof promise.catch === 'function') {
+        promise.catch((err) => {
+          console.warn(`[HeroVideo] forcePlayMuted attempt ${attempt + 1} failed:`, err?.message || err);
+          if (attempt < 3) {
+            const t = setTimeout(() => forcePlayMuted(attempt + 1), 500 * (attempt + 1));
+            retryTimers.push(t);
+          }
+        });
+      }
     };
 
     const syncHeroVideoState = () => {
@@ -212,19 +252,13 @@ function HomePage() {
 
       if (!video.paused) return;
 
+      // First try: play with current mute state
       const playPromise = video.play();
       if (playPromise && typeof playPromise.catch === 'function') {
         playPromise.catch(() => {
-          // Fix: previously bailed out with `if (shouldMuteHeroVideo) return`
-          // which meant the video NEVER got a muted retry on mobile —
-          // heroAudioAllowedRef starts false, so shouldMuteHeroVideo was always
-          // true on the first play(), the catch exited early, and the video
-          // stayed black. Now we ALWAYS force muted and retry on any rejection.
+          // Any rejection → force muted and retry aggressively
           heroAudioAllowedRef.current = false;
-          setMutedState(true);
-          video.play().catch((err) => {
-            console.warn('[HeroVideo] muted play() also blocked:', err?.message || err);
-          });
+          forcePlayMuted(0);
         });
       }
     };
@@ -252,7 +286,11 @@ function HomePage() {
       syncHeroVideoState();
     };
 
+    // Initial play attempt
     syncHeroVideoState();
+
+    // Event-based retries (fire when browser has buffered enough to play)
+    video.addEventListener('loadedmetadata', syncHeroVideoState);
     video.addEventListener('loadeddata', syncHeroVideoState);
     video.addEventListener('canplay', syncHeroVideoState);
     document.addEventListener('visibilitychange', handleVisibilityChange);
@@ -262,8 +300,19 @@ function HomePage() {
       window.addEventListener(eventName, unlockAudio, { once: true });
     });
 
+    // Timer-based safety net: on iOS with a large video and slow network,
+    // events may be delayed or never fire. Retry at increasing intervals.
+    [300, 800, 1500, 3000].forEach((delay) => {
+      const t = setTimeout(() => {
+        if (video.paused && document.visibilityState === 'visible') forcePlayMuted(0);
+      }, delay);
+      retryTimers.push(t);
+    });
+
     return () => {
       syncHeroVideoRef.current = () => {};
+      retryTimers.forEach(clearTimeout);
+      video.removeEventListener('loadedmetadata', syncHeroVideoState);
       video.removeEventListener('loadeddata', syncHeroVideoState);
       video.removeEventListener('canplay', syncHeroVideoState);
       document.removeEventListener('visibilitychange', handleVisibilityChange);

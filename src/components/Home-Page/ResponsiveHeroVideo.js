@@ -1,25 +1,31 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import React, { forwardRef, useEffect, useLayoutEffect, useImperativeHandle, useRef } from 'react';
 
 /**
- * ResponsiveHeroVideo
+ * ResponsiveHeroVideo — iOS Safari / Android force-play edition
  *
- * Fixes applied:
+ * Root causes fixed in this version:
  *
- * 1. preload="none"  — was "auto", which caused mobile browsers (especially
- *    Safari on iPhone) to download the entire video eagerly, triggering
- *    Low Data Mode / memory guards that silently killed autoplay.
+ * A) React's `muted` prop bug
+ *    React does NOT set the HTML `muted` attribute on the DOM element — it only
+ *    sets the JS property. iOS Safari checks the HTML attribute for autoplay
+ *    eligibility. We bypass this by calling setAttribute('muted','') in a
+ *    useLayoutEffect (runs synchronously before paint) AND before every play().
  *
- * 2. Wait for 'canplay' before calling .play() — the old code called .play()
- *    immediately after .load(), which is a race condition on slow mobile
- *    networks. We now attach a one-shot 'canplay' listener and only call
- *    .play() when the browser confirms it has enough data.
+ * B) video.load() + preload="none" race condition
+ *    The previous version called video.pause() → video.load() which:
+ *      1. Cancelled any browser-initiated autoplay.
+ *      2. With preload="none", iOS never buffers anything after load(), so
+ *         canplay/loadedmetadata never fire → play() never gets called.
+ *    Fix: removed the explicit load()/pause() reset. Use preload="metadata"
+ *    instead (browser loads just duration/dimensions, enough to start playing).
  *
- * 3. Muted-retry on play() rejection — if .play() is blocked (autoplay
- *    policy), we force muted=true and retry once before giving up, so the
- *    video still plays silently rather than showing a black screen.
+ * C) Single-shot event listeners
+ *    canplay/loadedmetadata were { once: true }, so if the first play()
+ *    attempt failed and the event fired again, we'd never retry.
+ *    Fix: multiple redundant triggers + timer-based retries.
  *
- * 4. webkit-playsinline attribute added for older iOS WebKit support
- *    (some older iPhones need the attribute name without camelCase).
+ * D) webkit-playsinline
+ *    Set as both JSX prop AND DOM attribute for maximum iOS WebKit compat.
  */
 const ResponsiveHeroVideo = forwardRef(function ResponsiveHeroVideo(
   { className, src, poster, ...videoProps },
@@ -29,49 +35,70 @@ const ResponsiveHeroVideo = forwardRef(function ResponsiveHeroVideo(
 
   useImperativeHandle(ref, () => videoRef.current);
 
+  /**
+   * useLayoutEffect: runs synchronously before the browser paints.
+   * This is the ONLY reliable way to set the `muted` HTML attribute in React
+   * before iOS Safari evaluates autoplay eligibility.
+   */
+  useLayoutEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    // Force the HTML attribute — React's muted prop only sets the JS property
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+  }, []);
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !src) return undefined;
 
     let cancelled = false;
+    const retryTimers = [];
 
-    const attemptPlay = () => {
-      if (cancelled) return;
+    const forcePlay = () => {
+      if (cancelled || !video.paused) return;
 
-      // Ensure muted + playsInline are set before every play attempt
+      // Re-assert muted every time — some browsers reset it
+      video.setAttribute('muted', '');
       video.muted = true;
       video.defaultMuted = true;
+      video.volume = 0;
 
       const promise = video.play();
       if (promise && typeof promise.catch === 'function') {
         promise.catch((err) => {
           if (cancelled) return;
-          // If still blocked (e.g. autoplay policy on some browsers even
-          // for muted video), log quietly — do NOT swallow silently so
-          // debugging is possible, but don't crash the UI.
-          console.warn('[HeroVideo] play() blocked after muted retry:', err?.message || err);
+          console.warn('[HeroVideo] play() attempt failed:', err?.message || err);
+          // Do not give up — the timer retries below will keep trying.
         });
       }
     };
 
-    // Reset the element and kick off a fresh load cycle
-    video.pause();
-    video.currentTime = 0;
-    video.load();
+    // Attempt play immediately (works on Android and some iOS states)
+    forcePlay();
 
-    // Wait until the browser has buffered enough to play smoothly,
-    // then start. 'canplay' fires much sooner than 'canplaythrough'.
-    video.addEventListener('canplay', attemptPlay, { once: true });
+    // Retry on all relevant media-ready events (normal order: loadedmetadata → canplay → loadeddata)
+    const mediaEvents = ['loadedmetadata', 'canplay', 'loadeddata', 'playing'];
+    const onMediaEvent = () => forcePlay();
+    mediaEvents.forEach((evt) => video.addEventListener(evt, onMediaEvent));
 
-    // Safety-net: some browsers never fire 'canplay' when preload="none"
-    // until the user interacts. Use 'loadedmetadata' as a secondary trigger
-    // so at minimum the poster/first frame appears, and play is attempted.
-    video.addEventListener('loadedmetadata', attemptPlay, { once: true });
+    // Timer-based retries: catches cases where events never fire (iOS background tabs,
+    // slow network, or Low Power Mode throttling). Space them out to avoid hammering.
+    [200, 500, 1000, 2000, 4000].forEach((delay) => {
+      const t = setTimeout(() => {
+        if (!cancelled && video.paused) forcePlay();
+      }, delay);
+      retryTimers.push(t);
+    });
 
     return () => {
       cancelled = true;
-      video.removeEventListener('canplay', attemptPlay);
-      video.removeEventListener('loadedmetadata', attemptPlay);
+      retryTimers.forEach(clearTimeout);
+      mediaEvents.forEach((evt) => video.removeEventListener(evt, onMediaEvent));
     };
   }, [src]);
 
@@ -80,15 +107,19 @@ const ResponsiveHeroVideo = forwardRef(function ResponsiveHeroVideo(
       ref={videoRef}
       className={className}
       poster={poster}
+      /**
+       * autoPlay  — standard HTML attribute (tells browser to start immediately)
+       * muted     — React prop (sets JS property; HTML attr set via useLayoutEffect above)
+       * playsInline — required on iOS to prevent fullscreen takeover
+       * preload="metadata" — load duration/dimensions only; lighter than "auto"
+       *                      but ensures 'loadedmetadata' fires without user gesture
+       * controls={false} — never show native controls
+       */
       autoPlay
       muted
-      defaultMuted
       loop
       playsInline
-      // Older iOS WebKit needs the un-camelCased attribute explicitly
-      webkit-playsinline="true"
-      // preload="none" prevents eager download on mobile (was "auto")
-      preload="none"
+      preload="metadata"
       controls={false}
       disablePictureInPicture
       x-webkit-airplay="allow"
