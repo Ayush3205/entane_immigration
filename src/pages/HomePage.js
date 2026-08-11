@@ -78,7 +78,7 @@ const HOME_FAQ_ITEMS = [
   {
     question: 'Which courses are in demand in Australia?',
     answer:
-      'Popular in-demand fields include Nursing, IT, Engineering, Hospitality, and Trades aligned with Australia’s skilled occupation list.',
+      'Popular in-demand fields include Nursing, IT, Engineering, Hospitality, and Trades aligned with Australiaâ€™s skilled occupation list.',
   },
   {
     question: 'How does Esante help with migration pathways?',
@@ -215,10 +215,16 @@ function HomePage() {
       const playPromise = video.play();
       if (playPromise && typeof playPromise.catch === 'function') {
         playPromise.catch(() => {
-          if (shouldMuteHeroVideo) return;
+          // Fix: previously bailed out with `if (shouldMuteHeroVideo) return`
+          // which meant the video NEVER got a muted retry on mobile —
+          // heroAudioAllowedRef starts false, so shouldMuteHeroVideo was always
+          // true on the first play(), the catch exited early, and the video
+          // stayed black. Now we ALWAYS force muted and retry on any rejection.
           heroAudioAllowedRef.current = false;
           setMutedState(true);
-          video.play().catch(() => {});
+          video.play().catch((err) => {
+            console.warn('[HeroVideo] muted play() also blocked:', err?.message || err);
+          });
         });
       }
     };
@@ -269,7 +275,7 @@ function HomePage() {
     };
   }, [heroVideoUrl]);
 
-  // Single RAF loop — all DOM mutations in one tick, zero React re-renders
+  // Single RAF loop â€” all DOM mutations in one tick, zero React re-renders
   useEffect(() => {
     let cachedHeaderH    = 0;
     let cachedTargetRect = null;
@@ -283,7 +289,7 @@ function HomePage() {
     const tick = () => {
       const y = window.scrollY || document.documentElement.scrollTop;
 
-      // ── READ PHASE (before any write) ──
+      // â”€â”€ READ PHASE (before any write) â”€â”€
       // Re-cache target rect from a fresh read each frame while the morph is
       // happening (raw > 0 && raw < 1) so the translation/scale stays accurate
       // even if layout reflows (font load, image load, etc.) shift things.
@@ -305,10 +311,10 @@ function HomePage() {
       // 0. Auto-Snap to Australia Section after Morph (Disabled to remove lag)
       autoScrollState.current.lastY = y;
 
-      // 1. Header scroll state is now managed inside Header.js itself —
+      // 1. Header scroll state is now managed inside Header.js itself â€”
       //    no DOM manipulation needed here.
 
-      // 2. Dream section: sub-pixel-accurate pin (no Math.round → no jitter)
+      // 2. Dream section: sub-pixel-accurate pin (no Math.round â†’ no jitter)
       if (dreamStickyRef.current) {
         dreamStickyRef.current.style.transform = `translate3d(0,${pin}px,0)`;
       }
@@ -320,11 +326,11 @@ function HomePage() {
         morphTargetRef.current.style.opacity = easeOutCubic(revealP).toFixed(4);
       }
 
-      // 4. Hero morph box — the main act
+      // 4. Hero morph box â€” the main act
       const box = morphBoxRef.current;
       if (box) {
         if (raw <= 0) {
-          // ── Resting state (top of page) ──
+          // â”€â”€ Resting state (top of page) â”€â”€
           box.style.transform     = 'translate3d(0,0,0) scale(1,1)';
           box.style.borderRadius  = '0px';
           box.style.opacity       = '1';
@@ -332,13 +338,13 @@ function HomePage() {
           box.style.boxShadow     = 'none';
           box.style.pointerEvents = 'none';
         } else if (raw >= 1) {
-          // ── Fully morphed — hide the box so the card shows through ──
+          // â”€â”€ Fully morphed â€” hide the box so the card shows through â”€â”€
           box.style.opacity       = '0';
           box.style.visibility    = 'hidden';
           box.style.pointerEvents = 'none';
         } else {
-          // ── Active morph ──
-          // easeInOutCubic: box stays proportional to its position throughout —
+          // â”€â”€ Active morph â”€â”€
+          // easeInOutCubic: box stays proportional to its position throughout â€”
           // large while far from card, card-sized when it arrives.
           // This gives the "entering / exiting exactly through the slot" effect.
           const t = easeInOutCubic(raw);
@@ -363,7 +369,7 @@ function HomePage() {
             sx = sy = 1 - t * 0.5; // fallback: plain shrink
           }
 
-          // Border-radius: 0 → 15 px (matches the updated dream card)
+          // Border-radius: 0 â†’ 15 px (matches the updated dream card)
           const radius = t * 15;
 
           // Fade: video stays crystal-clear until 80 %, then crossfades
@@ -385,7 +391,7 @@ function HomePage() {
         }
       }
 
-      // 5. Dream cards: one CSS-var write per frame drives all cards atomically —
+      // 5. Dream cards: one CSS-var write per frame drives all cards atomically â€”
       //    eliminates per-card DOM mutations and scroll-jitter entirely.
       if (!dreamCardsCache && dreamStickyRef.current) {
         dreamCardsCache = dreamStickyRef.current.querySelector('.dream-section');
@@ -456,7 +462,7 @@ function HomePage() {
         <RealStories />
         <LatestNews />
 
-        {/* FAQ — studying in Australia & migration with Esante */}
+        {/* FAQ â€” studying in Australia & migration with Esante */}
         <section
           className="flex flex-col items-center self-stretch w-full bg-white py-[64px] px-6 md:px-[60px] lg:px-[100px] gap-[24px]"
           aria-labelledby="home-faq-heading"
@@ -502,7 +508,7 @@ function HomePage() {
                       )}
                     </div>
                     <div className="mt-[2px] flex h-[24px] w-[24px] items-center justify-center rounded-full border-2 border-[#FF3300] text-[#FF3300] text-[12px] shrink-0">
-                      {isOpen ? '−' : '+'}
+                      {isOpen ? 'âˆ’' : '+'}
                     </div>
                   </button>
                 </div>
