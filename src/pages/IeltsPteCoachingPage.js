@@ -5,7 +5,7 @@ import EsanteBanner from '../components/Reusable/EsanteBanner';
 
 /* ── Local images ── */
 const imgCoach  = '/images/ielts-coach.png';
-const joshVideoUrl = 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-josh-video.mp4';
+const joshVideoUrl = 'https://pub-c5844193f5f9438ea801d65df772364c.r2.dev/ielts-josh-video.mp4';
 
 /* Hero background is a local asset (1440×982 building photo) */
 const HERO_BG = '/images/ielts-hero-bg.png';
@@ -19,17 +19,17 @@ const COACH_W = 644;
 /* ── Testimonial data — local images from public/images ── */
 const CARDS = [
   {
-    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-2.mp4', quote: '"My PTE score went from 58 to 79 in 6 weeks."', uni: 'University of Sydney',
+    video: 'https://pub-c5844193f5f9438ea801d65df772364c.r2.dev/ielts-testi-2.mp4', quote: '"My PTE score went from 58 to 79 in 6 weeks."', uni: 'University of Sydney',
   },
   {
-    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-1.mp4', quote: '"Changed how I study for IELTS entirely."', uni: 'The University of Melbourne',
+    video: 'https://pub-c5844193f5f9438ea801d65df772364c.r2.dev/ielts-testi-1.mp4', quote: '"Changed how I study for IELTS entirely."', uni: 'The University of Melbourne',
   },
   {
-    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-3.mp4', quote: '"Genuine coaching, real confidence builder."', uni: 'Queensland University of Technology',
+    video: 'https://pub-c5844193f5f9438ea801d65df772364c.r2.dev/ielts-testi-3.mp4', quote: '"Genuine coaching, real confidence builder."', uni: 'Queensland University of Technology',
   },
   {
     /* Card 4 — plain image, no overlay (play button) */
-    video: 'https://pub-ee607a9ed6da491e9bcc865796d562de.r2.dev/ielts-testi-4.mp4',city: '', quote: '', uni: '',                                                                                                                    hasOverlay: false,
+    video: 'https://pub-c5844193f5f9438ea801d65df772364c.r2.dev/ielts-testi-4.mp4',city: '', quote: '', uni: '',                                                                                                                    hasOverlay: false,
   },
 ];
 
