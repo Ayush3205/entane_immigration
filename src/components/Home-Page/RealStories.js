@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 
 const STORY_VIDEOS = [
   {
@@ -27,39 +27,16 @@ const STORY_VIDEOS = [
   },
 ];
 
-// Lazily assigns video src only when the card scrolls into view
+const VIDEO_THUMBNAIL_TIME = 0.1;
+const getThumbnailVideoSrc = (src) => `${src}#t=${VIDEO_THUMBNAIL_TIME}`;
+
 function LazyVideo({ src, videoRef, index, onPlay, fitFullVideo, videoScale, videoPosition }) {
-  const containerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el || !('IntersectionObserver' in window)) {
-      // Fallback for old browsers: load immediately
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '200px' } // Start loading 200px before entering viewport
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div ref={containerRef} className={`real-story-card-image${fitFullVideo ? ' real-story-card-image--fit' : ''}`}>
+    <div className={`real-story-card-image${fitFullVideo ? ' real-story-card-image--fit' : ''}`}>
       <video
         ref={videoRef}
         className={`real-story-video${fitFullVideo ? ' real-story-video--fit' : ''}`}
-        src={isVisible ? src : undefined}
+        src={getThumbnailVideoSrc(src)}
         style={{
           ...(videoScale ? { '--story-video-scale': videoScale } : {}),
           ...(videoPosition ? { '--story-video-position': videoPosition } : {}),

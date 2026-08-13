@@ -6,6 +6,8 @@ import EsanteBanner from '../components/Reusable/EsanteBanner';
 /* ── Local images ── */
 const imgCoach  = '/images/ielts-coach.png';
 const joshVideoUrl = 'https://pub-c5844193f5f9438ea801d65df772364c.r2.dev/ielts-josh-video.mp4';
+const VIDEO_THUMBNAIL_TIME = 0.1;
+const getThumbnailVideoSrc = (src) => `${src}#t=${VIDEO_THUMBNAIL_TIME}`;
 
 /* Hero background is a local asset (1440×982 building photo) */
 const HERO_BG = '/images/ielts-hero-bg.png';
@@ -302,7 +304,7 @@ function IeltsPteCoachingPage() {
             <div className="absolute inset-0 overflow-hidden">
               <video
                 ref={joshVideoRef}
-                src={joshVideoUrl}
+                src={getThumbnailVideoSrc(joshVideoUrl)}
                 className="h-full w-full object-cover border-0"
                 style={{ objectPosition: 'center center' }}
                 loop
@@ -424,7 +426,7 @@ function IeltsPteCoachingPage() {
                     <>
                       <video
                         ref={(element) => { testimonialVideoRefs.current[i] = element; }}
-                        src={c.video}
+                        src={getThumbnailVideoSrc(c.video)}
                         className="absolute inset-0 w-full h-full object-cover object-center bg-black"
                         loop
                         playsInline
