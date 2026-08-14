@@ -1,26 +1,27 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { getMediaUrl } from './mediaAssets';
 
 const STORY_VIDEOS = [
   {
-    src: 'https://pub-c5844193f5f9438ea801d65df772364c.r2.dev/testimonial-1.mp4',
+    src: getMediaUrl('testimonial-1.mp4'),
     fillVideo: true,
     videoScale: 1,
     videoPosition: 'center 18%',
   },
   {
-    src: 'https://pub-c5844193f5f9438ea801d65df772364c.r2.dev/testimonial-2.mp4',
+    src: getMediaUrl('testimonial-2.mp4'),
     fillVideo: true,
     videoScale: 1,
     videoPosition: 'center 18%',
   },
   {
-    src: 'https://pub-c5844193f5f9438ea801d65df772364c.r2.dev/testimonial-3.mp4',
+    src: getMediaUrl('testimonial-3.mp4'),
     fillVideo: true,
     videoScale: 1,
     videoPosition: 'center 18%',
   },
   {
-    src: 'https://pub-c5844193f5f9438ea801d65df772364c.r2.dev/testimonial-4.mp4',
+    src: getMediaUrl('testimonial-4.mp4'),
     fillVideo: true,
     videoScale: 1,
     videoPosition: 'center 18%',

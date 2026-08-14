@@ -193,6 +193,7 @@ The build folder can be deployed to:
 - GitHub Pages
 - AWS S3
 - Any static hosting service
+If you serve the MP4 files from Cloudflare R2, set `REACT_APP_MEDIA_BASE_URL` at build time to the HTTPS custom domain for that bucket. Cloudflare recommends custom domains for production buckets; the `r2.dev` development URL is intended for non-production use.
 
 ## 📝 Available Scripts
 
