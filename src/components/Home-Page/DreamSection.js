@@ -43,7 +43,7 @@ const DreamSection = ({ morphTargetRef, heroVideoUrl = null }) => {
               key={`r1-${i}`}
               className={`dream-image-wrap${i === 0 ? ' dream-image-wrap--kangaroo' : ''}`}
             >
-              <img src={src} alt="" className="dream-image" />
+              <img src={src} alt="" className="dream-image" loading="lazy" />
             </div>
           ))}
         </div>

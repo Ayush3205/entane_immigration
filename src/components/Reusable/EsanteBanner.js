@@ -54,6 +54,7 @@ const EsanteBanner = ({
             src={CTA_BG}
             alt=""
             className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
           />
 
           <div className="relative z-10 flex min-h-[252px] flex-col items-center justify-center text-center sm:min-h-[270px] md:min-h-[287px]">

@@ -16,7 +16,7 @@ const Footer = () => {
           <div className="footer-grid">
             <div className="footer-column footer-brand">
               <div className="footer-logo">
-                <img src="/logo.png" alt="Esante Logo" />
+                <img src="/logo.png" alt="Esante Logo" loading="lazy" />
               </div>
               <p className="footer-tagline">
                 Your all-in-one solution for moving to Australia, from education to employment.

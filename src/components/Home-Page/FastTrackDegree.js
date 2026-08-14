@@ -124,6 +124,7 @@ const FastTrackDegree = () => {
               alt=""
               className="thingreen-image"
               aria-hidden="true"
+              loading="lazy"
             />
             <div className="courses-grid">
               {courses[activeTab].map((course, index) => (
