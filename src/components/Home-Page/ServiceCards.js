@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom';
 
 const CARDS = [
   {
-    image: '/images/home-page/image 52.png',
+    image: '/images/home-page/image 52.webp',
     badge: 'For Students',
     subtitle: 'World - Class Education',
     cta: 'Book 1:1 Counselling',
     href: '/ancillary-services',
   },
   {
-    image: '/images/home-page/image 53.png',
+    image: '/images/home-page/image 53.webp',
     badge: 'For Professionals',
     subtitle: 'Advance Your Career',
     cta: 'Book 1:1 Counselling',
     href: '/recruitment',
   },
   {
-    image: '/images/home-page/image 54.png',
+    image: '/images/home-page/image 54.webp',
     badge: 'For Migration',
     subtitle: 'Start Your New Life',
     cta: 'Book 1:1 Counselling',
@@ -48,7 +48,7 @@ const ServiceCards = () => {
           {CARDS.map((card, i) => (
             <div key={i} className="service-card">
               <div className="service-card-image">
-                <img src={card.image} alt={card.badge} />
+                <img src={card.image} alt={card.badge} loading="lazy" />
                 <div className="service-card-gradient" />
                 <div aria-hidden="true">
                   <span className="service-card-play-icon" />

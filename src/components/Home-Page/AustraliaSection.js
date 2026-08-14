@@ -136,36 +136,43 @@ const AustraliaSection = () => {
           className={`relative min-h-[180px] md:min-h-[220px] lg:min-h-full overflow-hidden transition-all duration-[850ms] ease-out delay-[80ms] ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[56px] scale-[0.94]'
             }`}
         >
-          {/* Background Image */}
-          <div
-            className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-[900ms] "
-            style={{ backgroundImage: 'url(/images/home-page/australia.png)' }}
+          {/* Background Image — lazy WebP (was 1.35 MB PNG, now ~154 KB) */}
+          <img
+            src="/images/home-page/australia.webp"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="absolute top-0 left-0 w-full h-full object-cover object-center transition-transform duration-[900ms]"
           />
 
           {/* Overlay Images Envelope */}
           <div className="absolute top-[8%] left-0 w-full h-[88%] flex items-center justify-center p-4 md:p-6">
             <div className="grid grid-cols-2 gap-0 max-w-[220px] md:max-w-[280px] lg:max-h-[85%] lg:max-w-[60%]">
               <img
-                src="/images/home-page/overlay-top-1.png"
+                src="/images/home-page/overlay-top-1.webp"
                 alt="Australia Illustration Top Left"
+                loading="lazy"
                 className={`w-full h-full object-cover block rounded-tl-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[1000ms] delay-[150ms] ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[40px] scale-[0.5]'}`}
                 style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
               />
               <img
-                src="/images/home-page/overlay-top-2.png"
+                src="/images/home-page/overlay-top-2.webp"
                 alt="Australia Illustration Top Right"
+                loading="lazy"
                 className={`w-full h-full object-cover block rounded-tr-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[1000ms] delay-[300ms] ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[40px] scale-[0.5]'}`}
                 style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
               />
               <img
-                src="/images/home-page/overlay-bottom-1.png"
+                src="/images/home-page/overlay-bottom-1.webp"
                 alt="Australia Illustration Bottom Left"
+                loading="lazy"
                 className={`w-full h-full object-cover block rounded-bl-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[1000ms] delay-[450ms] ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[40px] scale-[0.5]'}`}
                 style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
               />
               <img
-                src="/images/home-page/overlay-bottom-2.png"
+                src="/images/home-page/overlay-bottom-2.webp"
                 alt="Australia Illustration Bottom Right"
+                loading="lazy"
                 className={`w-full h-full object-cover block rounded-br-lg shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-all duration-[1000ms] delay-[600ms] ${isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-[40px] scale-[0.5]'}`}
                 style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
               />

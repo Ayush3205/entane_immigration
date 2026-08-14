@@ -487,6 +487,7 @@ function HomePage() {
             ref={morphVideoRef}
             className="hero-morph-video"
             src={heroVideoUrl}
+            poster="/hero-bg.webp"
           />
         )}
       </div>

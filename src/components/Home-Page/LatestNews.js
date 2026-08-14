@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 const NEWS_IMAGES = [
-  '/images/home-page/news-1.png',
-  '/images/home-page/news-2.png',
-  '/images/home-page/news-3.png',
-  '/images/home-page/news-4.png'
+  '/images/home-page/news-1.webp',
+  '/images/home-page/news-2.webp',
+  '/images/home-page/news-3.webp',
+  '/images/home-page/news-4.webp'
 ];
 
 const LatestNews = () => {
@@ -78,7 +78,7 @@ const LatestNews = () => {
             {articles.map((article, index) => (
               <article key={index} className="latest-news-card">
                 <div className="latest-news-card-image">
-                  <img src={NEWS_IMAGES[index]} alt="" />
+                  <img src={NEWS_IMAGES[index]} alt="" loading="lazy" />
                 </div>
                 <time className="latest-news-date">{article.date}</time>
                 <h3 className="latest-news-card-title">{article.title}</h3>
@@ -105,7 +105,7 @@ const LatestNews = () => {
               ×
             </button>
             <div className="latest-news-modal-image">
-              <img src={NEWS_IMAGES[selectedArticle]} alt="" />
+              <img src={NEWS_IMAGES[selectedArticle]} alt="" loading="lazy" />
             </div>
             <div className="latest-news-modal-body">
               <time className="latest-news-modal-date">{articles[selectedArticle].date}</time>

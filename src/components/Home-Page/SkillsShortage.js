@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 
 
-const SKILL_IMAGES = ['/images/home-page/skill-1.png', '/images/home-page/skill-2.png', '/images/home-page/skill-3.png'];
+const SKILL_IMAGES = ['/images/home-page/skill-1.webp', '/images/home-page/skill-2.webp', '/images/home-page/skill-3.webp'];
 
 const SkillsShortage = () => {
   const scrollRef = useRef(null);
@@ -100,7 +100,7 @@ const SkillsShortage = () => {
             {jobs.map((job, index) => (
               <div key={index} className="job-card">
                 <div className="job-image">
-                  <img src={SKILL_IMAGES[index % 3]} alt={job.title} />
+                  <img src={SKILL_IMAGES[index % 3]} alt={job.title} loading="lazy" />
                 </div>
                 <div className="job-content">
                   <h3 className="job-title">{job.title}</h3>
@@ -150,6 +150,7 @@ const SkillsShortage = () => {
                 <img
                   src={SKILL_IMAGES[selectedJob.imageIndex % 3]}
                   alt={selectedJob.title}
+                  loading="lazy"
                 />
               </div>
               <div className="job-modal-details">

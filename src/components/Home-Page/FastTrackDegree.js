@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-const FAST_TRACK_IMAGES = ['/images/home-page/fast-track-1.png', '/images/home-page/fast-track-2.png'];
+const FAST_TRACK_IMAGES = ['/images/home-page/fast-track-1.webp', '/images/home-page/fast-track-2.webp'];
 
 const FastTrackDegree = () => {
   const [activeTab, setActiveTab] = useState('management');
@@ -132,6 +132,7 @@ const FastTrackDegree = () => {
                     <img
                       src={FAST_TRACK_IMAGES[index % FAST_TRACK_IMAGES.length]}
                       alt={course.title}
+                      loading="lazy"
                     />
                   </div>
                   <div className="course-content">
@@ -173,6 +174,7 @@ const FastTrackDegree = () => {
                 <img
                   src={FAST_TRACK_IMAGES[selectedCourse.imageIndex % FAST_TRACK_IMAGES.length]}
                   alt={selectedCourse.title}
+                  loading="lazy"
                 />
               </div>
               <div className="course-modal-details">
