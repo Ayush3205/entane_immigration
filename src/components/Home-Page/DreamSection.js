@@ -19,12 +19,12 @@ const GALLERY_IMAGES = [
   '/images/home-page/students.webp',
   '/images/home-page/professionals.webp',
   '/images/home-page/migration.png',       // tiny 9 KB
-  '/images/home-page/australia-map.png',   // 55 KB — acceptable as-is
-  '/images/home-page/placeholder-1.png',
-  '/images/home-page/placeholder-2.png',
-  '/images/home-page/placeholder-3.png',
-  '/images/home-page/placeholder-4.png',
-  '/images/home-page/placeholder-5.png',
+  '/images/home-page/australia-map.webp',
+  '/images/home-page/placeholder-1.webp',
+  '/images/home-page/placeholder-2.webp',
+  '/images/home-page/placeholder-3.webp',
+  '/images/home-page/placeholder-4.webp',
+  '/images/home-page/placeholder-5.webp',
 ];
 
 // First 4 images (Row 1) are at/above fold — eager. Everything else is lazy.

@@ -17,7 +17,7 @@ const COURSES = [
     entryScore: 'IELTS 7.0',
     fees: 'AUD58800',
     feesYear: '2026',
-    logo: '/images/course-card/THE UNIVERSITY OF SYDNEY.jpeg',
+    logo: '/images/course-card/THE UNIVERSITY OF SYDNEY.webp',
   },
   {
     id: 2,
@@ -143,7 +143,7 @@ const COURSES = [
 
 /* ── Map known university names to files added under public/images/course-card/ ── */
 const UNIVERSITY_LOGOS = {
-  'THE UNIVERSITY OF SYDNEY': '/images/course-card/THE UNIVERSITY OF SYDNEY.jpeg',
+  'THE UNIVERSITY OF SYDNEY': '/images/course-card/THE UNIVERSITY OF SYDNEY.webp',
   'University of Melbourne': '/images/course-card/The_University_of_Melbourne_Logo.svg.png',
   'University of Queensland': '/images/course-card/University of Queensland logo.png',
   'Monash University': '/images/course-card/Monash University logo.png',

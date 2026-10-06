@@ -96,7 +96,7 @@ export const CASE_STUDIES = [
     subtitle: 'Helping Students Improve Their Visa Chances',
     excerpt:
       'Sneha improved her IELTS score with Esante\'s preparation support, strengthening her profile and improving her visa chances.',
-    image: '/images/Case Studies/5.jpeg',
+    image: '/images/Case Studies/5.webp',
     intro:
       'Many students fear high visa rejection rates due to weak English scores and poor guidance.',
     supportIntro: 'Esante provided:',
